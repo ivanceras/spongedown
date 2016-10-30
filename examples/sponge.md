@@ -2,7 +2,7 @@
 ## Spongedown
 
 Spongedown converts markdown to html 
-with support for svgbob diagrams into an svg.
+with support for [svgbob diagrams](https://github.com/ivanceras/svgbobrus) into an svg.
 
 
 | 中文处理 | Data | CJK |
@@ -67,13 +67,12 @@ The next `code block` will be fenced with bob will be rendered into an svg
 ```
 
 
-And a text
-with abbr
+Supports normal code blocks too.
+
 
 ```rust
 fn main(){
     println!("Hello world!");
 }
-
 ```
 

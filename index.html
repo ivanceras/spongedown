@@ -1,8 +1,10 @@
 <html>
 <head>
 <title>Spongedown - md to html with svg support</title>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/languages/rust.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 <style>
 table{
     border-collapse: collapse;
@@ -14,15 +16,15 @@ th, td{
 </style>
 </head>
 <body>
-<div style="display:flex">
+<div style="display:flex;padding: 10px;">
     <div>
     <pre>
-        <code>
+        <code class="nohighlight">
 
 ## Spongedown
 
 Spongedown converts markdown to html 
-with support for svgbob diagrams into an svg.
+with support for [svgbob diagrams](https://github.com/ivanceras/svgbobrus) into an svg.
 
 
 | 中文处理 | Data | CJK |
@@ -87,24 +89,23 @@ The next `code block` will be fenced with bob will be rendered into an svg
 ```
 
 
-And a text
-with abbr
+Supports normal code blocks too.
+
 
 ```rust
 fn main(){
     println!(&quot;Hello world!&quot;);
 }
-
 ```
 
 
         </code>
     </pre>
     </div>
-    <div>
+    <div style="margin-left: 20px;">
 <h2>Spongedown</h2>
 <p>Spongedown converts markdown to html
-with support for svgbob diagrams into an svg.</p>
+with support for <a href="https://github.com/ivanceras/svgbobrus">svgbob diagrams</a> into an svg.</p>
 <table><thead><tr><td> 中文处理 </td><td> Data </td><td> CJK </td></tr></thead>
 <tr><td> 1        </td><td> 2    </td><td> 3   </td></tr>
 <tr><td><strong>bold</strong>  </td><td> <code>table</code></td><td>are  </td></tr>
@@ -228,12 +229,10 @@ IO
 硬件抽象层
 </text>
 </svg>
-<p>And a text
-with abbr</p>
+<p>Supports normal code blocks too.</p>
 <pre><code class="language-rust">fn main(){
     println!(&quot;Hello world!&quot;);
 }
-
 </code></pre>
 
     </div>

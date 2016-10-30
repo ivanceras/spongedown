@@ -1,8 +1,10 @@
 <html>
 <head>
 <title>Spongedown - md to html with svg support</title>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/languages/rust.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 <style>
 table{
     border-collapse: collapse;
@@ -14,15 +16,15 @@ th, td{
 </style>
 </head>
 <body>
-<div style="display:flex">
+<div style="display:flex;padding: 10px;">
     <div>
     <pre>
-        <code>
+        <code class="nohighlight">
 {{md}}
         </code>
     </pre>
     </div>
-    <div>
+    <div style="margin-left: 20px;">
 {{{html}}}
     </div>
 </div>
