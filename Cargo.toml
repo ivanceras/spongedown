@@ -6,3 +6,7 @@ authors = ["Jovansonlee Cesar"]
 [dependencies]
 pulldown-cmark = "0.0"
 svgbob = "0.1"
+
+
+[dev-dependencies]
+handlebars = "0.21"
