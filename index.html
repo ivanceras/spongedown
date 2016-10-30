@@ -1,6 +1,15 @@
 <html>
 <head>
 <title>Spongedown - md to html with svg support</title>
+<style>
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+th, td{
+    border:1px solid #ccc;
+}
+</style>
 </head>
 <body>
 <div style="display:flex">
@@ -16,7 +25,7 @@
 |----------|------|-----|
 | 1        | 2    | 3   |
 |**bold**  | `table`|are  |
-| nice   | |
+| nice     | hello  | world|
 
 ```bob
 
@@ -91,7 +100,7 @@ fn main(){
 <table><thead><tr><td> 中文处理 </td><td> Data </td><td> CJK </td></tr></thead>
 <tr><td> 1        </td><td> 2    </td><td> 3   </td></tr>
 <tr><td><strong>bold</strong>  </td><td> <code>table</code></td><td>are  </td></tr>
-<tr><td> nice   </td><td> </td></tr>
+<tr><td> nice     </td><td> hello  </td><td> world</td></tr>
 </table>
 <svg font-family="Electrolize,Titillium Web, Trebuchet MS, Arial" font-size="14" height="816" width="600" xmlns="http://www.w3.org/2000/svg">
 <defs>

@@ -7,7 +7,7 @@
 |----------|------|-----|
 | 1        | 2    | 3   |
 |**bold**  | `table`|are  |
-| nice   | |
+| nice     | hello  | world|
 
 ```bob
 
