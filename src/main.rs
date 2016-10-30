@@ -130,7 +130,7 @@ fn main(){
 }
 
 fn save_to_file(html: &str)->Result<(),Box<Error>>{
-    let mut f = try!(File::create("file.html"));
+    let mut f = try!(File::create("index.html"));
     try!(f.write_all(html.as_bytes()));
     Ok(())
 }
