@@ -1,0 +1,5 @@
+target
+*.sw*
+*.bk
+
+.DS_Store
