@@ -1,6 +1,8 @@
 <html>
 <head>
 <title>Spongedown - md to html with svg support</title>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
 <style>
 table{
     border-collapse: collapse;
@@ -17,8 +19,10 @@ th, td{
     <pre>
         <code>
 
-
 ## Spongedown
+
+Spongedown converts markdown to html 
+with support for svgbob diagrams into an svg.
 
 
 | 中文处理 | Data | CJK |
@@ -26,6 +30,8 @@ th, td{
 | 1        | 2    | 3   |
 |**bold**  | `table`|are  |
 | nice     | hello  | world|
+
+The next `code block` will be fenced with bob will be rendered into an svg
 
 ```bob
 
@@ -86,7 +92,7 @@ with abbr
 
 ```rust
 fn main(){
-    println!(&quot;hello world!&quot;);
+    println!(&quot;Hello world!&quot;);
 }
 
 ```
@@ -97,11 +103,14 @@ fn main(){
     </div>
     <div>
 <h2>Spongedown</h2>
+<p>Spongedown converts markdown to html
+with support for svgbob diagrams into an svg.</p>
 <table><thead><tr><td> 中文处理 </td><td> Data </td><td> CJK </td></tr></thead>
 <tr><td> 1        </td><td> 2    </td><td> 3   </td></tr>
 <tr><td><strong>bold</strong>  </td><td> <code>table</code></td><td>are  </td></tr>
 <tr><td> nice     </td><td> hello  </td><td> world</td></tr>
 </table>
+<p>The next <code>code block</code> will be fenced with bob will be rendered into an svg</p>
 <svg font-family="Electrolize,Titillium Web, Trebuchet MS, Arial" font-size="14" height="816" width="600" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="0" refY="5" viewBox="0 0 40 40">
@@ -222,7 +231,7 @@ IO
 <p>And a text
 with abbr</p>
 <pre><code class="language-rust">fn main(){
-    println!(&quot;hello world!&quot;);
+    println!(&quot;Hello world!&quot;);
 }
 
 </code></pre>

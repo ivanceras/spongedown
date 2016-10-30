@@ -1,6 +1,8 @@
 
-
 ## Spongedown
+
+Spongedown converts markdown to html 
+with support for svgbob diagrams into an svg.
 
 
 | 中文处理 | Data | CJK |
@@ -8,6 +10,8 @@
 | 1        | 2    | 3   |
 |**bold**  | `table`|are  |
 | nice     | hello  | world|
+
+The next `code block` will be fenced with bob will be rendered into an svg
 
 ```bob
 
@@ -68,7 +72,7 @@ with abbr
 
 ```rust
 fn main(){
-    println!("hello world!");
+    println!("Hello world!");
 }
 
 ```
