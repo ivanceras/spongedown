@@ -76,6 +76,7 @@ The next `code block` fenced with `bob` will be rendered into an svg
 ```
 
 ## Improvements in svgbob
+- Generated SVG size is now optimized
 - CJK is now supported
 - Supports a wide array of diagram element combinations
 
