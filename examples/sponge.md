@@ -10,7 +10,7 @@
 
 Spongedown converts markdown to html with support for 
 [svgbob diagrams](https://github.com/ivanceras/svgbobrus)
-into an svg.
+
 
 
 | 中文处理 | Data | CJK |
@@ -89,9 +89,10 @@ fn main(){
 }
 ```
 
-**Links**
-* [github source code](https://github.com/ivanceras/spongedown)
-* [svgbob demo](https://ivanceras.github.io/svgbobrus/) [repo](https://github.com/ivanceras/svgbobrus)
-* [svgbob in hackernews](https://news.ycombinator.com/item?id=12621680)
+### Links
+* [Spongedown repo](https://github.com/ivanceras/spongedown)
+* [Svgbob demo](https://ivanceras.github.io/svgbobrus/) 
+    - [repo](https://github.com/ivanceras/svgbobrus)
+* [Svgbob in hackernews](https://news.ycombinator.com/item?id=12621680)
 * [pulldown-cmark](https://github.com/google/pulldown-cmark)
 
