@@ -1,43 +1,52 @@
 
-## Spongedown
+# Spongedown
 
-Spongedown converts markdown to html 
-with support for [svgbob diagrams](https://github.com/ivanceras/svgbobrus) into an svg.
+```bob
+                 _____________
+ +---------+     \            \        +------------+
+ | md+bob  |----->) spongedown )------>| html + svg |
+ +---------+     /____________/        +------------+
+```
+
+Spongedown converts markdown to html with support for 
+[svgbob diagrams](https://github.com/ivanceras/svgbobrus)
+into an svg.
 
 
 | 中文处理 | Data | CJK |
 |----------|------|-----|
-| 1        | 2    | 3   |
-|**bold**  | `table`|are  |
-| nice     | hello  | world|
+|**Table**  | `are`|supported  |
+| as     | well  | |
 
-The next `code block` will be fenced with bob will be rendered into an svg
+The next `code block` fenced with `bob` will be rendered into an svg
 
 ```bob
 
                                         .--> Base::Class::Derived_A
                                        /
-                                      .----> Base::Class::Derived_B    
-      Something -------.             /         \
-                        \           /           .---> Base::Class::Derived
-      Something::else    \         /             \
+            .-.                       .----> Base::Class::Derived_B    
+           (x1y)-------.             /         \
+            '-'         \           /           .---> Base::Class::Derived
+        Alice            \         /             \
             \             \       /               '--> Base::Class::Derived
              \             \     /
-              \             \   .-----------> Base::Class::Derived_C 
+              \             \   .-----------> SVG                    
                \             \ /
-                '------ Base::Class
+                \    .-----------.
+                 '--(    BOB      )
+                     '-----------'
                        /  \ \ \
                       '    \ \ \  
                       |     \ \ \
                       .      \ \ '--- The::Latest
                      /|       \ \      \
- With::Some::fantasy  '        \ \      '---- The::Latest::Greatest
+                 Foo  '        \ \      '---- The::Latest::Greatest
                      /|         \ \
-         More::Stuff  '          \ '- I::Am::Running::Out::Of::Ideas
+                 Bar  '          \ '- I::Am::Running::Out::Of::Ideas
                      /|           \
-         More::Stuff  '            \
+                 Bar  '            \
                      /              '--- Last::One
-       More::Stuff  V 
+               Quux V 
 
 +----------------------+
 |                      |
@@ -66,6 +75,10 @@ The next `code block` will be fenced with bob will be rendered into an svg
 
 ```
 
+## Improvements in svgbob
+- CJK is now supported
+- Supports a wide array of diagram element combinations
+
 
 Supports normal code blocks too.
 
@@ -75,4 +88,10 @@ fn main(){
     println!("Hello world!");
 }
 ```
+
+**Links**
+* [github source code](https://github.com/ivanceras/spongedown)
+* [svgbob demo](https://ivanceras.github.io/svgbobrus/) [repo](https://github.com/ivanceras/svgbobrus)
+* [svgbob in hackernews](https://news.ycombinator.com/item?id=12621680)
+* [pulldown-cmark](https://github.com/google/pulldown-cmark)
 

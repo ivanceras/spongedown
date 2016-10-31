@@ -13,6 +13,9 @@ table{
 th, td{
     border:1px solid #ccc;
 }
+pre {
+    font-family:monospace;
+}
 </style>
 </head>
 <body>
@@ -21,45 +24,54 @@ th, td{
     <pre>
         <code class="nohighlight">
 
-## Spongedown
+# Spongedown
 
-Spongedown converts markdown to html 
-with support for [svgbob diagrams](https://github.com/ivanceras/svgbobrus) into an svg.
+```bob
+                 _____________
+ +---------+     \            \        +------------+
+ | md+bob  |-----&gt;) spongedown )------&gt;| html + svg |
+ +---------+     /____________/        +------------+
+```
+
+Spongedown converts markdown to html with support for 
+[svgbob diagrams](https://github.com/ivanceras/svgbobrus)
+into an svg.
 
 
 | 中文处理 | Data | CJK |
 |----------|------|-----|
-| 1        | 2    | 3   |
-|**bold**  | `table`|are  |
-| nice     | hello  | world|
+|**Table**  | `are`|supported  |
+| as     | well  | |
 
-The next `code block` will be fenced with bob will be rendered into an svg
+The next `code block` fenced with `bob` will be rendered into an svg
 
 ```bob
 
                                         .--&gt; Base::Class::Derived_A
                                        /
-                                      .----&gt; Base::Class::Derived_B    
-      Something -------.             /         \
-                        \           /           .---&gt; Base::Class::Derived
-      Something::else    \         /             \
+            .-.                       .----&gt; Base::Class::Derived_B    
+           (x1y)-------.             /         \
+            '-'         \           /           .---&gt; Base::Class::Derived
+        Alice            \         /             \
             \             \       /               '--&gt; Base::Class::Derived
              \             \     /
-              \             \   .-----------&gt; Base::Class::Derived_C 
+              \             \   .-----------&gt; SVG                    
                \             \ /
-                '------ Base::Class
+                \    .-----------.
+                 '--(    BOB      )
+                     '-----------'
                        /  \ \ \
                       '    \ \ \  
                       |     \ \ \
                       .      \ \ '--- The::Latest
                      /|       \ \      \
- With::Some::fantasy  '        \ \      '---- The::Latest::Greatest
+                 Foo  '        \ \      '---- The::Latest::Greatest
                      /|         \ \
-         More::Stuff  '          \ '- I::Am::Running::Out::Of::Ideas
+                 Bar  '          \ '- I::Am::Running::Out::Of::Ideas
                      /|           \
-         More::Stuff  '            \
+                 Bar  '            \
                      /              '--- Last::One
-       More::Stuff  V 
+               Quux V 
 
 +----------------------+
 |                      |
@@ -88,6 +100,10 @@ The next `code block` will be fenced with bob will be rendered into an svg
 
 ```
 
+## Improvements in svgbob
+- CJK is now supported
+- Supports a wide array of diagram element combinations
+
 
 Supports normal code blocks too.
 
@@ -103,16 +119,8 @@ fn main(){
     </pre>
     </div>
     <div style="margin-left: 20px;">
-<h2>Spongedown</h2>
-<p>Spongedown converts markdown to html
-with support for <a href="https://github.com/ivanceras/svgbobrus">svgbob diagrams</a> into an svg.</p>
-<table><thead><tr><td> 中文处理 </td><td> Data </td><td> CJK </td></tr></thead>
-<tr><td> 1        </td><td> 2    </td><td> 3   </td></tr>
-<tr><td><strong>bold</strong>  </td><td> <code>table</code></td><td>are  </td></tr>
-<tr><td> nice     </td><td> hello  </td><td> world</td></tr>
-</table>
-<p>The next <code>code block</code> will be fenced with bob will be rendered into an svg</p>
-<svg font-family="Electrolize,Titillium Web, Trebuchet MS, Arial" font-size="14" height="816" width="600" xmlns="http://www.w3.org/2000/svg">
+<h1>Spongedown</h1>
+<svg font-family="Electrolize,Titillium Web, Trebuchet MS, Arial" font-size="14" height="80" width="424" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="0" refY="5" viewBox="0 0 40 40">
 <path d="M 0 0 L 10 5 L 0 10 z"/>
@@ -132,103 +140,173 @@ with support for <a href="https://github.com/ivanceras/svgbobrus">svgbob diagram
      ]]> 
     
 </style>
-<path d=" M 320 32 L 322 28 M 328 24 A 8 8 0 0 0 322 28 M 312 48 L 320 32 M 304 64 L 320 32 M 310 56 A 8 8 0 0 0 306 60 M 128 72 L 184 72 M 192 80 L 190 76 A 8 8 0 0 0 184 72 M 376 64 L 384 80 M 192 80 L 240 176 M 384 80 L 400 112 M 386 84 A 8 8 0 0 0 390 88 M 392 96 L 400 112 M 96 112 L 128 176 M 400 112 L 402 116 A 8 8 0 0 0 408 120 M 264 144 L 304 64 M 256 160 L 304 64 M 262 152 A 8 8 0 0 0 258 156 M 248 176 L 256 160 M 128 176 L 130 180 A 8 8 0 0 0 136 184 L 184 184 M 184 208 L 192 192 M 208 192 L 288 352 M 224 192 L 280 304 M 240 192 L 264 240 M 184 208 L 182 212 M 180 224 L 180 220 M 182 212 A 16 16 0 0 0 180 220 M 180 224 L 180 240 L 180 272 M 176 256 L 178 252 A 16 16 0 0 0 180 244 M 264 240 L 266 244 A 8 8 0 0 0 272 248 L 296 248 M 168 272 L 176 256 M 180 256 L 180 272 M 312 256 L 320 272 M 180 272 L 180 304 M 176 288 L 178 284 A 16 16 0 0 0 180 276 M 320 272 L 322 276 A 8 8 0 0 0 328 280 L 360 280 M 168 304 L 176 288 M 180 288 L 180 304 L 180 336 M 176 320 L 178 316 A 16 16 0 0 0 180 308 M 280 304 L 282 308 A 8 8 0 0 0 288 312 L 296 312 M 168 336 L 176 320 M 180 320 L 180 336 L 180 340 M 176 352 L 178 348 A 16 16 0 0 0 180 340 M 168 368 L 176 352 M 288 352 L 290 356 A 8 8 0 0 0 296 360 L 320 360 M 4 408 L 4 480 M 4 408 L 184 408 M 8 408 L 184 408 M 188 408 L 188 480 M 188 408 L 184 408 M 4 416 L 4 480 M 188 416 L 188 480 M 4 488 L 4 480 M 4 488 L 184 488 M 8 488 L 184 488 M 188 488 L 188 480 M 188 488 L 184 488 M 112 520 A 4 4 0 0 0 108 524 L 108 528 M 112 520 L 136 520 M 140 524 A 4 4 0 0 0 136 520 M 140 524 L 140 528 M 168 520 A 4 4 0 0 0 164 524 L 164 528 M 168 520 L 192 520 M 196 524 A 4 4 0 0 0 192 520 M 196 524 L 196 528 M 216 520 A 4 4 0 0 0 212 524 L 212 528 M 216 520 L 240 520 M 244 524 A 4 4 0 0 0 240 520 M 244 524 L 244 528 M 272 520 A 4 4 0 0 0 268 524 L 268 528 M 272 520 L 296 520 M 300 524 A 4 4 0 0 0 296 520 M 300 524 L 300 528 M 344 520 A 4 4 0 0 0 340 524 L 340 528 M 344 520 L 368 520 M 372 524 A 4 4 0 0 0 368 520 M 372 524 L 372 528 M 400 520 A 4 4 0 0 0 396 524 L 396 528 M 400 520 L 424 520 M 428 524 A 4 4 0 0 0 424 520 M 428 524 L 428 528 M 108 532 A 4 4 0 0 0 112 536 M 108 528 L 108 532 M 112 536 L 136 536 A 4 4 0 0 0 140 532 M 140 528 L 140 532 M 164 532 A 4 4 0 0 0 168 536 M 164 528 L 164 532 M 168 536 L 192 536 A 4 4 0 0 0 196 532 M 196 528 L 196 532 M 212 532 A 4 4 0 0 0 216 536 M 212 528 L 212 532 M 216 536 L 240 536 A 4 4 0 0 0 244 532 M 244 528 L 244 532 M 268 532 A 4 4 0 0 0 272 536 M 268 528 L 268 532 M 272 536 L 296 536 A 4 4 0 0 0 300 532 M 300 528 L 300 532 M 340 532 A 4 4 0 0 0 344 536 M 340 528 L 340 532 M 344 536 L 368 536 A 4 4 0 0 0 372 532 M 372 528 L 372 532 M 396 532 A 4 4 0 0 0 400 536 M 396 528 L 396 532 M 400 536 L 424 536 A 4 4 0 0 0 428 532 M 428 528 L 428 532 M 228 544 L 228 672 M 108 588 L 108 608 M 112 584 A 4 4 0 0 0 108 588 M 112 584 L 208 584 M 212 588 L 212 608 M 212 588 A 4 4 0 0 0 208 584 M 244 588 L 244 608 M 248 584 A 4 4 0 0 0 244 588 M 248 584 L 336 584 M 340 588 L 340 608 M 340 588 A 4 4 0 0 0 336 584 M 380 588 L 380 608 M 384 584 A 4 4 0 0 0 380 588 M 384 584 L 424 584 M 428 588 L 428 608 M 428 588 A 4 4 0 0 0 424 584 M 108 592 L 108 608 M 212 592 L 212 608 M 244 592 L 244 608 M 340 592 L 340 608 M 380 592 L 380 608 M 428 592 L 428 608 M 108 608 L 108 612 A 4 4 0 0 0 112 616 L 208 616 M 212 608 L 212 612 M 208 616 A 4 4 0 0 0 212 612 M 244 608 L 244 612 A 4 4 0 0 0 248 616 L 336 616 M 340 608 L 340 612 M 336 616 A 4 4 0 0 0 340 612 M 380 608 L 380 612 A 4 4 0 0 0 384 616 L 424 616 M 428 608 L 428 612 M 424 616 A 4 4 0 0 0 428 612 M 140 668 L 140 688 M 144 664 A 4 4 0 0 0 140 668 M 144 664 L 176 664 M 180 668 L 180 688 M 180 668 A 4 4 0 0 0 176 664 M 324 668 L 324 688 M 328 664 A 4 4 0 0 0 324 668 M 328 664 L 400 664 M 404 668 L 404 688 M 404 668 A 4 4 0 0 0 400 664 M 140 672 L 140 688 M 180 672 L 180 688 M 192 680 L 224 680 M 228 672 L 228 676 M 224 680 A 4 4 0 0 0 228 676 M 324 672 L 324 688 M 404 672 L 404 688 M 140 688 L 140 692 A 4 4 0 0 0 144 696 L 176 696 M 180 688 L 180 692 M 176 696 A 4 4 0 0 0 180 692 M 324 688 L 324 692 A 4 4 0 0 0 328 696 L 400 696 M 404 688 L 404 692 M 400 696 A 4 4 0 0 0 404 692 M 108 748 L 108 768 M 112 744 A 4 4 0 0 0 108 748 M 112 744 L 424 744 M 428 748 L 428 768 M 428 748 A 4 4 0 0 0 424 744 M 108 752 L 108 768 M 428 752 L 428 768 M 108 768 L 108 772 A 4 4 0 0 0 112 776 L 424 776 M 428 768 L 428 772 M 424 776 A 4 4 0 0 0 428 772" fill="none"/>
+<path d=" M 136 16 L 240 16 M 12 24 L 12 48 M 12 24 L 88 24 M 16 24 L 88 24 M 92 24 L 92 48 M 92 24 L 88 24 M 136 16 L 144 32 M 240 16 L 248 32 M 316 24 L 316 48 M 316 24 L 416 24 M 320 24 L 416 24 M 420 24 L 420 48 M 420 24 L 416 24 M 12 32 L 12 48 M 92 32 L 92 48 M 144 32 L 146 36 M 144 48 L 146 44 A 8 8 0 0 0 146 36 M 248 32 L 250 36 M 248 48 L 250 44 A 8 8 0 0 0 250 36 M 316 32 L 316 48 M 420 32 L 420 48 M 12 56 L 12 48 M 12 56 L 88 56 M 16 56 L 88 56 M 92 56 L 92 48 M 92 56 L 88 56 M 136 64 L 144 48 M 152 64 L 136 64 M 152 64 L 240 64 L 248 48 M 316 56 L 316 48 M 316 56 L 416 56 M 320 56 L 416 56 M 420 56 L 420 48 M 420 56 L 416 56" fill="none"/>
 <path d="" fill="none" stroke-dasharray="3 3"/>
-<line marker-end="url(#triangle)" x1="328" x2="348" y1="24" y2="24"/>
-<line marker-end="url(#triangle)" x1="310" x2="348" y1="56" y2="56"/>
-<line marker-end="url(#triangle)" x1="312" x2="348" y1="56" y2="56"/>
-<line marker-end="url(#triangle)" x1="390" x2="420" y1="88" y2="88"/>
-<line marker-end="url(#triangle)" x1="392" x2="420" y1="88" y2="88"/>
-<line marker-end="url(#triangle)" x1="408" x2="428" y1="120" y2="120"/>
-<line marker-end="url(#triangle)" x1="262" x2="356" y1="152" y2="152"/>
-<line marker-end="url(#triangle)" x1="264" x2="356" y1="152" y2="152"/>
-<line marker-end="url(#triangle)" x1="168" x2="164" y1="368" y2="376"/>
-<line marker-end="url(#triangle)" x1="124" x2="124" y1="544" y2="576"/>
-<line marker-end="url(#triangle)" x1="180" x2="180" y1="544" y2="576"/>
-<line marker-end="url(#triangle)" x1="284" x2="284" y1="544" y2="576"/>
-<line marker-end="url(#triangle)" x1="356" x2="356" y1="544" y2="656"/>
-<line marker-end="url(#triangle)" x1="412" x2="412" y1="544" y2="576"/>
-<line marker-end="url(#triangle)" x1="164" x2="164" y1="624" y2="656"/>
-<line marker-end="url(#triangle)" x1="284" x2="284" y1="624" y2="736"/>
-<line marker-end="url(#triangle)" x1="192" x2="188" y1="680" y2="680"/>
-<line marker-end="url(#triangle)" x1="164" x2="164" y1="704" y2="736"/>
-<line marker-end="url(#triangle)" x1="364" x2="364" y1="704" y2="736"/>
-<text x="362" y="28">
+<line marker-end="url(#triangle)" x1="96" x2="140" y1="40" y2="40"/>
+<line marker-end="url(#triangle)" x1="256" x2="308" y1="40" y2="40"/>
+<text x="26" y="44">
+md+bob
+</text>
+<text x="162" y="44">
+spongedown
+</text>
+<text x="330" y="44">
+html
+</text>
+<text x="370" y="44">
++
+</text>
+<text x="386" y="44">
+svg
+</text>
+</svg>
+<p>Spongedown converts markdown to html with support for
+<a href="https://github.com/ivanceras/svgbobrus">svgbob diagrams</a>
+into an svg.</p>
+<table><thead><tr><td> 中文处理 </td><td> Data </td><td> CJK </td></tr></thead>
+<tr><td><strong>Table</strong>  </td><td> <code>are</code></td><td>supported  </td></tr>
+<tr><td> as     </td><td> well  </td><td> </td></tr>
+</table>
+<p>The next <code>code block</code> fenced with <code>bob</code> will be rendered into an svg</p>
+<svg font-family="Electrolize,Titillium Web, Trebuchet MS, Arial" font-size="14" height="912" width="600" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="0" refY="5" viewBox="0 0 40 40">
+<path d="M 0 0 L 10 5 L 0 10 z"/>
+</marker>
+</defs>
+<style>
+
+     <![CDATA[ 
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+     ]]> 
+    
+</style>
+<path d=" M 136 16 L 240 16 M 12 24 L 12 48 M 12 24 L 88 24 M 16 24 L 88 24 M 92 24 L 92 48 M 92 24 L 88 24 M 136 16 L 144 32 M 240 16 L 248 32 M 316 24 L 316 48 M 316 24 L 416 24 M 320 24 L 416 24 M 420 24 L 420 48 M 420 24 L 416 24 M 12 32 L 12 48 M 92 32 L 92 48 M 144 32 L 146 36 M 144 48 L 146 44 A 8 8 0 0 0 146 36 M 248 32 L 250 36 M 248 48 L 250 44 A 8 8 0 0 0 250 36 M 316 32 L 316 48 M 420 32 L 420 48 M 12 56 L 12 48 M 12 56 L 88 56 M 16 56 L 88 56 M 92 56 L 92 48 M 92 56 L 88 56 M 136 64 L 144 48 M 152 64 L 136 64 M 152 64 L 240 64 L 248 48 M 316 56 L 316 48 M 316 56 L 416 56 M 320 56 L 416 56 M 420 56 L 420 48 M 420 56 L 416 56 M 320 96 L 322 92 M 328 88 A 8 8 0 0 0 322 92 M 312 112 L 320 96 M 104 120 A 16 16 0 0 0 94 128 M 112 120 A 16 16 0 0 0 104 120 M 122 128 A 16 16 0 0 0 112 120 M 304 128 L 320 96 M 310 120 A 8 8 0 0 0 306 124 M 94 128 A 16 16 0 0 0 94 144 M 122 144 A 16 16 0 0 0 122 128 M 128 136 L 184 136 M 192 144 L 190 140 A 8 8 0 0 0 184 136 M 376 128 L 384 144 M 94 144 A 16 16 0 0 0 104 152 A 16 16 0 0 0 112 152 A 16 16 0 0 0 122 144 M 192 144 L 240 240 M 384 144 L 400 176 M 386 148 A 8 8 0 0 0 390 152 M 392 160 L 400 176 M 96 176 L 136 256 M 400 176 L 402 180 A 8 8 0 0 0 408 184 M 264 208 L 304 128 M 256 224 L 304 128 M 262 216 A 8 8 0 0 0 258 220 M 248 240 L 256 224 M 176 248 A 16 16 0 0 0 166 256 M 176 248 L 264 248 M 274 256 A 16 16 0 0 0 264 248 M 136 256 L 138 260 A 8 8 0 0 0 144 264 L 160 264 M 166 256 A 16 16 0 0 0 166 272 M 274 272 A 16 16 0 0 0 274 256 M 166 272 A 16 16 0 0 0 176 280 L 264 280 A 16 16 0 0 0 274 272 M 184 304 L 192 288 M 208 288 L 288 448 M 224 288 L 280 400 M 240 288 L 264 336 M 184 304 L 182 308 M 180 320 L 180 316 M 182 308 A 16 16 0 0 0 180 316 M 180 320 L 180 336 L 180 368 M 176 352 L 178 348 A 16 16 0 0 0 180 340 M 264 336 L 266 340 A 8 8 0 0 0 272 344 L 296 344 M 168 368 L 176 352 M 180 352 L 180 368 M 312 352 L 320 368 M 180 368 L 180 400 M 176 384 L 178 380 A 16 16 0 0 0 180 372 M 320 368 L 322 372 A 8 8 0 0 0 328 376 L 360 376 M 168 400 L 176 384 M 180 384 L 180 400 L 180 432 M 176 416 L 178 412 A 16 16 0 0 0 180 404 M 280 400 L 282 404 A 8 8 0 0 0 288 408 L 296 408 M 168 432 L 176 416 M 180 416 L 180 432 L 180 436 M 176 448 L 178 444 A 16 16 0 0 0 180 436 M 168 464 L 176 448 M 288 448 L 290 452 A 8 8 0 0 0 296 456 L 320 456 M 4 504 L 4 576 M 4 504 L 184 504 M 8 504 L 184 504 M 188 504 L 188 576 M 188 504 L 184 504 M 4 512 L 4 576 M 188 512 L 188 576 M 4 584 L 4 576 M 4 584 L 184 584 M 8 584 L 184 584 M 188 584 L 188 576 M 188 584 L 184 584 M 112 616 A 4 4 0 0 0 108 620 L 108 624 M 112 616 L 136 616 M 140 620 A 4 4 0 0 0 136 616 M 140 620 L 140 624 M 168 616 A 4 4 0 0 0 164 620 L 164 624 M 168 616 L 192 616 M 196 620 A 4 4 0 0 0 192 616 M 196 620 L 196 624 M 216 616 A 4 4 0 0 0 212 620 L 212 624 M 216 616 L 240 616 M 244 620 A 4 4 0 0 0 240 616 M 244 620 L 244 624 M 272 616 A 4 4 0 0 0 268 620 L 268 624 M 272 616 L 296 616 M 300 620 A 4 4 0 0 0 296 616 M 300 620 L 300 624 M 344 616 A 4 4 0 0 0 340 620 L 340 624 M 344 616 L 368 616 M 372 620 A 4 4 0 0 0 368 616 M 372 620 L 372 624 M 400 616 A 4 4 0 0 0 396 620 L 396 624 M 400 616 L 424 616 M 428 620 A 4 4 0 0 0 424 616 M 428 620 L 428 624 M 108 628 A 4 4 0 0 0 112 632 M 108 624 L 108 628 M 112 632 L 136 632 A 4 4 0 0 0 140 628 M 140 624 L 140 628 M 164 628 A 4 4 0 0 0 168 632 M 164 624 L 164 628 M 168 632 L 192 632 A 4 4 0 0 0 196 628 M 196 624 L 196 628 M 212 628 A 4 4 0 0 0 216 632 M 212 624 L 212 628 M 216 632 L 240 632 A 4 4 0 0 0 244 628 M 244 624 L 244 628 M 268 628 A 4 4 0 0 0 272 632 M 268 624 L 268 628 M 272 632 L 296 632 A 4 4 0 0 0 300 628 M 300 624 L 300 628 M 340 628 A 4 4 0 0 0 344 632 M 340 624 L 340 628 M 344 632 L 368 632 A 4 4 0 0 0 372 628 M 372 624 L 372 628 M 396 628 A 4 4 0 0 0 400 632 M 396 624 L 396 628 M 400 632 L 424 632 A 4 4 0 0 0 428 628 M 428 624 L 428 628 M 228 640 L 228 768 M 108 684 L 108 704 M 112 680 A 4 4 0 0 0 108 684 M 112 680 L 208 680 M 212 684 L 212 704 M 212 684 A 4 4 0 0 0 208 680 M 244 684 L 244 704 M 248 680 A 4 4 0 0 0 244 684 M 248 680 L 336 680 M 340 684 L 340 704 M 340 684 A 4 4 0 0 0 336 680 M 380 684 L 380 704 M 384 680 A 4 4 0 0 0 380 684 M 384 680 L 424 680 M 428 684 L 428 704 M 428 684 A 4 4 0 0 0 424 680 M 108 688 L 108 704 M 212 688 L 212 704 M 244 688 L 244 704 M 340 688 L 340 704 M 380 688 L 380 704 M 428 688 L 428 704 M 108 704 L 108 708 A 4 4 0 0 0 112 712 L 208 712 M 212 704 L 212 708 M 208 712 A 4 4 0 0 0 212 708 M 244 704 L 244 708 A 4 4 0 0 0 248 712 L 336 712 M 340 704 L 340 708 M 336 712 A 4 4 0 0 0 340 708 M 380 704 L 380 708 A 4 4 0 0 0 384 712 L 424 712 M 428 704 L 428 708 M 424 712 A 4 4 0 0 0 428 708 M 140 764 L 140 784 M 144 760 A 4 4 0 0 0 140 764 M 144 760 L 176 760 M 180 764 L 180 784 M 180 764 A 4 4 0 0 0 176 760 M 324 764 L 324 784 M 328 760 A 4 4 0 0 0 324 764 M 328 760 L 400 760 M 404 764 L 404 784 M 404 764 A 4 4 0 0 0 400 760 M 140 768 L 140 784 M 180 768 L 180 784 M 192 776 L 224 776 M 228 768 L 228 772 M 224 776 A 4 4 0 0 0 228 772 M 324 768 L 324 784 M 404 768 L 404 784 M 140 784 L 140 788 A 4 4 0 0 0 144 792 L 176 792 M 180 784 L 180 788 M 176 792 A 4 4 0 0 0 180 788 M 324 784 L 324 788 A 4 4 0 0 0 328 792 L 400 792 M 404 784 L 404 788 M 400 792 A 4 4 0 0 0 404 788 M 108 844 L 108 864 M 112 840 A 4 4 0 0 0 108 844 M 112 840 L 424 840 M 428 844 L 428 864 M 428 844 A 4 4 0 0 0 424 840 M 108 848 L 108 864 M 428 848 L 428 864 M 108 864 L 108 868 A 4 4 0 0 0 112 872 L 424 872 M 428 864 L 428 868 M 424 872 A 4 4 0 0 0 428 868" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<line marker-end="url(#triangle)" x1="96" x2="140" y1="40" y2="40"/>
+<line marker-end="url(#triangle)" x1="256" x2="308" y1="40" y2="40"/>
+<line marker-end="url(#triangle)" x1="328" x2="348" y1="88" y2="88"/>
+<line marker-end="url(#triangle)" x1="310" x2="348" y1="120" y2="120"/>
+<line marker-end="url(#triangle)" x1="312" x2="348" y1="120" y2="120"/>
+<line marker-end="url(#triangle)" x1="390" x2="420" y1="152" y2="152"/>
+<line marker-end="url(#triangle)" x1="392" x2="420" y1="152" y2="152"/>
+<line marker-end="url(#triangle)" x1="408" x2="428" y1="184" y2="184"/>
+<line marker-end="url(#triangle)" x1="262" x2="356" y1="216" y2="216"/>
+<line marker-end="url(#triangle)" x1="264" x2="356" y1="216" y2="216"/>
+<line marker-end="url(#triangle)" x1="168" x2="164" y1="464" y2="472"/>
+<line marker-end="url(#triangle)" x1="124" x2="124" y1="640" y2="672"/>
+<line marker-end="url(#triangle)" x1="180" x2="180" y1="640" y2="672"/>
+<line marker-end="url(#triangle)" x1="284" x2="284" y1="640" y2="672"/>
+<line marker-end="url(#triangle)" x1="356" x2="356" y1="640" y2="752"/>
+<line marker-end="url(#triangle)" x1="412" x2="412" y1="640" y2="672"/>
+<line marker-end="url(#triangle)" x1="164" x2="164" y1="720" y2="752"/>
+<line marker-end="url(#triangle)" x1="284" x2="284" y1="720" y2="832"/>
+<line marker-end="url(#triangle)" x1="192" x2="188" y1="776" y2="776"/>
+<line marker-end="url(#triangle)" x1="164" x2="164" y1="800" y2="832"/>
+<line marker-end="url(#triangle)" x1="364" x2="364" y1="800" y2="832"/>
+<text x="26" y="44">
+md+bob
+</text>
+<text x="162" y="44">
+spongedown
+</text>
+<text x="330" y="44">
+html
+</text>
+<text x="370" y="44">
++
+</text>
+<text x="386" y="44">
+svg
+</text>
+<text x="362" y="92">
 Base::Class::Derived_A
 </text>
-<text x="362" y="60">
+<text x="362" y="124">
 Base::Class::Derived_B
 </text>
-<text x="50" y="76">
-Something
+<text x="98" y="140">
+x1y
 </text>
-<text x="434" y="92">
+<text x="434" y="156">
 Base::Class::Derived
 </text>
-<text x="50" y="108">
-Something::else
+<text x="66" y="172">
+Alice
 </text>
-<text x="442" y="124">
+<text x="442" y="188">
 Base::Class::Derived
 </text>
-<text x="370" y="156">
-Base::Class::Derived_C
+<text x="370" y="220">
+SVG
 </text>
-<text x="194" y="188">
-Base::Class
+<text x="202" y="268">
+BOB
 </text>
-<text x="306" y="252">
+<text x="306" y="348">
 The::Latest
 </text>
-<text x="10" y="284">
-With::Some::fantasy
+<text x="138" y="380">
+Foo
 </text>
-<text x="370" y="284">
+<text x="370" y="380">
 The::Latest::Greatest
 </text>
-<text x="74" y="316">
-More::Stuff
+<text x="138" y="412">
+Bar
 </text>
-<text x="306" y="316">
+<text x="306" y="412">
 I::Am::Running::Out::Of::Ideas
 </text>
-<text x="74" y="348">
-More::Stuff
+<text x="138" y="444">
+Bar
 </text>
-<text x="330" y="364">
+<text x="330" y="460">
 Last::One
 </text>
-<text x="58" y="380">
-More::Stuff
+<text x="122" y="476">
+Quux 
 </text>
-<text x="66" y="444">
+<text x="66" y="540">
 中文处理
 </text>
-<text x="66" y="460">
+<text x="66" y="556">
 12345678
 </text>
-<text x="34" y="540">
+<text x="34" y="636">
 OS API
 </text>
-<text x="130" y="604">
+<text x="130" y="700">
 文件系统
 </text>
-<text x="274" y="604">
+<text x="274" y="700">
 调度器
 </text>
-<text x="394" y="604">
+<text x="394" y="700">
 MMU
 </text>
-<text x="154" y="684">
+<text x="154" y="780">
 IO
 </text>
-<text x="354" y="684">
+<text x="354" y="780">
 网络
 </text>
-<text x="226" y="764">
+<text x="226" y="860">
 硬件抽象层
 </text>
 </svg>
+<h2>Improvements in svgbob</h2>
+<ul>
+<li>CJK is now supported</li>
+<li>Supports a wide array of diagram element combinations</li>
+</ul>
 <p>Supports normal code blocks too.</p>
 <pre><code class="language-rust">fn main(){
     println!(&quot;Hello world!&quot;);
