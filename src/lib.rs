@@ -24,6 +24,7 @@ pub fn parse(arg: &str)->String{
                 Tag::CodeBlock(ref lang) => {
                     if lang == "bob" {
                         start_bob = true;
+                        bob_text.clear();
                         Event::Text("".into())
                     }else{
                         Event::Start(tag.clone())
@@ -38,6 +39,7 @@ pub fn parse(arg: &str)->String{
                     if lang == "bob" {
                         start_bob = false;
                         let svg = svgbob::to_svg(&bob_text).to_string();
+                        bob_text.clear();
                         Event::Html(svg.into())
                     }else{
                         Event::End(tag.clone())
