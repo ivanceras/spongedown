@@ -6,7 +6,7 @@ use pulldown_cmark::Event;
 use pulldown_cmark::Tag;
 use pulldown_cmark::Options;
 
-pub fn parse(arg: &str)->String{
+pub fn parse(arg: &str) -> String {
     let parser = Parser::new_ext(arg, Options::all());
     let mut start_bob = false;
     let mut bob_text = String::new();
@@ -15,43 +15,42 @@ pub fn parse(arg: &str)->String{
             if start_bob {
                 bob_text.push_str(&text);
                 Event::Text("".into())
-            }else{
+            } else {
                 Event::Text(text)
             }
         }
         Event::Start(tag) => {
-            match tag{
+            match tag {
                 Tag::CodeBlock(ref lang) => {
                     if lang == "bob" {
                         start_bob = true;
                         bob_text.clear();
                         Event::Text("".into())
-                    }else{
+                    } else {
                         Event::Start(tag.clone())
                     }
                 }
-                _ => Event::Start(tag)
+                _ => Event::Start(tag),
             }
         }
         Event::End(ref tag) => {
-            match *tag{
+            match *tag {
                 Tag::CodeBlock(ref lang) => {
                     if lang == "bob" {
                         start_bob = false;
                         let svg = svgbob::to_svg(&bob_text).to_string();
                         bob_text.clear();
                         Event::Html(svg.into())
-                    }else{
+                    } else {
                         Event::End(tag.clone())
                     }
                 }
-                _ => Event::End(tag.clone())
+                _ => Event::End(tag.clone()),
             }
         }
-        _ => event
+        _ => event,
     });
     let mut html = String::new();
     pulldown_cmark::html::push_html(&mut html, parser);
     html
 }
-
