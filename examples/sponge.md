@@ -22,31 +22,31 @@ The next `code block` fenced with `bob` will be rendered into an svg
 
 ```bob
 
-                                        .--> Base::Class::Derived_A
-                                       /
-            .-.                       .----> Base::Class::Derived_B    
-           (x1y)-------.             /         \
-            '-'         \           /           .---> Base::Class::Derived
-        Alice            \         /             \
-            \             \       /               '--> Base::Class::Derived
-             \             \     /
-              \             \   .-----------> SVG                    
-               \             \ /
-                \    .-----------.
-                 '--(    BOB      )
+                                     .--> Base::Class::Derived_A
+                                    /
+            .-.                    .----> Base::Class::Derived_B    
+           (x1y)----.             /           \     .----------------------.
+            '-'      \           /             .---->\ Base::Class::Derived \
+        Alice         \         /               \     \----------------------\
+            \          \       /            ____ '---->\ Base::Class::Derived \
+             \          \     /            /    \       '----------------------'
+              \          \   .----------->( SVG  )                         
+               \          V /              \____/
+                \    .-----------.              
+                 '->(    Bob      )
                      '-----------'
                        /  \ \ \
                       '    \ \ \  
                       |     \ \ \
                       .      \ \ '--- The::Latest
-                     /|       \ \      \
-                 Foo  '        \ \      '---- The::Latest::Greatest
-                     /|         \ \
-                 Bar  '          \ '- I::Am::Running::Out::Of::Ideas
-                     /|           \
-                 Bar  '            \
-                     /              '--- Last::One
-               Quux V 
+                     /|       \ \      \     +-----------------------+
+                 Foo  '        \ \      '--->| The::Latest::Greatest |
+         ________    /|         \ \          +-----------------------+
+        /  Bar  /<--' '          \ '- I::Am::Running::Out::Of::Ideas
+       '-------'     /|           \
+                 Baz  '            \      .-----------.
+                     /              '----/ Last::One /
+               Quux V                   '-----------'
 
 +----------------------+
 |                      |

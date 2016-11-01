@@ -8,6 +8,7 @@ use pulldown_cmark::Options;
 
 pub fn parse(arg: &str) -> String {
     let parser = Parser::new_ext(arg, Options::all());
+    let bob_fence = "bob";
     let mut start_bob = false;
     let mut bob_text = String::new();
     let parser = parser.map(|event| match event {
@@ -22,7 +23,7 @@ pub fn parse(arg: &str) -> String {
         Event::Start(tag) => {
             match tag {
                 Tag::CodeBlock(ref lang) => {
-                    if lang == "bob" {
+                    if lang == bob_fence {
                         start_bob = true;
                         bob_text.clear();
                         Event::Text("".into())
@@ -36,7 +37,7 @@ pub fn parse(arg: &str) -> String {
         Event::End(ref tag) => {
             match *tag {
                 Tag::CodeBlock(ref lang) => {
-                    if lang == "bob" {
+                    if lang == bob_fence {
                         start_bob = false;
                         let svg = svgbob::to_svg(&bob_text).to_string();
                         bob_text.clear();
