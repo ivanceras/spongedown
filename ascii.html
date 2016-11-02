@@ -1,0 +1,1096 @@
+<html>
+<head>
+<meta charset="utf-8" /> 
+<title>Spongedown - md to html with svg support</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/languages/rust.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<style>
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+th, td{
+    border:1px solid #ccc;
+    padding: 5px;
+}
+pre {
+    font-family:monospace;
+}
+</style>
+</head>
+<body>
+<div style="display:flex;padding: 10px;">
+    <div>
+    <pre>
+        <code class="nohighlight">
+
+Generated files use .atxt extension. (&quot;a&quot; as ASCII art : to NOT overide any existing .txt files!). Here is the result:
+
+```bob
+                      ,-.  
+                      `-'  
+                      /|\  
+     ,---.             |   
+     |Bob|            / \  
+     `-+-'           Alice 
+       |    hello      |   
+       |--------------&gt;|   
+       |               |   
+       |  Is it ok?    |   
+       |&lt;- - - - - - - |   
+     ,-+-.           Alice 
+     |Bob|            ,-.  
+     `---'            `-'  
+                      /|\  
+                       |   
+                      / \  
+
+```
+
+Unicode
+The default txt format uses only plain ASCII characters. It is possible to use few extended Unicode characters to have a slightly better result. You should use the -utxt flag in the command line, or the utxt format in the ANT task.
+
+```bob
+
+                      ┌─┐  
+                      ║&quot;│  
+                      └┬┘  
+                      ┌┼┐  
+     ┌───┐             │   
+     │Bob│            ┌┴┐  
+     └─┬─┘           Alice 
+       │    hello      │   
+       │──────────────&gt;│   
+       │               │   
+       │  Is it ok?    │   
+       │&lt;─ ─ ─ ─ ─ ─ ─ │   
+     ┌─┴─┐           Alice 
+     │Bob│            ┌─┐  
+     └───┘            ║&quot;│  
+                      └┬┘  
+                      ┌┼┐  
+                       │   
+                      ┌┴┐  
+
+```
+
+They are two drawbacks of using utxt:
+
+    The result is UTF-8 encoded, and sometimes this is an issue (mail gateway, editors...)
+    The used font must have the used extended characters (like Courier, Courier New...)
+
+Complexe Diagram
+You can even try complex example if you wish.
+
+@startuml
+'hide footbox
+
+participant &quot;Bob on\nseveral lines&quot; as Bob
+actor Alice
+
+Bob -&gt; Alice : hello
+note right of Alice
+  this is a note
+end note
+
+Alice -&gt; Bob : Is it ok\nwith a message that is\non several lines?
+
+note right
+  This other note
+  should work
+  on several lines
+end note
+
+== This is a separation ==
+
+Bob -&gt; Last : Yes it works!
+Last -&gt; Last : working in progress
+note left : this is\nanother note
+
+Last --&gt; Last : working in progress
+
+Last --&gt; Bob : done
+
+opt dummy comment
+  Bob -&gt; Last : Error\nOn\nSeveral\nLine
+  Last --&gt; Bob : None
+else
+  Last --&gt; Bob : None
+  Last -&gt; Bob : None
+else other
+  Last -&gt; Bob : None
+  note over Alice, Last
+    This is a long note
+    over Alice and Last
+  end note
+  Last -&gt; Bob : None
+  Last -&gt; Bob : None
+end
+
+
+@enduml
+		
+
+Example
+
+```bob
+
+                                             ,-.                                                   
+                                             `-'                                                   
+               ,-------------.               /|\                                                   
+               |Bob on       |                |             ,----.                                 
+               |several lines|               / \            |Last|                                 
+               `------+------'              Alice           `-+--'                                 
+                      |        hello          |               |                                    
+                      |----------------------&gt;|               |                                    
+                      |                       |               |                                    
+                      |                       | ,--------------!.                                  
+                      |                       | |this is a note|_\                                 
+                      |                       | `----------------'                                 
+                      |Is it ok               | ,----------------!.                                
+                      |with a message that is | |This other note |_\                               
+                      |on several lines?      | |should work       |                               
+                      |&lt;----------------------| |on several lines  |                               
+                      |                       | `------------------'                               
+                      |                       |               |                                    
+                      |              ======================== |                                    
+====================================== This is a separation =======================================
+                      |              ======================== |                                    
+                      |                       |               |                                    
+                      |            Yes it works!              |                                    
+                      |--------------------------------------&gt;|                                    
+                      |                       |               |                                    
+                      |                       ,------------!. |----.                               
+                      |                       |this is     |_\|    | working in progress           
+                      |                       |another note  ||&lt;---'                               
+                      |                       `--------------'|                                    
+                      |                       |               |- - .                               
+                      |                       |               |    | working in progress           
+                      |                       |               |&lt; - '                               
+                      |                       |               |                                    
+                      |                 done  |               |                                    
+                      |&lt;- - - - - - - - - - - - - - - - - - - |                                    
+                      |                       |               |                                    
+     ______________________________________________________________________                        
+     ! OPT  /  dummy comment                  |               |            !                       
+     !_____/          |                       |               |            !                       
+     !                |                       |               |            !                       
+     !                |               Error   |               |            !                       
+     !                |               On      |               |            !                       
+     !                |               Several |               |            !                       
+     !                |               Line    |               |            !                       
+     !                |--------------------------------------&gt;|            !                       
+     !                |                       |               |            !                       
+     !                |                 None  |               |            !                       
+     !                |&lt;- - - - - - - - - - - - - - - - - - - |            !                       
+     !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!                       
+     !                |                       |               |            !                       
+     !                |                 None  |               |            !                       
+     !                |&lt;- - - - - - - - - - - - - - - - - - - |            !                       
+     !                |                       |               |            !                       
+     !                |                 None  |               |            !                       
+     !                |&lt;--------------------------------------|            !                       
+     !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!                       
+     ! [other]        |                       |               |            !                       
+     !                |                 None  |               |            !                       
+     !                |&lt;--------------------------------------|            !                       
+     !                |                       |               |            !                       
+     !                |                    ,-------------------!.          !                       
+     !                |                    |This is a long note|_\         !                       
+     !                |                    |over Alice and Last  |         !                       
+     !                |                    `---------------------'         !                       
+     !                |                 None  |               |            !                       
+     !                |&lt;--------------------------------------|            !                       
+     !                |                       |               |            !                       
+     !                |                 None  |               |            !                       
+     !                |&lt;--------------------------------------|            !                       
+     !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!                       
+               ,------+------.              Alice           ,-+--.                                 
+               |Bob on       |               ,-.            |Last|                                 
+               |several lines|               `-'            `----'                                 
+               `-------------'               /|\                                                   
+                                              |                                                    
+                                             / \                                                   
+```
+
+Same example using Unicode
+
+```bob`
+                                             ┌─┐                                                   
+                                             ║&quot;│                                                   
+                                             └┬┘                                                   
+               ┌─────────────┐               ┌┼┐                                                   
+               │Bob on       │                │             ┌────┐                                 
+               │several lines│               ┌┴┐            │Last│                                 
+               └──────┬──────┘              Alice           └─┬──┘                                 
+                      │        hello          │               │                                    
+                      │──────────────────────&gt;│               │                                    
+                      │                       │               │                                    
+                      │                       │ ╔═════════════╧══╗                                 
+                      │                       │ ║this is a note ░║                                 
+                      │                       │ ╚═════════════╤══╝                                 
+                      │Is it ok               │ ╔═════════════╧════╗                               
+                      │with a message that is │ ║This other note  ░║                               
+                      │on several lines?      │ ║should work       ║                               
+                      │&lt;──────────────────────│ ║on several lines  ║                               
+                      │                       │ ╚═════════════╤════╝                               
+                      │                       │               │                                    
+                      │              ╔════════╧═════════════╗ │                                    
+══════════════════════╪══════════════╣ This is a separation ╠═╪════════════════════════════════════
+                      │              ╚════════╤═════════════╝ │                                    
+                      │                       │               │                                    
+                      │            Yes it works!              │                                    
+                      │──────────────────────────────────────&gt;│                                    
+                      │                       │               │                                    
+                      │                       ╔══════════════╗│────┐                               
+                      │                       ║this is      ░║│    │ working in progress           
+                      │                       ║another note  ║│&lt;───┘                               
+                      │                       ╚══════════════╝│                                    
+                      │                       │               │─ ─ ┐                               
+                      │                       │               │    | working in progress           
+                      │                       │               │&lt; ─ ┘                               
+                      │                       │               │                                    
+                      │                 done  │               │                                    
+                      │&lt;─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │                                    
+                      │                       │               │                                    
+     ╔══════╤═════════╪═══════════════════════╪═══════════════╪════════════╗                       
+     ║ OPT  │  dummy comment                  │               │            ║                       
+     ╟──────┘         │                       │               │            ║                       
+     ║                │                       │               │            ║                       
+     ║                │               Error   │               │            ║                       
+     ║                │               On      │               │            ║                       
+     ║                │               Several │               │            ║                       
+     ║                │               Line    │               │            ║                       
+     ║                │──────────────────────────────────────&gt;│            ║                       
+     ║                │                       │               │            ║                       
+     ║                │                 None  │               │            ║                       
+     ║                │&lt;─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │            ║                       
+     ╠════════════════╪═══════════════════════╪═══════════════╪════════════╣                       
+     ║                │                       │               │            ║                       
+     ║                │                 None  │               │            ║                       
+     ║                │&lt;─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │            ║                       
+     ║                │                       │               │            ║                       
+     ║                │                 None  │               │            ║                       
+     ║                │&lt;──────────────────────────────────────│            ║                       
+     ╠════════════════╪═══════════════════════╪═══════════════╪════════════╣                       
+     ║ [other]        │                       │               │            ║                       
+     ║                │                 None  │               │            ║                       
+     ║                │&lt;──────────────────────────────────────│            ║                       
+     ║                │                       │               │            ║                       
+     ║                │                    ╔══╧═══════════════╧══╗         ║                       
+     ║                │                    ║This is a long note ░║         ║                       
+     ║                │                    ║over Alice and Last  ║         ║                       
+     ║                │                    ╚══╤═══════════════╤══╝         ║                       
+     ║                │                 None  │               │            ║                       
+     ║                │&lt;──────────────────────────────────────│            ║                       
+     ║                │                       │               │            ║                       
+     ║                │                 None  │               │            ║                       
+     ║                │&lt;──────────────────────────────────────│            ║                       
+     ╚════════════════╪═══════════════════════╪═══════════════╪════════════╝                       
+               ┌──────┴──────┐              Alice           ┌─┴──┐                                 
+               │Bob on       │               ┌─┐            │Last│                                 
+               │several lines│               ║&quot;│            └────┘                                 
+               └─────────────┘               └┬┘                                                   
+                                             ┌┼┐                                                   
+                                              │                                                    
+                                             ┌┴┐                                                   
+```
+
+        </code>
+    </pre>
+    </div>
+    <div style="margin-left: 20px;">
+<p>Generated files use .atxt extension. (&quot;a&quot; as ASCII art : to NOT overide any existing .txt files!). Here is the result:</p>
+<svg font-family="Electrolize,Titillium Web, Trebuchet MS, Arial" font-size="14" height="304" width="208" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="0" refY="5" viewBox="0 0 40 40">
+<path d="M 0 0 L 10 5 L 0 10 z"/>
+</marker>
+</defs>
+<style>
+
+     <![CDATA[ 
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+     ]]> 
+    
+</style>
+<path d=" M 184 8 L 192 8 M 196 12 A 4 4 0 0 0 192 8 M 196 12 L 196 16 M 184 24 L 192 24 A 4 4 0 0 0 196 20 M 196 16 L 196 20 M 176 48 L 184 32 M 188 32 L 188 64 M 192 32 L 200 48 M 48 56 L 72 56 M 76 60 L 76 64 M 76 60 A 4 4 0 0 0 72 56 M 176 80 L 184 64 M 192 64 L 200 80 M 48 88 L 56 88 M 60 88 L 60 176 M 56 88 L 72 88 M 64 88 L 72 88 M 76 80 L 76 84 M 72 88 A 4 4 0 0 0 76 84 M 60 96 L 60 176 M 188 96 L 188 176 M 72 168 L 80 168 M 88 168 L 96 168 M 104 168 L 112 168 M 120 168 L 128 168 M 136 168 L 144 168 M 152 168 L 160 168 M 168 168 L 176 168 M 48 184 L 56 184 M 60 184 L 60 176 M 56 184 L 72 184 M 64 184 L 72 184 M 76 188 L 76 192 M 76 188 A 4 4 0 0 0 72 184 M 184 200 L 192 200 M 196 204 A 4 4 0 0 0 192 200 M 196 204 L 196 208 M 48 216 L 72 216 M 76 208 L 76 212 M 72 216 A 4 4 0 0 0 76 212 M 184 216 L 192 216 A 4 4 0 0 0 196 212 M 196 208 L 196 212 M 176 240 L 184 224 M 188 224 L 188 256 M 192 224 L 200 240 M 176 272 L 184 256 M 192 256 L 200 272" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<line marker-end="url(#triangle)" x1="64" x2="180" y1="120" y2="120"/>
+<line marker-end="url(#triangle)" x1="72" x2="68" y1="168" y2="168"/>
+<text x="178" y="12">
+,
+</text>
+<text x="178" y="28">
+`
+</text>
+<text x="42" y="60">
+,
+</text>
+<text x="42" y="76">
+|Bob|
+</text>
+<text x="42" y="92">
+`
+</text>
+<text x="170" y="92">
+Alice
+</text>
+<text x="98" y="108">
+hello
+</text>
+<text x="82" y="156">
+Is it ok?
+</text>
+<text x="42" y="188">
+,
+</text>
+<text x="170" y="188">
+Alice
+</text>
+<text x="42" y="204">
+|Bob|
+</text>
+<text x="178" y="204">
+,
+</text>
+<text x="42" y="220">
+`
+</text>
+<text x="178" y="220">
+`
+</text>
+</svg>
+<p>Unicode
+The default txt format uses only plain ASCII characters. It is possible to use few extended Unicode characters to have a slightly better result. You should use the -utxt flag in the command line, or the utxt format in the ANT task.</p>
+<svg font-family="Electrolize,Titillium Web, Trebuchet MS, Arial" font-size="14" height="352" width="208" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="0" refY="5" viewBox="0 0 40 40">
+<path d="M 0 0 L 10 5 L 0 10 z"/>
+</marker>
+</defs>
+<style>
+
+     <![CDATA[ 
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+     ]]> 
+    
+</style>
+<path d="" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="178" y="28">
+┌─┐
+</text>
+<text x="178" y="44">
+║&quot;
+</text>
+<text x="194" y="44">
+│
+</text>
+<text x="178" y="60">
+└┬┘
+</text>
+<text x="178" y="76">
+┌┼┐
+</text>
+<text x="42" y="92">
+┌───┐
+</text>
+<text x="186" y="92">
+│
+</text>
+<text x="42" y="108">
+│Bob│
+</text>
+<text x="178" y="108">
+┌┴┐
+</text>
+<text x="42" y="124">
+└─┬─┘
+</text>
+<text x="170" y="124">
+Alice
+</text>
+<text x="58" y="140">
+│
+</text>
+<text x="98" y="140">
+hello
+</text>
+<text x="186" y="140">
+│
+</text>
+<text x="58" y="156">
+│──────────────&gt;
+</text>
+<text x="186" y="156">
+│
+</text>
+<text x="58" y="172">
+│
+</text>
+<text x="186" y="172">
+│
+</text>
+<text x="58" y="188">
+│
+</text>
+<text x="82" y="188">
+Is it ok?
+</text>
+<text x="186" y="188">
+│
+</text>
+<text x="58" y="204">
+│&lt;
+</text>
+<text x="74" y="204">
+─
+</text>
+<text x="90" y="204">
+─
+</text>
+<text x="106" y="204">
+─
+</text>
+<text x="122" y="204">
+─
+</text>
+<text x="138" y="204">
+─
+</text>
+<text x="154" y="204">
+─
+</text>
+<text x="170" y="204">
+─
+</text>
+<text x="186" y="204">
+│
+</text>
+<text x="42" y="220">
+┌─┴─┐
+</text>
+<text x="170" y="220">
+Alice
+</text>
+<text x="42" y="236">
+│Bob│
+</text>
+<text x="178" y="236">
+┌─┐
+</text>
+<text x="42" y="252">
+└───┘
+</text>
+<text x="178" y="252">
+║&quot;
+</text>
+<text x="194" y="252">
+│
+</text>
+<text x="178" y="268">
+└┬┘
+</text>
+<text x="178" y="284">
+┌┼┐
+</text>
+<text x="186" y="300">
+│
+</text>
+<text x="178" y="316">
+┌┴┐
+</text>
+</svg>
+<p>They are two drawbacks of using utxt:</p>
+<pre><code>The result is UTF-8 encoded, and sometimes this is an issue (mail gateway, editors...)
+The used font must have the used extended characters (like Courier, Courier New...)
+</code></pre>
+<p>Complexe Diagram
+You can even try complex example if you wish.</p>
+<p>@startuml
+'hide footbox</p>
+<p>participant &quot;Bob on\nseveral lines&quot; as Bob
+actor Alice</p>
+<p>Bob -&gt; Alice : hello
+note right of Alice
+this is a note
+end note</p>
+<p>Alice -&gt; Bob : Is it ok\nwith a message that is\non several lines?</p>
+<p>note right
+This other note
+should work
+on several lines
+end note</p>
+<p>== This is a separation ==</p>
+<p>Bob -&gt; Last : Yes it works!
+Last -&gt; Last : working in progress
+note left : this is\nanother note</p>
+<p>Last --&gt; Last : working in progress</p>
+<p>Last --&gt; Bob : done</p>
+<p>opt dummy comment
+Bob -&gt; Last : Error\nOn\nSeveral\nLine
+Last --&gt; Bob : None
+else
+Last --&gt; Bob : None
+Last -&gt; Bob : None
+else other
+Last -&gt; Bob : None
+note over Alice, Last
+This is a long note
+over Alice and Last
+end note
+Last -&gt; Bob : None
+Last -&gt; Bob : None
+end</p>
+<p>@enduml</p>
+<p>Example</p>
+<svg font-family="Electrolize,Titillium Web, Trebuchet MS, Arial" font-size="14" height="1248" width="792" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="0" refY="5" viewBox="0 0 40 40">
+<path d="M 0 0 L 10 5 L 0 10 z"/>
+</marker>
+</defs>
+<style>
+
+     <![CDATA[ 
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+     ]]> 
+    
+</style>
+<path d=" M 368 24 L 376 24 M 380 28 A 4 4 0 0 0 376 24 M 380 28 L 380 32 M 368 40 L 376 40 A 4 4 0 0 0 380 36 M 380 32 L 380 36 M 128 56 L 232 56 M 236 60 L 236 80 M 236 60 A 4 4 0 0 0 232 56 M 360 64 L 368 48 M 372 48 L 372 80 M 376 48 L 384 64 M 236 64 L 236 80 M 488 72 L 520 72 M 524 76 L 524 80 M 524 76 A 4 4 0 0 0 520 72 M 360 96 L 368 80 M 376 80 L 384 96 M 128 104 L 176 104 M 180 104 L 180 208 M 176 104 L 232 104 M 184 104 L 232 104 M 236 96 L 236 100 M 232 104 A 4 4 0 0 0 236 100 M 488 104 L 496 104 M 500 104 L 500 160 M 496 104 L 520 104 M 504 104 L 520 104 M 524 96 L 524 100 M 520 104 A 4 4 0 0 0 524 100 M 180 112 L 180 208 M 372 112 L 372 304 M 500 112 L 500 160 M 392 168 L 504 168 M 512 192 L 528 192 M 520 176 L 528 192 M 392 200 L 520 200 M 392 216 L 520 216 M 524 224 L 524 240 M 528 240 L 544 240 M 536 224 L 544 240 M 540 240 L 540 272 M 180 256 L 180 320 M 192 264 L 368 264 M 392 280 L 536 280 M 540 272 L 540 276 M 536 280 A 4 4 0 0 0 540 276 M 500 288 L 500 320 M 180 336 L 180 592 M 500 336 L 500 592 M 372 352 L 372 368 M 372 400 L 372 416 M 376 424 L 472 424 M 504 424 L 536 424 M 540 428 L 540 448 M 540 428 A 4 4 0 0 0 536 424 M 476 432 L 476 448 M 480 448 L 496 448 M 488 432 L 496 448 M 540 432 L 540 448 M 492 448 L 492 464 M 512 456 L 536 456 M 540 448 L 540 452 M 536 456 A 4 4 0 0 0 540 452 M 376 472 L 488 472 M 492 464 L 492 468 M 488 472 A 4 4 0 0 0 492 468 M 372 480 L 372 560 M 504 488 L 512 488 M 520 488 L 528 488 M 540 496 L 540 512 M 520 520 L 528 520 M 192 568 L 200 568 M 208 568 L 216 568 M 224 568 L 232 568 M 240 568 L 248 568 M 256 568 L 264 568 M 272 568 L 280 568 M 288 568 L 296 568 M 304 568 L 312 568 M 320 568 L 328 568 M 336 568 L 344 568 M 352 568 L 360 568 M 368 568 L 376 568 M 384 568 L 392 568 M 400 568 L 408 568 M 416 568 L 424 568 M 432 568 L 440 568 M 448 568 L 456 568 M 464 568 L 472 568 M 480 568 L 488 568 M 372 576 L 372 592 M 40 608 L 372 608 M 368 608 L 376 608 M 384 608 L 372 608 M 384 608 L 500 608 M 496 608 L 504 608 M 512 608 L 500 608 M 512 608 L 600 608 M 372 608 L 372 720 M 500 608 L 500 784 M 48 640 L 88 640 L 104 608 M 180 624 L 180 784 M 372 736 L 372 768 M 192 776 L 200 776 M 208 776 L 216 776 M 224 776 L 232 776 M 240 776 L 248 776 M 256 776 L 264 776 M 272 776 L 280 776 M 288 776 L 296 776 M 304 776 L 312 776 M 320 776 L 328 776 M 336 776 L 344 776 M 352 776 L 360 776 M 368 776 L 376 776 M 384 776 L 392 776 M 400 776 L 408 776 M 416 776 L 424 776 M 432 776 L 440 776 M 448 776 L 456 776 M 464 776 L 472 776 M 480 776 L 488 776 M 180 800 L 180 896 M 372 800 L 372 832 M 500 800 L 500 896 M 192 840 L 200 840 M 208 840 L 216 840 M 224 840 L 232 840 M 240 840 L 248 840 M 256 840 L 264 840 M 272 840 L 280 840 M 288 840 L 296 840 M 304 840 L 312 840 M 320 840 L 328 840 M 336 840 L 344 840 M 352 840 L 360 840 M 368 840 L 376 840 M 384 840 L 392 840 M 400 840 L 408 840 M 416 840 L 424 840 M 432 840 L 440 840 M 448 840 L 456 840 M 464 840 L 472 840 M 480 840 L 488 840 M 372 848 L 372 880 M 192 888 L 496 888 M 180 912 L 180 1120 M 372 912 L 372 944 M 500 912 L 500 976 M 192 952 L 496 952 M 372 960 L 372 976 M 352 984 L 504 984 M 512 1008 L 528 1008 M 520 992 L 528 1008 M 524 1008 L 524 1024 M 352 1032 L 520 1032 M 524 1024 L 524 1028 M 520 1032 A 4 4 0 0 0 524 1028 M 372 1040 L 372 1056 M 500 1040 L 500 1120 M 192 1064 L 496 1064 M 372 1072 L 372 1104 M 192 1112 L 496 1112 M 128 1144 L 176 1144 M 184 1144 L 232 1144 M 236 1148 L 236 1168 M 236 1148 A 4 4 0 0 0 232 1144 M 488 1144 L 496 1144 M 504 1144 L 520 1144 M 524 1148 L 524 1152 M 524 1148 A 4 4 0 0 0 520 1144 M 236 1152 L 236 1168 M 368 1160 L 376 1160 M 380 1164 A 4 4 0 0 0 376 1160 M 380 1164 L 380 1168 M 368 1176 L 376 1176 A 4 4 0 0 0 380 1172 M 380 1168 L 380 1172 M 488 1176 L 520 1176 M 524 1168 L 524 1172 M 520 1176 A 4 4 0 0 0 524 1172 M 128 1192 L 232 1192 M 236 1184 L 236 1188 M 232 1192 A 4 4 0 0 0 236 1188 M 360 1200 L 368 1184 M 372 1184 L 372 1216 M 376 1184 L 384 1200 M 360 1232 L 368 1216 M 376 1216 L 384 1232" fill="none"/>
+<path d=" M 296 312 L 488 312 M 0 328 L 304 328 M 480 328 L 792 328 M 296 344 L 488 344" fill="none" stroke-dasharray="3 3"/>
+<line marker-end="url(#triangle)" x1="184" x2="364" y1="136" y2="136"/>
+<line marker-end="url(#triangle)" x1="192" x2="188" y1="264" y2="264"/>
+<line marker-end="url(#triangle)" x1="184" x2="492" y1="392" y2="392"/>
+<line marker-end="url(#triangle)" x1="512" x2="508" y1="456" y2="456"/>
+<line marker-end="url(#triangle)" x1="192" x2="188" y1="568" y2="568"/>
+<line marker-end="url(#triangle)" x1="184" x2="492" y1="728" y2="728"/>
+<line marker-end="url(#triangle)" x1="192" x2="188" y1="776" y2="776"/>
+<line marker-end="url(#triangle)" x1="192" x2="188" y1="840" y2="840"/>
+<line marker-end="url(#triangle)" x1="192" x2="188" y1="888" y2="888"/>
+<line marker-end="url(#triangle)" x1="192" x2="188" y1="952" y2="952"/>
+<line marker-end="url(#triangle)" x1="192" x2="188" y1="1064" y2="1064"/>
+<line marker-end="url(#triangle)" x1="192" x2="188" y1="1112" y2="1112"/>
+<text x="362" y="28">
+,
+</text>
+<text x="362" y="44">
+`
+</text>
+<text x="122" y="60">
+,
+</text>
+<text x="122" y="76">
+|Bob on
+</text>
+<text x="482" y="76">
+,
+</text>
+<text x="122" y="92">
+|several lines|
+</text>
+<text x="482" y="92">
+|Last|
+</text>
+<text x="122" y="108">
+`
+</text>
+<text x="354" y="108">
+Alice
+</text>
+<text x="482" y="108">
+`
+</text>
+<text x="250" y="124">
+hello
+</text>
+<text x="386" y="172">
+,
+</text>
+<text x="506" y="172">
+!.
+</text>
+<text x="386" y="188">
+|this is a note|
+</text>
+<text x="386" y="204">
+`
+</text>
+<text x="522" y="204">
+&apos;
+</text>
+<text x="178" y="220">
+|Is it ok
+</text>
+<text x="386" y="220">
+,
+</text>
+<text x="522" y="220">
+!.
+</text>
+<text x="178" y="236">
+|with a message that is
+</text>
+<text x="386" y="236">
+|This other note
+</text>
+<text x="178" y="252">
+|on several lines?
+</text>
+<text x="386" y="252">
+|should work
+</text>
+<text x="386" y="268">
+|on several lines
+</text>
+<text x="386" y="284">
+`
+</text>
+<text x="314" y="332">
+This is a separation
+</text>
+<text x="282" y="380">
+Yes it works!
+</text>
+<text x="370" y="428">
+,
+</text>
+<text x="474" y="428">
+!.
+</text>
+<text x="370" y="444">
+|this is
+</text>
+<text x="554" y="444">
+working in progress
+</text>
+<text x="370" y="460">
+|another note
+</text>
+<text x="370" y="476">
+`
+</text>
+<text x="538" y="492">
+.
+</text>
+<text x="554" y="508">
+working in progress
+</text>
+<text x="506" y="524">
+&lt;
+</text>
+<text x="538" y="524">
+&apos;
+</text>
+<text x="322" y="556">
+done
+</text>
+<text x="42" y="620">
+!
+</text>
+<text x="58" y="620">
+OPT
+</text>
+<text x="122" y="620">
+dummy comment
+</text>
+<text x="602" y="620">
+!
+</text>
+<text x="42" y="636">
+!
+</text>
+<text x="602" y="636">
+!
+</text>
+<text x="42" y="652">
+!
+</text>
+<text x="602" y="652">
+!
+</text>
+<text x="42" y="668">
+!
+</text>
+<text x="306" y="668">
+Error
+</text>
+<text x="602" y="668">
+!
+</text>
+<text x="42" y="684">
+!
+</text>
+<text x="306" y="684">
+On
+</text>
+<text x="602" y="684">
+!
+</text>
+<text x="42" y="700">
+!
+</text>
+<text x="306" y="700">
+Several
+</text>
+<text x="602" y="700">
+!
+</text>
+<text x="42" y="716">
+!
+</text>
+<text x="306" y="716">
+Line
+</text>
+<text x="602" y="716">
+!
+</text>
+<text x="42" y="732">
+!
+</text>
+<text x="602" y="732">
+!
+</text>
+<text x="42" y="748">
+!
+</text>
+<text x="602" y="748">
+!
+</text>
+<text x="42" y="764">
+!
+</text>
+<text x="322" y="764">
+None
+</text>
+<text x="602" y="764">
+!
+</text>
+<text x="42" y="780">
+!
+</text>
+<text x="602" y="780">
+!
+</text>
+<text x="42" y="796">
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!
+</text>
+<text x="42" y="812">
+!
+</text>
+<text x="602" y="812">
+!
+</text>
+<text x="42" y="828">
+!
+</text>
+<text x="322" y="828">
+None
+</text>
+<text x="602" y="828">
+!
+</text>
+<text x="42" y="844">
+!
+</text>
+<text x="602" y="844">
+!
+</text>
+<text x="42" y="860">
+!
+</text>
+<text x="602" y="860">
+!
+</text>
+<text x="42" y="876">
+!
+</text>
+<text x="322" y="876">
+None
+</text>
+<text x="602" y="876">
+!
+</text>
+<text x="42" y="892">
+!
+</text>
+<text x="602" y="892">
+!
+</text>
+<text x="42" y="908">
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!
+</text>
+<text x="42" y="924">
+!
+</text>
+<text x="58" y="924">
+[other]
+</text>
+<text x="602" y="924">
+!
+</text>
+<text x="42" y="940">
+!
+</text>
+<text x="322" y="940">
+None
+</text>
+<text x="602" y="940">
+!
+</text>
+<text x="42" y="956">
+!
+</text>
+<text x="602" y="956">
+!
+</text>
+<text x="42" y="972">
+!
+</text>
+<text x="602" y="972">
+!
+</text>
+<text x="42" y="988">
+!
+</text>
+<text x="346" y="988">
+,
+</text>
+<text x="506" y="988">
+!.
+</text>
+<text x="602" y="988">
+!
+</text>
+<text x="42" y="1004">
+!
+</text>
+<text x="346" y="1004">
+|This is a long note|
+</text>
+<text x="602" y="1004">
+!
+</text>
+<text x="42" y="1020">
+!
+</text>
+<text x="346" y="1020">
+|over Alice and Last
+</text>
+<text x="602" y="1020">
+!
+</text>
+<text x="42" y="1036">
+!
+</text>
+<text x="346" y="1036">
+`
+</text>
+<text x="602" y="1036">
+!
+</text>
+<text x="42" y="1052">
+!
+</text>
+<text x="322" y="1052">
+None
+</text>
+<text x="602" y="1052">
+!
+</text>
+<text x="42" y="1068">
+!
+</text>
+<text x="602" y="1068">
+!
+</text>
+<text x="42" y="1084">
+!
+</text>
+<text x="602" y="1084">
+!
+</text>
+<text x="42" y="1100">
+!
+</text>
+<text x="322" y="1100">
+None
+</text>
+<text x="602" y="1100">
+!
+</text>
+<text x="42" y="1116">
+!
+</text>
+<text x="602" y="1116">
+!
+</text>
+<text x="42" y="1132">
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!
+</text>
+<text x="122" y="1148">
+,
+</text>
+<text x="178" y="1148">
++
+</text>
+<text x="354" y="1148">
+Alice
+</text>
+<text x="482" y="1148">
+,
+</text>
+<text x="498" y="1148">
++
+</text>
+<text x="122" y="1164">
+|Bob on
+</text>
+<text x="362" y="1164">
+,
+</text>
+<text x="482" y="1164">
+|Last|
+</text>
+<text x="122" y="1180">
+|several lines|
+</text>
+<text x="362" y="1180">
+`
+</text>
+<text x="482" y="1180">
+`
+</text>
+<text x="122" y="1196">
+`
+</text>
+</svg>
+<p>Same example using Unicode</p>
+<p>```bob`
+┌─┐<br />
+║&quot;│<br />
+└┬┘<br />
+┌─────────────┐               ┌┼┐<br />
+│Bob on       │                │             ┌────┐<br />
+│several lines│               ┌┴┐            │Last│<br />
+└──────┬──────┘              Alice           └─┬──┘<br />
+│        hello          │               │<br />
+│──────────────────────&gt;│               │<br />
+│                       │               │<br />
+│                       │ ╔═════════════╧══╗<br />
+│                       │ ║this is a note ░║<br />
+│                       │ ╚═════════════╤══╝<br />
+│Is it ok               │ ╔═════════════╧════╗<br />
+│with a message that is │ ║This other note  ░║<br />
+│on several lines?      │ ║should work       ║<br />
+│&lt;──────────────────────│ ║on several lines  ║<br />
+│                       │ ╚═════════════╤════╝<br />
+│                       │               │<br />
+│              ╔════════╧═════════════╗ │<br />
+══════════════════════╪══════════════╣ This is a separation ╠═╪════════════════════════════════════
+│              ╚════════╤═════════════╝ │<br />
+│                       │               │<br />
+│            Yes it works!              │<br />
+│──────────────────────────────────────&gt;│<br />
+│                       │               │<br />
+│                       ╔══════════════╗│────┐<br />
+│                       ║this is      ░║│    │ working in progress<br />
+│                       ║another note  ║│&lt;───┘<br />
+│                       ╚══════════════╝│<br />
+│                       │               │─ ─ ┐<br />
+│                       │               │    | working in progress<br />
+│                       │               │&lt; ─ ┘<br />
+│                       │               │<br />
+│                 done  │               │<br />
+│&lt;─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │<br />
+│                       │               │<br />
+╔══════╤═════════╪═══════════════════════╪═══════════════╪════════════╗<br />
+║ OPT  │  dummy comment                  │               │            ║<br />
+╟──────┘         │                       │               │            ║<br />
+║                │                       │               │            ║<br />
+║                │               Error   │               │            ║<br />
+║                │               On      │               │            ║<br />
+║                │               Several │               │            ║<br />
+║                │               Line    │               │            ║<br />
+║                │──────────────────────────────────────&gt;│            ║<br />
+║                │                       │               │            ║<br />
+║                │                 None  │               │            ║<br />
+║                │&lt;─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │            ║<br />
+╠════════════════╪═══════════════════════╪═══════════════╪════════════╣<br />
+║                │                       │               │            ║<br />
+║                │                 None  │               │            ║<br />
+║                │&lt;─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │            ║<br />
+║                │                       │               │            ║<br />
+║                │                 None  │               │            ║<br />
+║                │&lt;──────────────────────────────────────│            ║<br />
+╠════════════════╪═══════════════════════╪═══════════════╪════════════╣<br />
+║ [other]        │                       │               │            ║<br />
+║                │                 None  │               │            ║<br />
+║                │&lt;──────────────────────────────────────│            ║<br />
+║                │                       │               │            ║<br />
+║                │                    ╔══╧═══════════════╧══╗         ║<br />
+║                │                    ║This is a long note ░║         ║<br />
+║                │                    ║over Alice and Last  ║         ║<br />
+║                │                    ╚══╤═══════════════╤══╝         ║<br />
+║                │                 None  │               │            ║<br />
+║                │&lt;──────────────────────────────────────│            ║<br />
+║                │                       │               │            ║<br />
+║                │                 None  │               │            ║<br />
+║                │&lt;──────────────────────────────────────│            ║<br />
+╚════════════════╪═══════════════════════╪═══════════════╪════════════╝<br />
+┌──────┴──────┐              Alice           ┌─┴──┐<br />
+│Bob on       │               ┌─┐            │Last│<br />
+│several lines│               ║&quot;│            └────┘<br />
+└─────────────┘               └┬┘<br />
+┌┼┐<br />
+│<br />
+┌┴┐</p>
+<pre><code></code></pre>
+
+    </div>
+</div>
+
+Support this project:
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="5QZ5LDXWVS4RU">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-8925673-11', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
