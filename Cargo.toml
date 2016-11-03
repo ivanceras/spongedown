@@ -1,6 +1,6 @@
 [package]
 name = "spongedown"
-version = "0.1.0"
+version = "0.1.1"
 authors = [ "Jovansonlee Cesar <ivanceras@gmail.com>" ]
 license = "MIT"
 description = "Converts markdown to html with svgbob support"
