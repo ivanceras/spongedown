@@ -17,6 +17,7 @@ th, td{
 }
 pre {
     font-family:monospace;
+    overflow:auto;
 }
 </style>
 </head>
@@ -40,10 +41,10 @@ Spongedown converts markdown to html with support for
 
 
 
-| 中文处理 | Data | CJK |
-|----------|------|-----|
-|**Table**  | `are`|supported  |
-| as     | well  | |
+|  中文处理 | Data  |   CJK      |
+|-----------|-------|------------|
+|**Table**  | `are` | supported  |
+| as        | well  |            |
 
 The next `code block` fenced with `bob` will be rendered into an svg
 
@@ -102,10 +103,12 @@ The next `code block` fenced with `bob` will be rendered into an svg
 
 ```
 
+
 ## Improvements in svgbob
 - Generated SVG size is now optimized
-- CJK is now supported
-- Supports a wide array of diagram element combinations
+- [CJK is now supported](https://github.com/ivanceras/svgbobrus/pull/7)
+- Supports a wide array of [diagram element combinations](https://ivanceras.github.io/svgbobrus/)
+
 
 
 Supports normal code blocks too.
@@ -126,13 +129,24 @@ fn main(){
 
 
 ```bob
-                            ______________________________________
-                          ,'                                      `.
-                         /                                          \
-                        |          That's all folks!                 |
-                        |                                            |
-                         \                                          /
-                          `._______  _____________________________,'
+
+     ________________________________________________
+   ,'                                                `.
+  /    Note that the ascii diagrams is well aligned    \
+ |   if you are using monospaced terminal based         |
+ |  text editors such as vim, nano.                     |
+ |  Rendering the text in html `&lt;pre&gt;&lt;code&gt;`            |
+ |  and in graphical text editors                       |
+ |  will not align very well,                           |
+ |  since the CJK characters is occupying only ~1.5     |
+  \   of space instead of 2.                           /
+   `.______________________________  ________________,'
+                            _______\ \____________________
+                          ,'                              `.
+                         /                                  \
+                        |        That's all folks!           |
+                         \                                  /
+                          `._______  _____________________,'
                                   /,'
                                  /'
      .--._.-----._.--._.----.
@@ -206,9 +220,9 @@ svg
 </svg>
 <p>Spongedown converts markdown to html with support for
 <a href="https://github.com/ivanceras/svgbobrus">svgbob diagrams</a></p>
-<table><thead><tr><td> 中文处理 </td><td> Data </td><td> CJK </td></tr></thead>
-<tr><td><strong>Table</strong>  </td><td> <code>are</code></td><td>supported  </td></tr>
-<tr><td> as     </td><td> well  </td><td> </td></tr>
+<table><thead><tr><td>  中文处理 </td><td> Data  </td><td>   CJK      </td></tr></thead>
+<tr><td><strong>Table</strong>  </td><td> <code>are</code> </td><td> supported  </td></tr>
+<tr><td> as        </td><td> well  </td><td>            </td></tr>
 </table>
 <p>The next <code>code block</code> fenced with <code>bob</code> will be rendered into an svg</p>
 <svg font-family="Arial" font-size="14" height="848" width="640" xmlns="http://www.w3.org/2000/svg">
@@ -335,8 +349,8 @@ IO
 <h2>Improvements in svgbob</h2>
 <ul>
 <li>Generated SVG size is now optimized</li>
-<li>CJK is now supported</li>
-<li>Supports a wide array of diagram element combinations</li>
+<li><a href="https://github.com/ivanceras/svgbobrus/pull/7">CJK is now supported</a></li>
+<li>Supports a wide array of <a href="https://ivanceras.github.io/svgbobrus/">diagram element combinations</a></li>
 </ul>
 <p>Supports normal code blocks too.</p>
 <pre><code class="language-rust">fn main(){
@@ -354,7 +368,7 @@ IO
 <li><a href="https://news.ycombinator.com/item?id=12621680">Svgbob in hackernews</a></li>
 <li><a href="https://github.com/google/pulldown-cmark">pulldown-cmark</a></li>
 </ul>
-<svg font-family="Arial" font-size="14" height="512" width="560" xmlns="http://www.w3.org/2000/svg">
+<svg font-family="Arial" font-size="14" height="688" width="496" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="0" refY="5" viewBox="0 0 40 40">
 <path d="M 0 0 L 10 5 L 0 10 z"/>
@@ -374,195 +388,240 @@ IO
      ]]> 
     
 </style>
-<path d=" M 224 16 L 528 16 M 224 16 A 40 40 0 0 0 202 32 M 550 32 A 40 40 0 0 0 528 16 M 202 32 A 40 40 0 0 0 196 48 M 556 48 A 40 40 0 0 0 550 32 M 196 48 L 196 80 M 556 48 L 556 80 M 196 80 A 40 40 0 0 0 202 96 M 550 96 A 40 40 0 0 0 556 80 M 202 96 A 40 40 0 0 0 224 112 L 280 112 M 296 112 L 528 112 A 40 40 0 0 0 550 96 M 288 120 L 280 128 M 296 112 L 288 120 M 264 144 L 280 112 M 280 128 L 264 144 M 48 152 A 4 4 0 0 0 44 156 L 44 160 M 48 152 L 64 152 L 72 160 A 16 16 0 0 0 80 160 L 88 152 L 128 152 L 136 160 A 16 16 0 0 0 144 160 L 152 152 L 168 152 L 176 160 A 16 16 0 0 0 184 160 L 192 152 L 224 152 M 232 160 L 230 156 A 8 8 0 0 0 224 152 M 40 168 L 32 176 M 48 160 L 40 168 M 56 160 L 64 176 M 104 176 L 112 176 M 144 176 L 152 176 M 200 176 L 208 176 M 232 160 L 240 176 M 24 184 L 16 192 M 32 176 L 24 184 M 68 176 L 68 192 M 104 192 L 112 192 M 200 192 L 208 192 M 240 176 L 240 192 M 16 192 L 24 208 M 32 208 L 40 208 M 48 200 L 40 208 M 56 192 L 48 200 M 68 192 L 76 208 M 120 208 L 122 204 M 128 200 A 8 8 0 0 0 122 204 M 128 200 L 160 200 M 168 208 L 166 204 A 8 8 0 0 0 160 200 M 176 200 L 200 200 A 16 16 0 0 0 210 192 M 232 208 L 240 192 M 20 208 L 20 224 M 32 224 L 40 224 M 48 216 L 40 224 M 48 216 A 16 16 0 0 0 48 208 M 76 208 L 76 224 M 112 224 L 120 208 M 160 216 A 16 16 0 0 0 150 224 M 160 216 L 168 216 M 168 208 L 176 224 M 176 216 L 184 216 M 194 224 A 16 16 0 0 0 184 216 M 208 208 L 216 224 M 236 208 L 236 224 M 20 224 L 28 240 M 116 224 L 116 240 M 212 224 L 212 240 M 28 240 L 28 256 M 48 256 L 56 256 M 76 240 L 76 272 M 104 248 L 120 248 L 128 256 L 160 256 M 168 248 L 160 256 M 176 240 L 168 248 M 184 256 A 16 16 0 0 0 192 256 L 200 248 M 208 248 A 16 16 0 0 0 200 248 M 212 240 L 212 244 M 208 248 A 4 4 0 0 0 212 244 M 236 240 L 236 272 M 28 256 L 36 272 M 48 272 L 56 272 M 168 264 L 176 264 M 200 264 L 208 264 M 36 272 L 36 288 M 76 272 L 80 288 M 108 272 L 108 304 M 120 280 L 128 280 L 136 288 L 144 288 M 152 288 L 160 288 M 168 288 L 180 288 M 184 288 L 196 288 M 200 288 L 216 288 M 208 272 L 216 288 M 228 288 L 236 272 M 36 288 L 40 304 M 76 288 L 76 320 M 156 288 L 156 304 M 160 304 L 172 304 M 172 288 L 172 304 M 180 288 L 180 304 M 184 304 L 196 304 M 196 288 L 196 304 M 228 288 L 228 336 M 36 304 L 36 336 M 112 304 L 120 320 L 128 320 M 180 304 L 184 320 M 272 312 L 280 312 L 288 320 M 328 312 A 16 16 0 0 0 320 312 M 332 316 A 4 4 0 0 0 328 312 M 332 316 L 332 320 M 56 328 A 16 16 0 0 0 48 328 M 64 336 A 16 16 0 0 0 56 328 M 76 320 L 84 336 M 128 320 L 136 328 L 152 328 M 160 336 A 16 16 0 0 0 152 328 M 168 328 A 4 4 0 0 0 164 332 L 164 336 M 168 328 L 176 328 M 296 328 L 304 328 M 328 328 L 320 336 M 336 320 L 328 328 M 16 352 L 24 352 M 32 344 L 24 352 M 40 336 L 32 344 M 64 344 L 56 352 M 64 344 A 16 16 0 0 0 64 336 M 84 336 L 84 400 M 136 344 L 144 344 M 152 344 L 160 344 A 4 4 0 0 0 164 340 M 164 336 L 164 340 M 212 352 L 228 336 M 224 344 L 232 344 L 240 352 L 256 352 M 304 344 L 312 344 M 8 360 L 0 368 M 16 352 L 8 360 M 24 352 L 32 360 L 40 360 L 48 368 M 56 352 L 48 360 M 212 352 L 212 400 M 224 368 L 232 368 L 240 352 M 248 368 L 232 368 M 256 352 L 264 360 L 272 360 M 288 360 L 280 368 M 296 352 L 288 360 M 8 376 L 16 376 L 24 384 L 32 384 M 96 384 L 84 384 M 96 384 L 152 384 L 160 368 L 168 384 L 212 384 M 248 368 L 256 376 L 264 376 M 272 376 L 264 384 M 280 368 L 272 376 M 32 392 L 24 400 M 40 384 L 32 392 M 66 400 A 16 16 0 0 0 66 384 M 152 384 L 160 400 L 168 384 M 40 416 A 16 16 0 0 0 48 416 M 56 408 L 48 416 M 64 400 L 56 408 M 84 400 L 84 404 A 4 4 0 0 0 88 408 L 208 408 M 212 400 L 212 404 M 208 408 A 4 4 0 0 0 212 404 M 88 432 L 96 416 M 96 432 L 104 416 M 112 432 L 96 432 M 120 432 L 108 432 M 120 432 L 136 432 M 128 416 L 136 432 M 160 432 L 168 416 M 168 432 L 176 416 M 184 432 L 168 432 M 192 432 L 180 432 M 192 432 L 208 432 M 200 416 L 208 432 M 108 432 L 108 464 M 116 432 L 116 464 M 180 432 L 180 464 M 188 432 L 188 464 M 128 464 L 116 464 M 128 464 L 136 456 M 144 456 A 16 16 0 0 0 136 456 M 154 464 A 16 16 0 0 0 144 456 M 200 464 L 188 464 M 200 464 L 208 456 M 216 456 A 16 16 0 0 0 208 456 M 226 464 A 16 16 0 0 0 216 456 M 104 480 L 112 480 L 120 472 L 136 472 M 136 480 L 152 480 M 176 480 L 184 480 L 192 472 L 208 472 M 208 480 L 224 480" fill="none"/>
+<path d=" M 40 32 L 424 32 M 40 32 A 40 40 0 0 0 18 48 M 446 48 A 40 40 0 0 0 424 32 M 18 48 A 40 40 0 0 0 12 64 M 452 64 A 40 40 0 0 0 446 48 M 12 64 L 12 160 M 452 64 L 452 160 M 12 160 A 40 40 0 0 0 18 176 M 446 176 A 40 40 0 0 0 452 160 M 18 176 A 40 40 0 0 0 40 192 L 280 192 M 296 192 L 424 192 A 40 40 0 0 0 446 176 M 224 208 L 288 208 M 280 192 L 288 208 M 296 192 L 304 208 L 464 208 M 224 208 A 40 40 0 0 0 202 224 M 486 224 A 40 40 0 0 0 464 208 M 202 224 A 40 40 0 0 0 196 240 M 492 240 A 40 40 0 0 0 486 224 M 196 240 L 196 256 M 492 240 L 492 256 M 196 256 A 40 40 0 0 0 202 272 M 486 272 A 40 40 0 0 0 492 256 M 202 272 A 40 40 0 0 0 224 288 L 280 288 M 296 288 L 464 288 A 40 40 0 0 0 486 272 M 288 296 L 280 304 M 296 288 L 288 296 M 264 320 L 280 288 M 280 304 L 264 320 M 48 328 A 4 4 0 0 0 44 332 L 44 336 M 48 328 L 64 328 L 72 336 A 16 16 0 0 0 80 336 L 88 328 L 128 328 L 136 336 A 16 16 0 0 0 144 336 L 152 328 L 168 328 L 176 336 A 16 16 0 0 0 184 336 L 192 328 L 224 328 M 232 336 L 230 332 A 8 8 0 0 0 224 328 M 40 344 L 32 352 M 48 336 L 40 344 M 56 336 L 64 352 M 104 352 L 112 352 M 144 352 L 152 352 M 200 352 L 208 352 M 232 336 L 240 352 M 24 360 L 16 368 M 32 352 L 24 360 M 68 352 L 68 368 M 104 368 L 112 368 M 200 368 L 208 368 M 240 352 L 240 368 M 16 368 L 24 384 M 32 384 L 40 384 M 48 376 L 40 384 M 56 368 L 48 376 M 68 368 L 76 384 M 120 384 L 122 380 M 128 376 A 8 8 0 0 0 122 380 M 128 376 L 160 376 M 168 384 L 166 380 A 8 8 0 0 0 160 376 M 176 376 L 200 376 A 16 16 0 0 0 210 368 M 232 384 L 240 368 M 20 384 L 20 400 M 32 400 L 40 400 M 48 392 L 40 400 M 48 392 A 16 16 0 0 0 48 384 M 76 384 L 76 400 M 112 400 L 120 384 M 160 392 A 16 16 0 0 0 150 400 M 160 392 L 168 392 M 168 384 L 176 400 M 176 392 L 184 392 M 194 400 A 16 16 0 0 0 184 392 M 208 384 L 216 400 M 236 384 L 236 400 M 20 400 L 28 416 M 116 400 L 116 416 M 212 400 L 212 416 M 28 416 L 28 432 M 48 432 L 56 432 M 76 416 L 76 448 M 104 424 L 120 424 L 128 432 L 160 432 M 168 424 L 160 432 M 176 416 L 168 424 M 184 432 A 16 16 0 0 0 192 432 L 200 424 M 208 424 A 16 16 0 0 0 200 424 M 212 416 L 212 420 M 208 424 A 4 4 0 0 0 212 420 M 236 416 L 236 448 M 28 432 L 36 448 M 48 448 L 56 448 M 168 440 L 176 440 M 200 440 L 208 440 M 36 448 L 36 464 M 76 448 L 80 464 M 108 448 L 108 480 M 120 456 L 128 456 L 136 464 L 144 464 M 152 464 L 160 464 M 168 464 L 180 464 M 184 464 L 196 464 M 200 464 L 216 464 M 208 448 L 216 464 M 228 464 L 236 448 M 36 464 L 40 480 M 76 464 L 76 496 M 156 464 L 156 480 M 160 480 L 172 480 M 172 464 L 172 480 M 180 464 L 180 480 M 184 480 L 196 480 M 196 464 L 196 480 M 228 464 L 228 512 M 36 480 L 36 512 M 112 480 L 120 496 L 128 496 M 180 480 L 184 496 M 272 488 L 280 488 L 288 496 M 328 488 A 16 16 0 0 0 320 488 M 332 492 A 4 4 0 0 0 328 488 M 332 492 L 332 496 M 56 504 A 16 16 0 0 0 48 504 M 64 512 A 16 16 0 0 0 56 504 M 76 496 L 84 512 M 128 496 L 136 504 L 152 504 M 160 512 A 16 16 0 0 0 152 504 M 168 504 A 4 4 0 0 0 164 508 L 164 512 M 168 504 L 176 504 M 296 504 L 304 504 M 328 504 L 320 512 M 336 496 L 328 504 M 16 528 L 24 528 M 32 520 L 24 528 M 40 512 L 32 520 M 64 520 L 56 528 M 64 520 A 16 16 0 0 0 64 512 M 84 512 L 84 576 M 136 520 L 144 520 M 152 520 L 160 520 A 4 4 0 0 0 164 516 M 164 512 L 164 516 M 212 528 L 228 512 M 224 520 L 232 520 L 240 528 L 256 528 M 304 520 L 312 520 M 8 536 L 0 544 M 16 528 L 8 536 M 24 528 L 32 536 L 40 536 L 48 544 M 56 528 L 48 536 M 212 528 L 212 576 M 224 544 L 232 544 L 240 528 M 248 544 L 232 544 M 256 528 L 264 536 L 272 536 M 288 536 L 280 544 M 296 528 L 288 536 M 8 552 L 16 552 L 24 560 L 32 560 M 96 560 L 84 560 M 96 560 L 152 560 L 160 544 L 168 560 L 212 560 M 248 544 L 256 552 L 264 552 M 272 552 L 264 560 M 280 544 L 272 552 M 32 568 L 24 576 M 40 560 L 32 568 M 66 576 A 16 16 0 0 0 66 560 M 152 560 L 160 576 L 168 560 M 40 592 A 16 16 0 0 0 48 592 M 56 584 L 48 592 M 64 576 L 56 584 M 84 576 L 84 580 A 4 4 0 0 0 88 584 L 208 584 M 212 576 L 212 580 M 208 584 A 4 4 0 0 0 212 580 M 88 608 L 96 592 M 96 608 L 104 592 M 112 608 L 96 608 M 120 608 L 108 608 M 120 608 L 136 608 M 128 592 L 136 608 M 160 608 L 168 592 M 168 608 L 176 592 M 184 608 L 168 608 M 192 608 L 180 608 M 192 608 L 208 608 M 200 592 L 208 608 M 108 608 L 108 640 M 116 608 L 116 640 M 180 608 L 180 640 M 188 608 L 188 640 M 128 640 L 116 640 M 128 640 L 136 632 M 144 632 A 16 16 0 0 0 136 632 M 154 640 A 16 16 0 0 0 144 632 M 200 640 L 188 640 M 200 640 L 208 632 M 216 632 A 16 16 0 0 0 208 632 M 226 640 A 16 16 0 0 0 216 632 M 104 656 L 112 656 L 120 648 L 136 648 M 136 656 L 152 656 M 176 656 L 184 656 L 192 648 L 208 648 M 208 656 L 224 656" fill="none"/>
 <path d="" fill="none" stroke-dasharray="3 3"/>
-<text x="282" y="60">
+<text x="58" y="60">
+Note that the ascii diagrams is well aligned
+</text>
+<text x="42" y="76">
+if you are using monospaced terminal based
+</text>
+<text x="34" y="92">
+text editors such as vim,
+</text>
+<text x="242" y="92">
+nano.
+</text>
+<text x="34" y="108">
+Rendering the text in html
+</text>
+<text x="250" y="108">
+`&lt;
+</text>
+<text x="266" y="108">
+pre&gt;
+</text>
+<text x="298" y="108">
+&lt;
+</text>
+<text x="306" y="108">
+code&gt;
+</text>
+<text x="346" y="108">
+`
+</text>
+<text x="34" y="124">
+and in graphical text editors
+</text>
+<text x="34" y="140">
+will not align very well,
+</text>
+<text x="34" y="156">
+since the CJK characters is occupying only
+</text>
+<text x="378" y="156">
+~1.5
+</text>
+<text x="50" y="172">
+of space instead of 2.
+</text>
+<text x="266" y="252">
 That&apos;
 </text>
-<text x="322" y="60">
+<text x="306" y="252">
 s all folks!
 </text>
-<text x="82" y="172">
+<text x="82" y="348">
 (`.
 </text>
-<text x="138" y="172">
+<text x="138" y="348">
 (
 </text>
-<text x="154" y="172">
+<text x="154" y="348">
 )
-</text>
-<text x="90" y="188">
-&apos;
-</text>
-<text x="98" y="188">
-.
-</text>
-<text x="114" y="188">
-)
-</text>
-<text x="194" y="188">
-(
-</text>
-<text x="210" y="188">
-)
-</text>
-<text x="58" y="204">
-)
-</text>
-<text x="170" y="204">
-.
-</text>
-<text x="26" y="220">
-(
-</text>
-<text x="66" y="236">
-0|
-</text>
-<text x="146" y="236">
-(
-</text>
-<text x="162" y="236">
-O|
-</text>
-<text x="186" y="236">
-O)
-</text>
-<text x="226" y="236">
-o|
-</text>
-<text x="98" y="252">
-.
-</text>
-<text x="178" y="252">
-.
-</text>
-<text x="42" y="268">
-(
-</text>
-<text x="58" y="268">
-)
-</text>
-<text x="90" y="268">
-o
-</text>
-<text x="178" y="268">
-`
-</text>
-<text x="194" y="268">
-.
-</text>
-<text x="210" y="268">
-`
-</text>
-<text x="114" y="284">
-`
-</text>
-<text x="130" y="300">
-`.
-</text>
-<text x="50" y="316">
-o
-</text>
-<text x="314" y="316">
-.
-</text>
-<text x="42" y="332">
-.
-</text>
-<text x="178" y="332">
-&apos;
-</text>
-<text x="210" y="332">
-O
-</text>
-<text x="274" y="332">
-`.`
-</text>
-<text x="306" y="332">
-&apos;
-</text>
-<text x="130" y="348">
-`
-</text>
-<text x="146" y="348">
-.
-</text>
-<text x="282" y="348">
-&apos;
-</text>
-<text x="298" y="348">
-.
-</text>
-<text x="314" y="348">
-&apos;
-</text>
-<text x="66" y="364">
-&apos;
-</text>
-<text x="74" y="364">
-.
 </text>
 <text x="90" y="364">
-=&apos;
+&apos;
 </text>
-<text x="106" y="364">
-=.=&apos;
-</text>
-<text x="138" y="364">
-=.=&apos;
-</text>
-<text x="170" y="364">
-=.=&apos;
-</text>
-<text x="202" y="364">
-=
-</text>
-<text x="218" y="364">
+<text x="98" y="364">
 .
 </text>
-<text x="274" y="364">
-&apos;
-</text>
-<text x="2" y="380">
-`
-</text>
-<text x="50" y="380">
-`.
-</text>
-<text x="74" y="396">
-.
-</text>
-<text x="98" y="396">
-&apos;
-</text>
-<text x="106" y="396">
-=&apos;
-</text>
-<text x="130" y="396">
-&apos;
-</text>
-<text x="138" y="396">
-=&apos;
-</text>
-<text x="178" y="396">
-&apos;
-</text>
-<text x="186" y="396">
-=&apos;
-</text>
-<text x="26" y="412">
-`.
-</text>
-<text x="98" y="476">
-(
-</text>
-<text x="154" y="476">
+<text x="114" y="364">
 )
 </text>
-<text x="170" y="476">
+<text x="194" y="364">
 (
 </text>
-<text x="226" y="476">
+<text x="210" y="364">
+)
+</text>
+<text x="58" y="380">
+)
+</text>
+<text x="170" y="380">
+.
+</text>
+<text x="26" y="396">
+(
+</text>
+<text x="66" y="412">
+0|
+</text>
+<text x="146" y="412">
+(
+</text>
+<text x="162" y="412">
+O|
+</text>
+<text x="186" y="412">
+O)
+</text>
+<text x="226" y="412">
+o|
+</text>
+<text x="98" y="428">
+.
+</text>
+<text x="178" y="428">
+.
+</text>
+<text x="42" y="444">
+(
+</text>
+<text x="58" y="444">
+)
+</text>
+<text x="90" y="444">
+o
+</text>
+<text x="178" y="444">
+`
+</text>
+<text x="194" y="444">
+.
+</text>
+<text x="210" y="444">
+`
+</text>
+<text x="114" y="460">
+`
+</text>
+<text x="130" y="476">
+`.
+</text>
+<text x="50" y="492">
+o
+</text>
+<text x="314" y="492">
+.
+</text>
+<text x="42" y="508">
+.
+</text>
+<text x="178" y="508">
+&apos;
+</text>
+<text x="210" y="508">
+O
+</text>
+<text x="274" y="508">
+`.`
+</text>
+<text x="306" y="508">
+&apos;
+</text>
+<text x="130" y="524">
+`
+</text>
+<text x="146" y="524">
+.
+</text>
+<text x="282" y="524">
+&apos;
+</text>
+<text x="298" y="524">
+.
+</text>
+<text x="314" y="524">
+&apos;
+</text>
+<text x="66" y="540">
+&apos;
+</text>
+<text x="74" y="540">
+.
+</text>
+<text x="90" y="540">
+=&apos;
+</text>
+<text x="106" y="540">
+=.=&apos;
+</text>
+<text x="138" y="540">
+=.=&apos;
+</text>
+<text x="170" y="540">
+=.=&apos;
+</text>
+<text x="202" y="540">
+=
+</text>
+<text x="218" y="540">
+.
+</text>
+<text x="274" y="540">
+&apos;
+</text>
+<text x="2" y="556">
+`
+</text>
+<text x="50" y="556">
+`.
+</text>
+<text x="74" y="572">
+.
+</text>
+<text x="98" y="572">
+&apos;
+</text>
+<text x="106" y="572">
+=&apos;
+</text>
+<text x="130" y="572">
+&apos;
+</text>
+<text x="138" y="572">
+=&apos;
+</text>
+<text x="178" y="572">
+&apos;
+</text>
+<text x="186" y="572">
+=&apos;
+</text>
+<text x="26" y="588">
+`.
+</text>
+<text x="98" y="652">
+(
+</text>
+<text x="154" y="652">
+)
+</text>
+<text x="170" y="652">
+(
+</text>
+<text x="226" y="652">
 )
 </text>
 </svg>

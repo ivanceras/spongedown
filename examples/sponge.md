@@ -13,10 +13,10 @@ Spongedown converts markdown to html with support for
 
 
 
-| 中文处理 | Data | CJK |
-|----------|------|-----|
-|**Table**  | `are`|supported  |
-| as     | well  | |
+|  中文处理 | Data  |   CJK      |
+|-----------|-------|------------|
+|**Table**  | `are` | supported  |
+| as        | well  |            |
 
 The next `code block` fenced with `bob` will be rendered into an svg
 
@@ -75,10 +75,12 @@ The next `code block` fenced with `bob` will be rendered into an svg
 
 ```
 
+
 ## Improvements in svgbob
 - Generated SVG size is now optimized
-- CJK is now supported
-- Supports a wide array of diagram element combinations
+- [CJK is now supported](https://github.com/ivanceras/svgbobrus/pull/7)
+- Supports a wide array of [diagram element combinations](https://ivanceras.github.io/svgbobrus/)
+
 
 
 Supports normal code blocks too.
@@ -99,13 +101,24 @@ fn main(){
 
 
 ```bob
-                            ______________________________________
-                          ,'                                      `.
-                         /                                          \
-                        |          That's all folks!                 |
-                        |                                            |
-                         \                                          /
-                          `._______  _____________________________,'
+
+     ________________________________________________
+   ,'                                                `.
+  /    Note that the ascii diagrams is well aligned    \
+ |   if you are using monospaced terminal based         |
+ |  text editors such as vim, nano.                     |
+ |  Rendering the text in html `<pre><code>`            |
+ |  and in graphical text editors                       |
+ |  will not align very well,                           |
+ |  since the CJK characters is occupying only ~1.5     |
+  \   of space instead of 2.                           /
+   `.______________________________  ________________,'
+                            _______\ \____________________
+                          ,'                              `.
+                         /                                  \
+                        |        That's all folks!           |
+                         \                                  /
+                          `._______  _____________________,'
                                   /,'
                                  /'
      .--._.-----._.--._.----.
