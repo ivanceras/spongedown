@@ -99,6 +99,8 @@ fn main(){
 * [Svgbob in hackernews](https://news.ycombinator.com/item?id=12621680)
 * [pulldown-cmark](https://github.com/google/pulldown-cmark)
 
+> Speech bubbles in ascii
+> and more..
 
 ```bob
 
