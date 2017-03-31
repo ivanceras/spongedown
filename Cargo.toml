@@ -12,6 +12,7 @@ keywords = ["markdown", "svg", "bob", "spongedown"]
 [dependencies]
 pulldown-cmark = "0.0"
 svgbob = "0.1"
+comic = {path = "../comic"}
 
 
 [dev-dependencies]
