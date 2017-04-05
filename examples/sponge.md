@@ -18,6 +18,16 @@ Spongedown converts markdown to html with support for
 |**Table**  | `are` | supported  |
 | as        | well  |            |
 
+
+CSV support
+
+```csv
+foo,bar,baz
+apple,banana,carrots
+rust,haskel,c
+```
+
+
 The next `code block` fenced with `bob` will be rendered into an svg
 
 ```bob
