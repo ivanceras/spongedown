@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Basic Shapes - Spongedown</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the features and capabilities of Spongedown">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'coal'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Spongedown.html"><strong></strong> Spongedown</a></li><li><ul class="section"><li><a href="Basic_shapes.html" class="active"><strong></strong> Basic Shapes</a></li><li><a href="Arrows.html"><strong></strong> Arrows</a></li><li><a href="Brackets.html"><strong></strong> Brackets</a></li><li><a href="Speech_baloon.html"><strong></strong> Speech Baloon</a></li><li><a href="Faces.html"><strong></strong> Faces</a></li><li><a href="Lines_and_Intersections.html"><strong></strong> Lines and Intersections</a></li></ul></li><li><a href="Complex_shapes.html"><strong></strong> Complex Shapes</a></li><li><ul class="section"><li><a href="complex/comics.html"><strong></strong> Comics</a></li><li><a href="complex/Ascii_art.html"><strong></strong> Ascii art</a></li><li><a href="complex/Graphs.html"><strong></strong> Graphs</a></li><li><a href="complex/Diagrams.html"><strong></strong> Diagrams</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Spongedown</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Basic_shapes.html#basic-shapes" id="basic-shapes"><h2>Basic Shapes</h2></a>
+<p>Spongedown allows you to draw basic shapes</p>
+<svg font-family="arial" font-size="14" height="1808" width="456" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 64 8 A 16 16 0 0 0 54 16 M 72 8 A 16 16 0 0 0 64 8 M 82 16 A 16 16 0 0 0 72 8 M 54 16 A 16 16 0 0 0 54 32 M 82 32 A 16 16 0 0 0 82 16 M 54 32 A 16 16 0 0 0 64 40 A 16 16 0 0 0 72 40 A 16 16 0 0 0 82 32 M 64 88 A 16 16 0 0 0 54 96 M 64 88 L 112 88 M 122 96 A 16 16 0 0 0 112 88 M 54 96 A 16 16 0 0 0 54 112 M 122 112 A 16 16 0 0 0 122 96 M 54 112 A 16 16 0 0 0 64 120 L 112 120 A 16 16 0 0 0 122 112 M 64 192 L 52 192 M 64 192 L 124 192 M 52 192 L 52 208 M 64 208 L 52 208 M 64 208 L 124 208 M 124 192 L 124 208 M 60 232 L 60 256 M 60 232 L 288 232 M 64 232 L 288 232 M 292 232 L 292 256 M 292 232 L 288 232 M 60 240 L 60 256 M 292 240 L 292 256 M 60 264 L 60 256 M 60 264 L 288 264 M 64 264 L 288 264 M 292 264 L 292 256 M 292 264 L 288 264 M 60 296 L 60 368 M 60 296 L 88 296 M 64 296 L 88 296 M 92 296 L 92 368 M 92 296 L 88 296 M 60 304 L 60 368 M 92 304 L 92 368 M 60 376 L 60 368 M 60 376 L 88 376 M 64 376 L 88 376 M 92 376 L 92 368 M 92 376 L 88 376 M 60 412 L 60 432 M 64 408 A 4 4 0 0 0 60 412 M 64 408 L 120 408 M 124 412 L 124 432 M 124 412 A 4 4 0 0 0 120 408 M 60 416 L 60 432 M 124 416 L 124 432 M 60 432 L 60 436 A 4 4 0 0 0 64 440 L 120 440 M 124 432 L 124 436 M 120 440 A 4 4 0 0 0 124 436 M 64 488 A 4 4 0 0 0 60 492 L 60 496 M 64 488 L 168 488 M 172 492 A 4 4 0 0 0 168 488 M 172 492 L 172 496 M 60 500 A 4 4 0 0 0 64 504 M 60 496 L 60 500 M 64 504 L 168 504 A 4 4 0 0 0 172 500 M 172 496 L 172 500 M 64 544 L 128 544 M 40 592 L 64 544 M 56 592 L 40 592 M 56 592 L 104 592 L 128 544 M 64 624 L 128 624 M 64 624 L 72 640 L 136 640 M 128 624 L 136 640 M 64 672 L 128 672 M 64 672 L 88 720 M 128 672 L 152 720 M 88 720 L 152 720 M 40 752 L 56 784 M 24 784 L 40 752 M 24 784 L 40 816 L 56 784 M 68 860 L 64 864 M 68 860 L 96 888 M 156 860 L 152 864 M 156 860 L 184 888 M 56 872 L 48 880 M 64 864 L 56 872 M 72 864 L 96 888 M 144 872 L 136 880 M 152 864 L 144 872 M 160 864 L 184 888 M 240 872 L 232 880 M 244 868 L 240 872 M 244 868 L 264 888 M 248 872 L 264 888 M 36 892 L 40 888 M 36 892 L 64 920 M 48 880 L 40 888 M 100 892 L 96 888 M 100 892 L 96 896 M 124 892 L 128 888 M 124 892 L 152 920 M 136 880 L 128 888 M 188 892 L 184 888 M 188 892 L 184 896 M 220 892 L 224 888 M 220 892 L 240 912 M 232 880 L 224 888 M 268 892 L 264 888 M 268 892 L 264 896 M 40 896 L 64 920 M 88 904 L 80 912 M 96 896 L 88 904 M 128 896 L 152 920 M 176 904 L 168 912 M 184 896 L 176 904 M 224 896 L 240 912 M 256 904 L 248 912 M 264 896 L 256 904 M 64 920 L 68 924 L 72 920 M 80 912 L 72 920 M 152 920 L 156 924 L 160 920 M 168 912 L 160 920 M 240 912 L 244 916 L 248 912 M 56 952 A 4 4 0 0 0 52 956 L 52 960 M 64 952 A 16 16 0 0 0 56 952 M 68 956 A 4 4 0 0 0 64 952 M 68 956 L 68 960 M 52 964 A 4 4 0 0 0 56 968 M 52 960 L 52 964 M 56 968 L 64 968 A 4 4 0 0 0 68 964 M 68 960 L 68 964 M 64 1008 L 88 1056 M 40 1056 L 64 1008 M 56 1056 L 40 1056 M 56 1056 L 88 1056 M 64 1088 L 66 1084 M 70 1084 L 96 1136 M 70 1084 A 3 3 0 0 0 66 1084 M 72 1088 L 96 1136 M 40 1136 L 64 1088 M 38 1140 L 64 1088 M 38 1140 A 4 4 0 0 0 40 1144 L 96 1144 M 96 1136 L 98 1140 M 96 1144 A 4 4 0 0 0 98 1140 M 56 1184 L 80 1184 M 48 1200 L 56 1184 M 80 1184 L 88 1200 M 48 1200 L 56 1216 L 80 1216 L 88 1200 M 48 1248 L 96 1248 L 112 1280 M 32 1280 L 48 1248 M 32 1280 L 48 1312 L 96 1312 L 112 1280 M 48 1360 L 184 1360 L 200 1392 M 32 1392 L 48 1360 M 32 1392 L 48 1424 L 184 1424 L 200 1392 M 24 1472 L 26 1468 M 32 1464 A 8 8 0 0 0 26 1468 M 32 1464 L 136 1464 M 144 1472 L 142 1468 A 8 8 0 0 0 136 1464 M 16 1488 L 24 1472 M 144 1472 L 152 1488 M 16 1488 L 14 1492 M 16 1504 L 14 1500 M 14 1492 A 8 8 0 0 0 14 1500 M 152 1488 L 154 1492 M 152 1504 L 154 1500 A 8 8 0 0 0 154 1492 M 16 1504 L 24 1520 M 144 1520 L 152 1504 M 24 1520 L 26 1524 A 8 8 0 0 0 32 1528 L 136 1528 M 142 1524 L 152 1504 M 136 1528 A 8 8 0 0 0 142 1524 M 32 1568 L 168 1568 M 32 1568 L 40 1584 M 168 1568 L 176 1584 M 40 1584 L 42 1588 M 40 1600 L 42 1596 A 8 8 0 0 0 42 1588 M 176 1584 L 178 1588 M 176 1600 L 178 1596 A 8 8 0 0 0 178 1588 M 32 1616 L 40 1600 M 48 1616 L 32 1616 M 48 1616 L 168 1616 L 176 1600 M 188 1640 L 188 1680 M 188 1640 L 208 1680 M 28 1660 L 28 1744 M 32 1656 A 4 4 0 0 0 28 1660 M 32 1656 L 188 1656 M 188 1648 L 188 1680 M 192 1648 L 208 1680 M 28 1664 L 28 1744 M 188 1680 L 208 1680 M 204 1680 L 204 1744 M 28 1744 L 28 1748 A 4 4 0 0 0 32 1752 L 200 1752 M 204 1744 L 204 1748 M 200 1752 A 4 4 0 0 0 204 1748" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="106" y="28">
+circle
+</text>
+<text x="146" y="108">
+elongated circles
+</text>
+<text x="146" y="204">
+rectangles
+</text>
+<text x="74" y="252">
+long horizontal rectangles
+</text>
+<text x="114" y="332">
+vertical rectangles
+</text>
+<text x="138" y="428">
+rounded rectangles
+</text>
+<text x="194" y="492">
+little elongated
+</text>
+<text x="194" y="508">
+rounded rectangule
+</text>
+<text x="138" y="572">
+parallelograms
+</text>
+<text x="82" y="796">
+diamon
+</text>
+<text x="298" y="892">
+tilted square
+</text>
+<text x="106" y="956">
+a little bread?
+</text>
+<text x="114" y="1036">
+triangles
+</text>
+<text x="106" y="1116">
+rounded triangles
+</text>
+<text x="114" y="1196">
+hexagons
+</text>
+<text x="138" y="1276">
+big hexagon
+</text>
+<text x="50" y="1388">
+elongated hexagon
+</text>
+<text x="26" y="1500">
+rounded hexagon
+</text>
+<text x="58" y="1596">
+process blocks
+</text>
+<text x="50" y="1692">
+Folded Document
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Basic Shapes
+
+Spongedown allows you to draw basic shapes
+
+```bob
+       .-.
+      (   )  circle 
+       '-'
+
+
+       .------.
+      (        )  elongated circles
+       '------'
+
+
+
+       ________ 
+      |________|  rectangles
+
+       +----------------------------+
+       | long horizontal rectangles |
+       +----------------------------+
+
+       +---+ 
+       |   |
+       |   |  vertical rectangles
+       |   |
+       |   |
+       +---+
+
+       .-------.
+       |       | rounded rectangles
+       '-------'
+       
+    
+       .-------------.  little elongated
+       '-------------'  rounded rectangule
+
+        ________  
+       /       /
+      /       /  parallelograms
+     /_______/
+
+        ________  
+        \_______\
+
+        ________  
+        \       \
+         \       \
+          \_______\
+
+
+    /\
+   /  \
+   \  /   diamon
+    \/
+
+
+        .          .                                
+      .' `.      ,' `.       .'.                    
+    .'     `.  .'     `,   .'   `,   tilted square  
+     `.   .'    `.   ,'     `. ,'                   
+       `.'        `.'         `                     
+
+      .-.    a little bread?
+      '-'
+
+
+       /\
+      /  \    triangles
+     /____\
+
+        .
+       / \
+      /   \  rounded triangles
+     /     \
+    '-------'
+
+       ___
+      /   \   hexagons
+      \___/
+
+      ______
+     /      \
+    /        \   big hexagon
+    \        /
+     \______/
+
+
+      _________________
+     /                 \
+    / elongated hexagon \
+    \                   /
+     \_________________/
+
+
+   .-------------.  
+  /               \
+ ( rounded hexagon ) 
+  \               / 
+   '-------------' 
+
+    _________________
+    \                \
+     ) process blocks )
+    /________________/
+                 
+                       '
+   ,-------------------|\                            
+   |                   |_\
+   |  Folded Document    |
+   |                     |
+   |                     |
+   |                     |
+   `---------------------'
+
+```
+
+{{#playpen Basic_shapes.md}}
+
+#}</code></pre></pre>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Spongedown.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Arrows.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Spongedown.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Arrows.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

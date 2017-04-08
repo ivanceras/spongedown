@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Comics - Spongedown</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the features and capabilities of Spongedown">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="../">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'coal'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Spongedown.html"><strong></strong> Spongedown</a></li><li><ul class="section"><li><a href="Basic_shapes.html"><strong></strong> Basic Shapes</a></li><li><a href="Arrows.html"><strong></strong> Arrows</a></li><li><a href="Brackets.html"><strong></strong> Brackets</a></li><li><a href="Speech_baloon.html"><strong></strong> Speech Baloon</a></li><li><a href="Faces.html"><strong></strong> Faces</a></li><li><a href="Lines_and_Intersections.html"><strong></strong> Lines and Intersections</a></li></ul></li><li><a href="Complex_shapes.html"><strong></strong> Complex Shapes</a></li><li><ul class="section"><li><a href="complex/comics.html" class="active"><strong></strong> Comics</a></li><li><a href="complex/Ascii_art.html"><strong></strong> Ascii art</a></li><li><a href="complex/Graphs.html"><strong></strong> Graphs</a></li><li><a href="complex/Diagrams.html"><strong></strong> Diagrams</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Spongedown</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="complex/comics.html#comics" id="comics"><h2>Comics</h2></a>
+<p>Combining speech balloons and emoji faces, simple comics can be created</p>
+<svg font-family="arial" font-size="14" height="704" width="504" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 4 24 L 4 192 M 4 24 L 312 24 M 8 24 L 312 24 M 316 24 L 316 192 M 316 24 L 312 24 M 4 32 L 4 192 M 56 40 A 16 16 0 0 0 46 48 M 56 40 L 104 40 M 114 48 A 16 16 0 0 0 104 40 M 316 32 L 316 192 M 46 48 A 16 16 0 0 0 46 64 M 114 64 A 16 16 0 0 0 114 48 M 46 64 A 16 16 0 0 0 56 72 L 72 72 M 72 80 L 74 76 A 4 4 0 0 0 72 72 M 96 72 L 88 80 M 96 72 L 104 72 A 16 16 0 0 0 114 64 M 176 72 A 16 16 0 0 0 166 80 M 176 72 L 232 72 M 242 80 A 16 16 0 0 0 232 72 M 80 88 L 72 96 M 88 80 L 80 88 M 166 80 A 16 16 0 0 0 166 96 M 242 96 A 16 16 0 0 0 242 80 M 56 112 L 72 80 M 72 96 L 56 112 M 166 96 A 16 16 0 0 0 176 104 L 192 104 L 232 144 M 216 112 L 214 108 M 216 104 A 4 4 0 0 0 214 108 M 216 104 L 232 104 A 16 16 0 0 0 242 96 M 216 112 L 232 144 M 4 192 L 4 384 M 4 200 L 312 200 M 8 200 L 312 200 M 316 192 L 316 384 M 316 200 L 312 200 M 4 208 L 4 384 M 68 220 L 68 240 M 72 216 A 4 4 0 0 0 68 220 M 72 216 L 192 216 M 196 220 L 196 240 M 196 220 A 4 4 0 0 0 192 216 M 316 208 L 316 384 M 68 224 L 68 240 M 196 224 L 196 240 M 68 240 L 68 244 A 4 4 0 0 0 72 248 L 88 248 M 88 256 L 90 252 A 4 4 0 0 0 88 248 M 112 248 L 104 256 M 112 248 L 192 248 M 196 240 L 196 244 M 192 248 A 4 4 0 0 0 196 244 M 96 264 L 88 272 M 104 256 L 96 264 M 72 288 L 88 256 M 88 272 L 72 288 M 4 392 L 4 384 M 4 392 L 312 392 M 8 392 L 312 392 M 316 392 L 316 384 M 316 392 L 312 392" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="66" y="60">
+Hey!
+</text>
+<text x="186" y="92">
+What!
+</text>
+<text x="82" y="236">
+Shark head?
+</text>
+<text x="34" y="332">
+ζ༼☯﹏☯༽ᶘ
+</text>
+<text x="82" y="348">
+&apos;
+</text>
+<text x="194" y="588">
+╾━╤デ╦︻༼ಠ益ಠ༽︻╦̿══╤─
+</text>
+<text text-anchor="end" x="32" y="140">
+ ٩
+</text>
+<circle cx="48" cy="136" r="16"/>
+<text text-anchor="middle" x="48" y="140">
+<tspan class='head'>(</tspan>̾●̮̮̃ ̾•̃̾<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="64" y="140">
+۶ 
+</text>
+<text text-anchor="end" x="216" y="172">
+ ७
+</text>
+<circle cx="240" cy="168" r="24"/>
+<text text-anchor="middle" x="240" y="172">
+<tspan class='head'>(</tspan>,⊙–⊙,<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="264" y="172">
+७ 
+</text>
+<text text-anchor="end" x="240" y="364">
+ ლ
+</text>
+<circle cx="264" cy="360" r="24"/>
+<text text-anchor="middle" x="264" y="364">
+<tspan class='head'>(</tspan>ಠ益ಠლ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="288" y="364">
+ 
+</text>
+<text text-anchor="end" x="64" y="476">
+ o͡͡͡╮
+</text>
+<circle cx="80" cy="472" r="16"/>
+<text text-anchor="middle" x="80" y="476">
+<tspan class='head'>(</tspan>•ʖ̯•<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="96" y="476">
+╭o͡͡͡ 
+</text>
+<text text-anchor="end" x="40" y="508">
+ ╭
+</text>
+<circle cx="56" cy="504" r="16"/>
+<text text-anchor="middle" x="56" y="508">
+<tspan class='head'>(</tspan>•⌣•<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="72" y="508">
+╮ 
+</text>
+<text text-anchor="end" x="160" y="508">
+ 
+</text>
+<circle cx="176" cy="504" r="16"/>
+<text text-anchor="middle" x="176" y="508">
+<tspan class='head'>(</tspan>°□°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="192" y="508">
+ 
+</text>
+<text text-anchor="end" x="160" y="540">
+ 乁
+</text>
+<circle cx="180" cy="536" r="20"/>
+<text text-anchor="middle" x="180" y="540">
+<tspan class='head'>(</tspan>ಥ౪ಥ;<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="200" y="540">
+ㄏ 
+</text>
+<text text-anchor="end" x="56" y="572">
+ ७
+</text>
+<circle cx="80" cy="568" r="24"/>
+<text text-anchor="middle" x="80" y="572">
+<tspan class='head'>(</tspan>,⊙–⊙,<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="104" y="572">
+७ 
+</text>
+<text text-anchor="end" x="48" y="636">
+ ¯\_
+</text>
+<circle cx="72" cy="632" r="24"/>
+<text text-anchor="middle" x="72" y="636">
+<tspan class='head'>(</tspan>  ツ <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="96" y="636">
+_/¯ 
+</text>
+<text text-anchor="end" x="184" y="652">
+ 
+</text>
+<circle cx="212" cy="648" r="28"/>
+<text text-anchor="middle" x="212" y="652">
+<tspan class='head'>(</tspan> ͡° ͜ʖ ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="240" y="652">
+ 
+</text>
+</svg>
+<p><details>
+<summary>Show code for this page</summary></p>
+<pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Comics
+
+Combining speech balloons and emoji faces, simple comics can be created
+
+
+```comic
+
++--------------------------------------+
+|     .------.                         |
+|    (  Hey!  )                        |
+|     `--, .-'       .-------.         |
+|       /,'         (  What!  )        |
+|      /'            `--. .--'         |
+|                        `.\           |
+|  ٩(̾●̮̮̃ ̾•̃̾)۶                 `\          |
+|                                      |
+|                         ७(,⊙–⊙,)७    |
+|                                      |
++--------------------------------------+
+|       .---------------.              |
+|       | Shark head?   |              |
+|       '--, .----------'              |
+|         /,'                          |
+|        /'                            |
+|                                      |
+|                                      |
+|   ζ༼☯﹏☯༽ᶘ                           |
+|         '                            |
+|                            ლ(ಠ益ಠლ)  |
+|                                      |
++--------------------------------------+
+
+
+
+
+      o͡͡͡╮(•ʖ̯•)╭o͡͡͡                       
+
+    ╭(•⌣•)╮         (°□°)                  
+                                      
+                  乁(ಥ౪ಥ;)ㄏ          
+                           
+      ७(,⊙–⊙,)७                                  
+                        ╾━╤デ╦︻༼ಠ益ಠ༽︻╦̵̵͇̿̿̿̿══╤─              
+                                 
+
+   ¯\_(  ツ )_/¯                        
+                       ( ͡° ͜ʖ ͡°)              
+       
+```    
+
+<details>
+<summary>Show code for this page</summary>
+{{#playpen comics.md}}
+</details>
+
+#}</code></pre></pre>
+</details>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Complex_shapes.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="complex/Ascii_art.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Complex_shapes.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="complex/Ascii_art.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

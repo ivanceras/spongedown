@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Speech Baloon - Spongedown</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the features and capabilities of Spongedown">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'coal'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Spongedown.html"><strong></strong> Spongedown</a></li><li><ul class="section"><li><a href="Basic_shapes.html"><strong></strong> Basic Shapes</a></li><li><a href="Arrows.html"><strong></strong> Arrows</a></li><li><a href="Brackets.html"><strong></strong> Brackets</a></li><li><a href="Speech_baloon.html" class="active"><strong></strong> Speech Baloon</a></li><li><a href="Faces.html"><strong></strong> Faces</a></li><li><a href="Lines_and_Intersections.html"><strong></strong> Lines and Intersections</a></li></ul></li><li><a href="Complex_shapes.html"><strong></strong> Complex Shapes</a></li><li><ul class="section"><li><a href="complex/comics.html"><strong></strong> Comics</a></li><li><a href="complex/Ascii_art.html"><strong></strong> Ascii art</a></li><li><a href="complex/Graphs.html"><strong></strong> Graphs</a></li><li><a href="complex/Diagrams.html"><strong></strong> Diagrams</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Spongedown</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Speech_baloon.html#speech-baloon" id="speech-baloon"><h2>Speech Baloon</h2></a>
+<svg font-family="arial" font-size="14" height="1024" width="400" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 32 8 A 16 16 0 0 0 22 16 M 32 8 L 80 8 M 90 16 A 16 16 0 0 0 80 8 M 22 16 A 16 16 0 0 0 22 32 M 90 32 A 16 16 0 0 0 90 16 M 22 32 A 16 16 0 0 0 32 40 L 48 40 M 48 48 L 50 44 A 4 4 0 0 0 48 40 M 72 40 L 64 48 M 72 40 L 80 40 A 16 16 0 0 0 90 32 M 56 56 L 48 64 M 64 48 L 56 56 M 32 80 L 48 48 M 48 64 L 32 80 M 32 104 A 16 16 0 0 0 22 112 M 32 104 L 88 104 M 98 112 A 16 16 0 0 0 88 104 M 22 112 A 16 16 0 0 0 22 128 M 98 128 A 16 16 0 0 0 98 112 M 22 128 A 16 16 0 0 0 32 136 L 48 136 L 88 176 M 72 144 L 70 140 M 72 136 A 4 4 0 0 0 70 140 M 72 136 L 88 136 A 16 16 0 0 0 98 128 M 72 144 L 88 176 M 32 200 A 16 16 0 0 0 22 208 M 32 200 L 112 200 M 122 208 A 16 16 0 0 0 112 200 M 22 208 A 16 16 0 0 0 22 224 M 122 224 A 16 16 0 0 0 122 208 M 22 224 A 16 16 0 0 0 32 232 L 56 232 M 64 240 L 62 236 A 8 8 0 0 0 56 232 M 76 236 L 76 256 M 80 232 A 4 4 0 0 0 76 236 M 80 232 L 112 232 A 16 16 0 0 0 122 224 M 64 240 L 72 256 M 76 240 L 76 256 M 72 256 L 76 264 L 76 256 M 16 304 L 4 304 M 16 304 L 188 304 M 4 304 L 4 336 M 188 304 L 188 336 M 16 336 L 4 336 M 16 336 L 32 336 M 48 336 L 188 336 M 40 344 L 32 352 M 48 336 L 40 344 M 16 368 L 32 336 M 32 352 L 16 368 M 4 396 L 4 416 M 8 392 A 4 4 0 0 0 4 396 M 8 392 L 184 392 M 188 396 L 188 416 M 188 396 A 4 4 0 0 0 184 392 M 4 400 L 4 416 M 188 400 L 188 416 M 4 428 L 4 416 M 4 428 A 4 4 0 0 0 8 432 L 88 432 M 104 432 L 184 432 A 4 4 0 0 0 188 428 L 188 416 M 88 432 L 120 464 M 104 432 L 120 464 M 4 492 L 4 544 M 8 488 A 4 4 0 0 0 4 492 M 8 488 L 184 488 M 188 492 L 188 544 M 188 492 A 4 4 0 0 0 184 488 M 4 496 L 4 544 M 188 496 L 188 544 M 4 556 L 4 544 M 4 556 A 4 4 0 0 0 8 560 L 68 560 M 88 560 L 184 560 A 4 4 0 0 0 188 556 L 188 544 M 68 560 L 68 592 M 72 592 L 88 560 M 68 592 L 68 600 L 88 560 M 76 632 L 76 672 M 76 632 L 96 672 M 76 640 L 76 672 M 80 640 L 96 672 M 32 672 L 76 672 M 96 672 L 336 672 M 32 672 A 40 40 0 0 0 10 688 M 358 688 A 40 40 0 0 0 336 672 M 10 688 A 40 40 0 0 0 4 704 M 364 704 A 40 40 0 0 0 358 688 M 4 704 L 4 768 M 364 704 L 364 768 M 4 768 A 40 40 0 0 0 10 784 M 358 784 A 40 40 0 0 0 364 768 M 10 784 A 40 40 0 0 0 32 800 L 336 800 A 40 40 0 0 0 358 784 M 24 864 L 12 864 M 24 864 L 172 864 M 12 864 L 12 896 M 172 864 L 172 896 M 24 896 L 12 896 M 24 896 L 128 896 M 144 896 L 172 896 M 80 912 L 68 912 M 80 912 L 136 912 M 128 896 L 136 912 M 144 896 L 152 912 L 204 912 M 68 912 L 68 944 M 204 912 L 204 944 M 80 944 L 68 944 M 80 944 L 120 944 M 136 944 L 204 944 M 128 952 L 120 960 M 136 944 L 128 952 M 104 976 L 120 944 M 120 960 L 104 976" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="42" y="28">
+left
+</text>
+<text x="42" y="124">
+right
+</text>
+<text x="58" y="220">
+center
+</text>
+<text x="50" y="316">
+Rectangular
+</text>
+<text x="26" y="412">
+Rounded Rectangle
+</text>
+<text x="18" y="508">
+A long longer dialog
+</text>
+<text x="18" y="524">
+box for longer speech
+</text>
+<text x="18" y="540">
+Expandable
+</text>
+<text x="82" y="700">
+A big round ass dialog box
+</text>
+<text x="138" y="716">
+is
+</text>
+<text x="122" y="732">
+also possible
+</text>
+<text x="18" y="876">
+Connected Dialogs
+</text>
+<text x="106" y="924">
+with pause
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Speech Baloon
+
+```bob
+   .------.
+  (  left  )
+   `--, .-'
+     /,' 
+    /'  
+
+   .-------.
+  (  right  )
+   `--. .--'
+       `.\
+         `\
+
+   .----------.
+  (    center  )
+   `---. .----'
+        \|
+         '
+
+ ______________________
+|     Rectangular      |
+|___  _________________|
+   /,' 
+  /'  
+
+.----------------------.
+|  Rounded Rectangle   |
+'__________  __________'
+           `.\
+             `\
+
+.----------------------.
+| A long longer dialog |
+| box for longer speech|
+| Expandable           |
+'_______   ____________'
+        | / 
+        |/
+        .
+
+         .                      
+         |\                            
+    _____| \______________________________
+  ,'                                      `.
+ /        A big round ass dialog box        \
+|                is                          |
+|              also possible                 |
+|                                            |
+|                                            |
+ \                                          /
+  `.______________________________________,'
+
+
+
+  ___________________
+ |Connected Dialogs  |
+ |______________  ___|
+         _______\ \______ 
+        |    with pause  |
+        |______  ________|
+              /,'
+             /'
+
+```
+
+{{#playpen Speech_baloon.md}}
+
+#}</code></pre></pre>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Brackets.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Faces.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Brackets.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Faces.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

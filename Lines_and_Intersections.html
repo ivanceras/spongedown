@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lines and Intersections - Spongedown</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the features and capabilities of Spongedown">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'coal'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Spongedown.html"><strong></strong> Spongedown</a></li><li><ul class="section"><li><a href="Basic_shapes.html"><strong></strong> Basic Shapes</a></li><li><a href="Arrows.html"><strong></strong> Arrows</a></li><li><a href="Brackets.html"><strong></strong> Brackets</a></li><li><a href="Speech_baloon.html"><strong></strong> Speech Baloon</a></li><li><a href="Faces.html"><strong></strong> Faces</a></li><li><a href="Lines_and_Intersections.html" class="active"><strong></strong> Lines and Intersections</a></li></ul></li><li><a href="Complex_shapes.html"><strong></strong> Complex Shapes</a></li><li><ul class="section"><li><a href="complex/comics.html"><strong></strong> Comics</a></li><li><a href="complex/Ascii_art.html"><strong></strong> Ascii art</a></li><li><a href="complex/Graphs.html"><strong></strong> Graphs</a></li><li><a href="complex/Diagrams.html"><strong></strong> Diagrams</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Spongedown</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Lines_and_Intersections.html#lines-and-intersection" id="lines-and-intersection"><h2>Lines and Intersection</h2></a>
+<svg font-family="arial" font-size="14" height="2112" width="360" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 32 8 L 144 8 M 60 16 L 60 80 M 32 96 L 64 160 M 112 144 L 144 80 M 32 184 L 88 240 M 136 184 L 128 192 M 144 176 L 136 184 M 120 200 L 112 208 M 128 192 L 120 200 M 104 216 L 96 224 M 112 208 L 104 216 M 32 272 L 40 288 L 42 292 A 8 8 0 0 0 48 296 L 80 296 M 88 304 L 86 300 A 8 8 0 0 0 80 296 M 88 304 L 96 320 L 98 324 A 8 8 0 0 0 104 328 L 136 328 M 36 400 L 36 416 M 92 400 L 92 416 M 36 424 L 36 416 M 36 424 L 56 424 M 40 424 L 56 424 M 72 424 L 88 424 M 92 424 L 92 416 M 92 424 L 88 424 M 140 424 L 140 448 M 140 424 L 160 424 M 144 424 L 160 424 M 176 424 L 192 424 M 196 424 L 196 448 M 196 424 L 192 424 M 140 432 L 140 448 M 196 432 L 196 448 M 44 496 L 44 512 M 100 496 L 100 512 M 44 512 L 44 544 M 44 520 L 64 520 M 48 520 L 64 520 M 80 520 L 96 520 M 100 512 L 100 544 M 100 520 L 96 520 M 44 528 L 44 544 M 100 528 L 100 544 M 68 608 L 68 624 M 96 608 L 112 640 M 136 608 L 144 624 M 148 608 L 148 624 M 152 624 L 160 608 M 56 632 L 64 632 M 68 624 L 68 656 M 64 632 L 80 632 M 72 632 L 80 632 M 96 640 L 112 608 M 136 632 L 144 632 M 148 624 L 148 656 M 144 632 L 160 632 M 144 624 L 160 656 M 144 640 L 160 608 M 152 632 L 160 632 M 68 640 L 68 656 M 136 656 L 144 640 M 148 640 L 148 656 M 152 640 L 160 656 M 44 716 L 44 736 M 48 712 A 4 4 0 0 0 44 716 M 48 712 L 56 712 M 64 712 L 72 712 M 76 716 L 76 736 M 76 716 A 4 4 0 0 0 72 712 M 116 704 L 116 720 M 164 704 L 164 720 M 44 720 L 44 736 M 76 720 L 76 736 M 116 720 L 116 724 A 4 4 0 0 0 120 728 L 128 728 M 152 728 L 160 728 M 164 720 L 164 724 M 160 728 A 4 4 0 0 0 164 724 M 72 760 A 4 4 0 0 0 68 764 L 68 768 M 72 760 L 80 760 M 104 760 L 112 760 M 116 764 A 4 4 0 0 0 112 760 M 116 764 L 116 768 M 140 764 L 140 784 M 144 760 A 4 4 0 0 0 140 764 M 152 760 A 16 16 0 0 0 144 760 M 156 764 L 156 784 M 156 764 A 4 4 0 0 0 152 760 M 68 772 A 4 4 0 0 0 72 776 M 68 768 L 68 772 M 72 776 L 80 776 M 104 776 L 112 776 A 4 4 0 0 0 116 772 M 116 768 L 116 772 M 140 768 L 140 784 M 156 768 L 156 784 M 180 768 L 180 784 M 196 768 L 196 784 M 180 784 L 180 788 A 4 4 0 0 0 184 792 L 192 792 M 196 784 L 196 788 M 192 792 A 4 4 0 0 0 196 788 M 48 848 L 56 864 M 108 848 L 108 864 M 144 864 L 152 848 M 172 848 L 172 864 M 56 864 L 58 868 M 60 876 L 60 896 M 60 876 A 16 16 0 0 0 58 868 M 108 864 L 108 868 M 104 880 L 106 876 A 16 16 0 0 0 108 868 M 144 864 L 142 868 M 140 880 L 140 876 M 142 868 A 16 16 0 0 0 140 876 M 172 864 L 172 868 M 174 876 L 184 896 M 172 868 A 16 16 0 0 0 174 876 M 60 880 L 60 896 M 96 896 L 104 880 M 140 880 L 140 896 M 176 880 L 184 896 M 64 912 L 72 928 M 104 928 L 112 912 M 72 928 L 74 932 M 72 944 L 74 940 A 8 8 0 0 0 74 932 M 104 928 L 102 932 M 104 944 L 102 940 M 102 932 A 8 8 0 0 0 102 940 M 64 960 L 72 944 M 104 944 L 112 960 M 56 992 L 64 1008 M 56 1024 L 64 1008 M 56 1056 L 64 1040 M 56 1056 L 64 1072 M 56 1136 L 64 1120 M 112 1120 L 120 1136 M 48 1152 L 64 1120 M 54 1144 L 72 1144 M 54 1144 A 8 8 0 0 0 50 1148 M 56 1144 L 72 1144 M 104 1144 L 120 1144 M 120 1136 L 136 1168 M 122 1144 L 120 1144 M 126 1148 A 8 8 0 0 0 122 1144 M 40 1168 L 48 1152 M 128 1152 L 136 1168 M 56 1200 L 64 1184 M 88 1184 L 96 1200 M 32 1208 L 48 1208 M 48 1216 L 64 1184 M 50 1208 L 48 1208 M 50 1208 A 16 16 0 0 0 54 1204 M 96 1200 L 112 1232 M 102 1208 L 120 1208 M 98 1204 A 8 8 0 0 0 102 1208 M 104 1208 L 120 1208 M 40 1232 L 48 1216 M 104 1216 L 112 1232 M 184 1248 L 192 1264 M 264 1264 L 272 1248 M 56 1272 L 72 1272 L 96 1272 M 72 1280 L 74 1276 M 80 1272 A 8 8 0 0 0 74 1276 M 80 1272 L 96 1272 M 112 1272 L 128 1272 L 152 1272 M 134 1276 L 144 1296 M 134 1276 A 8 8 0 0 0 128 1272 M 136 1272 L 152 1272 M 176 1272 L 192 1272 L 216 1272 M 192 1264 L 194 1268 A 8 8 0 0 0 200 1272 L 216 1272 M 240 1272 L 256 1272 L 280 1272 M 262 1268 L 272 1248 M 256 1272 A 8 8 0 0 0 262 1268 M 264 1272 L 280 1272 M 64 1296 L 72 1280 M 136 1280 L 144 1296 M 60 1368 L 60 1392 M 60 1368 L 56 1376 M 100 1368 L 100 1392 M 100 1368 L 112 1392 M 140 1368 L 140 1440 M 140 1368 L 176 1440 M 180 1368 L 180 1440 M 180 1368 L 176 1376 M 48 1392 L 56 1376 M 60 1376 L 60 1392 M 100 1376 L 100 1392 M 104 1376 L 112 1392 M 140 1376 L 140 1440 M 144 1376 L 176 1440 M 180 1376 L 180 1440 M 48 1424 L 56 1440 M 60 1424 L 60 1440 M 92 1424 L 92 1440 M 96 1440 L 104 1424 M 144 1440 L 176 1376 M 56 1440 L 60 1448 L 60 1440 M 92 1440 L 92 1448 L 104 1424 M 140 1440 L 140 1448 L 176 1376 M 176 1440 L 180 1448 L 180 1440 M 68 1472 L 68 1488 M 100 1472 L 100 1488 M 68 1488 L 68 1520 M 64 1504 L 66 1500 A 16 16 0 0 0 68 1492 M 100 1488 L 100 1520 M 104 1504 L 102 1500 M 100 1492 A 16 16 0 0 0 102 1500 M 56 1520 L 64 1504 M 68 1504 L 68 1520 M 100 1504 L 100 1520 M 104 1504 L 112 1520 M 68 1536 L 68 1552 L 68 1560 L 80 1584 M 68 1560 L 64 1568 M 56 1584 L 64 1568 M 72 1568 L 80 1584 M 56 1600 L 64 1616 M 68 1600 L 68 1616 M 72 1616 L 80 1600 M 68 1616 L 68 1648 M 64 1616 L 80 1648 M 64 1632 L 80 1600 M 56 1648 L 64 1632 M 68 1632 L 68 1648 M 72 1632 L 80 1648 M 56 1680 L 64 1696 M 68 1680 L 68 1696 M 72 1696 L 80 1680 M 48 1704 L 64 1704 M 68 1696 L 68 1728 M 64 1704 L 88 1704 M 64 1696 L 80 1728 M 64 1712 L 80 1680 M 72 1704 L 88 1704 M 56 1728 L 64 1712 M 68 1712 L 68 1728 M 72 1712 L 80 1728 M 56 1744 L 64 1760 M 68 1744 L 68 1760 M 72 1760 L 80 1744 M 48 1768 L 64 1768 M 68 1760 L 68 1792 M 64 1768 L 88 1768 M 64 1760 L 80 1792 M 64 1776 L 80 1744 M 72 1768 L 88 1768 M 56 1792 L 64 1776 M 68 1776 L 68 1792 M 72 1776 L 80 1792 M 68 1808 L 68 1824 M 72 1824 L 80 1808 M 96 1808 L 104 1824 M 108 1808 L 108 1824 M 68 1824 L 68 1856 M 68 1832 L 80 1808 M 108 1824 L 108 1856 M 104 1824 L 108 1832 M 68 1840 L 68 1856 M 108 1840 L 108 1856 M 56 1928 L 64 1928 M 64 1936 L 66 1932 A 4 4 0 0 0 64 1928 M 88 1928 L 96 1928 M 104 1936 L 102 1932 A 8 8 0 0 0 96 1928 M 56 1952 L 64 1936 M 104 1936 L 112 1952 M 64 1984 L 66 1980 M 72 1976 A 8 8 0 0 0 66 1980 M 72 1976 L 80 1976 M 104 1984 L 102 1980 M 104 1976 A 4 4 0 0 0 102 1980 M 104 1976 L 112 1976 M 56 2000 L 64 1984 M 104 1984 L 112 2000 M 56 2048 L 64 2032 M 88 2048 L 96 2032 M 136 2032 L 144 2048 M 176 2032 L 184 2048 M 54 2052 L 64 2032 M 54 2052 A 4 4 0 0 0 56 2056 L 64 2056 M 86 2052 L 96 2032 M 86 2052 A 4 4 0 0 0 88 2056 L 144 2056 M 144 2048 L 146 2052 M 144 2056 A 4 4 0 0 0 146 2052 M 176 2056 L 184 2056 M 184 2048 L 186 2052 M 184 2056 A 4 4 0 0 0 186 2052" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="154" y="12">
+horizontal lines
+</text>
+<text x="82" y="44">
+vertical lines
+</text>
+<text x="146" y="124">
+slanted lines
+</text>
+<text x="146" y="204">
+low angle slanted lines
+</text>
+<text x="138" y="284">
+bended lines
+</text>
+<text x="34" y="380">
+perpendiular corners
+</text>
+<text x="34" y="476">
+side intersect
+</text>
+<text x="42" y="588">
+crossing
+</text>
+<text x="58" y="700">
+rounded corners
+</text>
+<text x="42" y="828">
+rounded bends
+</text>
+<text x="34" y="988">
+sharp bends
+</text>
+<text x="34" y="1100">
+slanted round side intersections
+</text>
+<text x="34" y="1340">
+sharp and acute angle intersection
+</text>
+<text x="34" y="1900">
+rounded acute corners
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+    
+
+
+
+## Lines and Intersection
+
+
+```bob
+    -------------- horizontal lines
+       |
+       |  vertical lines
+       |
+       |
+                 /
+    \           /
+     \         /  slanted lines
+      \       /
+       \
+                 
+    .           ,'
+     `.       ,'  low angle slanted lines
+       `.   ,'
+         `.
+
+    
+    \            bended lines
+     '----.
+           \
+            '----
+       
+    
+    perpendiular corners
+
+    |      |   
+    +--  --+     +--  --+
+                 |      |
+
+    side intersect
+
+     |      |
+     +--  --+ 
+     |      | 
+
+
+     crossing
+
+        |   \/   \|/
+       -+-  /\   -.-   
+        |        /|\
+       
+        
+       rounded corners      
+     .- -.    |     |
+     |   |    '-   -'
+
+        .-   -.  .-.       
+        '-   -'  | |  | |  
+                      '-'
+
+     rounded bends
+
+      \      |    /  |
+       .     '   '   .
+       |    /    |    \ 
+
+        \    / 
+         .  .
+        /    \
+
+    sharp bends
+       \
+       /
+
+       /
+       \
+
+    slanted round side intersections
+
+       /      \
+      '--    --'
+     /          \
+
+       /   \
+    --'     '--
+     /       \
+
+                       \         /
+       --.--  --.--   --.--   --.--
+        /        \     
+
+
+    sharp and acute angle intersection
+
+       .    .    .    .
+      /|    |\   |\  /|
+                 | \/ |
+                 | /\ |
+      \|   |/    |/  \|
+       '   '     '    '
+
+        |   |
+        .   .
+       /|   |\ 
+
+        |
+        .
+       / \
+
+       \|/
+        .
+       /|\
+
+       
+       \|/
+      --.--
+       /|\
+
+       \|/
+      --+--
+       /|\
+        
+        |/  \|
+        .    .
+        |    |
+
+    
+    rounded acute corners
+
+       -.  -.
+       /     \
+
+        .-  .-
+       /     \
+
+      
+       /   /     \    \
+      '-  '-------'   -'
+
+```
+
+{{#playpen Lines_and_Intersections.md}}
+
+#}</code></pre></pre>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Faces.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Complex_shapes.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Faces.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Complex_shapes.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

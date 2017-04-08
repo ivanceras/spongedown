@@ -1,0 +1,400 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spongedown - Spongedown</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the features and capabilities of Spongedown">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'coal'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Spongedown.html" class="active"><strong></strong> Spongedown</a></li><li><ul class="section"><li><a href="Basic_shapes.html"><strong></strong> Basic Shapes</a></li><li><a href="Arrows.html"><strong></strong> Arrows</a></li><li><a href="Brackets.html"><strong></strong> Brackets</a></li><li><a href="Speech_baloon.html"><strong></strong> Speech Baloon</a></li><li><a href="Faces.html"><strong></strong> Faces</a></li><li><a href="Lines_and_Intersections.html"><strong></strong> Lines and Intersections</a></li></ul></li><li><a href="Complex_shapes.html"><strong></strong> Complex Shapes</a></li><li><ul class="section"><li><a href="complex/comics.html"><strong></strong> Comics</a></li><li><a href="complex/Ascii_art.html"><strong></strong> Ascii art</a></li><li><a href="complex/Graphs.html"><strong></strong> Graphs</a></li><li><a href="complex/Diagrams.html"><strong></strong> Diagrams</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Spongedown</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Spongedown.html#spongedown" id="spongedown"><h1>Spongedown</h1></a>
+<p><a href="https://github.com/ivanceras/spongedown">Spongedown</a> is a wraps of markdown with
+to multiple funky features added.</p>
+<p>Funky features:</p>
+<ul>
+<li><a href="https://github.com/ivanceras/svgbobrus/">bob</a> diagrams</li>
+<li>csv</li>
+<li>comic/emoji faces</li>
+</ul>
+<p>Wouldn't it be just cool if you could just incorporate
+equations, diagrams and comics together with markdown.</p>
+<svg font-family="arial" font-size="14" height="736" width="920" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 412 24 L 412 64 M 412 24 L 456 24 M 416 24 L 456 24 M 460 24 L 460 64 M 456 24 L 512 24 M 464 24 L 512 24 M 516 24 L 516 64 M 516 24 L 512 24 M 360 48 L 362 44 M 368 40 A 8 8 0 0 0 362 44 M 412 32 L 412 64 M 424 40 L 412 40 M 424 40 L 460 40 M 460 32 L 460 64 M 472 40 L 460 40 M 472 40 L 516 40 M 516 32 L 516 64 M 424 56 L 412 56 M 424 56 L 460 56 M 472 56 L 460 56 M 472 56 L 516 56 M 412 72 L 412 64 M 412 72 L 456 72 M 416 72 L 456 72 M 460 72 L 460 64 M 456 72 L 512 72 M 464 72 L 512 72 M 516 72 L 516 64 M 516 72 L 512 72 M 488 88 A 4 4 0 0 0 484 92 M 488 88 L 504 88 M 508 92 L 508 208 M 508 92 A 4 4 0 0 0 504 88 M 508 96 L 508 208 M 20 140 L 20 160 M 24 136 A 4 4 0 0 0 20 140 M 24 136 L 80 136 M 84 140 L 84 160 M 84 140 A 4 4 0 0 0 80 136 M 416 136 A 4 4 0 0 0 412 140 L 412 144 M 424 136 A 16 16 0 0 0 416 136 M 428 140 A 4 4 0 0 0 424 136 M 428 140 L 428 144 M 448 136 A 4 4 0 0 0 444 140 L 444 144 M 456 136 A 16 16 0 0 0 448 136 M 460 140 A 4 4 0 0 0 456 136 M 460 140 L 460 144 M 480 136 A 4 4 0 0 0 476 140 L 476 144 M 488 136 A 16 16 0 0 0 480 136 M 492 140 A 4 4 0 0 0 488 136 M 492 140 L 492 144 M 20 144 L 20 160 M 84 144 L 84 160 M 96 152 L 84 152 M 104 160 L 102 156 A 8 8 0 0 0 96 152 M 380 156 L 380 192 M 384 152 A 4 4 0 0 0 380 156 M 412 148 A 4 4 0 0 0 416 152 M 412 144 L 412 148 M 416 152 L 424 152 A 4 4 0 0 0 428 148 M 428 144 L 428 148 M 444 148 A 4 4 0 0 0 448 152 M 444 144 L 444 148 M 448 152 L 456 152 A 4 4 0 0 0 460 148 M 460 144 L 460 148 M 476 148 A 4 4 0 0 0 480 152 M 476 144 L 476 148 M 480 152 L 488 152 A 4 4 0 0 0 492 148 M 492 144 L 492 148 M 20 160 L 20 164 A 4 4 0 0 0 24 168 L 80 168 M 84 160 L 84 164 M 80 168 A 4 4 0 0 0 84 164 M 104 160 L 128 208 M 312 176 L 314 172 M 320 168 A 8 8 0 0 0 314 172 M 380 160 L 380 192 M 452 160 L 452 176 M 472 176 L 480 160 M 452 176 L 452 184 L 464 208 M 452 184 L 448 192 M 4 204 L 4 224 M 8 200 A 4 4 0 0 0 4 204 M 8 200 L 104 200 M 108 204 L 108 224 M 108 204 A 4 4 0 0 0 104 200 M 380 204 L 380 192 M 380 204 A 4 4 0 0 0 384 208 L 440 208 L 448 192 M 456 192 L 464 208 L 508 208 M 4 208 L 4 224 M 108 208 L 108 224 M 120 216 L 108 216 M 120 216 L 128 216 M 130 216 L 128 216 M 134 220 A 8 8 0 0 0 130 216 M 440 208 L 448 224 M 456 224 L 464 208 M 4 224 L 4 228 A 4 4 0 0 0 8 232 L 104 232 M 108 224 L 108 228 M 104 232 A 4 4 0 0 0 108 228 M 448 224 L 450 228 M 454 228 L 464 208 M 450 228 A 3 3 0 0 0 454 228 M 456 232 L 480 232 M 496 240 L 528 240 M 160 256 L 216 256 M 256 256 L 360 48 M 488 256 L 496 240 M 504 256 L 488 256 M 504 256 L 520 256 L 528 240 M 4 268 L 4 288 M 8 264 A 4 4 0 0 0 4 268 M 8 264 L 72 264 M 76 268 L 76 288 M 76 268 A 4 4 0 0 0 72 264 M 216 256 L 232 288 M 224 264 L 248 264 M 254 260 L 360 48 M 248 264 A 8 8 0 0 0 254 260 M 264 272 L 312 176 M 4 272 L 4 288 M 76 272 L 76 288 M 88 280 L 76 280 M 144 288 L 160 256 M 232 280 L 256 280 L 272 280 M 262 276 L 312 176 M 256 280 A 8 8 0 0 0 262 276 M 264 280 L 272 280 M 280 288 L 278 284 A 8 8 0 0 0 272 280 M 4 288 L 4 292 A 4 4 0 0 0 8 296 L 72 296 M 76 288 L 76 292 M 72 296 A 4 4 0 0 0 76 292 M 120 304 L 122 300 M 128 296 A 8 8 0 0 0 122 300 M 144 288 L 160 320 M 232 296 L 264 296 M 272 304 L 270 300 A 8 8 0 0 0 264 296 M 280 288 L 296 320 M 400 304 L 402 300 M 406 300 L 416 320 M 406 300 A 3 3 0 0 0 402 300 M 432 288 L 448 320 M 456 304 L 458 300 M 464 296 A 8 8 0 0 0 458 300 M 472 296 A 16 16 0 0 0 464 296 M 480 304 L 478 300 A 8 8 0 0 0 472 296 M 128 320 L 130 316 M 136 312 A 8 8 0 0 0 130 316 M 160 320 L 216 320 L 232 288 M 224 312 L 232 312 M 240 320 L 238 316 A 8 8 0 0 0 232 312 M 272 304 L 328 416 M 380 304 L 380 320 M 392 320 L 380 320 M 392 320 L 400 304 M 408 304 L 416 320 L 432 288 M 448 320 L 456 304 M 480 304 L 488 320 M 4 332 L 4 352 M 8 328 A 4 4 0 0 0 4 332 M 8 328 L 72 328 M 76 332 L 76 352 M 76 332 A 4 4 0 0 0 72 328 M 104 336 L 120 304 M 240 320 L 336 512 M 296 320 L 298 324 A 8 8 0 0 0 304 328 M 380 328 L 380 320 M 4 336 L 4 352 M 76 336 L 76 352 M 88 344 L 76 344 M 88 344 L 96 344 M 102 340 L 120 304 M 96 344 A 8 8 0 0 0 102 340 M 4 352 L 4 356 A 4 4 0 0 0 8 360 L 72 360 M 76 352 L 76 356 M 72 360 A 4 4 0 0 0 76 356 M 380 360 L 380 496 M 380 360 L 480 360 M 384 360 L 480 360 M 484 360 L 484 384 M 484 360 L 480 360 M 96 384 L 128 320 M 380 368 L 380 496 M 416 376 A 16 16 0 0 0 406 384 M 416 376 L 456 376 M 466 384 A 16 16 0 0 0 456 376 M 484 368 L 484 384 M 28 396 L 28 416 M 32 392 A 4 4 0 0 0 28 396 M 32 392 L 112 392 M 116 396 L 116 416 M 116 396 A 4 4 0 0 0 112 392 M 406 384 A 16 16 0 0 0 406 400 M 466 400 A 16 16 0 0 0 466 384 M 484 384 L 484 512 M 484 392 L 584 392 M 488 392 L 584 392 M 588 392 L 588 512 M 588 392 L 584 392 M 28 400 L 28 416 M 116 400 L 116 416 M 406 400 A 16 16 0 0 0 416 408 L 424 408 M 424 416 L 426 412 A 4 4 0 0 0 424 408 M 448 408 L 440 416 M 448 408 L 456 408 A 16 16 0 0 0 466 400 M 484 400 L 484 512 M 512 408 A 16 16 0 0 0 502 416 M 512 408 L 552 408 M 562 416 A 16 16 0 0 0 552 408 M 588 400 L 588 512 M 28 416 L 28 420 A 4 4 0 0 0 32 424 L 112 424 M 116 416 L 116 420 M 112 424 A 4 4 0 0 0 116 420 M 328 416 L 330 420 A 8 8 0 0 0 336 424 M 432 424 L 424 432 M 440 416 L 432 424 M 502 416 A 16 16 0 0 0 502 432 M 562 432 A 16 16 0 0 0 562 416 M 408 448 L 424 416 M 424 432 L 408 448 M 502 432 A 16 16 0 0 0 512 440 L 520 440 L 560 480 M 544 448 L 542 444 M 544 440 A 4 4 0 0 0 542 444 M 544 440 L 552 440 A 16 16 0 0 0 562 432 M 544 448 L 560 480 M 380 504 L 380 496 M 380 504 L 484 504 M 384 504 L 484 504 M 336 512 L 338 516 A 8 8 0 0 0 344 520 L 360 520 M 368 528 L 366 524 A 8 8 0 0 0 360 520 M 484 520 L 484 512 M 484 520 L 584 520 M 488 520 L 584 520 M 588 520 L 588 512 M 588 520 L 584 520 M 480 552 A 16 16 0 0 0 470 560 M 480 552 L 488 552 M 536 552 L 544 552 M 554 560 A 16 16 0 0 0 544 552 M 352 576 L 376 576 M 392 576 L 404 576 M 456 568 A 16 16 0 0 0 446 576 M 456 568 L 464 568 M 560 568 L 568 568 M 578 576 A 16 16 0 0 0 568 568 M 352 592 L 376 592 M 388 576 L 388 608 M 404 576 L 404 608 M 446 576 A 16 16 0 0 0 446 592 M 632 592 L 712 592 M 344 608 L 352 592 M 368 608 L 376 592 M 392 608 L 404 608 M 446 592 A 16 16 0 0 0 456 600 L 464 600 M 568 600 L 576 600 M 632 608 L 640 608 M 664 608 L 680 608 M 470 608 A 16 16 0 0 0 480 616 L 488 616 M 528 616 L 536 616 M 536 624 L 544 640 M 600 640 L 588 640 M 600 640 L 628 640 M 656 640 L 644 640 M 656 640 L 668 640 M 544 640 L 546 644 A 8 8 0 0 0 552 648 M 588 640 L 588 672 M 628 640 L 628 672 M 644 640 L 644 688 M 668 640 L 668 688 M 600 672 L 588 672 M 600 672 L 628 672 M 584 688 L 592 672 M 616 688 L 624 672 M 656 688 L 644 688 M 656 688 L 668 688" fill="none"/>
+<path d=" M 640 608 L 664 608 M 680 608 L 704 608" fill="none" stroke-dasharray="3 3"/>
+<line marker-end="url(#triangle)" x1="368" x2="396" y1="40" y2="40"/>
+<line marker-end="url(#triangle)" x1="484" x2="484" y1="92" y2="128"/>
+<line marker-end="url(#triangle)" x1="484" x2="484" y1="96" y2="128"/>
+<line marker-end="url(#triangle)" x1="384" x2="404" y1="152" y2="152"/>
+<line marker-end="url(#triangle)" x1="320" x2="364" y1="168" y2="168"/>
+<line marker-end="url(#triangle)" x1="424" x2="436" y1="160" y2="184"/>
+<line marker-end="url(#triangle)" x1="472" x2="468" y1="176" y2="184"/>
+<line marker-end="url(#triangle)" x1="128" x2="148" y1="208" y2="248"/>
+<line marker-end="url(#triangle)" x1="136" x2="148" y1="224" y2="248"/>
+<line marker-end="url(#triangle)" x1="456" x2="476" y1="248" y2="248"/>
+<line marker-end="url(#triangle)" x1="88" x2="140" y1="280" y2="280"/>
+<line marker-end="url(#triangle)" x1="128" x2="140" y1="296" y2="296"/>
+<line marker-end="url(#triangle)" x1="380" x2="380" y1="304" y2="288"/>
+<line marker-end="url(#triangle)" x1="136" x2="148" y1="312" y2="312"/>
+<line marker-end="url(#triangle)" x1="304" x2="364" y1="328" y2="328"/>
+<line marker-end="url(#triangle)" x1="380" x2="492" y1="328" y2="328"/>
+<line marker-end="url(#triangle)" x1="384" x2="492" y1="328" y2="328"/>
+<line marker-end="url(#triangle)" x1="336" x2="364" y1="424" y2="424"/>
+<line marker-end="url(#triangle)" x1="368" x2="380" y1="528" y2="552"/>
+<line marker-end="url(#triangle)" x1="416" x2="436" y1="584" y2="584"/>
+<line marker-end="url(#triangle)" x1="592" x2="620" y1="600" y2="600"/>
+<line marker-end="url(#triangle)" x1="552" x2="580" y1="648" y2="648"/>
+<text x="34" y="156">
+Table
+</text>
+<text x="18" y="220">
+Flowcharts
+</text>
+<text x="450" y="252">
+&apos;
+</text>
+<text x="18" y="284">
+Graphs
+</text>
+<text x="162" y="284">
+Sponge
+</text>
+<text x="170" y="300">
+down
+</text>
+<text x="18" y="348">
+Comics
+</text>
+<text x="42" y="412">
+Diagrams
+</text>
+<text x="490" y="556">
+,(
+</text>
+<text x="522" y="556">
+),
+</text>
+<text x="466" y="572">
+(
+</text>
+<text x="554" y="572">
+)
+</text>
+<text x="346" y="588">
+[
+</text>
+<text x="378" y="588">
+]
+</text>
+<text x="394" y="588">
+=
+</text>
+<text x="578" y="588">
+)
+</text>
+<text x="354" y="604">
+::
+</text>
+<text x="466" y="604">
+(
+</text>
+<text x="554" y="604">
+).
+</text>
+<text x="578" y="604">
+&apos;
+</text>
+<text x="626" y="604">
+[
+</text>
+<text x="706" y="604">
+°]
+</text>
+<text x="490" y="620">
+.(
+</text>
+<text x="514" y="620">
+).
+</text>
+<text x="538" y="620">
+&apos;
+</text>
+<text x="650" y="652">
+==
+</text>
+<text x="594" y="684">
+:::
+</text>
+<text text-anchor="end" x="400" y="476">
+ ٩
+</text>
+<circle cx="416" cy="472" r="16"/>
+<text text-anchor="middle" x="416" y="476">
+<tspan class='head'>(</tspan>̾●̮̮̃ ̾•̃̾<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="432" y="476">
+۶ 
+</text>
+<text text-anchor="end" x="512" y="508">
+ 
+</text>
+<circle cx="536" cy="504" r="24"/>
+<text text-anchor="middle" x="536" y="508">
+<tspan class='head'>(</tspan>,⊙–⊙,<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="560" y="508">
+७ 
+</text>
+</svg>
+<p>Support for table works as is.</p>
+<p>Support for mathjax formula also works (inherited from mdbook)</p>
+<p>\[ \int x = \frac{x^2}{2} \]</p>
+<p>\[ \mu = \frac{1}{N} \sum_{i=0} x_i \]</p>
+<p>Tables are supported as commonly markdown implementation does.</p>
+<table><thead><tr><th>  中文处理 </th><th> Data  </th><th>   CJK      </th></tr></thead><tbody>
+<tr><td><strong>Table</strong>  </td><td> <code>are</code> </td><td> supported  </td></tr>
+<tr><td> as        </td><td> well  </td><td>            </td></tr>
+</tbody></table>
+<p>CSV data are rendered as tables</p>
+<table><thead><tr><th>foo</th><th>bar</th><th>baz</th></tr></thead></thead><tbody><tr><td>apple</td><td>banana</td><td>carrots</td></tr><tr><td>rust</td><td>haskel</td><td>c</td></tr></tbody></table>
+<p>The code used in writing this book is hosted in github
+<a href="https://github.com/ivanceras/Books/tree/master/spongedown_book">here</a>
+and the source code used for generating the book is in
+<a href="https://github.com/ivanceras/aklat">here</a></p>
+<p>The following is the code for the page</p>
+<pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+# Spongedown
+
+[Spongedown](https://github.com/ivanceras/spongedown) is a wraps of markdown with
+to multiple funky features added.
+
+Funky features:
+* [bob](https://github.com/ivanceras/svgbobrus/) diagrams
+* csv
+* comic/emoji faces
+
+Wouldn't it be just cool if you could just incorporate
+equations, diagrams and comics together with markdown.
+
+
+```comic
+
+                                                   +-----+------+
+                                             .---> |-----|------|
+                                            /      |-----|------|
+                                           /       +-----+------+
+                                          /                 .--.
+                                         /                  |  |
+                                        /                   v  |
+  .-------.                            /           .-. .-. .-. |
+  | Table |-.                         /        .-->'-' '-' '-' |
+  '-------'  \                       / .-----> |     \  |  /   |
+              \                     / /        |      v . v    |
+.------------. \                   / /         '_______/ \_____|
+| Flowcharts |--.                 / /                  \ /
+'------------'   \               / /                    '---  ____
+                  v _______     / /                     '--> /___/
+.--------.         /       \---' /                          
+| Graphs |------->/ Sponge  \---'-.
+'--------'     .->\  down   /----. \           ^  .  /\  .-.
+              / .->\_______/-.    \ \          |_/ \/  \/   \
+.--------.   / /              \    \ `-------> +------------->
+| Comics |--' /                \    \
+'--------'   /                  \    \         +------------+
+            /                    \    \        |   .-----.  |
+   .----------.                   \    \       |  (       ) +------------+
+   | Diagrams |                    \    \      |   `-, .-'  |  .-----.   |
+   '----------'                     \    `---> |    /,'     | (       )  |
+                                     \         |   /'       |  `-. .-'   |
+                                      \        |            |     `.\    |
+                                       \       | ٩(̾●̮̮̃ ̾•̃̾)۶    |       `\   |
+                                        \      |            |            |
+                                         \     +------------|   (,⊙–⊙,)७ |
+                                          `--.              +------------+
+                                              \
+                                               v           .-,(  ),-.    
+                                            ___  _      .-(          )-.                                       
+                                           [___]|=| -->(                )      __________ 
+                                           /::/ |_|     '-(          ).-' --->[_...__...°]
+                                                           '-.( ).-'                         
+                                                                   \      ____   __ 
+                                                                    '--->|    | |==|
+                                                                         |____| |  | 
+                                                                         /:::/  |__|
+
+```
+Support for table works as is.
+
+
+Support for mathjax formula also works (inherited from mdbook)
+
+
+\\[ \int x = \frac{x^2}{2} \\]
+
+\\[ \mu = \frac{1}{N} \sum_{i=0} x_i \\]
+
+
+Tables are supported as commonly markdown implementation does.
+
+|  中文处理 | Data  |   CJK      |
+|-----------|-------|------------|
+|**Table**  | `are` | supported  |
+| as        | well  |            |
+
+CSV data are rendered as tables
+
+```csv
+foo,bar,baz
+apple,banana,carrots
+rust,haskel,c
+```
+
+
+
+The code used in writing this book is hosted in github 
+[here](https://github.com/ivanceras/Books/tree/master/spongedown_book)
+and the source code used for generating the book is in 
+[here](https://github.com/ivanceras/aklat)
+
+The following is the code for the page
+
+{{#playpen Spongedown.md}}
+
+- [Basic shapes](Basic_shapes.html)
+- [Complex shapes](Comples_shapes.html)
+
+#}</code></pre></pre>
+<ul>
+<li><a href="Basic_shapes.html">Basic shapes</a></li>
+<li><a href="Comples_shapes.html">Complex shapes</a></li>
+</ul>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+
+                
+                    <a href="Basic_shapes.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+
+            
+                <a href="Basic_shapes.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

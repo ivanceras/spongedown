@@ -1,0 +1,1712 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Faces - Spongedown</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the features and capabilities of Spongedown">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'coal'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Spongedown.html"><strong></strong> Spongedown</a></li><li><ul class="section"><li><a href="Basic_shapes.html"><strong></strong> Basic Shapes</a></li><li><a href="Arrows.html"><strong></strong> Arrows</a></li><li><a href="Brackets.html"><strong></strong> Brackets</a></li><li><a href="Speech_baloon.html"><strong></strong> Speech Baloon</a></li><li><a href="Faces.html" class="active"><strong></strong> Faces</a></li><li><a href="Lines_and_Intersections.html"><strong></strong> Lines and Intersections</a></li></ul></li><li><a href="Complex_shapes.html"><strong></strong> Complex Shapes</a></li><li><ul class="section"><li><a href="complex/comics.html"><strong></strong> Comics</a></li><li><a href="complex/Ascii_art.html"><strong></strong> Ascii art</a></li><li><a href="complex/Graphs.html"><strong></strong> Graphs</a></li><li><a href="complex/Diagrams.html"><strong></strong> Diagrams</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Spongedown</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Faces.html#faces" id="faces"><h2>Faces</h2></a>
+<p>Spongedown supports a wide variety of faces.
+You can copy and paste the faces too.</p>
+<svg font-family="arial" font-size="14" height="4096" width="456" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 108 624 L 108 640 M 188 624 L 188 640 M 284 624 L 284 640 M 224 728 L 232 728 M 272 728 L 280 728 M 96 776 L 104 776 M 168 776 L 176 776 M 216 880 L 224 864 M 272 864 L 280 880 M 112 928 L 120 912 M 136 928 L 144 928 M 208 928 L 216 912 M 112 976 L 120 960 M 344 1120 L 352 1120 L 360 1104 M 240 1312 L 248 1312 M 136 1760 L 144 1760 M 100 2176 L 100 2192 M 164 2176 L 164 2192 M 112 2472 L 120 2472 M 144 2472 L 152 2472 M 144 2576 L 152 2576" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="98" y="156">
+╾━╤デ╦︻༼ಠ益ಠ༽︻╦̿══╤─
+</text>
+<text x="98" y="252">
+⎝༼ຈل͜ຈ༽⎠
+</text>
+<text x="178" y="252">
+(╯°□°]
+</text>
+<text x="234" y="252">
+╯︵
+</text>
+<text x="266" y="252">
+┬─┻
+</text>
+<text x="170" y="300">
+༼⊙ʖ̯⊙༽
+</text>
+<text x="98" y="348">
+༼⌐□ل͜□༽
+</text>
+<text x="154" y="348">
+ง/͠-┌ل͜┐͡-
+</text>
+<text x="210" y="348">
+\ง
+</text>
+<text x="194" y="396">
+ᶘ ͡°ᴥ͡°ᶅ
+</text>
+<text x="258" y="444">
+✿∗˵╰༼✪ᗜ✪༽╯˵∗✿
+</text>
+<text x="178" y="540">
+ζ༼Ɵ͆ل͜Ɵ͆༽
+</text>
+<text x="226" y="540">
+ᶘ
+</text>
+<text x="98" y="636">
+⋋
+</text>
+<text x="114" y="636">
+།'͡ᴼ╭͜ʖ╮͡ᴼ&apos;
+</text>
+<text x="178" y="636">
+།
+</text>
+<text x="194" y="636">
+⋌
+</text>
+<text x="234" y="636">
+[•+•]=
+</text>
+<text x="290" y="636">
+:::&gt;
+</text>
+<text x="98" y="684">
+╰༼◉Д◕༽〜┣▇▇▇═──
+</text>
+<text x="242" y="684">
+╰༼ཀДཀ༽╯
+</text>
+<text x="98" y="732">
+ԅ〳 ͜ಠ ͜ʟ ͜ಠ
+</text>
+<text x="178" y="732">
+〵و
+</text>
+<text x="234" y="732">
+[ºل͟º]
+</text>
+<text x="106" y="780">
+[ ͡° ͜ʖ ͡°]
+</text>
+<text x="202" y="780">
+[ ͝° ͜ʖ͡°
+</text>
+<text x="250" y="780">
+]
+</text>
+<text x="178" y="828">
+└[ຈل͜ರೃ]┘
+</text>
+<text x="226" y="876">
+╯⋋┏□┓⋌
+</text>
+<text x="282" y="876">
+╯
+</text>
+<text x="98" y="924">
+ヽ
+</text>
+<text x="122" y="924">
+⋋┏
+</text>
+<text x="146" y="924">
+┓⋌\ﾉ
+</text>
+<text x="194" y="924">
+ヽ
+</text>
+<text x="218" y="924">
+✿ര̀ ل͜ ര́\ﾉ
+</text>
+<text x="98" y="972">
+ヽ
+</text>
+<text x="122" y="972">
+❀ᓀ
+</text>
+<text x="146" y="972">
+ل͜ ᓂ\ﾉ
+</text>
+<text x="210" y="972">
+୧༼ ͡◕
+</text>
+<text x="250" y="972">
+д
+</text>
+<text x="266" y="972">
+◕͡ ༽୨
+</text>
+<text x="258" y="1116">
+へ[
+</text>
+<text x="290" y="1116">
+ᴼ
+</text>
+<text x="306" y="1116">
+▃
+</text>
+<text x="322" y="1116">
+ᴼ
+</text>
+<text x="338" y="1116">
+]
+</text>
+<text x="362" y="1116">
+¯
+</text>
+<text x="98" y="1212">
+ヘ（。□°）ヘ
+</text>
+<text x="98" y="1260">
+ʕっ༎ຶᴥ༎ຶʔっ
+</text>
+<text x="98" y="1308">
+ᕦ༼༎ຶ_༎ຶ༽ᕗ
+</text>
+<text x="186" y="1308">
+༼
+</text>
+<text x="202" y="1308">
+つ⇧
+</text>
+<text x="234" y="1308">
+◕
+</text>
+<text x="250" y="1308">
+◕
+</text>
+<text x="266" y="1308">
+༽つ⇧
+</text>
+<text x="178" y="1356">
+*
+</text>
+<text x="194" y="1356">
+･
+</text>
+<text x="210" y="1356">
+｡ﾟ
+</text>
+<text x="98" y="1404">
+༼
+</text>
+<text x="114" y="1404">
+▀̿Ĺ̿▀̿ 
+</text>
+<text x="146" y="1404">
+༼
+</text>
+<text x="162" y="1404">
+▀̿Ĺ̿▀̿༽
+</text>
+<text x="194" y="1404">
+▀̿Ĺ̿▀̿ 
+</text>
+<text x="226" y="1404">
+༽
+</text>
+<text x="178" y="1452">
+ヽ༼◐ل͜◑༽ﾉ
+</text>
+<text x="98" y="1500">
+&lt;
+</text>
+<text x="106" y="1500">
+:::::[]=¤༼ຈل͜ຈ༽ﾉ
+</text>
+<text x="250" y="1500">
+༼
+</text>
+<text x="266" y="1500">
+°ｰ°
+</text>
+<text x="298" y="1500">
+༽
+</text>
+<text x="98" y="1596">
+༼ಠ益ಠ༽
+</text>
+<text x="170" y="1596">
+ヽヽ༼༼ຈຈل͜ل͜ຈ
+</text>
+<text x="258" y="1596">
+ຈ༽༽ﾉﾉ
+</text>
+<text x="98" y="1756">
+༼ຈل͜ຈ༽
+</text>
+<text x="146" y="1756">
+•︻̷┻̿═
+</text>
+<text x="186" y="1756">
+━一
+</text>
+<text x="234" y="1756">
+(▀̿Ĺ̿├
+</text>
+<text x="266" y="1756">
+┬┴┬┴
+</text>
+<text x="98" y="1852">
+ヽ༼✿σل͜ σ༽ﾉ
+</text>
+<text x="186" y="1900">
+ヽ༼⚆ل͜⚆༽ﾉ
+</text>
+<text x="194" y="1948">
+♫
+</text>
+<text x="210" y="1948">
+┌༼ຈل͜ຈ༽┘
+</text>
+<text x="274" y="1948">
+♪
+</text>
+<text x="98" y="2044">
+༼
+</text>
+<text x="114" y="2044">
+ಥل͟ಥ
+</text>
+<text x="146" y="2044">
+༽
+</text>
+<text x="162" y="2044">
+┬┴┬┴┤
+</text>
+<text x="210" y="2044">
+༼ຈل͜├┬┴┬┴
+</text>
+<text x="98" y="2092">
+༼
+</text>
+<text x="114" y="2092">
+ಠل͟ಠ༽
+</text>
+<text x="154" y="2092">
+ᕕ༼ຈل͜ຈ༽ᕗ
+</text>
+<text x="194" y="2140">
+༼ง ͠ຈ ͟ل͜ ͠ຈ
+</text>
+<text x="258" y="2140">
+༽ง
+</text>
+<text x="106" y="2188">
+༼ʘ
+</text>
+<text x="130" y="2188">
+ل͜ ʘ༽
+</text>
+<text x="186" y="2188">
+ヽ༼◕ل͜◕༽ﾉ
+</text>
+<text x="98" y="2236">
+ζ༼Ɵ͆ل͜Ɵ͆༽
+</text>
+<text x="146" y="2236">
+ᶘ
+</text>
+<text x="98" y="2284">
+ヽ༼
+</text>
+<text x="130" y="2284">
+ツ
+</text>
+<text x="154" y="2284">
+༽ﾉ
+</text>
+<text x="186" y="2284">
+（͡°͜ʖ͡°
+</text>
+<text x="226" y="2284">
+）
+</text>
+<text x="178" y="2332">
+┻━┻
+</text>
+<text x="98" y="2380">
+༼ʕっ•ᴥ•ʔっ
+</text>
+<text x="186" y="2428">
+ヽ༼
+</text>
+<text x="218" y="2428">
+ຈل͜ຈ༼
+</text>
+<text x="258" y="2428">
+ຈل͜ຈ༽ຈل͜ຈ
+</text>
+<text x="322" y="2428">
+༽ﾉ
+</text>
+<text x="98" y="2476">
+༼
+</text>
+<text x="130" y="2476">
+ل͜ 
+</text>
+<text x="162" y="2476">
+༽
+</text>
+<text x="178" y="2476">
+ヽ°
+</text>
+<text x="210" y="2476">
+~͜ʖ~
+</text>
+<text x="242" y="2476">
+°ﾉ
+</text>
+<text x="98" y="2524">
+ᕙ
+</text>
+<text x="194" y="2524">
+ᕗ
+</text>
+<text x="98" y="2572">
+༼
+</text>
+<text x="114" y="2572">
+つ
+</text>
+<text x="138" y="2572">
+◕
+</text>
+<text x="154" y="2572">
+◕
+</text>
+<text x="170" y="2572">
+༽つ
+</text>
+<text x="202" y="2572">
+ヽ༼ຈل͜ರೃ༽ﾉ
+</text>
+<text x="98" y="2620">
+୧༼ಠ益ರೃ༽୨
+</text>
+<text x="98" y="2668">
+ヽຈل͜ຈﾉ
+</text>
+<text x="98" y="2716">
+ヽ༼ຈ益ຈ༽ﾉ
+</text>
+<text x="98" y="2764">
+༼ᕗຈل͜ຈ༽ᕗ
+</text>
+<text x="162" y="2764">
+╮
+</text>
+<text x="186" y="2812">
+༼
+</text>
+<text x="202" y="2812">
+つ◕(oo)◕༽つoo
+</text>
+<text x="98" y="2940">
+༼ ͠ຈ ͟ل͜ ͠ຈ
+</text>
+<text x="154" y="2940">
+༽ง ヽ༼ຈل͜ຈ༽ﾉ☂
+</text>
+<text x="194" y="2988">
+༼☯﹏☯༽
+</text>
+<text x="98" y="3036">
+ヽ༼
+</text>
+<text x="130" y="3036">
+☭ل͜☭
+</text>
+<text x="162" y="3036">
+༽ﾉ
+</text>
+<text x="202" y="3036">
+♌༼✪ل͜✪༽ᕤ
+</text>
+<text x="178" y="3084">
+ヽ༼ʘ̚ل͜ʘ̚༽
+</text>
+<text x="234" y="3084">
+ﾉ
+</text>
+<text x="370" y="3132">
+*
+</text>
+<text x="386" y="3132">
+･
+</text>
+<text x="402" y="3132">
+｡ﾟ,
+</text>
+<text x="98" y="3180">
+༼ຈل͜ຈ༽&gt;
+</text>
+<text x="146" y="3180">
+ง
+</text>
+<text x="186" y="3180">
+ᕙ༼◕ل͜◕༽ᕗ
+</text>
+<text x="98" y="3228">
+ヽ༼ຈل͜ຈ༽ﾉ︵┻━┻
+</text>
+<text x="234" y="3228">
+୧༼ ͡◉ل͜ ͡◉
+</text>
+<text x="290" y="3228">
+༽୨
+</text>
+<text x="98" y="3276">
+༼ ͡■ل͜ ͡■
+</text>
+<text x="146" y="3276">
+༽
+</text>
+<text x="98" y="3324">
+Ѱζ༼ᴼل͜ᴼ༽ᶘѰ
+</text>
+<text x="194" y="3324">
+ヽ༼ຈل͜ຈ༽ง
+</text>
+<text x="178" y="3372">
+ɳ༼ຈل͜ຈ༽ɲ
+</text>
+<text x="178" y="3420">
+ʕ•ᴥ•ʔ
+</text>
+<text x="98" y="3468">
+ヽຈل͜ﾉ༼ຈ
+</text>
+<text x="98" y="3516">
+୧༼ಠ益ಠ༽୨
+</text>
+<text x="98" y="3612">
+つ◕ل͜◕)つ
+</text>
+<text x="98" y="3660">
+ヽ༼♥ل͜♥༽ﾉ
+</text>
+<text x="194" y="3660">
+༼
+</text>
+<text x="210" y="3660">
+ᓄºل͟º
+</text>
+<text x="250" y="3660">
+༽ᓄ
+</text>
+<text x="202" y="3708">
+ヽ༼ຈل͜ຈ༽ﾉ
+</text>
+<text x="98" y="3756">
+ᕦ༼ຈل͜ຈ༽ᕤ
+</text>
+<text x="194" y="3756">
+┌༼ຈل͜ຈ༽┐
+</text>
+<text x="98" y="3804">
+ᕙ༼ຈل͜ຈ༽ᕗ
+</text>
+<text x="194" y="3804">
+ヽ༼&gt;
+</text>
+<text x="226" y="3804">
+ل͜<༽ﾉ
+</text>
+<text x="186" y="3852">
+ヽ༼@ل͜ຈ༽ﾉ
+</text>
+<text x="98" y="3900">
+༼
+</text>
+<text x="114" y="3900">
+ºل͟º༼
+</text>
+<text x="154" y="3900">
+ºل͟º༽ºل͟º
+</text>
+<text x="218" y="3900">
+༽
+</text>
+<text x="234" y="3996">
+O͡╮༼;´༎ຶ.̨.۝ 
+</text>
+<text x="306" y="3996">
+༎ຶ༽╭o
+</text>
+<text text-anchor="end" x="104" y="28">
+ ٩
+</text>
+<circle cx="120" cy="24" r="16"/>
+<text text-anchor="middle" x="120" y="28">
+<tspan class='head'>(</tspan>̾●̮̮̃ ̾•̃̾<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="28">
+۶ 
+</text>
+<text text-anchor="end" x="184" y="28">
+ o͡͡͡╮
+</text>
+<circle cx="212" cy="24" r="28"/>
+<text text-anchor="middle" x="212" y="28">
+<tspan class='head'>(</tspan> ʘ̆ ۝ ʘ̆ <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="240" y="28">
+╭o͡
+</text>
+<text text-anchor="end" x="104" y="60">
+ ७
+</text>
+<circle cx="128" cy="56" r="24"/>
+<text text-anchor="middle" x="128" y="60">
+<tspan class='head'>(</tspan>,⊙–⊙,<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="60">
+७ 
+</text>
+<text text-anchor="end" x="200" y="60">
+ o͡͡͡╮
+</text>
+<circle cx="216" cy="56" r="16"/>
+<text text-anchor="middle" x="216" y="60">
+<tspan class='head'>(</tspan>•ʖ̯•<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="232" y="60">
+╭o͡͡͡
+</text>
+<text text-anchor="end" x="96" y="92">
+ 
+</text>
+<circle cx="112" cy="88" r="16"/>
+<text text-anchor="middle" x="112" y="92">
+<tspan class='head'>(</tspan>°□°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="128" y="92">
+ 
+</text>
+<text text-anchor="end" x="176" y="92">
+ ¯\_
+</text>
+<circle cx="192" cy="88" r="16"/>
+<text text-anchor="middle" x="192" y="92">
+<tspan class='head'>(</tspan> ツ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="208" y="92">
+_/¯ 
+</text>
+<text text-anchor="end" x="112" y="124">
+ ヽ
+</text>
+<circle cx="128" cy="120" r="16"/>
+<text text-anchor="middle" x="128" y="124">
+<tspan class='head'>(</tspan>。°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="124">
+ノ 
+</text>
+<text text-anchor="end" x="192" y="124">
+ ヾ
+</text>
+<circle cx="216" cy="120" r="24"/>
+<text text-anchor="middle" x="216" y="124">
+<tspan class='head'>(</tspan>ｏ･ω･<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="240" y="124">
+ﾉ
+</text>
+<text text-anchor="end" x="96" y="204">
+ 
+</text>
+<circle cx="120" cy="200" r="24"/>
+<text text-anchor="middle" x="120" y="204">
+<tspan class='head'>(</tspan>˙ ͜ʟ˙ <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="204">
+ 
+</text>
+<text text-anchor="end" x="160" y="204">
+ 
+</text>
+<circle cx="188" cy="200" r="28"/>
+<text text-anchor="middle" x="188" y="204">
+<tspan class='head'>(</tspan>つ°ヮ°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="216" y="204">
+つ 
+</text>
+<text text-anchor="end" x="96" y="300">
+ 
+</text>
+<circle cx="116" cy="296" r="20"/>
+<text text-anchor="middle" x="116" y="300">
+<tspan class='head'>(</tspan>⊙ヮ⊙<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="300">
+ 
+</text>
+<text text-anchor="end" x="112" y="396">
+ ヽ
+</text>
+<circle cx="140" cy="392" r="28"/>
+<text text-anchor="middle" x="140" y="396">
+<tspan class='head'>(</tspan> ͝° ̯ʖ ͝°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="168" y="396">
+ﾉ 
+</text>
+<text text-anchor="end" x="264" y="396">
+ 
+</text>
+<circle cx="284" cy="392" r="20"/>
+<text text-anchor="middle" x="284" y="396">
+<tspan class='head'>(</tspan> ͡⚆ل͜⚆<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="304" y="396">
+ﾉ⚲
+</text>
+<text text-anchor="end" x="112" y="444">
+ ᗜԅ
+</text>
+<circle cx="132" cy="440" r="20"/>
+<text text-anchor="middle" x="132" y="444">
+<tspan class='head'>(</tspan>⇀︿⇀<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="444">
+ᓄ-¤]═──── 
+</text>
+<text text-anchor="end" x="96" y="492">
+ 
+</text>
+<circle cx="120" cy="488" r="24"/>
+<text text-anchor="middle" x="120" y="492">
+<tspan class='head'>(</tspan>つ･◡･<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="492">
+つ 
+</text>
+<text text-anchor="end" x="208" y="492">
+ ᕦ
+</text>
+<circle cx="232" cy="488" r="24"/>
+<text text-anchor="middle" x="232" y="492">
+<tspan class='head'>(</tspan>눈_눈<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="256" y="492">
+ᕗ
+</text>
+<text text-anchor="end" x="96" y="540">
+ 
+</text>
+<circle cx="120" cy="536" r="24"/>
+<text text-anchor="middle" x="120" y="540">
+<tspan class='head'>(</tspan>⌐▀͡ ̯ʖ▀<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="540">
+ 
+</text>
+<text text-anchor="end" x="112" y="588">
+ ヽ
+</text>
+<circle cx="140" cy="584" r="28"/>
+<text text-anchor="middle" x="140" y="588">
+<tspan class='head'>(</tspan> ⌐□益□<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="168" y="588">
+/ 
+</text>
+<text text-anchor="end" x="216" y="588">
+ 
+</text>
+<circle cx="236" cy="584" r="20"/>
+<text text-anchor="middle" x="236" y="588">
+<tspan class='head'>(</tspan>▀̿̿Ĺ̯̿̿▀̿ ̿<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="256" y="588">
+
+</text>
+<text text-anchor="end" x="96" y="828">
+ 
+</text>
+<circle cx="120" cy="824" r="24"/>
+<text text-anchor="middle" x="120" y="828">
+<tspan class='head'>(</tspan> ° ͜ʖ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="828">
+ 
+</text>
+<text text-anchor="end" x="96" y="876">
+ 
+</text>
+<circle cx="140" cy="872" r="44"/>
+<text text-anchor="middle" x="140" y="876">
+<tspan class='head'>(</tspan>●￣ ㋓ ￣●<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="184" y="876">
+ 
+</text>
+<text text-anchor="end" x="112" y="1020">
+ ヽ
+</text>
+<circle cx="136" cy="1016" r="24"/>
+<text text-anchor="middle" x="136" y="1020">
+<tspan class='head'>(</tspan>ಥ益ಥ;<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="160" y="1020">
+ 
+</text>
+<text text-anchor="end" x="200" y="1020">
+ ╭
+</text>
+<circle cx="228" cy="1016" r="28"/>
+<text text-anchor="middle" x="228" y="1020">
+<tspan class='head'>(</tspan> ☯̿∠ ̿☯ <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="256" y="1020">
+╯
+</text>
+<text text-anchor="end" x="112" y="1068">
+ Ѱ୧
+</text>
+<circle cx="132" cy="1064" r="20"/>
+<text text-anchor="middle" x="132" y="1068">
+<tspan class='head'>(</tspan>ಠل͟ ಠ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="1068">
+ 
+</text>
+<text text-anchor="end" x="208" y="1068">
+ Ѱへ
+</text>
+<circle cx="228" cy="1064" r="20"/>
+<text text-anchor="middle" x="228" y="1068">
+<tspan class='head'>(</tspan>ಠل͟ ಠ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="248" y="1068">
+
+</text>
+<text text-anchor="end" x="120" y="1116">
+ ⁽⁽◝
+</text>
+<circle cx="164" cy="1112" r="44"/>
+<text text-anchor="middle" x="164" y="1116">
+<tspan class='head'>(</tspan>∗ ❛⃘ ꒫ ❜⃘⃘ ∗<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="208" y="1116">
+◜⁾⁾ 
+</text>
+<text text-anchor="end" x="112" y="1164">
+ ヽ
+</text>
+<circle cx="132" cy="1160" r="20"/>
+<text text-anchor="middle" x="132" y="1164">
+<tspan class='head'>(</tspan>๏∀◕ <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="1164">
+ﾉ 
+</text>
+<text text-anchor="end" x="208" y="1164">
+ ＼
+</text>
+<circle cx="232" cy="1160" r="24"/>
+<text text-anchor="middle" x="232" y="1164">
+<tspan class='head'>(</tspan>´◓Д◔`<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="256" y="1164">
+／
+</text>
+<text text-anchor="end" x="280" y="1212">
+ ͡-)-
+</text>
+<circle cx="300" cy="1208" r="20"/>
+<text text-anchor="middle" x="300" y="1212">
+<tspan class='head'>(</tspan>ಠ﹏ಥ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="320" y="1212">
+-(ಠ﹏ಥ)
+</text>
+<text text-anchor="end" x="200" y="1260">
+ ╭
+</text>
+<circle cx="216" cy="1256" r="16"/>
+<text text-anchor="middle" x="216" y="1260">
+<tspan class='head'>(</tspan>•⌣•<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="232" y="1260">
+╮
+</text>
+<text text-anchor="end" x="104" y="1356">
+ ╰
+</text>
+<circle cx="120" cy="1352" r="16"/>
+<text text-anchor="middle" x="120" y="1356">
+<tspan class='head'>(</tspan>◉͜ʖ◉<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="1356">
+ԅ†. 
+</text>
+<text text-anchor="end" x="264" y="1356">
+ ╭
+</text>
+<circle cx="296" cy="1352" r="32"/>
+<text text-anchor="middle" x="296" y="1356">
+<tspan class='head'>(</tspan>۝乁 ͜ﾚ ㄏ۝<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="328" y="1356">
+╮
+</text>
+<text text-anchor="end" x="112" y="1452">
+ Ѱ╭
+</text>
+<circle cx="120" cy="1448" r="8"/>
+<text text-anchor="middle" x="120" y="1452">
+<tspan class='head'>(</tspan>۝⌣۝<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="128" y="1452">
+╮Ѱ 
+</text>
+<text text-anchor="end" x="112" y="1548">
+ 乁
+</text>
+<circle cx="132" cy="1544" r="20"/>
+<text text-anchor="middle" x="132" y="1548">
+<tspan class='head'>(</tspan>ಥ౪ಥ;<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="1548">
+ㄏ 
+</text>
+<text text-anchor="end" x="200" y="1548">
+ 
+</text>
+<circle cx="216" cy="1544" r="16"/>
+<text text-anchor="middle" x="216" y="1548">
+<tspan class='head'>(</tspan>▀̿̿Ĺ̯̿̿°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="232" y="1548">
+ง
+</text>
+<text text-anchor="end" x="96" y="1644">
+ 
+</text>
+<circle cx="124" cy="1640" r="28"/>
+<text text-anchor="middle" x="124" y="1644">
+<tspan class='head'>(</tspan>っ˘̩╭╮˘̩<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="1644">
+っ 
+</text>
+<text text-anchor="end" x="184" y="1644">
+ 
+</text>
+<circle cx="204" cy="1640" r="20"/>
+<text text-anchor="middle" x="204" y="1644">
+<tspan class='head'>(</tspan>⌣_⌣”<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="224" y="1644">
+
+</text>
+<text text-anchor="end" x="112" y="1708">
+ ⋛⋋
+</text>
+<circle cx="136" cy="1704" r="24"/>
+<text text-anchor="middle" x="136" y="1708">
+<tspan class='head'>(</tspan> ՞ਊ ՞<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="160" y="1708">
+⋌⋚ 
+</text>
+<text text-anchor="end" x="208" y="1708">
+ 
+</text>
+<circle cx="228" cy="1704" r="20"/>
+<text text-anchor="middle" x="228" y="1708">
+<tspan class='head'>(</tspan>｡˘з˘<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="248" y="1708">
+
+</text>
+<text text-anchor="end" x="96" y="1804">
+ 
+</text>
+<circle cx="120" cy="1800" r="24"/>
+<text text-anchor="middle" x="120" y="1804">
+<tspan class='head'>(</tspan> ͝° ͜ʖ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="1804">
+つY 
+</text>
+<text text-anchor="end" x="208" y="1804">
+ ヽ
+</text>
+<circle cx="240" cy="1800" r="32"/>
+<text text-anchor="middle" x="240" y="1804">
+<tspan class='head'>(</tspan> ͡°╭͜ʖ╮͡° <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="272" y="1804">
+ﾉ
+</text>
+<text text-anchor="end" x="208" y="1852">
+ /╲/
+</text>
+<circle cx="236" cy="1848" r="28"/>
+<text text-anchor="middle" x="236" y="1852">
+<tspan class='head'>(</tspan> ͡⎚ ͜U ͡⎚<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="264" y="1852">
+/\╱\
+</text>
+<text text-anchor="end" x="96" y="1900">
+ 
+</text>
+<circle cx="124" cy="1896" r="28"/>
+<text text-anchor="middle" x="124" y="1900">
+<tspan class='head'>(</tspan> ͡⚆ ͜ʖ ͡⚆<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="1900">
+ 
+</text>
+<text text-anchor="end" x="96" y="1948">
+ 
+</text>
+<circle cx="120" cy="1944" r="24"/>
+<text text-anchor="middle" x="120" y="1948">
+<tspan class='head'>(</tspan> ͡ _ ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="1948">
+ﾉ⚲ 
+</text>
+<text text-anchor="end" x="96" y="1996">
+ 
+</text>
+<circle cx="116" cy="1992" r="20"/>
+<text text-anchor="middle" x="116" y="1996">
+<tspan class='head'>(</tspan> ಠ⌣ಠ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="1996">
+ 
+</text>
+<text text-anchor="end" x="104" y="2140">
+ ᕕ
+</text>
+<circle cx="132" cy="2136" r="28"/>
+<text text-anchor="middle" x="132" y="2140">
+<tspan class='head'>(</tspan> ͡° ͜ʖ ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="160" y="2140">
+ᕗ 
+</text>
+<text text-anchor="end" x="168" y="2236">
+ 
+</text>
+<circle cx="188" cy="2232" r="20"/>
+<text text-anchor="middle" x="188" y="2236">
+<tspan class='head'>(</tspan>° ͜ʖ°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="208" y="2236">
+
+</text>
+<text text-anchor="end" x="96" y="2332">
+ 
+</text>
+<circle cx="116" cy="2328" r="20"/>
+<text text-anchor="middle" x="116" y="2332">
+<tspan class='head'>(</tspan>╯°□°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="2332">
+╯︵ 
+</text>
+<text text-anchor="end" x="184" y="2380">
+ 
+</text>
+<circle cx="212" cy="2376" r="28"/>
+<text text-anchor="middle" x="212" y="2380">
+<tspan class='head'>(</tspan> ＾◡＾<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="240" y="2380">
+っ✂
+</text>
+<text text-anchor="end" x="104" y="2428">
+ ╰
+</text>
+<circle cx="132" cy="2424" r="28"/>
+<text text-anchor="middle" x="132" y="2428">
+<tspan class='head'>(</tspan> ͡&apos;◟◯ ͡&apos;<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="160" y="2428">
+╯ 
+</text>
+<text text-anchor="end" x="112" y="2524">
+ 
+</text>
+<circle cx="144" cy="2520" r="32"/>
+<text text-anchor="middle" x="144" y="2524">
+<tspan class='head'>(</tspan>° ~͜ʖ~ °<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="176" y="2524">
+ 
+</text>
+<text text-anchor="end" x="224" y="2524">
+ 乁
+</text>
+<circle cx="248" cy="2520" r="24"/>
+<text text-anchor="middle" x="248" y="2524">
+<tspan class='head'>(</tspan> ◔ ౪◔<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="272" y="2524">
+ㄏ
+</text>
+<text text-anchor="end" x="176" y="2620">
+ 
+</text>
+<circle cx="204" cy="2616" r="28"/>
+<text text-anchor="middle" x="204" y="2620">
+<tspan class='head'>(</tspan> ﾉ ﾟｰﾟ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="232" y="2620">
+ﾉ
+</text>
+<text text-anchor="end" x="168" y="2668">
+ ヽ
+</text>
+<circle cx="192" cy="2664" r="24"/>
+<text text-anchor="middle" x="192" y="2668">
+<tspan class='head'>(</tspan>ﾟｰﾟヽ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="216" y="2668">
+
+</text>
+<text text-anchor="end" x="192" y="2716">
+ 
+</text>
+<circle cx="216" cy="2712" r="24"/>
+<text text-anchor="middle" x="216" y="2716">
+<tspan class='head'>(</tspan>☢益☢t<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="240" y="2716">
+
+</text>
+<text text-anchor="end" x="192" y="2764">
+ 
+</text>
+<circle cx="208" cy="2760" r="16"/>
+<text text-anchor="middle" x="208" y="2764">
+<tspan class='head'>(</tspan>╯▽╰<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="224" y="2764">
+╭
+</text>
+<text text-anchor="end" x="104" y="2812">
+ ╮
+</text>
+<circle cx="120" cy="2808" r="16"/>
+<text text-anchor="middle" x="120" y="2812">
+<tspan class='head'>(</tspan>╯ل͜╰<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="2812">
+╭ 
+</text>
+<text text-anchor="end" x="96" y="2860">
+ 
+</text>
+<circle cx="120" cy="2856" r="24"/>
+<text text-anchor="middle" x="120" y="2860">
+<tspan class='head'>(</tspan>ι´Д｀<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="2860">
+ﾉ 
+</text>
+<text text-anchor="end" x="208" y="2860">
+ [̲̅$̲̅
+</text>
+<circle cx="244" cy="2856" r="36"/>
+<text text-anchor="middle" x="244" y="2860">
+<tspan class='head'>(</tspan>̲̅ヽ̲̅༼̲̅ຈ̲̅ل͜ຈ̲̅༽̲̅ﾉ̲̅<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="280" y="2860">
+̲̅$̲̅]
+</text>
+<text text-anchor="end" x="96" y="2988">
+ 
+</text>
+<circle cx="120" cy="2984" r="24"/>
+<text text-anchor="middle" x="120" y="2988">
+<tspan class='head'>(</tspan>＾◡＾<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="2988">
+っ 
+</text>
+<text text-anchor="end" x="96" y="3084">
+ 
+</text>
+<circle cx="120" cy="3080" r="24"/>
+<text text-anchor="middle" x="120" y="3084">
+<tspan class='head'>(</tspan>͡◔ ͜ʖ ͡◔<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="3084">
+ 
+</text>
+<text text-anchor="end" x="144" y="3132">
+ ─=≡Σ((
+</text>
+<circle cx="172" cy="3128" r="28"/>
+<text text-anchor="middle" x="172" y="3132">
+<tspan class='head'>(</tspan> つ◕ل͜◕<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="200" y="3132">
+つ 
+</text>
+<text text-anchor="end" x="248" y="3132">
+ 
+</text>
+<circle cx="280" cy="3128" r="32"/>
+<text text-anchor="middle" x="280" y="3132">
+<tspan class='head'>(</tspan>∩ ͡° ͜ʖ ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="312" y="3132">
+⊃━☆ﾟ. 
+</text>
+<text text-anchor="end" x="176" y="3276">
+ 
+</text>
+<circle cx="200" cy="3272" r="24"/>
+<text text-anchor="middle" x="200" y="3276">
+<tspan class='head'>(</tspan>ง⌐□ل͜□<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="224" y="3276">
+ง
+</text>
+<text text-anchor="end" x="96" y="3372">
+ 
+</text>
+<circle cx="120" cy="3368" r="24"/>
+<text text-anchor="middle" x="120" y="3372">
+<tspan class='head'>(</tspan> ° ͜ʖ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="3372">
+ 
+</text>
+<text text-anchor="end" x="96" y="3420">
+ 
+</text>
+<circle cx="116" cy="3416" r="20"/>
+<text text-anchor="middle" x="116" y="3420">
+<tspan class='head'>(</tspan>~˘▾˘<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="3420">
+~ 
+</text>
+<text text-anchor="end" x="192" y="3468">
+ 
+</text>
+<circle cx="216" cy="3464" r="24"/>
+<text text-anchor="middle" x="216" y="3468">
+<tspan class='head'>(</tspan>☞ﾟヮﾟ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="240" y="3468">
+☞
+</text>
+<text text-anchor="end" x="232" y="3516">
+ /╲/\╭
+</text>
+<circle cx="276" cy="3512" r="44"/>
+<text text-anchor="middle" x="276" y="3516">
+<tspan class='head'>(</tspan> ͡° ͡° ͜ʖ ͡° ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="320" y="3516">
+╮/\╱\
+</text>
+<text text-anchor="end" x="96" y="3564">
+ 
+</text>
+<circle cx="116" cy="3560" r="20"/>
+<text text-anchor="middle" x="116" y="3564">
+<tspan class='head'>(</tspan>ﾉಠ_ಠ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="3564">
+ﾉ 
+</text>
+<text text-anchor="end" x="192" y="3564">
+ └
+</text>
+<circle cx="208" cy="3560" r="16"/>
+<text text-anchor="middle" x="208" y="3564">
+<tspan class='head'>(</tspan>°ᴥ°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="224" y="3564">
+┘
+</text>
+<text text-anchor="end" x="200" y="3612">
+ ლ
+</text>
+<circle cx="232" cy="3608" r="32"/>
+<text text-anchor="middle" x="232" y="3612">
+<tspan class='head'>(</tspan>́◉◞౪◟◉‵ლ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="264" y="3612">
+
+</text>
+<text text-anchor="end" x="96" y="3708">
+ 
+</text>
+<circle cx="128" cy="3704" r="32"/>
+<text text-anchor="middle" x="128" y="3708">
+<tspan class='head'>(</tspan>ง ͠° ͟ل͜ ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="160" y="3708">
+ง 
+</text>
+<text text-anchor="end" x="96" y="3852">
+ 
+</text>
+<circle cx="124" cy="3848" r="28"/>
+<text text-anchor="middle" x="124" y="3852">
+<tspan class='head'>(</tspan> ͡° ͜ʖ ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="3852">
+ 
+</text>
+<text text-anchor="end" x="112" y="3948">
+ ヽ
+</text>
+<circle cx="136" cy="3944" r="24"/>
+<text text-anchor="middle" x="136" y="3948">
+<tspan class='head'>(</tspan> ͝° ͜ʖ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="160" y="3948">
+ﾉ 
+</text>
+<text text-anchor="end" x="216" y="3948">
+ 
+</text>
+<circle cx="236" cy="3944" r="20"/>
+<text text-anchor="middle" x="236" y="3948">
+<tspan class='head'>(</tspan>&apos;ºل͟º<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="256" y="3948">
+ノ⌒.
+</text>
+<text text-anchor="end" x="112" y="3996">
+ [̲̅$̲̅
+</text>
+<circle cx="140" cy="3992" r="28"/>
+<text text-anchor="middle" x="140" y="3996">
+<tspan class='head'>(</tspan>̲̅ ͡° ͜ʖ ͡°̲̅<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="168" y="3996">
+̲̅$̲̅] 
+</text>
+<text text-anchor="end" x="104" y="4044">
+ ᕕ
+</text>
+<circle cx="120" cy="4040" r="16"/>
+<text text-anchor="middle" x="120" y="4044">
+<tspan class='head'>(</tspan> ᐛ <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="4044">
+ᕗ 
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Faces
+
+Spongedown supports a wide variety of faces.
+You can copy and paste the faces too.
+
+```comic
+
+            ٩(̾●̮̮̃ ̾•̃̾)۶  o͡͡͡╮( ʘ̆ ۝ ʘ̆ )╭o͡
+
+            ७(,⊙–⊙,)७  o͡͡͡╮(•ʖ̯•)╭o͡͡͡
+
+            (°□°)  ¯\_( ツ)_/¯ 
+
+            ヽ(。°)ノ ヾ(ｏ･ω･)ﾉ
+
+            ╾━╤デ╦︻༼ಠ益ಠ༽︻╦̵̵͇̿̿̿̿══╤─
+
+
+            (˙ ͜ʟ˙ ) (つ°ヮ°)つ 
+
+
+            ⎝༼ຈل͜ຈ༽⎠   (╯°□°] ╯︵ ┬─┻
+
+
+            (⊙ヮ⊙)   ༼⊙ʖ̯⊙༽
+
+
+            ༼⌐□ل͜□༽ ง/͠-┌ل͜┐͡-\ง
+
+
+            ヽ( ͝° ̯ʖ ͝°)ﾉ ᶘ ͡°ᴥ͡°ᶅ   ( ͡⚆ل͜⚆)ﾉ⚲
+
+
+            ᗜԅ(⇀︿⇀)ᓄ-¤]═────   ✿∗˵╰༼✪ᗜ✪༽╯˵∗✿
+
+
+            (つ･◡･)つ    ᕦ(눈_눈)ᕗ
+
+
+            (⌐▀͡ ̯ʖ▀)   ζ༼Ɵ͆ل͜Ɵ͆༽ᶘ
+
+
+            ヽ( ⌐□益□)/    (▀̿̿Ĺ̯̿̿▀̿ ̿)
+
+
+            ⋋|།'͡ᴼ╭͜ʖ╮͡ᴼ'།|⋌    [•+•]=|:::>
+
+
+            ╰༼◉Д◕༽〜┣▇▇▇═──   ╰༼ཀДཀ༽╯
+
+
+            ԅ〳 ͜ಠ ͜ʟ ͜ಠ 〵و   -[ºل͟º]-
+
+
+            -[ ͡° ͜ʖ ͡°]-   [ ͝° ͜ʖ͡°]
+
+
+            ( ° ͜ʖ͡°)   └[ຈل͜ರೃ]┘
+
+
+            (●￣ ㋓ ￣●)   /╯⋋┏□┓⋌\╯
+
+
+            ヽ/⋋┏_┓⋌\ﾉ  ヽ/✿ര̀ ل͜ ര́\ﾉ
+
+
+            ヽ/❀ᓀ ل͜ ᓂ\ﾉ   ୧༼ ͡◕ д ◕͡ ༽୨
+
+
+            ヽ(ಥ益ಥ;)   ╭( ☯̿∠ ̿☯ )╯
+
+
+            Ѱ୧(ಠل͟ ಠ)   Ѱへ(ಠل͟ ಠ)
+
+
+            ⁽⁽◝(∗ ❛⃘ ꒫ ❜⃘⃘ ∗)◜⁾⁾  へ[ ᴼ ▃ ᴼ ]_/¯
+
+
+            ヽ(๏∀◕ )ﾉ   ＼(´◓Д◔`)／
+
+
+            ヘ（。□°）ヘ   (- ͟ل͜ ͡-)-(ಠ﹏ಥ)
+
+
+            ʕっ༎ຶᴥ༎ຶʔっ   ╭(•⌣•)╮
+
+
+            ᕦ༼༎ຶ_༎ຶ༽ᕗ    ༼ つ⇧ ◕_◕ ༽つ⇧
+
+
+            ╰(◉͜ʖ◉)ԅ†. * ･ ｡ﾟ    ╭(۝乁 ͜ﾚ ㄏ۝)╮
+
+
+            ༼ ▀̿̿Ĺ̯̿̿▀̿ ༼ ▀̿̿Ĺ̯̿̿▀̿༽▀̿̿Ĺ̯̿̿▀̿ ༽
+
+
+            Ѱ╭(۝⌣۝)╮Ѱ   ヽ༼◐ل͜◑༽ﾉ
+
+
+            <:::::[]=¤༼ຈل͜ຈ༽ﾉ   ༼ °ｰ° ༽
+
+
+            乁(ಥ౪ಥ;)ㄏ   (▀̿̿Ĺ̯̿̿°)ง
+
+
+            ༼ಠ益ಠ༽   ヽヽ༼༼ຈຈل͜ل͜ຈຈ༽༽ﾉﾉ
+
+
+            (っ˘̩╭╮˘̩)っ (⌣_⌣”)
+
+
+
+            ⋛⋋( ՞ਊ ՞)⋌⋚   (｡˘з˘)
+
+
+            ༼ຈل͜ຈ༽_•︻̷┻̿═━一   (▀̿̿Ĺ̯̿̿├┬┴┬┴
+
+
+            ( ͝° ͜ʖ͡°)つY  ヽ( ͡°╭͜ʖ╮͡° )ﾉ
+
+
+            ヽ༼✿σل͜ σ༽ﾉ /╲/( ͡⎚ ͜U ͡⎚)/\╱\
+
+
+            ( ͡⚆ ͜ʖ ͡⚆)   ヽ༼⚆ل͜⚆༽ﾉ
+
+
+            ( ͡ _ ͡°)ﾉ⚲   ♫ ┌༼ຈل͜ຈ༽┘ ♪
+
+
+            ( ಠ⌣ಠ) 
+
+
+            ༼ ಥل͟ಥ ༽ ┬┴┬┴┤ ༼ຈل͜├┬┴┬┴ 
+
+
+            ༼ ಠل͟ಠ༽ ᕕ༼ຈل͜ຈ༽ᕗ
+
+
+            ᕕ( ͡° ͜ʖ ͡°)ᕗ  ༼ง ͠ຈ ͟ل͜ ͠ຈ༽ง
+
+
+            |༼ʘ ل͜ ʘ༽|  ヽ༼◕ل͜◕༽ﾉ
+
+
+            ζ༼Ɵ͆ل͜Ɵ͆༽ᶘ  (° ͜ʖ°)
+
+
+            ヽ༼ ツ ༽ﾉ  （͡°͜ʖ͡°）
+
+
+            (╯°□°)╯︵ ┻━┻
+
+
+            ༼ʕっ•ᴥ•ʔっ ( ＾◡＾)っ✂
+
+
+            ╰( ͡'◟◯ ͡')╯ ヽ༼ ຈل͜ຈ༼ ຈل͜ຈ༽ຈل͜ຈ ༽ﾉ
+
+
+            ༼ - ل͜ - ༽ ヽ° ~͜ʖ~ °ﾉ
+
+
+            ᕙ (° ~͜ʖ~ °) ᕗ 乁( ◔ ౪◔)ㄏ
+
+
+            ༼ つ ◕_◕ ༽つ ヽ༼ຈل͜ರೃ༽ﾉ
+
+
+            ୧༼ಠ益ರೃ༽୨ ( ﾉ ﾟｰﾟ)ﾉ
+
+
+            ヽຈل͜ຈﾉ ヽ(ﾟｰﾟヽ)
+
+
+            ヽ༼ຈ益ຈ༽ﾉ   (☢益☢t)
+
+
+            ༼ᕗຈل͜ຈ༽ᕗ ╮   (╯▽╰)╭
+
+
+            ╮(╯ل͜╰)╭    ༼ つ◕(oo)◕༽つ
+
+
+            (ι´Д｀)ﾉ    [̲̅$̲̅(̲̅ヽ̲̅༼̲̅ຈ̲̅ل͜ຈ̲̅༽̲̅ﾉ̲̅)̲̅$̲̅]
+
+
+
+
+            ༼ ͠ຈ ͟ل͜ ͠ຈ༽ง ヽ༼ຈل͜ຈ༽ﾉ☂
+
+
+            (＾◡＾)っ   ༼☯﹏☯༽
+
+
+            ヽ༼ ☭ل͜☭ ༽ﾉ   ♌༼✪ل͜✪༽ᕤ
+
+
+            (͡◔ ͜ʖ ͡◔)   ヽ༼ʘ̚ل͜ʘ̚༽ﾉ
+
+
+            ─=≡Σ((( つ◕ل͜◕)つ   (∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ. * ･ ｡ﾟ,
+
+
+            ༼ຈل͜ຈ༽>ง    ᕙ༼◕ل͜◕༽ᕗ
+
+
+            ヽ༼ຈل͜ຈ༽ﾉ︵┻━┻    ୧༼ ͡◉ل͜ ͡◉༽୨
+
+
+            ༼ ͡■ل͜ ͡■༽   (ง⌐□ل͜□)ง
+
+
+            Ѱζ༼ᴼل͜ᴼ༽ᶘѰ   ヽ༼ຈل͜ຈ༽ง
+
+
+            ( ° ͜ʖ͡°)   ɳ༼ຈل͜ຈ༽ɲ
+
+
+            (~˘▾˘)~   ʕ•ᴥ•ʔ
+
+
+            ヽຈل͜ﾉ༼ຈ     (☞ﾟヮﾟ)☞
+
+
+            ୧༼ಠ益ಠ༽୨    /╲/\╭( ͡° ͡° ͜ʖ ͡° ͡°)╮/\╱\
+
+
+            (ﾉಠ_ಠ)ﾉ    └(°ᴥ°)┘
+
+
+            つ◕ل͜◕)つ    ლ(́◉◞౪◟◉‵ლ)
+
+
+            ヽ༼♥ل͜♥༽ﾉ    ༼ ᓄºل͟º ༽ᓄ
+
+
+            (ง ͠° ͟ل͜ ͡°)ง   ヽ༼ຈل͜ຈ༽ﾉ
+
+
+            ᕦ༼ຈل͜ຈ༽ᕤ     ┌༼ຈل͜ຈ༽┐
+
+
+            ᕙ༼ຈل͜ຈ༽ᕗ     ヽ༼>ل͜<༽ﾉ
+
+
+            ( ͡° ͜ʖ ͡°)   ヽ༼@ل͜ຈ༽ﾉ
+
+
+            ༼ ºل͟º༼ ºل͟º༽ºل͟º ༽
+
+
+            ヽ( ͝° ͜ʖ͡°)ﾉ     ('ºل͟º)ノ⌒.
+
+
+            [̲̅$̲̅(̲̅ ͡° ͜ʖ ͡°̲̅)̲̅$̲̅]     O͡͡͡͡͡͡͡͡͡͡͡͡͡͡╮༼;´༎ຶ.̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̨̨̨̨̨̨̨̨̨̨̨̨.̸̸̨̨۝ ༎ຶ༽╭o͡͡͡͡͡͡͡͡͡͡͡͡͡͡
+
+
+            ᕕ( ᐛ )ᕗ 
+
+```
+
+{{#playpen Faces.md}}
+
+#}</code></pre></pre>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Speech_baloon.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Lines_and_Intersections.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Speech_baloon.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Lines_and_Intersections.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

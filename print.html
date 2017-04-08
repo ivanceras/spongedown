@@ -1,0 +1,3871 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Diagrams - Spongedown</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the features and capabilities of Spongedown">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'coal'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Spongedown.html"><strong></strong> Spongedown</a></li><li><ul class="section"><li><a href="Basic_shapes.html"><strong></strong> Basic Shapes</a></li><li><a href="Arrows.html"><strong></strong> Arrows</a></li><li><a href="Brackets.html"><strong></strong> Brackets</a></li><li><a href="Speech_baloon.html"><strong></strong> Speech Baloon</a></li><li><a href="Faces.html"><strong></strong> Faces</a></li><li><a href="Lines_and_Intersections.html"><strong></strong> Lines and Intersections</a></li></ul></li><li><a href="Complex_shapes.html"><strong></strong> Complex Shapes</a></li><li><ul class="section"><li><a href="complex/comics.html"><strong></strong> Comics</a></li><li><a href="complex/Ascii_art.html"><strong></strong> Ascii art</a></li><li><a href="complex/Graphs.html"><strong></strong> Graphs</a></li><li><a href="complex/Diagrams.html"><strong></strong> Diagrams</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Spongedown</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="print.html#spongedown" id="spongedown"><h1>Spongedown</h1></a>
+<p><a href="https://github.com/ivanceras/spongedown">Spongedown</a> is a wraps of markdown with
+to multiple funky features added.</p>
+<p>Funky features:</p>
+<ul>
+<li><a href="https://github.com/ivanceras/svgbobrus/">bob</a> diagrams</li>
+<li>csv</li>
+<li>comic/emoji faces</li>
+</ul>
+<p>Wouldn't it be just cool if you could just incorporate
+equations, diagrams and comics together with markdown.</p>
+<svg font-family="arial" font-size="14" height="736" width="920" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 412 24 L 412 64 M 412 24 L 456 24 M 416 24 L 456 24 M 460 24 L 460 64 M 456 24 L 512 24 M 464 24 L 512 24 M 516 24 L 516 64 M 516 24 L 512 24 M 360 48 L 362 44 M 368 40 A 8 8 0 0 0 362 44 M 412 32 L 412 64 M 424 40 L 412 40 M 424 40 L 460 40 M 460 32 L 460 64 M 472 40 L 460 40 M 472 40 L 516 40 M 516 32 L 516 64 M 424 56 L 412 56 M 424 56 L 460 56 M 472 56 L 460 56 M 472 56 L 516 56 M 412 72 L 412 64 M 412 72 L 456 72 M 416 72 L 456 72 M 460 72 L 460 64 M 456 72 L 512 72 M 464 72 L 512 72 M 516 72 L 516 64 M 516 72 L 512 72 M 488 88 A 4 4 0 0 0 484 92 M 488 88 L 504 88 M 508 92 L 508 208 M 508 92 A 4 4 0 0 0 504 88 M 508 96 L 508 208 M 20 140 L 20 160 M 24 136 A 4 4 0 0 0 20 140 M 24 136 L 80 136 M 84 140 L 84 160 M 84 140 A 4 4 0 0 0 80 136 M 416 136 A 4 4 0 0 0 412 140 L 412 144 M 424 136 A 16 16 0 0 0 416 136 M 428 140 A 4 4 0 0 0 424 136 M 428 140 L 428 144 M 448 136 A 4 4 0 0 0 444 140 L 444 144 M 456 136 A 16 16 0 0 0 448 136 M 460 140 A 4 4 0 0 0 456 136 M 460 140 L 460 144 M 480 136 A 4 4 0 0 0 476 140 L 476 144 M 488 136 A 16 16 0 0 0 480 136 M 492 140 A 4 4 0 0 0 488 136 M 492 140 L 492 144 M 20 144 L 20 160 M 84 144 L 84 160 M 96 152 L 84 152 M 104 160 L 102 156 A 8 8 0 0 0 96 152 M 380 156 L 380 192 M 384 152 A 4 4 0 0 0 380 156 M 412 148 A 4 4 0 0 0 416 152 M 412 144 L 412 148 M 416 152 L 424 152 A 4 4 0 0 0 428 148 M 428 144 L 428 148 M 444 148 A 4 4 0 0 0 448 152 M 444 144 L 444 148 M 448 152 L 456 152 A 4 4 0 0 0 460 148 M 460 144 L 460 148 M 476 148 A 4 4 0 0 0 480 152 M 476 144 L 476 148 M 480 152 L 488 152 A 4 4 0 0 0 492 148 M 492 144 L 492 148 M 20 160 L 20 164 A 4 4 0 0 0 24 168 L 80 168 M 84 160 L 84 164 M 80 168 A 4 4 0 0 0 84 164 M 104 160 L 128 208 M 312 176 L 314 172 M 320 168 A 8 8 0 0 0 314 172 M 380 160 L 380 192 M 452 160 L 452 176 M 472 176 L 480 160 M 452 176 L 452 184 L 464 208 M 452 184 L 448 192 M 4 204 L 4 224 M 8 200 A 4 4 0 0 0 4 204 M 8 200 L 104 200 M 108 204 L 108 224 M 108 204 A 4 4 0 0 0 104 200 M 380 204 L 380 192 M 380 204 A 4 4 0 0 0 384 208 L 440 208 L 448 192 M 456 192 L 464 208 L 508 208 M 4 208 L 4 224 M 108 208 L 108 224 M 120 216 L 108 216 M 120 216 L 128 216 M 130 216 L 128 216 M 134 220 A 8 8 0 0 0 130 216 M 440 208 L 448 224 M 456 224 L 464 208 M 4 224 L 4 228 A 4 4 0 0 0 8 232 L 104 232 M 108 224 L 108 228 M 104 232 A 4 4 0 0 0 108 228 M 448 224 L 450 228 M 454 228 L 464 208 M 450 228 A 3 3 0 0 0 454 228 M 456 232 L 480 232 M 496 240 L 528 240 M 160 256 L 216 256 M 256 256 L 360 48 M 488 256 L 496 240 M 504 256 L 488 256 M 504 256 L 520 256 L 528 240 M 4 268 L 4 288 M 8 264 A 4 4 0 0 0 4 268 M 8 264 L 72 264 M 76 268 L 76 288 M 76 268 A 4 4 0 0 0 72 264 M 216 256 L 232 288 M 224 264 L 248 264 M 254 260 L 360 48 M 248 264 A 8 8 0 0 0 254 260 M 264 272 L 312 176 M 4 272 L 4 288 M 76 272 L 76 288 M 88 280 L 76 280 M 144 288 L 160 256 M 232 280 L 256 280 L 272 280 M 262 276 L 312 176 M 256 280 A 8 8 0 0 0 262 276 M 264 280 L 272 280 M 280 288 L 278 284 A 8 8 0 0 0 272 280 M 4 288 L 4 292 A 4 4 0 0 0 8 296 L 72 296 M 76 288 L 76 292 M 72 296 A 4 4 0 0 0 76 292 M 120 304 L 122 300 M 128 296 A 8 8 0 0 0 122 300 M 144 288 L 160 320 M 232 296 L 264 296 M 272 304 L 270 300 A 8 8 0 0 0 264 296 M 280 288 L 296 320 M 400 304 L 402 300 M 406 300 L 416 320 M 406 300 A 3 3 0 0 0 402 300 M 432 288 L 448 320 M 456 304 L 458 300 M 464 296 A 8 8 0 0 0 458 300 M 472 296 A 16 16 0 0 0 464 296 M 480 304 L 478 300 A 8 8 0 0 0 472 296 M 128 320 L 130 316 M 136 312 A 8 8 0 0 0 130 316 M 160 320 L 216 320 L 232 288 M 224 312 L 232 312 M 240 320 L 238 316 A 8 8 0 0 0 232 312 M 272 304 L 328 416 M 380 304 L 380 320 M 392 320 L 380 320 M 392 320 L 400 304 M 408 304 L 416 320 L 432 288 M 448 320 L 456 304 M 480 304 L 488 320 M 4 332 L 4 352 M 8 328 A 4 4 0 0 0 4 332 M 8 328 L 72 328 M 76 332 L 76 352 M 76 332 A 4 4 0 0 0 72 328 M 104 336 L 120 304 M 240 320 L 336 512 M 296 320 L 298 324 A 8 8 0 0 0 304 328 M 380 328 L 380 320 M 4 336 L 4 352 M 76 336 L 76 352 M 88 344 L 76 344 M 88 344 L 96 344 M 102 340 L 120 304 M 96 344 A 8 8 0 0 0 102 340 M 4 352 L 4 356 A 4 4 0 0 0 8 360 L 72 360 M 76 352 L 76 356 M 72 360 A 4 4 0 0 0 76 356 M 380 360 L 380 496 M 380 360 L 480 360 M 384 360 L 480 360 M 484 360 L 484 384 M 484 360 L 480 360 M 96 384 L 128 320 M 380 368 L 380 496 M 416 376 A 16 16 0 0 0 406 384 M 416 376 L 456 376 M 466 384 A 16 16 0 0 0 456 376 M 484 368 L 484 384 M 28 396 L 28 416 M 32 392 A 4 4 0 0 0 28 396 M 32 392 L 112 392 M 116 396 L 116 416 M 116 396 A 4 4 0 0 0 112 392 M 406 384 A 16 16 0 0 0 406 400 M 466 400 A 16 16 0 0 0 466 384 M 484 384 L 484 512 M 484 392 L 584 392 M 488 392 L 584 392 M 588 392 L 588 512 M 588 392 L 584 392 M 28 400 L 28 416 M 116 400 L 116 416 M 406 400 A 16 16 0 0 0 416 408 L 424 408 M 424 416 L 426 412 A 4 4 0 0 0 424 408 M 448 408 L 440 416 M 448 408 L 456 408 A 16 16 0 0 0 466 400 M 484 400 L 484 512 M 512 408 A 16 16 0 0 0 502 416 M 512 408 L 552 408 M 562 416 A 16 16 0 0 0 552 408 M 588 400 L 588 512 M 28 416 L 28 420 A 4 4 0 0 0 32 424 L 112 424 M 116 416 L 116 420 M 112 424 A 4 4 0 0 0 116 420 M 328 416 L 330 420 A 8 8 0 0 0 336 424 M 432 424 L 424 432 M 440 416 L 432 424 M 502 416 A 16 16 0 0 0 502 432 M 562 432 A 16 16 0 0 0 562 416 M 408 448 L 424 416 M 424 432 L 408 448 M 502 432 A 16 16 0 0 0 512 440 L 520 440 L 560 480 M 544 448 L 542 444 M 544 440 A 4 4 0 0 0 542 444 M 544 440 L 552 440 A 16 16 0 0 0 562 432 M 544 448 L 560 480 M 380 504 L 380 496 M 380 504 L 484 504 M 384 504 L 484 504 M 336 512 L 338 516 A 8 8 0 0 0 344 520 L 360 520 M 368 528 L 366 524 A 8 8 0 0 0 360 520 M 484 520 L 484 512 M 484 520 L 584 520 M 488 520 L 584 520 M 588 520 L 588 512 M 588 520 L 584 520 M 480 552 A 16 16 0 0 0 470 560 M 480 552 L 488 552 M 536 552 L 544 552 M 554 560 A 16 16 0 0 0 544 552 M 352 576 L 376 576 M 392 576 L 404 576 M 456 568 A 16 16 0 0 0 446 576 M 456 568 L 464 568 M 560 568 L 568 568 M 578 576 A 16 16 0 0 0 568 568 M 352 592 L 376 592 M 388 576 L 388 608 M 404 576 L 404 608 M 446 576 A 16 16 0 0 0 446 592 M 632 592 L 712 592 M 344 608 L 352 592 M 368 608 L 376 592 M 392 608 L 404 608 M 446 592 A 16 16 0 0 0 456 600 L 464 600 M 568 600 L 576 600 M 632 608 L 640 608 M 664 608 L 680 608 M 470 608 A 16 16 0 0 0 480 616 L 488 616 M 528 616 L 536 616 M 536 624 L 544 640 M 600 640 L 588 640 M 600 640 L 628 640 M 656 640 L 644 640 M 656 640 L 668 640 M 544 640 L 546 644 A 8 8 0 0 0 552 648 M 588 640 L 588 672 M 628 640 L 628 672 M 644 640 L 644 688 M 668 640 L 668 688 M 600 672 L 588 672 M 600 672 L 628 672 M 584 688 L 592 672 M 616 688 L 624 672 M 656 688 L 644 688 M 656 688 L 668 688" fill="none"/>
+<path d=" M 640 608 L 664 608 M 680 608 L 704 608" fill="none" stroke-dasharray="3 3"/>
+<line marker-end="url(#triangle)" x1="368" x2="396" y1="40" y2="40"/>
+<line marker-end="url(#triangle)" x1="484" x2="484" y1="92" y2="128"/>
+<line marker-end="url(#triangle)" x1="484" x2="484" y1="96" y2="128"/>
+<line marker-end="url(#triangle)" x1="384" x2="404" y1="152" y2="152"/>
+<line marker-end="url(#triangle)" x1="320" x2="364" y1="168" y2="168"/>
+<line marker-end="url(#triangle)" x1="424" x2="436" y1="160" y2="184"/>
+<line marker-end="url(#triangle)" x1="472" x2="468" y1="176" y2="184"/>
+<line marker-end="url(#triangle)" x1="128" x2="148" y1="208" y2="248"/>
+<line marker-end="url(#triangle)" x1="136" x2="148" y1="224" y2="248"/>
+<line marker-end="url(#triangle)" x1="456" x2="476" y1="248" y2="248"/>
+<line marker-end="url(#triangle)" x1="88" x2="140" y1="280" y2="280"/>
+<line marker-end="url(#triangle)" x1="128" x2="140" y1="296" y2="296"/>
+<line marker-end="url(#triangle)" x1="380" x2="380" y1="304" y2="288"/>
+<line marker-end="url(#triangle)" x1="136" x2="148" y1="312" y2="312"/>
+<line marker-end="url(#triangle)" x1="304" x2="364" y1="328" y2="328"/>
+<line marker-end="url(#triangle)" x1="380" x2="492" y1="328" y2="328"/>
+<line marker-end="url(#triangle)" x1="384" x2="492" y1="328" y2="328"/>
+<line marker-end="url(#triangle)" x1="336" x2="364" y1="424" y2="424"/>
+<line marker-end="url(#triangle)" x1="368" x2="380" y1="528" y2="552"/>
+<line marker-end="url(#triangle)" x1="416" x2="436" y1="584" y2="584"/>
+<line marker-end="url(#triangle)" x1="592" x2="620" y1="600" y2="600"/>
+<line marker-end="url(#triangle)" x1="552" x2="580" y1="648" y2="648"/>
+<text x="34" y="156">
+Table
+</text>
+<text x="18" y="220">
+Flowcharts
+</text>
+<text x="450" y="252">
+&apos;
+</text>
+<text x="18" y="284">
+Graphs
+</text>
+<text x="162" y="284">
+Sponge
+</text>
+<text x="170" y="300">
+down
+</text>
+<text x="18" y="348">
+Comics
+</text>
+<text x="42" y="412">
+Diagrams
+</text>
+<text x="490" y="556">
+,(
+</text>
+<text x="522" y="556">
+),
+</text>
+<text x="466" y="572">
+(
+</text>
+<text x="554" y="572">
+)
+</text>
+<text x="346" y="588">
+[
+</text>
+<text x="378" y="588">
+]
+</text>
+<text x="394" y="588">
+=
+</text>
+<text x="578" y="588">
+)
+</text>
+<text x="354" y="604">
+::
+</text>
+<text x="466" y="604">
+(
+</text>
+<text x="554" y="604">
+).
+</text>
+<text x="578" y="604">
+&apos;
+</text>
+<text x="626" y="604">
+[
+</text>
+<text x="706" y="604">
+°]
+</text>
+<text x="490" y="620">
+.(
+</text>
+<text x="514" y="620">
+).
+</text>
+<text x="538" y="620">
+&apos;
+</text>
+<text x="650" y="652">
+==
+</text>
+<text x="594" y="684">
+:::
+</text>
+<text text-anchor="end" x="400" y="476">
+ ٩
+</text>
+<circle cx="416" cy="472" r="16"/>
+<text text-anchor="middle" x="416" y="476">
+<tspan class='head'>(</tspan>̾●̮̮̃ ̾•̃̾<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="432" y="476">
+۶ 
+</text>
+<text text-anchor="end" x="512" y="508">
+ 
+</text>
+<circle cx="536" cy="504" r="24"/>
+<text text-anchor="middle" x="536" y="508">
+<tspan class='head'>(</tspan>,⊙–⊙,<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="560" y="508">
+७ 
+</text>
+</svg>
+<p>Support for table works as is.</p>
+<p>Support for mathjax formula also works (inherited from mdbook)</p>
+<p>\[ \int x = \frac{x^2}{2} \]</p>
+<p>\[ \mu = \frac{1}{N} \sum_{i=0} x_i \]</p>
+<p>Tables are supported as commonly markdown implementation does.</p>
+<table><thead><tr><th>  中文处理 </th><th> Data  </th><th>   CJK      </th></tr></thead><tbody>
+<tr><td><strong>Table</strong>  </td><td> <code>are</code> </td><td> supported  </td></tr>
+<tr><td> as        </td><td> well  </td><td>            </td></tr>
+</tbody></table>
+<p>CSV data are rendered as tables</p>
+<table><thead><tr><th>foo</th><th>bar</th><th>baz</th></tr></thead></thead><tbody><tr><td>apple</td><td>banana</td><td>carrots</td></tr><tr><td>rust</td><td>haskel</td><td>c</td></tr></tbody></table>
+<p>The code used in writing this book is hosted in github
+<a href="https://github.com/ivanceras/Books/tree/master/spongedown_book">here</a>
+and the source code used for generating the book is in
+<a href="https://github.com/ivanceras/aklat">here</a></p>
+<p>The following is the code for the page</p>
+<pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+# Spongedown
+
+[Spongedown](https://github.com/ivanceras/spongedown) is a wraps of markdown with
+to multiple funky features added.
+
+Funky features:
+* [bob](https://github.com/ivanceras/svgbobrus/) diagrams
+* csv
+* comic/emoji faces
+
+Wouldn't it be just cool if you could just incorporate
+equations, diagrams and comics together with markdown.
+
+
+```comic
+
+                                                   +-----+------+
+                                             .---> |-----|------|
+                                            /      |-----|------|
+                                           /       +-----+------+
+                                          /                 .--.
+                                         /                  |  |
+                                        /                   v  |
+  .-------.                            /           .-. .-. .-. |
+  | Table |-.                         /        .-->'-' '-' '-' |
+  '-------'  \                       / .-----> |     \  |  /   |
+              \                     / /        |      v . v    |
+.------------. \                   / /         '_______/ \_____|
+| Flowcharts |--.                 / /                  \ /
+'------------'   \               / /                    '---  ____
+                  v _______     / /                     '--> /___/
+.--------.         /       \---' /                          
+| Graphs |------->/ Sponge  \---'-.
+'--------'     .->\  down   /----. \           ^  .  /\  .-.
+              / .->\_______/-.    \ \          |_/ \/  \/   \
+.--------.   / /              \    \ `-------> +------------->
+| Comics |--' /                \    \
+'--------'   /                  \    \         +------------+
+            /                    \    \        |   .-----.  |
+   .----------.                   \    \       |  (       ) +------------+
+   | Diagrams |                    \    \      |   `-, .-'  |  .-----.   |
+   '----------'                     \    `---> |    /,'     | (       )  |
+                                     \         |   /'       |  `-. .-'   |
+                                      \        |            |     `.\    |
+                                       \       | ٩(̾●̮̮̃ ̾•̃̾)۶    |       `\   |
+                                        \      |            |            |
+                                         \     +------------|   (,⊙–⊙,)७ |
+                                          `--.              +------------+
+                                              \
+                                               v           .-,(  ),-.    
+                                            ___  _      .-(          )-.                                       
+                                           [___]|=| -->(                )      __________ 
+                                           /::/ |_|     '-(          ).-' --->[_...__...°]
+                                                           '-.( ).-'                         
+                                                                   \      ____   __ 
+                                                                    '--->|    | |==|
+                                                                         |____| |  | 
+                                                                         /:::/  |__|
+
+```
+Support for table works as is.
+
+
+Support for mathjax formula also works (inherited from mdbook)
+
+
+\\[ \int x = \frac{x^2}{2} \\]
+
+\\[ \mu = \frac{1}{N} \sum_{i=0} x_i \\]
+
+
+Tables are supported as commonly markdown implementation does.
+
+|  中文处理 | Data  |   CJK      |
+|-----------|-------|------------|
+|**Table**  | `are` | supported  |
+| as        | well  |            |
+
+CSV data are rendered as tables
+
+```csv
+foo,bar,baz
+apple,banana,carrots
+rust,haskel,c
+```
+
+
+
+The code used in writing this book is hosted in github 
+[here](https://github.com/ivanceras/Books/tree/master/spongedown_book)
+and the source code used for generating the book is in 
+[here](https://github.com/ivanceras/aklat)
+
+The following is the code for the page
+
+{{#playpen Spongedown.md}}
+
+- [Basic shapes](Basic_shapes.html)
+- [Complex shapes](Comples_shapes.html)
+
+#}</code></pre></pre>
+<ul>
+<li><a href="Basic_shapes.html">Basic shapes</a></li>
+<li><a href="Comples_shapes.html">Complex shapes</a></li>
+</ul>
+<a class="header" href="print.html#basic-shapes" id="basic-shapes"><h2>Basic Shapes</h2></a>
+<p>Spongedown allows you to draw basic shapes</p>
+<svg font-family="arial" font-size="14" height="1808" width="456" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 64 8 A 16 16 0 0 0 54 16 M 72 8 A 16 16 0 0 0 64 8 M 82 16 A 16 16 0 0 0 72 8 M 54 16 A 16 16 0 0 0 54 32 M 82 32 A 16 16 0 0 0 82 16 M 54 32 A 16 16 0 0 0 64 40 A 16 16 0 0 0 72 40 A 16 16 0 0 0 82 32 M 64 88 A 16 16 0 0 0 54 96 M 64 88 L 112 88 M 122 96 A 16 16 0 0 0 112 88 M 54 96 A 16 16 0 0 0 54 112 M 122 112 A 16 16 0 0 0 122 96 M 54 112 A 16 16 0 0 0 64 120 L 112 120 A 16 16 0 0 0 122 112 M 64 192 L 52 192 M 64 192 L 124 192 M 52 192 L 52 208 M 64 208 L 52 208 M 64 208 L 124 208 M 124 192 L 124 208 M 60 232 L 60 256 M 60 232 L 288 232 M 64 232 L 288 232 M 292 232 L 292 256 M 292 232 L 288 232 M 60 240 L 60 256 M 292 240 L 292 256 M 60 264 L 60 256 M 60 264 L 288 264 M 64 264 L 288 264 M 292 264 L 292 256 M 292 264 L 288 264 M 60 296 L 60 368 M 60 296 L 88 296 M 64 296 L 88 296 M 92 296 L 92 368 M 92 296 L 88 296 M 60 304 L 60 368 M 92 304 L 92 368 M 60 376 L 60 368 M 60 376 L 88 376 M 64 376 L 88 376 M 92 376 L 92 368 M 92 376 L 88 376 M 60 412 L 60 432 M 64 408 A 4 4 0 0 0 60 412 M 64 408 L 120 408 M 124 412 L 124 432 M 124 412 A 4 4 0 0 0 120 408 M 60 416 L 60 432 M 124 416 L 124 432 M 60 432 L 60 436 A 4 4 0 0 0 64 440 L 120 440 M 124 432 L 124 436 M 120 440 A 4 4 0 0 0 124 436 M 64 488 A 4 4 0 0 0 60 492 L 60 496 M 64 488 L 168 488 M 172 492 A 4 4 0 0 0 168 488 M 172 492 L 172 496 M 60 500 A 4 4 0 0 0 64 504 M 60 496 L 60 500 M 64 504 L 168 504 A 4 4 0 0 0 172 500 M 172 496 L 172 500 M 64 544 L 128 544 M 40 592 L 64 544 M 56 592 L 40 592 M 56 592 L 104 592 L 128 544 M 64 624 L 128 624 M 64 624 L 72 640 L 136 640 M 128 624 L 136 640 M 64 672 L 128 672 M 64 672 L 88 720 M 128 672 L 152 720 M 88 720 L 152 720 M 40 752 L 56 784 M 24 784 L 40 752 M 24 784 L 40 816 L 56 784 M 68 860 L 64 864 M 68 860 L 96 888 M 156 860 L 152 864 M 156 860 L 184 888 M 56 872 L 48 880 M 64 864 L 56 872 M 72 864 L 96 888 M 144 872 L 136 880 M 152 864 L 144 872 M 160 864 L 184 888 M 240 872 L 232 880 M 244 868 L 240 872 M 244 868 L 264 888 M 248 872 L 264 888 M 36 892 L 40 888 M 36 892 L 64 920 M 48 880 L 40 888 M 100 892 L 96 888 M 100 892 L 96 896 M 124 892 L 128 888 M 124 892 L 152 920 M 136 880 L 128 888 M 188 892 L 184 888 M 188 892 L 184 896 M 220 892 L 224 888 M 220 892 L 240 912 M 232 880 L 224 888 M 268 892 L 264 888 M 268 892 L 264 896 M 40 896 L 64 920 M 88 904 L 80 912 M 96 896 L 88 904 M 128 896 L 152 920 M 176 904 L 168 912 M 184 896 L 176 904 M 224 896 L 240 912 M 256 904 L 248 912 M 264 896 L 256 904 M 64 920 L 68 924 L 72 920 M 80 912 L 72 920 M 152 920 L 156 924 L 160 920 M 168 912 L 160 920 M 240 912 L 244 916 L 248 912 M 56 952 A 4 4 0 0 0 52 956 L 52 960 M 64 952 A 16 16 0 0 0 56 952 M 68 956 A 4 4 0 0 0 64 952 M 68 956 L 68 960 M 52 964 A 4 4 0 0 0 56 968 M 52 960 L 52 964 M 56 968 L 64 968 A 4 4 0 0 0 68 964 M 68 960 L 68 964 M 64 1008 L 88 1056 M 40 1056 L 64 1008 M 56 1056 L 40 1056 M 56 1056 L 88 1056 M 64 1088 L 66 1084 M 70 1084 L 96 1136 M 70 1084 A 3 3 0 0 0 66 1084 M 72 1088 L 96 1136 M 40 1136 L 64 1088 M 38 1140 L 64 1088 M 38 1140 A 4 4 0 0 0 40 1144 L 96 1144 M 96 1136 L 98 1140 M 96 1144 A 4 4 0 0 0 98 1140 M 56 1184 L 80 1184 M 48 1200 L 56 1184 M 80 1184 L 88 1200 M 48 1200 L 56 1216 L 80 1216 L 88 1200 M 48 1248 L 96 1248 L 112 1280 M 32 1280 L 48 1248 M 32 1280 L 48 1312 L 96 1312 L 112 1280 M 48 1360 L 184 1360 L 200 1392 M 32 1392 L 48 1360 M 32 1392 L 48 1424 L 184 1424 L 200 1392 M 24 1472 L 26 1468 M 32 1464 A 8 8 0 0 0 26 1468 M 32 1464 L 136 1464 M 144 1472 L 142 1468 A 8 8 0 0 0 136 1464 M 16 1488 L 24 1472 M 144 1472 L 152 1488 M 16 1488 L 14 1492 M 16 1504 L 14 1500 M 14 1492 A 8 8 0 0 0 14 1500 M 152 1488 L 154 1492 M 152 1504 L 154 1500 A 8 8 0 0 0 154 1492 M 16 1504 L 24 1520 M 144 1520 L 152 1504 M 24 1520 L 26 1524 A 8 8 0 0 0 32 1528 L 136 1528 M 142 1524 L 152 1504 M 136 1528 A 8 8 0 0 0 142 1524 M 32 1568 L 168 1568 M 32 1568 L 40 1584 M 168 1568 L 176 1584 M 40 1584 L 42 1588 M 40 1600 L 42 1596 A 8 8 0 0 0 42 1588 M 176 1584 L 178 1588 M 176 1600 L 178 1596 A 8 8 0 0 0 178 1588 M 32 1616 L 40 1600 M 48 1616 L 32 1616 M 48 1616 L 168 1616 L 176 1600 M 188 1640 L 188 1680 M 188 1640 L 208 1680 M 28 1660 L 28 1744 M 32 1656 A 4 4 0 0 0 28 1660 M 32 1656 L 188 1656 M 188 1648 L 188 1680 M 192 1648 L 208 1680 M 28 1664 L 28 1744 M 188 1680 L 208 1680 M 204 1680 L 204 1744 M 28 1744 L 28 1748 A 4 4 0 0 0 32 1752 L 200 1752 M 204 1744 L 204 1748 M 200 1752 A 4 4 0 0 0 204 1748" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="106" y="28">
+circle
+</text>
+<text x="146" y="108">
+elongated circles
+</text>
+<text x="146" y="204">
+rectangles
+</text>
+<text x="74" y="252">
+long horizontal rectangles
+</text>
+<text x="114" y="332">
+vertical rectangles
+</text>
+<text x="138" y="428">
+rounded rectangles
+</text>
+<text x="194" y="492">
+little elongated
+</text>
+<text x="194" y="508">
+rounded rectangule
+</text>
+<text x="138" y="572">
+parallelograms
+</text>
+<text x="82" y="796">
+diamon
+</text>
+<text x="298" y="892">
+tilted square
+</text>
+<text x="106" y="956">
+a little bread?
+</text>
+<text x="114" y="1036">
+triangles
+</text>
+<text x="106" y="1116">
+rounded triangles
+</text>
+<text x="114" y="1196">
+hexagons
+</text>
+<text x="138" y="1276">
+big hexagon
+</text>
+<text x="50" y="1388">
+elongated hexagon
+</text>
+<text x="26" y="1500">
+rounded hexagon
+</text>
+<text x="58" y="1596">
+process blocks
+</text>
+<text x="50" y="1692">
+Folded Document
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Basic Shapes
+
+Spongedown allows you to draw basic shapes
+
+```bob
+       .-.
+      (   )  circle 
+       '-'
+
+
+       .------.
+      (        )  elongated circles
+       '------'
+
+
+
+       ________ 
+      |________|  rectangles
+
+       +----------------------------+
+       | long horizontal rectangles |
+       +----------------------------+
+
+       +---+ 
+       |   |
+       |   |  vertical rectangles
+       |   |
+       |   |
+       +---+
+
+       .-------.
+       |       | rounded rectangles
+       '-------'
+       
+    
+       .-------------.  little elongated
+       '-------------'  rounded rectangule
+
+        ________  
+       /       /
+      /       /  parallelograms
+     /_______/
+
+        ________  
+        \_______\
+
+        ________  
+        \       \
+         \       \
+          \_______\
+
+
+    /\
+   /  \
+   \  /   diamon
+    \/
+
+
+        .          .                                
+      .' `.      ,' `.       .'.                    
+    .'     `.  .'     `,   .'   `,   tilted square  
+     `.   .'    `.   ,'     `. ,'                   
+       `.'        `.'         `                     
+
+      .-.    a little bread?
+      '-'
+
+
+       /\
+      /  \    triangles
+     /____\
+
+        .
+       / \
+      /   \  rounded triangles
+     /     \
+    '-------'
+
+       ___
+      /   \   hexagons
+      \___/
+
+      ______
+     /      \
+    /        \   big hexagon
+    \        /
+     \______/
+
+
+      _________________
+     /                 \
+    / elongated hexagon \
+    \                   /
+     \_________________/
+
+
+   .-------------.  
+  /               \
+ ( rounded hexagon ) 
+  \               / 
+   '-------------' 
+
+    _________________
+    \                \
+     ) process blocks )
+    /________________/
+                 
+                       '
+   ,-------------------|\                            
+   |                   |_\
+   |  Folded Document    |
+   |                     |
+   |                     |
+   |                     |
+   `---------------------'
+
+```
+
+{{#playpen Basic_shapes.md}}
+
+#}</code></pre></pre>
+<a class="header" href="print.html#arrows" id="arrows"><h2>Arrows</h2></a>
+<svg font-family="arial" font-size="14" height="928" width="272" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 36 32 L 36 48 M 24 88 L 56 88 M 24 256 L 40 288 M 24 352 L 40 320 M 32 608 L 34 604 M 40 600 A 8 8 0 0 0 34 604 M 40 600 L 56 600 A 8 8 0 0 0 62 596 M 24 624 L 32 608 M 84 656 L 84 688 M 32 696 L 80 696 M 48 800 L 64 832 M 68 800 L 68 832 M 32 840 L 64 840 M 48 880 L 64 848" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<line marker-end="url(#triangle)" x1="36" x2="36" y1="32" y2="16"/>
+<line marker-end="url(#triangle)" x1="24" x2="20" y1="88" y2="88"/>
+<line marker-end="url(#triangle)" x1="16" x2="60" y1="136" y2="136"/>
+<line marker-end="url(#triangle)" x1="36" x2="36" y1="176" y2="208"/>
+<line marker-end="url(#triangle)" x1="24" x2="20" y1="256" y2="248"/>
+<line marker-end="url(#triangle)" x1="24" x2="20" y1="352" y2="360"/>
+<line marker-end="url(#triangle)" x1="24" x2="44" y1="400" y2="440"/>
+<line marker-end="url(#triangle)" x1="32" x2="52" y1="528" y2="488"/>
+<line marker-end="url(#triangle)" x1="64" x2="76" y1="592" y2="568"/>
+<line marker-end="url(#triangle)" x1="62" x2="76" y1="596" y2="568"/>
+<line marker-end="url(#triangle)" x1="84" x2="84" y1="656" y2="640"/>
+<line marker-end="url(#triangle)" x1="32" x2="28" y1="696" y2="696"/>
+<line marker-end="url(#triangle)" x1="84" x2="84" y1="688" y2="752"/>
+<line marker-end="url(#triangle)" x1="80" x2="148" y1="696" y2="696"/>
+<line marker-end="url(#triangle)" x1="88" x2="148" y1="696" y2="696"/>
+<line marker-end="url(#triangle)" x1="84" x2="84" y1="704" y2="752"/>
+<line marker-end="url(#triangle)" x1="48" x2="44" y1="800" y2="792"/>
+<line marker-end="url(#triangle)" x1="68" x2="68" y1="800" y2="784"/>
+<line marker-end="url(#triangle)" x1="72" x2="92" y1="832" y2="792"/>
+<line marker-end="url(#triangle)" x1="32" x2="28" y1="840" y2="840"/>
+<line marker-end="url(#triangle)" x1="68" x2="68" y1="832" y2="896"/>
+<line marker-end="url(#triangle)" x1="64" x2="108" y1="840" y2="840"/>
+<line marker-end="url(#triangle)" x1="64" x2="92" y1="832" y2="888"/>
+<line marker-end="url(#triangle)" x1="64" x2="92" y1="848" y2="792"/>
+<line marker-end="url(#triangle)" x1="72" x2="108" y1="840" y2="840"/>
+<line marker-end="url(#triangle)" x1="68" x2="68" y1="848" y2="896"/>
+<line marker-end="url(#triangle)" x1="72" x2="92" y1="848" y2="888"/>
+<line marker-end="url(#triangle)" x1="48" x2="44" y1="880" y2="888"/>
+<text x="66" y="44">
+top
+</text>
+<text x="74" y="92">
+left
+</text>
+<text x="74" y="140">
+right
+</text>
+<text x="58" y="188">
+bottom
+</text>
+<text x="50" y="268">
+top left
+</text>
+<text x="50" y="348">
+bottom left
+</text>
+<text x="50" y="428">
+bottom right
+</text>
+<text x="58" y="508">
+top right
+</text>
+<text x="82" y="588">
+crocked arrow lines
+</text>
+<text x="98" y="684">
+crossed arrows
+</text>
+<text x="98" y="828">
+criss cross arrows
+</text>
+</svg>
+<a class="header" href="print.html#ascii-code" id="ascii-code"><h2>Ascii code</h2></a>
+<pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Arrows
+
+```bob
+
+    ^
+    |   top
+
+
+  <----  left
+
+
+  -----> right
+
+
+    |  bottom
+    v 
+
+
+  ^
+   \  top left
+    \
+
+
+    /
+   /  bottom left
+  v
+
+
+   \
+    \ bottom right
+     v
+
+
+      ^ 
+     / top right
+    /
+
+
+         ^ 
+        / crocked arrow lines
+    .--'
+   /
+
+          ^
+          |
+          | crossed arrows
+   <------+------->
+          |
+          |
+          v
+
+
+     ^  ^  ^
+      \ | /
+       \|/  criss cross arrows
+   <----+---->
+       /|\
+      / | \
+     v  v  v
+```
+
+## Ascii code
+
+{{#playpen Arrows.md}}
+
+#}</code></pre></pre>
+<a class="header" href="print.html#brackets" id="brackets"><h2>Brackets</h2></a>
+<p>Svgbob can create expandable brackets</p>
+<svg font-family="arial" font-size="14" height="576" width="272" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 36 28 L 36 64 M 40 24 A 4 4 0 0 0 36 28 M 40 24 L 48 24 M 216 24 L 224 24 M 228 28 L 228 64 M 228 28 A 4 4 0 0 0 224 24 M 36 32 L 36 64 M 228 32 L 228 64 M 32 80 A 32 32 0 0 0 36 64 M 228 64 A 32 32 0 0 0 232 80 M 24 88 L 32 80 M 24 88 L 32 96 M 232 80 L 240 88 M 232 96 L 240 88 M 36 112 A 32 32 0 0 0 32 96 M 232 96 A 32 32 0 0 0 228 112 M 36 112 L 36 144 M 228 112 L 228 144 M 36 144 L 36 148 A 4 4 0 0 0 40 152 L 48 152 M 216 152 L 224 152 M 228 144 L 228 148 M 224 152 A 4 4 0 0 0 228 148 M 48 232 A 8 8 0 0 0 44 240 M 48 232 L 56 232 M 152 232 L 160 232 M 164 240 A 8 8 0 0 0 160 232 M 40 256 A 32 32 0 0 0 44 240 M 164 240 A 32 32 0 0 0 168 256 M 32 264 L 40 256 M 32 264 L 40 272 M 168 256 L 176 264 M 168 272 L 176 264 M 44 288 A 32 32 0 0 0 40 272 M 168 272 A 32 32 0 0 0 164 288 M 44 288 A 8 8 0 0 0 48 296 L 56 296 M 152 296 L 160 296 A 8 8 0 0 0 164 288 M 36 332 L 36 448 M 40 328 A 4 4 0 0 0 36 332 M 40 328 L 48 328 M 216 328 L 224 328 M 228 332 L 228 448 M 228 332 A 4 4 0 0 0 224 328 M 36 336 L 36 448 M 228 336 L 228 448 M 36 448 L 36 452 A 4 4 0 0 0 40 456 L 48 456 M 216 456 L 224 456 M 228 448 L 228 452 M 224 456 A 4 4 0 0 0 228 452 M 36 488 L 36 528 M 36 488 L 48 488 M 40 488 L 48 488 M 216 488 L 224 488 M 228 488 L 228 528 M 228 488 L 224 488 M 36 496 L 36 528 M 228 496 L 228 528 M 36 536 L 36 528 M 36 536 L 48 536 M 40 536 L 48 536 M 216 536 L 224 536 M 228 536 L 228 528 M 228 536 L 224 536" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="58" y="92">
+open
+</text>
+<text x="178" y="92">
+close
+</text>
+<text x="58" y="108">
+bracket
+</text>
+<text x="162" y="108">
+bracket
+</text>
+<text x="74" y="268">
+Medium
+</text>
+<text x="82" y="284">
+Brackets
+</text>
+<text x="58" y="396">
+open
+</text>
+<text x="178" y="396">
+close
+</text>
+<text x="58" y="412">
+braces
+</text>
+<text x="170" y="412">
+braces
+</text>
+<text x="90" y="508">
+sharp braces
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Brackets
+
+Svgbob can create expandable brackets
+
+```bob
+
+    .-                     -.
+    |                       |
+    |                       |
+    )                       (
+   <   open           close  >
+    )  bracket      bracket (
+    |                       |
+    |                       |
+    '-                     -'
+
+
+   
+
+     .-            -.
+     )              (
+    <    Medium      >
+     )    Brackets  (
+     '-            -'
+
+    .-                     -.
+    |                       |
+    |                       |
+    |                       |
+    |  open           close |
+    |  braces        braces |
+    |                       |
+    |                       |
+    '-                     -'
+
+    +-                     -+
+    |      sharp braces     |
+    |                       |
+    +-                     -+
+```
+
+{{#playpen Brackets.md}}
+
+#}</code></pre></pre>
+<a class="header" href="print.html#speech-baloon" id="speech-baloon"><h2>Speech Baloon</h2></a>
+<svg font-family="arial" font-size="14" height="1024" width="400" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 32 8 A 16 16 0 0 0 22 16 M 32 8 L 80 8 M 90 16 A 16 16 0 0 0 80 8 M 22 16 A 16 16 0 0 0 22 32 M 90 32 A 16 16 0 0 0 90 16 M 22 32 A 16 16 0 0 0 32 40 L 48 40 M 48 48 L 50 44 A 4 4 0 0 0 48 40 M 72 40 L 64 48 M 72 40 L 80 40 A 16 16 0 0 0 90 32 M 56 56 L 48 64 M 64 48 L 56 56 M 32 80 L 48 48 M 48 64 L 32 80 M 32 104 A 16 16 0 0 0 22 112 M 32 104 L 88 104 M 98 112 A 16 16 0 0 0 88 104 M 22 112 A 16 16 0 0 0 22 128 M 98 128 A 16 16 0 0 0 98 112 M 22 128 A 16 16 0 0 0 32 136 L 48 136 L 88 176 M 72 144 L 70 140 M 72 136 A 4 4 0 0 0 70 140 M 72 136 L 88 136 A 16 16 0 0 0 98 128 M 72 144 L 88 176 M 32 200 A 16 16 0 0 0 22 208 M 32 200 L 112 200 M 122 208 A 16 16 0 0 0 112 200 M 22 208 A 16 16 0 0 0 22 224 M 122 224 A 16 16 0 0 0 122 208 M 22 224 A 16 16 0 0 0 32 232 L 56 232 M 64 240 L 62 236 A 8 8 0 0 0 56 232 M 76 236 L 76 256 M 80 232 A 4 4 0 0 0 76 236 M 80 232 L 112 232 A 16 16 0 0 0 122 224 M 64 240 L 72 256 M 76 240 L 76 256 M 72 256 L 76 264 L 76 256 M 16 304 L 4 304 M 16 304 L 188 304 M 4 304 L 4 336 M 188 304 L 188 336 M 16 336 L 4 336 M 16 336 L 32 336 M 48 336 L 188 336 M 40 344 L 32 352 M 48 336 L 40 344 M 16 368 L 32 336 M 32 352 L 16 368 M 4 396 L 4 416 M 8 392 A 4 4 0 0 0 4 396 M 8 392 L 184 392 M 188 396 L 188 416 M 188 396 A 4 4 0 0 0 184 392 M 4 400 L 4 416 M 188 400 L 188 416 M 4 428 L 4 416 M 4 428 A 4 4 0 0 0 8 432 L 88 432 M 104 432 L 184 432 A 4 4 0 0 0 188 428 L 188 416 M 88 432 L 120 464 M 104 432 L 120 464 M 4 492 L 4 544 M 8 488 A 4 4 0 0 0 4 492 M 8 488 L 184 488 M 188 492 L 188 544 M 188 492 A 4 4 0 0 0 184 488 M 4 496 L 4 544 M 188 496 L 188 544 M 4 556 L 4 544 M 4 556 A 4 4 0 0 0 8 560 L 68 560 M 88 560 L 184 560 A 4 4 0 0 0 188 556 L 188 544 M 68 560 L 68 592 M 72 592 L 88 560 M 68 592 L 68 600 L 88 560 M 76 632 L 76 672 M 76 632 L 96 672 M 76 640 L 76 672 M 80 640 L 96 672 M 32 672 L 76 672 M 96 672 L 336 672 M 32 672 A 40 40 0 0 0 10 688 M 358 688 A 40 40 0 0 0 336 672 M 10 688 A 40 40 0 0 0 4 704 M 364 704 A 40 40 0 0 0 358 688 M 4 704 L 4 768 M 364 704 L 364 768 M 4 768 A 40 40 0 0 0 10 784 M 358 784 A 40 40 0 0 0 364 768 M 10 784 A 40 40 0 0 0 32 800 L 336 800 A 40 40 0 0 0 358 784 M 24 864 L 12 864 M 24 864 L 172 864 M 12 864 L 12 896 M 172 864 L 172 896 M 24 896 L 12 896 M 24 896 L 128 896 M 144 896 L 172 896 M 80 912 L 68 912 M 80 912 L 136 912 M 128 896 L 136 912 M 144 896 L 152 912 L 204 912 M 68 912 L 68 944 M 204 912 L 204 944 M 80 944 L 68 944 M 80 944 L 120 944 M 136 944 L 204 944 M 128 952 L 120 960 M 136 944 L 128 952 M 104 976 L 120 944 M 120 960 L 104 976" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="42" y="28">
+left
+</text>
+<text x="42" y="124">
+right
+</text>
+<text x="58" y="220">
+center
+</text>
+<text x="50" y="316">
+Rectangular
+</text>
+<text x="26" y="412">
+Rounded Rectangle
+</text>
+<text x="18" y="508">
+A long longer dialog
+</text>
+<text x="18" y="524">
+box for longer speech
+</text>
+<text x="18" y="540">
+Expandable
+</text>
+<text x="82" y="700">
+A big round ass dialog box
+</text>
+<text x="138" y="716">
+is
+</text>
+<text x="122" y="732">
+also possible
+</text>
+<text x="18" y="876">
+Connected Dialogs
+</text>
+<text x="106" y="924">
+with pause
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Speech Baloon
+
+```bob
+   .------.
+  (  left  )
+   `--, .-'
+     /,' 
+    /'  
+
+   .-------.
+  (  right  )
+   `--. .--'
+       `.\
+         `\
+
+   .----------.
+  (    center  )
+   `---. .----'
+        \|
+         '
+
+ ______________________
+|     Rectangular      |
+|___  _________________|
+   /,' 
+  /'  
+
+.----------------------.
+|  Rounded Rectangle   |
+'__________  __________'
+           `.\
+             `\
+
+.----------------------.
+| A long longer dialog |
+| box for longer speech|
+| Expandable           |
+'_______   ____________'
+        | / 
+        |/
+        .
+
+         .                      
+         |\                            
+    _____| \______________________________
+  ,'                                      `.
+ /        A big round ass dialog box        \
+|                is                          |
+|              also possible                 |
+|                                            |
+|                                            |
+ \                                          /
+  `.______________________________________,'
+
+
+
+  ___________________
+ |Connected Dialogs  |
+ |______________  ___|
+         _______\ \______ 
+        |    with pause  |
+        |______  ________|
+              /,'
+             /'
+
+```
+
+{{#playpen Speech_baloon.md}}
+
+#}</code></pre></pre>
+<a class="header" href="print.html#faces" id="faces"><h2>Faces</h2></a>
+<p>Spongedown supports a wide variety of faces.
+You can copy and paste the faces too.</p>
+<svg font-family="arial" font-size="14" height="4096" width="456" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 108 624 L 108 640 M 188 624 L 188 640 M 284 624 L 284 640 M 224 728 L 232 728 M 272 728 L 280 728 M 96 776 L 104 776 M 168 776 L 176 776 M 216 880 L 224 864 M 272 864 L 280 880 M 112 928 L 120 912 M 136 928 L 144 928 M 208 928 L 216 912 M 112 976 L 120 960 M 344 1120 L 352 1120 L 360 1104 M 240 1312 L 248 1312 M 136 1760 L 144 1760 M 100 2176 L 100 2192 M 164 2176 L 164 2192 M 112 2472 L 120 2472 M 144 2472 L 152 2472 M 144 2576 L 152 2576" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="98" y="156">
+╾━╤デ╦︻༼ಠ益ಠ༽︻╦̿══╤─
+</text>
+<text x="98" y="252">
+⎝༼ຈل͜ຈ༽⎠
+</text>
+<text x="178" y="252">
+(╯°□°]
+</text>
+<text x="234" y="252">
+╯︵
+</text>
+<text x="266" y="252">
+┬─┻
+</text>
+<text x="170" y="300">
+༼⊙ʖ̯⊙༽
+</text>
+<text x="98" y="348">
+༼⌐□ل͜□༽
+</text>
+<text x="154" y="348">
+ง/͠-┌ل͜┐͡-
+</text>
+<text x="210" y="348">
+\ง
+</text>
+<text x="194" y="396">
+ᶘ ͡°ᴥ͡°ᶅ
+</text>
+<text x="258" y="444">
+✿∗˵╰༼✪ᗜ✪༽╯˵∗✿
+</text>
+<text x="178" y="540">
+ζ༼Ɵ͆ل͜Ɵ͆༽
+</text>
+<text x="226" y="540">
+ᶘ
+</text>
+<text x="98" y="636">
+⋋
+</text>
+<text x="114" y="636">
+།'͡ᴼ╭͜ʖ╮͡ᴼ&apos;
+</text>
+<text x="178" y="636">
+།
+</text>
+<text x="194" y="636">
+⋌
+</text>
+<text x="234" y="636">
+[•+•]=
+</text>
+<text x="290" y="636">
+:::&gt;
+</text>
+<text x="98" y="684">
+╰༼◉Д◕༽〜┣▇▇▇═──
+</text>
+<text x="242" y="684">
+╰༼ཀДཀ༽╯
+</text>
+<text x="98" y="732">
+ԅ〳 ͜ಠ ͜ʟ ͜ಠ
+</text>
+<text x="178" y="732">
+〵و
+</text>
+<text x="234" y="732">
+[ºل͟º]
+</text>
+<text x="106" y="780">
+[ ͡° ͜ʖ ͡°]
+</text>
+<text x="202" y="780">
+[ ͝° ͜ʖ͡°
+</text>
+<text x="250" y="780">
+]
+</text>
+<text x="178" y="828">
+└[ຈل͜ರೃ]┘
+</text>
+<text x="226" y="876">
+╯⋋┏□┓⋌
+</text>
+<text x="282" y="876">
+╯
+</text>
+<text x="98" y="924">
+ヽ
+</text>
+<text x="122" y="924">
+⋋┏
+</text>
+<text x="146" y="924">
+┓⋌\ﾉ
+</text>
+<text x="194" y="924">
+ヽ
+</text>
+<text x="218" y="924">
+✿ര̀ ل͜ ര́\ﾉ
+</text>
+<text x="98" y="972">
+ヽ
+</text>
+<text x="122" y="972">
+❀ᓀ
+</text>
+<text x="146" y="972">
+ل͜ ᓂ\ﾉ
+</text>
+<text x="210" y="972">
+୧༼ ͡◕
+</text>
+<text x="250" y="972">
+д
+</text>
+<text x="266" y="972">
+◕͡ ༽୨
+</text>
+<text x="258" y="1116">
+へ[
+</text>
+<text x="290" y="1116">
+ᴼ
+</text>
+<text x="306" y="1116">
+▃
+</text>
+<text x="322" y="1116">
+ᴼ
+</text>
+<text x="338" y="1116">
+]
+</text>
+<text x="362" y="1116">
+¯
+</text>
+<text x="98" y="1212">
+ヘ（。□°）ヘ
+</text>
+<text x="98" y="1260">
+ʕっ༎ຶᴥ༎ຶʔっ
+</text>
+<text x="98" y="1308">
+ᕦ༼༎ຶ_༎ຶ༽ᕗ
+</text>
+<text x="186" y="1308">
+༼
+</text>
+<text x="202" y="1308">
+つ⇧
+</text>
+<text x="234" y="1308">
+◕
+</text>
+<text x="250" y="1308">
+◕
+</text>
+<text x="266" y="1308">
+༽つ⇧
+</text>
+<text x="178" y="1356">
+*
+</text>
+<text x="194" y="1356">
+･
+</text>
+<text x="210" y="1356">
+｡ﾟ
+</text>
+<text x="98" y="1404">
+༼
+</text>
+<text x="114" y="1404">
+▀̿Ĺ̿▀̿ 
+</text>
+<text x="146" y="1404">
+༼
+</text>
+<text x="162" y="1404">
+▀̿Ĺ̿▀̿༽
+</text>
+<text x="194" y="1404">
+▀̿Ĺ̿▀̿ 
+</text>
+<text x="226" y="1404">
+༽
+</text>
+<text x="178" y="1452">
+ヽ༼◐ل͜◑༽ﾉ
+</text>
+<text x="98" y="1500">
+&lt;
+</text>
+<text x="106" y="1500">
+:::::[]=¤༼ຈل͜ຈ༽ﾉ
+</text>
+<text x="250" y="1500">
+༼
+</text>
+<text x="266" y="1500">
+°ｰ°
+</text>
+<text x="298" y="1500">
+༽
+</text>
+<text x="98" y="1596">
+༼ಠ益ಠ༽
+</text>
+<text x="170" y="1596">
+ヽヽ༼༼ຈຈل͜ل͜ຈ
+</text>
+<text x="258" y="1596">
+ຈ༽༽ﾉﾉ
+</text>
+<text x="98" y="1756">
+༼ຈل͜ຈ༽
+</text>
+<text x="146" y="1756">
+•︻̷┻̿═
+</text>
+<text x="186" y="1756">
+━一
+</text>
+<text x="234" y="1756">
+(▀̿Ĺ̿├
+</text>
+<text x="266" y="1756">
+┬┴┬┴
+</text>
+<text x="98" y="1852">
+ヽ༼✿σل͜ σ༽ﾉ
+</text>
+<text x="186" y="1900">
+ヽ༼⚆ل͜⚆༽ﾉ
+</text>
+<text x="194" y="1948">
+♫
+</text>
+<text x="210" y="1948">
+┌༼ຈل͜ຈ༽┘
+</text>
+<text x="274" y="1948">
+♪
+</text>
+<text x="98" y="2044">
+༼
+</text>
+<text x="114" y="2044">
+ಥل͟ಥ
+</text>
+<text x="146" y="2044">
+༽
+</text>
+<text x="162" y="2044">
+┬┴┬┴┤
+</text>
+<text x="210" y="2044">
+༼ຈل͜├┬┴┬┴
+</text>
+<text x="98" y="2092">
+༼
+</text>
+<text x="114" y="2092">
+ಠل͟ಠ༽
+</text>
+<text x="154" y="2092">
+ᕕ༼ຈل͜ຈ༽ᕗ
+</text>
+<text x="194" y="2140">
+༼ง ͠ຈ ͟ل͜ ͠ຈ
+</text>
+<text x="258" y="2140">
+༽ง
+</text>
+<text x="106" y="2188">
+༼ʘ
+</text>
+<text x="130" y="2188">
+ل͜ ʘ༽
+</text>
+<text x="186" y="2188">
+ヽ༼◕ل͜◕༽ﾉ
+</text>
+<text x="98" y="2236">
+ζ༼Ɵ͆ل͜Ɵ͆༽
+</text>
+<text x="146" y="2236">
+ᶘ
+</text>
+<text x="98" y="2284">
+ヽ༼
+</text>
+<text x="130" y="2284">
+ツ
+</text>
+<text x="154" y="2284">
+༽ﾉ
+</text>
+<text x="186" y="2284">
+（͡°͜ʖ͡°
+</text>
+<text x="226" y="2284">
+）
+</text>
+<text x="178" y="2332">
+┻━┻
+</text>
+<text x="98" y="2380">
+༼ʕっ•ᴥ•ʔっ
+</text>
+<text x="186" y="2428">
+ヽ༼
+</text>
+<text x="218" y="2428">
+ຈل͜ຈ༼
+</text>
+<text x="258" y="2428">
+ຈل͜ຈ༽ຈل͜ຈ
+</text>
+<text x="322" y="2428">
+༽ﾉ
+</text>
+<text x="98" y="2476">
+༼
+</text>
+<text x="130" y="2476">
+ل͜ 
+</text>
+<text x="162" y="2476">
+༽
+</text>
+<text x="178" y="2476">
+ヽ°
+</text>
+<text x="210" y="2476">
+~͜ʖ~
+</text>
+<text x="242" y="2476">
+°ﾉ
+</text>
+<text x="98" y="2524">
+ᕙ
+</text>
+<text x="194" y="2524">
+ᕗ
+</text>
+<text x="98" y="2572">
+༼
+</text>
+<text x="114" y="2572">
+つ
+</text>
+<text x="138" y="2572">
+◕
+</text>
+<text x="154" y="2572">
+◕
+</text>
+<text x="170" y="2572">
+༽つ
+</text>
+<text x="202" y="2572">
+ヽ༼ຈل͜ರೃ༽ﾉ
+</text>
+<text x="98" y="2620">
+୧༼ಠ益ರೃ༽୨
+</text>
+<text x="98" y="2668">
+ヽຈل͜ຈﾉ
+</text>
+<text x="98" y="2716">
+ヽ༼ຈ益ຈ༽ﾉ
+</text>
+<text x="98" y="2764">
+༼ᕗຈل͜ຈ༽ᕗ
+</text>
+<text x="162" y="2764">
+╮
+</text>
+<text x="186" y="2812">
+༼
+</text>
+<text x="202" y="2812">
+つ◕(oo)◕༽つoo
+</text>
+<text x="98" y="2940">
+༼ ͠ຈ ͟ل͜ ͠ຈ
+</text>
+<text x="154" y="2940">
+༽ง ヽ༼ຈل͜ຈ༽ﾉ☂
+</text>
+<text x="194" y="2988">
+༼☯﹏☯༽
+</text>
+<text x="98" y="3036">
+ヽ༼
+</text>
+<text x="130" y="3036">
+☭ل͜☭
+</text>
+<text x="162" y="3036">
+༽ﾉ
+</text>
+<text x="202" y="3036">
+♌༼✪ل͜✪༽ᕤ
+</text>
+<text x="178" y="3084">
+ヽ༼ʘ̚ل͜ʘ̚༽
+</text>
+<text x="234" y="3084">
+ﾉ
+</text>
+<text x="370" y="3132">
+*
+</text>
+<text x="386" y="3132">
+･
+</text>
+<text x="402" y="3132">
+｡ﾟ,
+</text>
+<text x="98" y="3180">
+༼ຈل͜ຈ༽&gt;
+</text>
+<text x="146" y="3180">
+ง
+</text>
+<text x="186" y="3180">
+ᕙ༼◕ل͜◕༽ᕗ
+</text>
+<text x="98" y="3228">
+ヽ༼ຈل͜ຈ༽ﾉ︵┻━┻
+</text>
+<text x="234" y="3228">
+୧༼ ͡◉ل͜ ͡◉
+</text>
+<text x="290" y="3228">
+༽୨
+</text>
+<text x="98" y="3276">
+༼ ͡■ل͜ ͡■
+</text>
+<text x="146" y="3276">
+༽
+</text>
+<text x="98" y="3324">
+Ѱζ༼ᴼل͜ᴼ༽ᶘѰ
+</text>
+<text x="194" y="3324">
+ヽ༼ຈل͜ຈ༽ง
+</text>
+<text x="178" y="3372">
+ɳ༼ຈل͜ຈ༽ɲ
+</text>
+<text x="178" y="3420">
+ʕ•ᴥ•ʔ
+</text>
+<text x="98" y="3468">
+ヽຈل͜ﾉ༼ຈ
+</text>
+<text x="98" y="3516">
+୧༼ಠ益ಠ༽୨
+</text>
+<text x="98" y="3612">
+つ◕ل͜◕)つ
+</text>
+<text x="98" y="3660">
+ヽ༼♥ل͜♥༽ﾉ
+</text>
+<text x="194" y="3660">
+༼
+</text>
+<text x="210" y="3660">
+ᓄºل͟º
+</text>
+<text x="250" y="3660">
+༽ᓄ
+</text>
+<text x="202" y="3708">
+ヽ༼ຈل͜ຈ༽ﾉ
+</text>
+<text x="98" y="3756">
+ᕦ༼ຈل͜ຈ༽ᕤ
+</text>
+<text x="194" y="3756">
+┌༼ຈل͜ຈ༽┐
+</text>
+<text x="98" y="3804">
+ᕙ༼ຈل͜ຈ༽ᕗ
+</text>
+<text x="194" y="3804">
+ヽ༼&gt;
+</text>
+<text x="226" y="3804">
+ل͜<༽ﾉ
+</text>
+<text x="186" y="3852">
+ヽ༼@ل͜ຈ༽ﾉ
+</text>
+<text x="98" y="3900">
+༼
+</text>
+<text x="114" y="3900">
+ºل͟º༼
+</text>
+<text x="154" y="3900">
+ºل͟º༽ºل͟º
+</text>
+<text x="218" y="3900">
+༽
+</text>
+<text x="234" y="3996">
+O͡╮༼;´༎ຶ.̨.۝ 
+</text>
+<text x="306" y="3996">
+༎ຶ༽╭o
+</text>
+<text text-anchor="end" x="104" y="28">
+ ٩
+</text>
+<circle cx="120" cy="24" r="16"/>
+<text text-anchor="middle" x="120" y="28">
+<tspan class='head'>(</tspan>̾●̮̮̃ ̾•̃̾<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="28">
+۶ 
+</text>
+<text text-anchor="end" x="184" y="28">
+ o͡͡͡╮
+</text>
+<circle cx="212" cy="24" r="28"/>
+<text text-anchor="middle" x="212" y="28">
+<tspan class='head'>(</tspan> ʘ̆ ۝ ʘ̆ <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="240" y="28">
+╭o͡
+</text>
+<text text-anchor="end" x="104" y="60">
+ ७
+</text>
+<circle cx="128" cy="56" r="24"/>
+<text text-anchor="middle" x="128" y="60">
+<tspan class='head'>(</tspan>,⊙–⊙,<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="60">
+७ 
+</text>
+<text text-anchor="end" x="200" y="60">
+ o͡͡͡╮
+</text>
+<circle cx="216" cy="56" r="16"/>
+<text text-anchor="middle" x="216" y="60">
+<tspan class='head'>(</tspan>•ʖ̯•<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="232" y="60">
+╭o͡͡͡
+</text>
+<text text-anchor="end" x="96" y="92">
+ 
+</text>
+<circle cx="112" cy="88" r="16"/>
+<text text-anchor="middle" x="112" y="92">
+<tspan class='head'>(</tspan>°□°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="128" y="92">
+ 
+</text>
+<text text-anchor="end" x="176" y="92">
+ ¯\_
+</text>
+<circle cx="192" cy="88" r="16"/>
+<text text-anchor="middle" x="192" y="92">
+<tspan class='head'>(</tspan> ツ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="208" y="92">
+_/¯ 
+</text>
+<text text-anchor="end" x="112" y="124">
+ ヽ
+</text>
+<circle cx="128" cy="120" r="16"/>
+<text text-anchor="middle" x="128" y="124">
+<tspan class='head'>(</tspan>。°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="124">
+ノ 
+</text>
+<text text-anchor="end" x="192" y="124">
+ ヾ
+</text>
+<circle cx="216" cy="120" r="24"/>
+<text text-anchor="middle" x="216" y="124">
+<tspan class='head'>(</tspan>ｏ･ω･<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="240" y="124">
+ﾉ
+</text>
+<text text-anchor="end" x="96" y="204">
+ 
+</text>
+<circle cx="120" cy="200" r="24"/>
+<text text-anchor="middle" x="120" y="204">
+<tspan class='head'>(</tspan>˙ ͜ʟ˙ <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="204">
+ 
+</text>
+<text text-anchor="end" x="160" y="204">
+ 
+</text>
+<circle cx="188" cy="200" r="28"/>
+<text text-anchor="middle" x="188" y="204">
+<tspan class='head'>(</tspan>つ°ヮ°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="216" y="204">
+つ 
+</text>
+<text text-anchor="end" x="96" y="300">
+ 
+</text>
+<circle cx="116" cy="296" r="20"/>
+<text text-anchor="middle" x="116" y="300">
+<tspan class='head'>(</tspan>⊙ヮ⊙<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="300">
+ 
+</text>
+<text text-anchor="end" x="112" y="396">
+ ヽ
+</text>
+<circle cx="140" cy="392" r="28"/>
+<text text-anchor="middle" x="140" y="396">
+<tspan class='head'>(</tspan> ͝° ̯ʖ ͝°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="168" y="396">
+ﾉ 
+</text>
+<text text-anchor="end" x="264" y="396">
+ 
+</text>
+<circle cx="284" cy="392" r="20"/>
+<text text-anchor="middle" x="284" y="396">
+<tspan class='head'>(</tspan> ͡⚆ل͜⚆<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="304" y="396">
+ﾉ⚲
+</text>
+<text text-anchor="end" x="112" y="444">
+ ᗜԅ
+</text>
+<circle cx="132" cy="440" r="20"/>
+<text text-anchor="middle" x="132" y="444">
+<tspan class='head'>(</tspan>⇀︿⇀<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="444">
+ᓄ-¤]═──── 
+</text>
+<text text-anchor="end" x="96" y="492">
+ 
+</text>
+<circle cx="120" cy="488" r="24"/>
+<text text-anchor="middle" x="120" y="492">
+<tspan class='head'>(</tspan>つ･◡･<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="492">
+つ 
+</text>
+<text text-anchor="end" x="208" y="492">
+ ᕦ
+</text>
+<circle cx="232" cy="488" r="24"/>
+<text text-anchor="middle" x="232" y="492">
+<tspan class='head'>(</tspan>눈_눈<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="256" y="492">
+ᕗ
+</text>
+<text text-anchor="end" x="96" y="540">
+ 
+</text>
+<circle cx="120" cy="536" r="24"/>
+<text text-anchor="middle" x="120" y="540">
+<tspan class='head'>(</tspan>⌐▀͡ ̯ʖ▀<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="540">
+ 
+</text>
+<text text-anchor="end" x="112" y="588">
+ ヽ
+</text>
+<circle cx="140" cy="584" r="28"/>
+<text text-anchor="middle" x="140" y="588">
+<tspan class='head'>(</tspan> ⌐□益□<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="168" y="588">
+/ 
+</text>
+<text text-anchor="end" x="216" y="588">
+ 
+</text>
+<circle cx="236" cy="584" r="20"/>
+<text text-anchor="middle" x="236" y="588">
+<tspan class='head'>(</tspan>▀̿̿Ĺ̯̿̿▀̿ ̿<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="256" y="588">
+
+</text>
+<text text-anchor="end" x="96" y="828">
+ 
+</text>
+<circle cx="120" cy="824" r="24"/>
+<text text-anchor="middle" x="120" y="828">
+<tspan class='head'>(</tspan> ° ͜ʖ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="828">
+ 
+</text>
+<text text-anchor="end" x="96" y="876">
+ 
+</text>
+<circle cx="140" cy="872" r="44"/>
+<text text-anchor="middle" x="140" y="876">
+<tspan class='head'>(</tspan>●￣ ㋓ ￣●<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="184" y="876">
+ 
+</text>
+<text text-anchor="end" x="112" y="1020">
+ ヽ
+</text>
+<circle cx="136" cy="1016" r="24"/>
+<text text-anchor="middle" x="136" y="1020">
+<tspan class='head'>(</tspan>ಥ益ಥ;<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="160" y="1020">
+ 
+</text>
+<text text-anchor="end" x="200" y="1020">
+ ╭
+</text>
+<circle cx="228" cy="1016" r="28"/>
+<text text-anchor="middle" x="228" y="1020">
+<tspan class='head'>(</tspan> ☯̿∠ ̿☯ <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="256" y="1020">
+╯
+</text>
+<text text-anchor="end" x="112" y="1068">
+ Ѱ୧
+</text>
+<circle cx="132" cy="1064" r="20"/>
+<text text-anchor="middle" x="132" y="1068">
+<tspan class='head'>(</tspan>ಠل͟ ಠ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="1068">
+ 
+</text>
+<text text-anchor="end" x="208" y="1068">
+ Ѱへ
+</text>
+<circle cx="228" cy="1064" r="20"/>
+<text text-anchor="middle" x="228" y="1068">
+<tspan class='head'>(</tspan>ಠل͟ ಠ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="248" y="1068">
+
+</text>
+<text text-anchor="end" x="120" y="1116">
+ ⁽⁽◝
+</text>
+<circle cx="164" cy="1112" r="44"/>
+<text text-anchor="middle" x="164" y="1116">
+<tspan class='head'>(</tspan>∗ ❛⃘ ꒫ ❜⃘⃘ ∗<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="208" y="1116">
+◜⁾⁾ 
+</text>
+<text text-anchor="end" x="112" y="1164">
+ ヽ
+</text>
+<circle cx="132" cy="1160" r="20"/>
+<text text-anchor="middle" x="132" y="1164">
+<tspan class='head'>(</tspan>๏∀◕ <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="1164">
+ﾉ 
+</text>
+<text text-anchor="end" x="208" y="1164">
+ ＼
+</text>
+<circle cx="232" cy="1160" r="24"/>
+<text text-anchor="middle" x="232" y="1164">
+<tspan class='head'>(</tspan>´◓Д◔`<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="256" y="1164">
+／
+</text>
+<text text-anchor="end" x="280" y="1212">
+ ͡-)-
+</text>
+<circle cx="300" cy="1208" r="20"/>
+<text text-anchor="middle" x="300" y="1212">
+<tspan class='head'>(</tspan>ಠ﹏ಥ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="320" y="1212">
+-(ಠ﹏ಥ)
+</text>
+<text text-anchor="end" x="200" y="1260">
+ ╭
+</text>
+<circle cx="216" cy="1256" r="16"/>
+<text text-anchor="middle" x="216" y="1260">
+<tspan class='head'>(</tspan>•⌣•<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="232" y="1260">
+╮
+</text>
+<text text-anchor="end" x="104" y="1356">
+ ╰
+</text>
+<circle cx="120" cy="1352" r="16"/>
+<text text-anchor="middle" x="120" y="1356">
+<tspan class='head'>(</tspan>◉͜ʖ◉<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="1356">
+ԅ†. 
+</text>
+<text text-anchor="end" x="264" y="1356">
+ ╭
+</text>
+<circle cx="296" cy="1352" r="32"/>
+<text text-anchor="middle" x="296" y="1356">
+<tspan class='head'>(</tspan>۝乁 ͜ﾚ ㄏ۝<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="328" y="1356">
+╮
+</text>
+<text text-anchor="end" x="112" y="1452">
+ Ѱ╭
+</text>
+<circle cx="120" cy="1448" r="8"/>
+<text text-anchor="middle" x="120" y="1452">
+<tspan class='head'>(</tspan>۝⌣۝<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="128" y="1452">
+╮Ѱ 
+</text>
+<text text-anchor="end" x="112" y="1548">
+ 乁
+</text>
+<circle cx="132" cy="1544" r="20"/>
+<text text-anchor="middle" x="132" y="1548">
+<tspan class='head'>(</tspan>ಥ౪ಥ;<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="1548">
+ㄏ 
+</text>
+<text text-anchor="end" x="200" y="1548">
+ 
+</text>
+<circle cx="216" cy="1544" r="16"/>
+<text text-anchor="middle" x="216" y="1548">
+<tspan class='head'>(</tspan>▀̿̿Ĺ̯̿̿°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="232" y="1548">
+ง
+</text>
+<text text-anchor="end" x="96" y="1644">
+ 
+</text>
+<circle cx="124" cy="1640" r="28"/>
+<text text-anchor="middle" x="124" y="1644">
+<tspan class='head'>(</tspan>っ˘̩╭╮˘̩<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="1644">
+っ 
+</text>
+<text text-anchor="end" x="184" y="1644">
+ 
+</text>
+<circle cx="204" cy="1640" r="20"/>
+<text text-anchor="middle" x="204" y="1644">
+<tspan class='head'>(</tspan>⌣_⌣”<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="224" y="1644">
+
+</text>
+<text text-anchor="end" x="112" y="1708">
+ ⋛⋋
+</text>
+<circle cx="136" cy="1704" r="24"/>
+<text text-anchor="middle" x="136" y="1708">
+<tspan class='head'>(</tspan> ՞ਊ ՞<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="160" y="1708">
+⋌⋚ 
+</text>
+<text text-anchor="end" x="208" y="1708">
+ 
+</text>
+<circle cx="228" cy="1704" r="20"/>
+<text text-anchor="middle" x="228" y="1708">
+<tspan class='head'>(</tspan>｡˘з˘<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="248" y="1708">
+
+</text>
+<text text-anchor="end" x="96" y="1804">
+ 
+</text>
+<circle cx="120" cy="1800" r="24"/>
+<text text-anchor="middle" x="120" y="1804">
+<tspan class='head'>(</tspan> ͝° ͜ʖ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="1804">
+つY 
+</text>
+<text text-anchor="end" x="208" y="1804">
+ ヽ
+</text>
+<circle cx="240" cy="1800" r="32"/>
+<text text-anchor="middle" x="240" y="1804">
+<tspan class='head'>(</tspan> ͡°╭͜ʖ╮͡° <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="272" y="1804">
+ﾉ
+</text>
+<text text-anchor="end" x="208" y="1852">
+ /╲/
+</text>
+<circle cx="236" cy="1848" r="28"/>
+<text text-anchor="middle" x="236" y="1852">
+<tspan class='head'>(</tspan> ͡⎚ ͜U ͡⎚<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="264" y="1852">
+/\╱\
+</text>
+<text text-anchor="end" x="96" y="1900">
+ 
+</text>
+<circle cx="124" cy="1896" r="28"/>
+<text text-anchor="middle" x="124" y="1900">
+<tspan class='head'>(</tspan> ͡⚆ ͜ʖ ͡⚆<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="1900">
+ 
+</text>
+<text text-anchor="end" x="96" y="1948">
+ 
+</text>
+<circle cx="120" cy="1944" r="24"/>
+<text text-anchor="middle" x="120" y="1948">
+<tspan class='head'>(</tspan> ͡ _ ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="1948">
+ﾉ⚲ 
+</text>
+<text text-anchor="end" x="96" y="1996">
+ 
+</text>
+<circle cx="116" cy="1992" r="20"/>
+<text text-anchor="middle" x="116" y="1996">
+<tspan class='head'>(</tspan> ಠ⌣ಠ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="1996">
+ 
+</text>
+<text text-anchor="end" x="104" y="2140">
+ ᕕ
+</text>
+<circle cx="132" cy="2136" r="28"/>
+<text text-anchor="middle" x="132" y="2140">
+<tspan class='head'>(</tspan> ͡° ͜ʖ ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="160" y="2140">
+ᕗ 
+</text>
+<text text-anchor="end" x="168" y="2236">
+ 
+</text>
+<circle cx="188" cy="2232" r="20"/>
+<text text-anchor="middle" x="188" y="2236">
+<tspan class='head'>(</tspan>° ͜ʖ°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="208" y="2236">
+
+</text>
+<text text-anchor="end" x="96" y="2332">
+ 
+</text>
+<circle cx="116" cy="2328" r="20"/>
+<text text-anchor="middle" x="116" y="2332">
+<tspan class='head'>(</tspan>╯°□°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="2332">
+╯︵ 
+</text>
+<text text-anchor="end" x="184" y="2380">
+ 
+</text>
+<circle cx="212" cy="2376" r="28"/>
+<text text-anchor="middle" x="212" y="2380">
+<tspan class='head'>(</tspan> ＾◡＾<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="240" y="2380">
+っ✂
+</text>
+<text text-anchor="end" x="104" y="2428">
+ ╰
+</text>
+<circle cx="132" cy="2424" r="28"/>
+<text text-anchor="middle" x="132" y="2428">
+<tspan class='head'>(</tspan> ͡&apos;◟◯ ͡&apos;<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="160" y="2428">
+╯ 
+</text>
+<text text-anchor="end" x="112" y="2524">
+ 
+</text>
+<circle cx="144" cy="2520" r="32"/>
+<text text-anchor="middle" x="144" y="2524">
+<tspan class='head'>(</tspan>° ~͜ʖ~ °<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="176" y="2524">
+ 
+</text>
+<text text-anchor="end" x="224" y="2524">
+ 乁
+</text>
+<circle cx="248" cy="2520" r="24"/>
+<text text-anchor="middle" x="248" y="2524">
+<tspan class='head'>(</tspan> ◔ ౪◔<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="272" y="2524">
+ㄏ
+</text>
+<text text-anchor="end" x="176" y="2620">
+ 
+</text>
+<circle cx="204" cy="2616" r="28"/>
+<text text-anchor="middle" x="204" y="2620">
+<tspan class='head'>(</tspan> ﾉ ﾟｰﾟ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="232" y="2620">
+ﾉ
+</text>
+<text text-anchor="end" x="168" y="2668">
+ ヽ
+</text>
+<circle cx="192" cy="2664" r="24"/>
+<text text-anchor="middle" x="192" y="2668">
+<tspan class='head'>(</tspan>ﾟｰﾟヽ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="216" y="2668">
+
+</text>
+<text text-anchor="end" x="192" y="2716">
+ 
+</text>
+<circle cx="216" cy="2712" r="24"/>
+<text text-anchor="middle" x="216" y="2716">
+<tspan class='head'>(</tspan>☢益☢t<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="240" y="2716">
+
+</text>
+<text text-anchor="end" x="192" y="2764">
+ 
+</text>
+<circle cx="208" cy="2760" r="16"/>
+<text text-anchor="middle" x="208" y="2764">
+<tspan class='head'>(</tspan>╯▽╰<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="224" y="2764">
+╭
+</text>
+<text text-anchor="end" x="104" y="2812">
+ ╮
+</text>
+<circle cx="120" cy="2808" r="16"/>
+<text text-anchor="middle" x="120" y="2812">
+<tspan class='head'>(</tspan>╯ل͜╰<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="2812">
+╭ 
+</text>
+<text text-anchor="end" x="96" y="2860">
+ 
+</text>
+<circle cx="120" cy="2856" r="24"/>
+<text text-anchor="middle" x="120" y="2860">
+<tspan class='head'>(</tspan>ι´Д｀<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="2860">
+ﾉ 
+</text>
+<text text-anchor="end" x="208" y="2860">
+ [̲̅$̲̅
+</text>
+<circle cx="244" cy="2856" r="36"/>
+<text text-anchor="middle" x="244" y="2860">
+<tspan class='head'>(</tspan>̲̅ヽ̲̅༼̲̅ຈ̲̅ل͜ຈ̲̅༽̲̅ﾉ̲̅<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="280" y="2860">
+̲̅$̲̅]
+</text>
+<text text-anchor="end" x="96" y="2988">
+ 
+</text>
+<circle cx="120" cy="2984" r="24"/>
+<text text-anchor="middle" x="120" y="2988">
+<tspan class='head'>(</tspan>＾◡＾<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="2988">
+っ 
+</text>
+<text text-anchor="end" x="96" y="3084">
+ 
+</text>
+<circle cx="120" cy="3080" r="24"/>
+<text text-anchor="middle" x="120" y="3084">
+<tspan class='head'>(</tspan>͡◔ ͜ʖ ͡◔<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="3084">
+ 
+</text>
+<text text-anchor="end" x="144" y="3132">
+ ─=≡Σ((
+</text>
+<circle cx="172" cy="3128" r="28"/>
+<text text-anchor="middle" x="172" y="3132">
+<tspan class='head'>(</tspan> つ◕ل͜◕<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="200" y="3132">
+つ 
+</text>
+<text text-anchor="end" x="248" y="3132">
+ 
+</text>
+<circle cx="280" cy="3128" r="32"/>
+<text text-anchor="middle" x="280" y="3132">
+<tspan class='head'>(</tspan>∩ ͡° ͜ʖ ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="312" y="3132">
+⊃━☆ﾟ. 
+</text>
+<text text-anchor="end" x="176" y="3276">
+ 
+</text>
+<circle cx="200" cy="3272" r="24"/>
+<text text-anchor="middle" x="200" y="3276">
+<tspan class='head'>(</tspan>ง⌐□ل͜□<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="224" y="3276">
+ง
+</text>
+<text text-anchor="end" x="96" y="3372">
+ 
+</text>
+<circle cx="120" cy="3368" r="24"/>
+<text text-anchor="middle" x="120" y="3372">
+<tspan class='head'>(</tspan> ° ͜ʖ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="144" y="3372">
+ 
+</text>
+<text text-anchor="end" x="96" y="3420">
+ 
+</text>
+<circle cx="116" cy="3416" r="20"/>
+<text text-anchor="middle" x="116" y="3420">
+<tspan class='head'>(</tspan>~˘▾˘<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="3420">
+~ 
+</text>
+<text text-anchor="end" x="192" y="3468">
+ 
+</text>
+<circle cx="216" cy="3464" r="24"/>
+<text text-anchor="middle" x="216" y="3468">
+<tspan class='head'>(</tspan>☞ﾟヮﾟ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="240" y="3468">
+☞
+</text>
+<text text-anchor="end" x="232" y="3516">
+ /╲/\╭
+</text>
+<circle cx="276" cy="3512" r="44"/>
+<text text-anchor="middle" x="276" y="3516">
+<tspan class='head'>(</tspan> ͡° ͡° ͜ʖ ͡° ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="320" y="3516">
+╮/\╱\
+</text>
+<text text-anchor="end" x="96" y="3564">
+ 
+</text>
+<circle cx="116" cy="3560" r="20"/>
+<text text-anchor="middle" x="116" y="3564">
+<tspan class='head'>(</tspan>ﾉಠ_ಠ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="3564">
+ﾉ 
+</text>
+<text text-anchor="end" x="192" y="3564">
+ └
+</text>
+<circle cx="208" cy="3560" r="16"/>
+<text text-anchor="middle" x="208" y="3564">
+<tspan class='head'>(</tspan>°ᴥ°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="224" y="3564">
+┘
+</text>
+<text text-anchor="end" x="200" y="3612">
+ ლ
+</text>
+<circle cx="232" cy="3608" r="32"/>
+<text text-anchor="middle" x="232" y="3612">
+<tspan class='head'>(</tspan>́◉◞౪◟◉‵ლ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="264" y="3612">
+
+</text>
+<text text-anchor="end" x="96" y="3708">
+ 
+</text>
+<circle cx="128" cy="3704" r="32"/>
+<text text-anchor="middle" x="128" y="3708">
+<tspan class='head'>(</tspan>ง ͠° ͟ل͜ ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="160" y="3708">
+ง 
+</text>
+<text text-anchor="end" x="96" y="3852">
+ 
+</text>
+<circle cx="124" cy="3848" r="28"/>
+<text text-anchor="middle" x="124" y="3852">
+<tspan class='head'>(</tspan> ͡° ͜ʖ ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="152" y="3852">
+ 
+</text>
+<text text-anchor="end" x="112" y="3948">
+ ヽ
+</text>
+<circle cx="136" cy="3944" r="24"/>
+<text text-anchor="middle" x="136" y="3948">
+<tspan class='head'>(</tspan> ͝° ͜ʖ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="160" y="3948">
+ﾉ 
+</text>
+<text text-anchor="end" x="216" y="3948">
+ 
+</text>
+<circle cx="236" cy="3944" r="20"/>
+<text text-anchor="middle" x="236" y="3948">
+<tspan class='head'>(</tspan>&apos;ºل͟º<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="256" y="3948">
+ノ⌒.
+</text>
+<text text-anchor="end" x="112" y="3996">
+ [̲̅$̲̅
+</text>
+<circle cx="140" cy="3992" r="28"/>
+<text text-anchor="middle" x="140" y="3996">
+<tspan class='head'>(</tspan>̲̅ ͡° ͜ʖ ͡°̲̅<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="168" y="3996">
+̲̅$̲̅] 
+</text>
+<text text-anchor="end" x="104" y="4044">
+ ᕕ
+</text>
+<circle cx="120" cy="4040" r="16"/>
+<text text-anchor="middle" x="120" y="4044">
+<tspan class='head'>(</tspan> ᐛ <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="136" y="4044">
+ᕗ 
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Faces
+
+Spongedown supports a wide variety of faces.
+You can copy and paste the faces too.
+
+```comic
+
+            ٩(̾●̮̮̃ ̾•̃̾)۶  o͡͡͡╮( ʘ̆ ۝ ʘ̆ )╭o͡
+
+            ७(,⊙–⊙,)७  o͡͡͡╮(•ʖ̯•)╭o͡͡͡
+
+            (°□°)  ¯\_( ツ)_/¯ 
+
+            ヽ(。°)ノ ヾ(ｏ･ω･)ﾉ
+
+            ╾━╤デ╦︻༼ಠ益ಠ༽︻╦̵̵͇̿̿̿̿══╤─
+
+
+            (˙ ͜ʟ˙ ) (つ°ヮ°)つ 
+
+
+            ⎝༼ຈل͜ຈ༽⎠   (╯°□°] ╯︵ ┬─┻
+
+
+            (⊙ヮ⊙)   ༼⊙ʖ̯⊙༽
+
+
+            ༼⌐□ل͜□༽ ง/͠-┌ل͜┐͡-\ง
+
+
+            ヽ( ͝° ̯ʖ ͝°)ﾉ ᶘ ͡°ᴥ͡°ᶅ   ( ͡⚆ل͜⚆)ﾉ⚲
+
+
+            ᗜԅ(⇀︿⇀)ᓄ-¤]═────   ✿∗˵╰༼✪ᗜ✪༽╯˵∗✿
+
+
+            (つ･◡･)つ    ᕦ(눈_눈)ᕗ
+
+
+            (⌐▀͡ ̯ʖ▀)   ζ༼Ɵ͆ل͜Ɵ͆༽ᶘ
+
+
+            ヽ( ⌐□益□)/    (▀̿̿Ĺ̯̿̿▀̿ ̿)
+
+
+            ⋋|།'͡ᴼ╭͜ʖ╮͡ᴼ'།|⋌    [•+•]=|:::>
+
+
+            ╰༼◉Д◕༽〜┣▇▇▇═──   ╰༼ཀДཀ༽╯
+
+
+            ԅ〳 ͜ಠ ͜ʟ ͜ಠ 〵و   -[ºل͟º]-
+
+
+            -[ ͡° ͜ʖ ͡°]-   [ ͝° ͜ʖ͡°]
+
+
+            ( ° ͜ʖ͡°)   └[ຈل͜ರೃ]┘
+
+
+            (●￣ ㋓ ￣●)   /╯⋋┏□┓⋌\╯
+
+
+            ヽ/⋋┏_┓⋌\ﾉ  ヽ/✿ര̀ ل͜ ര́\ﾉ
+
+
+            ヽ/❀ᓀ ل͜ ᓂ\ﾉ   ୧༼ ͡◕ д ◕͡ ༽୨
+
+
+            ヽ(ಥ益ಥ;)   ╭( ☯̿∠ ̿☯ )╯
+
+
+            Ѱ୧(ಠل͟ ಠ)   Ѱへ(ಠل͟ ಠ)
+
+
+            ⁽⁽◝(∗ ❛⃘ ꒫ ❜⃘⃘ ∗)◜⁾⁾  へ[ ᴼ ▃ ᴼ ]_/¯
+
+
+            ヽ(๏∀◕ )ﾉ   ＼(´◓Д◔`)／
+
+
+            ヘ（。□°）ヘ   (- ͟ل͜ ͡-)-(ಠ﹏ಥ)
+
+
+            ʕっ༎ຶᴥ༎ຶʔっ   ╭(•⌣•)╮
+
+
+            ᕦ༼༎ຶ_༎ຶ༽ᕗ    ༼ つ⇧ ◕_◕ ༽つ⇧
+
+
+            ╰(◉͜ʖ◉)ԅ†. * ･ ｡ﾟ    ╭(۝乁 ͜ﾚ ㄏ۝)╮
+
+
+            ༼ ▀̿̿Ĺ̯̿̿▀̿ ༼ ▀̿̿Ĺ̯̿̿▀̿༽▀̿̿Ĺ̯̿̿▀̿ ༽
+
+
+            Ѱ╭(۝⌣۝)╮Ѱ   ヽ༼◐ل͜◑༽ﾉ
+
+
+            <:::::[]=¤༼ຈل͜ຈ༽ﾉ   ༼ °ｰ° ༽
+
+
+            乁(ಥ౪ಥ;)ㄏ   (▀̿̿Ĺ̯̿̿°)ง
+
+
+            ༼ಠ益ಠ༽   ヽヽ༼༼ຈຈل͜ل͜ຈຈ༽༽ﾉﾉ
+
+
+            (っ˘̩╭╮˘̩)っ (⌣_⌣”)
+
+
+
+            ⋛⋋( ՞ਊ ՞)⋌⋚   (｡˘з˘)
+
+
+            ༼ຈل͜ຈ༽_•︻̷┻̿═━一   (▀̿̿Ĺ̯̿̿├┬┴┬┴
+
+
+            ( ͝° ͜ʖ͡°)つY  ヽ( ͡°╭͜ʖ╮͡° )ﾉ
+
+
+            ヽ༼✿σل͜ σ༽ﾉ /╲/( ͡⎚ ͜U ͡⎚)/\╱\
+
+
+            ( ͡⚆ ͜ʖ ͡⚆)   ヽ༼⚆ل͜⚆༽ﾉ
+
+
+            ( ͡ _ ͡°)ﾉ⚲   ♫ ┌༼ຈل͜ຈ༽┘ ♪
+
+
+            ( ಠ⌣ಠ) 
+
+
+            ༼ ಥل͟ಥ ༽ ┬┴┬┴┤ ༼ຈل͜├┬┴┬┴ 
+
+
+            ༼ ಠل͟ಠ༽ ᕕ༼ຈل͜ຈ༽ᕗ
+
+
+            ᕕ( ͡° ͜ʖ ͡°)ᕗ  ༼ง ͠ຈ ͟ل͜ ͠ຈ༽ง
+
+
+            |༼ʘ ل͜ ʘ༽|  ヽ༼◕ل͜◕༽ﾉ
+
+
+            ζ༼Ɵ͆ل͜Ɵ͆༽ᶘ  (° ͜ʖ°)
+
+
+            ヽ༼ ツ ༽ﾉ  （͡°͜ʖ͡°）
+
+
+            (╯°□°)╯︵ ┻━┻
+
+
+            ༼ʕっ•ᴥ•ʔっ ( ＾◡＾)っ✂
+
+
+            ╰( ͡'◟◯ ͡')╯ ヽ༼ ຈل͜ຈ༼ ຈل͜ຈ༽ຈل͜ຈ ༽ﾉ
+
+
+            ༼ - ل͜ - ༽ ヽ° ~͜ʖ~ °ﾉ
+
+
+            ᕙ (° ~͜ʖ~ °) ᕗ 乁( ◔ ౪◔)ㄏ
+
+
+            ༼ つ ◕_◕ ༽つ ヽ༼ຈل͜ರೃ༽ﾉ
+
+
+            ୧༼ಠ益ರೃ༽୨ ( ﾉ ﾟｰﾟ)ﾉ
+
+
+            ヽຈل͜ຈﾉ ヽ(ﾟｰﾟヽ)
+
+
+            ヽ༼ຈ益ຈ༽ﾉ   (☢益☢t)
+
+
+            ༼ᕗຈل͜ຈ༽ᕗ ╮   (╯▽╰)╭
+
+
+            ╮(╯ل͜╰)╭    ༼ つ◕(oo)◕༽つ
+
+
+            (ι´Д｀)ﾉ    [̲̅$̲̅(̲̅ヽ̲̅༼̲̅ຈ̲̅ل͜ຈ̲̅༽̲̅ﾉ̲̅)̲̅$̲̅]
+
+
+
+
+            ༼ ͠ຈ ͟ل͜ ͠ຈ༽ง ヽ༼ຈل͜ຈ༽ﾉ☂
+
+
+            (＾◡＾)っ   ༼☯﹏☯༽
+
+
+            ヽ༼ ☭ل͜☭ ༽ﾉ   ♌༼✪ل͜✪༽ᕤ
+
+
+            (͡◔ ͜ʖ ͡◔)   ヽ༼ʘ̚ل͜ʘ̚༽ﾉ
+
+
+            ─=≡Σ((( つ◕ل͜◕)つ   (∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ. * ･ ｡ﾟ,
+
+
+            ༼ຈل͜ຈ༽>ง    ᕙ༼◕ل͜◕༽ᕗ
+
+
+            ヽ༼ຈل͜ຈ༽ﾉ︵┻━┻    ୧༼ ͡◉ل͜ ͡◉༽୨
+
+
+            ༼ ͡■ل͜ ͡■༽   (ง⌐□ل͜□)ง
+
+
+            Ѱζ༼ᴼل͜ᴼ༽ᶘѰ   ヽ༼ຈل͜ຈ༽ง
+
+
+            ( ° ͜ʖ͡°)   ɳ༼ຈل͜ຈ༽ɲ
+
+
+            (~˘▾˘)~   ʕ•ᴥ•ʔ
+
+
+            ヽຈل͜ﾉ༼ຈ     (☞ﾟヮﾟ)☞
+
+
+            ୧༼ಠ益ಠ༽୨    /╲/\╭( ͡° ͡° ͜ʖ ͡° ͡°)╮/\╱\
+
+
+            (ﾉಠ_ಠ)ﾉ    └(°ᴥ°)┘
+
+
+            つ◕ل͜◕)つ    ლ(́◉◞౪◟◉‵ლ)
+
+
+            ヽ༼♥ل͜♥༽ﾉ    ༼ ᓄºل͟º ༽ᓄ
+
+
+            (ง ͠° ͟ل͜ ͡°)ง   ヽ༼ຈل͜ຈ༽ﾉ
+
+
+            ᕦ༼ຈل͜ຈ༽ᕤ     ┌༼ຈل͜ຈ༽┐
+
+
+            ᕙ༼ຈل͜ຈ༽ᕗ     ヽ༼>ل͜<༽ﾉ
+
+
+            ( ͡° ͜ʖ ͡°)   ヽ༼@ل͜ຈ༽ﾉ
+
+
+            ༼ ºل͟º༼ ºل͟º༽ºل͟º ༽
+
+
+            ヽ( ͝° ͜ʖ͡°)ﾉ     ('ºل͟º)ノ⌒.
+
+
+            [̲̅$̲̅(̲̅ ͡° ͜ʖ ͡°̲̅)̲̅$̲̅]     O͡͡͡͡͡͡͡͡͡͡͡͡͡͡╮༼;´༎ຶ.̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̸̨̨̨̨̨̨̨̨̨̨̨̨.̸̸̨̨۝ ༎ຶ༽╭o͡͡͡͡͡͡͡͡͡͡͡͡͡͡
+
+
+            ᕕ( ᐛ )ᕗ 
+
+```
+
+{{#playpen Faces.md}}
+
+#}</code></pre></pre>
+<a class="header" href="print.html#lines-and-intersection" id="lines-and-intersection"><h2>Lines and Intersection</h2></a>
+<svg font-family="arial" font-size="14" height="2112" width="360" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 32 8 L 144 8 M 60 16 L 60 80 M 32 96 L 64 160 M 112 144 L 144 80 M 32 184 L 88 240 M 136 184 L 128 192 M 144 176 L 136 184 M 120 200 L 112 208 M 128 192 L 120 200 M 104 216 L 96 224 M 112 208 L 104 216 M 32 272 L 40 288 L 42 292 A 8 8 0 0 0 48 296 L 80 296 M 88 304 L 86 300 A 8 8 0 0 0 80 296 M 88 304 L 96 320 L 98 324 A 8 8 0 0 0 104 328 L 136 328 M 36 400 L 36 416 M 92 400 L 92 416 M 36 424 L 36 416 M 36 424 L 56 424 M 40 424 L 56 424 M 72 424 L 88 424 M 92 424 L 92 416 M 92 424 L 88 424 M 140 424 L 140 448 M 140 424 L 160 424 M 144 424 L 160 424 M 176 424 L 192 424 M 196 424 L 196 448 M 196 424 L 192 424 M 140 432 L 140 448 M 196 432 L 196 448 M 44 496 L 44 512 M 100 496 L 100 512 M 44 512 L 44 544 M 44 520 L 64 520 M 48 520 L 64 520 M 80 520 L 96 520 M 100 512 L 100 544 M 100 520 L 96 520 M 44 528 L 44 544 M 100 528 L 100 544 M 68 608 L 68 624 M 96 608 L 112 640 M 136 608 L 144 624 M 148 608 L 148 624 M 152 624 L 160 608 M 56 632 L 64 632 M 68 624 L 68 656 M 64 632 L 80 632 M 72 632 L 80 632 M 96 640 L 112 608 M 136 632 L 144 632 M 148 624 L 148 656 M 144 632 L 160 632 M 144 624 L 160 656 M 144 640 L 160 608 M 152 632 L 160 632 M 68 640 L 68 656 M 136 656 L 144 640 M 148 640 L 148 656 M 152 640 L 160 656 M 44 716 L 44 736 M 48 712 A 4 4 0 0 0 44 716 M 48 712 L 56 712 M 64 712 L 72 712 M 76 716 L 76 736 M 76 716 A 4 4 0 0 0 72 712 M 116 704 L 116 720 M 164 704 L 164 720 M 44 720 L 44 736 M 76 720 L 76 736 M 116 720 L 116 724 A 4 4 0 0 0 120 728 L 128 728 M 152 728 L 160 728 M 164 720 L 164 724 M 160 728 A 4 4 0 0 0 164 724 M 72 760 A 4 4 0 0 0 68 764 L 68 768 M 72 760 L 80 760 M 104 760 L 112 760 M 116 764 A 4 4 0 0 0 112 760 M 116 764 L 116 768 M 140 764 L 140 784 M 144 760 A 4 4 0 0 0 140 764 M 152 760 A 16 16 0 0 0 144 760 M 156 764 L 156 784 M 156 764 A 4 4 0 0 0 152 760 M 68 772 A 4 4 0 0 0 72 776 M 68 768 L 68 772 M 72 776 L 80 776 M 104 776 L 112 776 A 4 4 0 0 0 116 772 M 116 768 L 116 772 M 140 768 L 140 784 M 156 768 L 156 784 M 180 768 L 180 784 M 196 768 L 196 784 M 180 784 L 180 788 A 4 4 0 0 0 184 792 L 192 792 M 196 784 L 196 788 M 192 792 A 4 4 0 0 0 196 788 M 48 848 L 56 864 M 108 848 L 108 864 M 144 864 L 152 848 M 172 848 L 172 864 M 56 864 L 58 868 M 60 876 L 60 896 M 60 876 A 16 16 0 0 0 58 868 M 108 864 L 108 868 M 104 880 L 106 876 A 16 16 0 0 0 108 868 M 144 864 L 142 868 M 140 880 L 140 876 M 142 868 A 16 16 0 0 0 140 876 M 172 864 L 172 868 M 174 876 L 184 896 M 172 868 A 16 16 0 0 0 174 876 M 60 880 L 60 896 M 96 896 L 104 880 M 140 880 L 140 896 M 176 880 L 184 896 M 64 912 L 72 928 M 104 928 L 112 912 M 72 928 L 74 932 M 72 944 L 74 940 A 8 8 0 0 0 74 932 M 104 928 L 102 932 M 104 944 L 102 940 M 102 932 A 8 8 0 0 0 102 940 M 64 960 L 72 944 M 104 944 L 112 960 M 56 992 L 64 1008 M 56 1024 L 64 1008 M 56 1056 L 64 1040 M 56 1056 L 64 1072 M 56 1136 L 64 1120 M 112 1120 L 120 1136 M 48 1152 L 64 1120 M 54 1144 L 72 1144 M 54 1144 A 8 8 0 0 0 50 1148 M 56 1144 L 72 1144 M 104 1144 L 120 1144 M 120 1136 L 136 1168 M 122 1144 L 120 1144 M 126 1148 A 8 8 0 0 0 122 1144 M 40 1168 L 48 1152 M 128 1152 L 136 1168 M 56 1200 L 64 1184 M 88 1184 L 96 1200 M 32 1208 L 48 1208 M 48 1216 L 64 1184 M 50 1208 L 48 1208 M 50 1208 A 16 16 0 0 0 54 1204 M 96 1200 L 112 1232 M 102 1208 L 120 1208 M 98 1204 A 8 8 0 0 0 102 1208 M 104 1208 L 120 1208 M 40 1232 L 48 1216 M 104 1216 L 112 1232 M 184 1248 L 192 1264 M 264 1264 L 272 1248 M 56 1272 L 72 1272 L 96 1272 M 72 1280 L 74 1276 M 80 1272 A 8 8 0 0 0 74 1276 M 80 1272 L 96 1272 M 112 1272 L 128 1272 L 152 1272 M 134 1276 L 144 1296 M 134 1276 A 8 8 0 0 0 128 1272 M 136 1272 L 152 1272 M 176 1272 L 192 1272 L 216 1272 M 192 1264 L 194 1268 A 8 8 0 0 0 200 1272 L 216 1272 M 240 1272 L 256 1272 L 280 1272 M 262 1268 L 272 1248 M 256 1272 A 8 8 0 0 0 262 1268 M 264 1272 L 280 1272 M 64 1296 L 72 1280 M 136 1280 L 144 1296 M 60 1368 L 60 1392 M 60 1368 L 56 1376 M 100 1368 L 100 1392 M 100 1368 L 112 1392 M 140 1368 L 140 1440 M 140 1368 L 176 1440 M 180 1368 L 180 1440 M 180 1368 L 176 1376 M 48 1392 L 56 1376 M 60 1376 L 60 1392 M 100 1376 L 100 1392 M 104 1376 L 112 1392 M 140 1376 L 140 1440 M 144 1376 L 176 1440 M 180 1376 L 180 1440 M 48 1424 L 56 1440 M 60 1424 L 60 1440 M 92 1424 L 92 1440 M 96 1440 L 104 1424 M 144 1440 L 176 1376 M 56 1440 L 60 1448 L 60 1440 M 92 1440 L 92 1448 L 104 1424 M 140 1440 L 140 1448 L 176 1376 M 176 1440 L 180 1448 L 180 1440 M 68 1472 L 68 1488 M 100 1472 L 100 1488 M 68 1488 L 68 1520 M 64 1504 L 66 1500 A 16 16 0 0 0 68 1492 M 100 1488 L 100 1520 M 104 1504 L 102 1500 M 100 1492 A 16 16 0 0 0 102 1500 M 56 1520 L 64 1504 M 68 1504 L 68 1520 M 100 1504 L 100 1520 M 104 1504 L 112 1520 M 68 1536 L 68 1552 L 68 1560 L 80 1584 M 68 1560 L 64 1568 M 56 1584 L 64 1568 M 72 1568 L 80 1584 M 56 1600 L 64 1616 M 68 1600 L 68 1616 M 72 1616 L 80 1600 M 68 1616 L 68 1648 M 64 1616 L 80 1648 M 64 1632 L 80 1600 M 56 1648 L 64 1632 M 68 1632 L 68 1648 M 72 1632 L 80 1648 M 56 1680 L 64 1696 M 68 1680 L 68 1696 M 72 1696 L 80 1680 M 48 1704 L 64 1704 M 68 1696 L 68 1728 M 64 1704 L 88 1704 M 64 1696 L 80 1728 M 64 1712 L 80 1680 M 72 1704 L 88 1704 M 56 1728 L 64 1712 M 68 1712 L 68 1728 M 72 1712 L 80 1728 M 56 1744 L 64 1760 M 68 1744 L 68 1760 M 72 1760 L 80 1744 M 48 1768 L 64 1768 M 68 1760 L 68 1792 M 64 1768 L 88 1768 M 64 1760 L 80 1792 M 64 1776 L 80 1744 M 72 1768 L 88 1768 M 56 1792 L 64 1776 M 68 1776 L 68 1792 M 72 1776 L 80 1792 M 68 1808 L 68 1824 M 72 1824 L 80 1808 M 96 1808 L 104 1824 M 108 1808 L 108 1824 M 68 1824 L 68 1856 M 68 1832 L 80 1808 M 108 1824 L 108 1856 M 104 1824 L 108 1832 M 68 1840 L 68 1856 M 108 1840 L 108 1856 M 56 1928 L 64 1928 M 64 1936 L 66 1932 A 4 4 0 0 0 64 1928 M 88 1928 L 96 1928 M 104 1936 L 102 1932 A 8 8 0 0 0 96 1928 M 56 1952 L 64 1936 M 104 1936 L 112 1952 M 64 1984 L 66 1980 M 72 1976 A 8 8 0 0 0 66 1980 M 72 1976 L 80 1976 M 104 1984 L 102 1980 M 104 1976 A 4 4 0 0 0 102 1980 M 104 1976 L 112 1976 M 56 2000 L 64 1984 M 104 1984 L 112 2000 M 56 2048 L 64 2032 M 88 2048 L 96 2032 M 136 2032 L 144 2048 M 176 2032 L 184 2048 M 54 2052 L 64 2032 M 54 2052 A 4 4 0 0 0 56 2056 L 64 2056 M 86 2052 L 96 2032 M 86 2052 A 4 4 0 0 0 88 2056 L 144 2056 M 144 2048 L 146 2052 M 144 2056 A 4 4 0 0 0 146 2052 M 176 2056 L 184 2056 M 184 2048 L 186 2052 M 184 2056 A 4 4 0 0 0 186 2052" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="154" y="12">
+horizontal lines
+</text>
+<text x="82" y="44">
+vertical lines
+</text>
+<text x="146" y="124">
+slanted lines
+</text>
+<text x="146" y="204">
+low angle slanted lines
+</text>
+<text x="138" y="284">
+bended lines
+</text>
+<text x="34" y="380">
+perpendiular corners
+</text>
+<text x="34" y="476">
+side intersect
+</text>
+<text x="42" y="588">
+crossing
+</text>
+<text x="58" y="700">
+rounded corners
+</text>
+<text x="42" y="828">
+rounded bends
+</text>
+<text x="34" y="988">
+sharp bends
+</text>
+<text x="34" y="1100">
+slanted round side intersections
+</text>
+<text x="34" y="1340">
+sharp and acute angle intersection
+</text>
+<text x="34" y="1900">
+rounded acute corners
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+    
+
+
+
+## Lines and Intersection
+
+
+```bob
+    -------------- horizontal lines
+       |
+       |  vertical lines
+       |
+       |
+                 /
+    \           /
+     \         /  slanted lines
+      \       /
+       \
+                 
+    .           ,'
+     `.       ,'  low angle slanted lines
+       `.   ,'
+         `.
+
+    
+    \            bended lines
+     '----.
+           \
+            '----
+       
+    
+    perpendiular corners
+
+    |      |   
+    +--  --+     +--  --+
+                 |      |
+
+    side intersect
+
+     |      |
+     +--  --+ 
+     |      | 
+
+
+     crossing
+
+        |   \/   \|/
+       -+-  /\   -.-   
+        |        /|\
+       
+        
+       rounded corners      
+     .- -.    |     |
+     |   |    '-   -'
+
+        .-   -.  .-.       
+        '-   -'  | |  | |  
+                      '-'
+
+     rounded bends
+
+      \      |    /  |
+       .     '   '   .
+       |    /    |    \ 
+
+        \    / 
+         .  .
+        /    \
+
+    sharp bends
+       \
+       /
+
+       /
+       \
+
+    slanted round side intersections
+
+       /      \
+      '--    --'
+     /          \
+
+       /   \
+    --'     '--
+     /       \
+
+                       \         /
+       --.--  --.--   --.--   --.--
+        /        \     
+
+
+    sharp and acute angle intersection
+
+       .    .    .    .
+      /|    |\   |\  /|
+                 | \/ |
+                 | /\ |
+      \|   |/    |/  \|
+       '   '     '    '
+
+        |   |
+        .   .
+       /|   |\ 
+
+        |
+        .
+       / \
+
+       \|/
+        .
+       /|\
+
+       
+       \|/
+      --.--
+       /|\
+
+       \|/
+      --+--
+       /|\
+        
+        |/  \|
+        .    .
+        |    |
+
+    
+    rounded acute corners
+
+       -.  -.
+       /     \
+
+        .-  .-
+       /     \
+
+      
+       /   /     \    \
+      '-  '-------'   -'
+
+```
+
+{{#playpen Lines_and_Intersections.md}}
+
+#}</code></pre></pre>
+<a class="header" href="print.html#complex-shapes" id="complex-shapes"><h1>Complex Shapes</h1></a>
+<p>Complex shapes are created by combining these basic shapes</p>
+<ul>
+<li><a href="complex/comics.html">Comics</a></li>
+<li><a href="complex/Ascii_art.html">Ascii art</a></li>
+<li><a href="complex/Graphs.html">Graphs</a></li>
+<li><a href="complex/diagrams.html">Diagrams</a></li>
+</ul>
+<a class="header" href="print.html#comics" id="comics"><h2>Comics</h2></a>
+<p>Combining speech balloons and emoji faces, simple comics can be created</p>
+<svg font-family="arial" font-size="14" height="704" width="504" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 4 24 L 4 192 M 4 24 L 312 24 M 8 24 L 312 24 M 316 24 L 316 192 M 316 24 L 312 24 M 4 32 L 4 192 M 56 40 A 16 16 0 0 0 46 48 M 56 40 L 104 40 M 114 48 A 16 16 0 0 0 104 40 M 316 32 L 316 192 M 46 48 A 16 16 0 0 0 46 64 M 114 64 A 16 16 0 0 0 114 48 M 46 64 A 16 16 0 0 0 56 72 L 72 72 M 72 80 L 74 76 A 4 4 0 0 0 72 72 M 96 72 L 88 80 M 96 72 L 104 72 A 16 16 0 0 0 114 64 M 176 72 A 16 16 0 0 0 166 80 M 176 72 L 232 72 M 242 80 A 16 16 0 0 0 232 72 M 80 88 L 72 96 M 88 80 L 80 88 M 166 80 A 16 16 0 0 0 166 96 M 242 96 A 16 16 0 0 0 242 80 M 56 112 L 72 80 M 72 96 L 56 112 M 166 96 A 16 16 0 0 0 176 104 L 192 104 L 232 144 M 216 112 L 214 108 M 216 104 A 4 4 0 0 0 214 108 M 216 104 L 232 104 A 16 16 0 0 0 242 96 M 216 112 L 232 144 M 4 192 L 4 384 M 4 200 L 312 200 M 8 200 L 312 200 M 316 192 L 316 384 M 316 200 L 312 200 M 4 208 L 4 384 M 68 220 L 68 240 M 72 216 A 4 4 0 0 0 68 220 M 72 216 L 192 216 M 196 220 L 196 240 M 196 220 A 4 4 0 0 0 192 216 M 316 208 L 316 384 M 68 224 L 68 240 M 196 224 L 196 240 M 68 240 L 68 244 A 4 4 0 0 0 72 248 L 88 248 M 88 256 L 90 252 A 4 4 0 0 0 88 248 M 112 248 L 104 256 M 112 248 L 192 248 M 196 240 L 196 244 M 192 248 A 4 4 0 0 0 196 244 M 96 264 L 88 272 M 104 256 L 96 264 M 72 288 L 88 256 M 88 272 L 72 288 M 4 392 L 4 384 M 4 392 L 312 392 M 8 392 L 312 392 M 316 392 L 316 384 M 316 392 L 312 392" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="66" y="60">
+Hey!
+</text>
+<text x="186" y="92">
+What!
+</text>
+<text x="82" y="236">
+Shark head?
+</text>
+<text x="34" y="332">
+ζ༼☯﹏☯༽ᶘ
+</text>
+<text x="82" y="348">
+&apos;
+</text>
+<text x="194" y="588">
+╾━╤デ╦︻༼ಠ益ಠ༽︻╦̿══╤─
+</text>
+<text text-anchor="end" x="32" y="140">
+ ٩
+</text>
+<circle cx="48" cy="136" r="16"/>
+<text text-anchor="middle" x="48" y="140">
+<tspan class='head'>(</tspan>̾●̮̮̃ ̾•̃̾<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="64" y="140">
+۶ 
+</text>
+<text text-anchor="end" x="216" y="172">
+ ७
+</text>
+<circle cx="240" cy="168" r="24"/>
+<text text-anchor="middle" x="240" y="172">
+<tspan class='head'>(</tspan>,⊙–⊙,<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="264" y="172">
+७ 
+</text>
+<text text-anchor="end" x="240" y="364">
+ ლ
+</text>
+<circle cx="264" cy="360" r="24"/>
+<text text-anchor="middle" x="264" y="364">
+<tspan class='head'>(</tspan>ಠ益ಠლ<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="288" y="364">
+ 
+</text>
+<text text-anchor="end" x="64" y="476">
+ o͡͡͡╮
+</text>
+<circle cx="80" cy="472" r="16"/>
+<text text-anchor="middle" x="80" y="476">
+<tspan class='head'>(</tspan>•ʖ̯•<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="96" y="476">
+╭o͡͡͡ 
+</text>
+<text text-anchor="end" x="40" y="508">
+ ╭
+</text>
+<circle cx="56" cy="504" r="16"/>
+<text text-anchor="middle" x="56" y="508">
+<tspan class='head'>(</tspan>•⌣•<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="72" y="508">
+╮ 
+</text>
+<text text-anchor="end" x="160" y="508">
+ 
+</text>
+<circle cx="176" cy="504" r="16"/>
+<text text-anchor="middle" x="176" y="508">
+<tspan class='head'>(</tspan>°□°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="192" y="508">
+ 
+</text>
+<text text-anchor="end" x="160" y="540">
+ 乁
+</text>
+<circle cx="180" cy="536" r="20"/>
+<text text-anchor="middle" x="180" y="540">
+<tspan class='head'>(</tspan>ಥ౪ಥ;<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="200" y="540">
+ㄏ 
+</text>
+<text text-anchor="end" x="56" y="572">
+ ७
+</text>
+<circle cx="80" cy="568" r="24"/>
+<text text-anchor="middle" x="80" y="572">
+<tspan class='head'>(</tspan>,⊙–⊙,<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="104" y="572">
+७ 
+</text>
+<text text-anchor="end" x="48" y="636">
+ ¯\_
+</text>
+<circle cx="72" cy="632" r="24"/>
+<text text-anchor="middle" x="72" y="636">
+<tspan class='head'>(</tspan>  ツ <tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="96" y="636">
+_/¯ 
+</text>
+<text text-anchor="end" x="184" y="652">
+ 
+</text>
+<circle cx="212" cy="648" r="28"/>
+<text text-anchor="middle" x="212" y="652">
+<tspan class='head'>(</tspan> ͡° ͜ʖ ͡°<tspan class='head'>)</tspan>
+</text>
+<text text-anchor="start" x="240" y="652">
+ 
+</text>
+</svg>
+<p><details>
+<summary>Show code for this page</summary></p>
+<pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Comics
+
+Combining speech balloons and emoji faces, simple comics can be created
+
+
+```comic
+
++--------------------------------------+
+|     .------.                         |
+|    (  Hey!  )                        |
+|     `--, .-'       .-------.         |
+|       /,'         (  What!  )        |
+|      /'            `--. .--'         |
+|                        `.\           |
+|  ٩(̾●̮̮̃ ̾•̃̾)۶                 `\          |
+|                                      |
+|                         ७(,⊙–⊙,)७    |
+|                                      |
++--------------------------------------+
+|       .---------------.              |
+|       | Shark head?   |              |
+|       '--, .----------'              |
+|         /,'                          |
+|        /'                            |
+|                                      |
+|                                      |
+|   ζ༼☯﹏☯༽ᶘ                           |
+|         '                            |
+|                            ლ(ಠ益ಠლ)  |
+|                                      |
++--------------------------------------+
+
+
+
+
+      o͡͡͡╮(•ʖ̯•)╭o͡͡͡                       
+
+    ╭(•⌣•)╮         (°□°)                  
+                                      
+                  乁(ಥ౪ಥ;)ㄏ          
+                           
+      ७(,⊙–⊙,)७                                  
+                        ╾━╤デ╦︻༼ಠ益ಠ༽︻╦̵̵͇̿̿̿̿══╤─              
+                                 
+
+   ¯\_(  ツ )_/¯                        
+                       ( ͡° ͜ʖ ͡°)              
+       
+```    
+
+<details>
+<summary>Show code for this page</summary>
+{{#playpen comics.md}}
+</details>
+
+#}</code></pre></pre>
+</details>
+<a class="header" href="print.html#ascii-art" id="ascii-art"><h2>Ascii art</h2></a>
+<p>Spongedown allows you to scribble ascii art and the program tries hard to connect the dots.</p>
+<svg font-family="arial" font-size="14" height="528" width="544" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 176 16 L 480 16 M 176 16 A 40 40 0 0 0 154 32 M 502 32 A 40 40 0 0 0 480 16 M 154 32 A 40 40 0 0 0 148 48 M 508 48 A 40 40 0 0 0 502 32 M 148 48 L 148 80 M 508 48 L 508 80 M 148 80 A 40 40 0 0 0 154 96 M 502 96 A 40 40 0 0 0 508 80 M 154 96 A 40 40 0 0 0 176 112 L 232 112 M 248 112 L 480 112 A 40 40 0 0 0 502 96 M 240 120 L 232 128 M 248 112 L 240 120 M 216 144 L 232 112 M 232 128 L 216 144 M 64 168 A 4 4 0 0 0 60 172 L 60 176 M 64 168 L 80 168 L 88 176 A 16 16 0 0 0 96 176 M 96 168 L 112 184 M 104 168 L 144 168 L 152 176 A 16 16 0 0 0 160 176 M 168 168 A 16 16 0 0 0 158 176 M 168 168 L 184 168 L 192 176 A 16 16 0 0 0 200 176 L 208 168 L 240 168 M 248 176 L 246 172 A 8 8 0 0 0 240 168 M 56 184 L 48 192 M 64 176 L 56 184 M 72 176 L 80 192 M 116 188 L 112 184 M 116 188 L 112 192 M 120 192 L 128 192 M 160 192 L 168 192 M 216 192 L 224 192 M 248 176 L 256 192 M 40 200 L 32 208 M 48 192 L 40 200 M 84 192 L 84 208 M 112 192 L 104 200 M 120 208 L 128 208 M 216 208 L 224 208 M 256 192 L 256 208 M 32 208 L 40 224 M 48 224 L 56 224 M 60 220 L 64 216 M 60 220 L 64 224 M 72 208 L 64 216 M 84 208 L 92 224 M 136 224 L 138 220 M 144 216 A 8 8 0 0 0 138 220 M 144 216 L 176 216 M 184 224 L 182 220 A 8 8 0 0 0 176 216 M 192 216 L 216 216 A 16 16 0 0 0 226 208 M 248 224 L 256 208 M 36 224 L 36 240 M 48 240 L 56 240 M 64 232 L 56 240 M 64 232 A 16 16 0 0 0 64 224 M 92 224 L 92 288 M 128 240 L 136 224 M 176 232 A 16 16 0 0 0 166 240 M 176 232 L 184 232 M 184 224 L 192 240 M 192 232 L 200 232 M 210 240 A 16 16 0 0 0 200 232 M 224 224 L 232 240 M 252 224 L 252 288 M 36 240 L 44 256 M 132 240 L 132 256 M 188 240 L 188 256 M 228 240 L 228 256 M 44 256 L 44 272 M 64 272 L 72 272 M 120 264 L 136 264 L 144 272 L 176 272 M 184 264 L 176 272 M 188 260 L 184 264 M 188 260 L 192 264 M 200 272 A 16 16 0 0 0 208 272 L 216 264 M 224 264 A 16 16 0 0 0 216 264 M 228 256 L 228 260 M 224 264 A 4 4 0 0 0 228 260 M 44 272 L 52 288 M 64 288 L 72 288 M 184 280 L 192 280 M 216 280 L 224 280 M 52 288 L 52 304 M 92 288 L 96 304 M 124 288 L 124 320 M 136 296 L 144 296 L 152 304 L 160 304 M 168 304 L 176 304 M 184 304 L 196 304 M 200 304 L 212 304 M 216 304 L 232 304 M 224 288 L 232 304 M 244 304 L 252 288 M 52 304 L 56 320 M 92 304 L 92 336 M 144 304 L 160 320 M 172 304 L 172 320 M 176 320 L 188 320 M 188 304 L 188 320 M 196 304 L 196 320 M 200 320 L 212 320 M 212 304 L 212 320 M 244 304 L 244 352 M 52 320 L 52 352 M 128 320 L 136 336 L 144 336 M 196 320 L 200 336 M 288 328 L 296 328 L 312 344 M 336 328 L 328 336 M 344 328 A 16 16 0 0 0 336 328 M 348 332 A 4 4 0 0 0 344 328 M 348 332 L 348 336 M 64 344 L 56 352 M 72 344 A 16 16 0 0 0 64 344 M 92 336 L 100 352 M 144 336 L 152 344 L 168 344 M 184 344 A 4 4 0 0 0 180 348 L 180 352 M 184 344 L 192 344 M 288 336 L 304 352 M 312 344 L 320 344 M 328 336 L 320 344 M 344 344 L 336 352 M 352 336 L 344 344 M 32 368 L 40 368 M 48 360 L 40 368 M 56 352 L 48 360 M 76 364 L 72 368 M 76 364 L 80 368 M 80 360 A 16 16 0 0 0 80 352 M 100 352 L 100 416 M 152 360 L 160 360 M 168 360 L 176 360 A 4 4 0 0 0 180 356 M 180 352 L 180 356 M 228 368 L 244 352 M 240 360 L 248 360 L 256 368 L 272 368 M 320 360 L 312 368 M 320 360 L 328 360 M 336 352 L 328 360 M 24 376 L 16 384 M 32 368 L 24 376 M 40 368 L 48 376 L 56 376 M 60 380 L 64 376 M 60 380 L 80 400 M 72 368 L 64 376 M 228 368 L 228 416 M 240 384 L 248 384 L 256 368 M 264 384 L 248 384 M 272 368 L 280 376 L 288 376 M 300 380 L 296 376 M 300 380 L 296 384 M 312 368 L 304 376 M 24 392 L 32 392 L 40 400 L 48 400 M 64 384 L 80 400 M 112 400 L 100 400 M 112 400 L 168 400 L 176 384 L 184 400 L 228 400 M 264 384 L 272 392 L 280 392 M 288 392 L 280 400 M 296 384 L 288 392 M 48 408 L 40 416 M 56 400 L 48 408 M 82 416 A 16 16 0 0 0 82 400 M 168 400 L 176 416 L 184 400 M 40 416 L 56 432 A 16 16 0 0 0 64 432 M 72 424 L 64 432 M 80 416 L 72 424 M 100 416 L 100 420 A 4 4 0 0 0 104 424 L 224 424 M 228 416 L 228 420 M 224 424 A 4 4 0 0 0 228 420 M 104 448 L 112 432 M 112 448 L 120 432 M 128 448 L 112 448 M 136 448 L 124 448 M 136 448 L 152 448 M 144 432 L 152 448 M 176 448 L 184 432 M 184 448 L 192 432 M 200 448 L 184 448 M 208 448 L 196 448 M 208 448 L 224 448 M 216 432 L 224 448 M 124 448 L 124 480 M 132 448 L 132 480 M 196 448 L 196 480 M 204 448 L 204 480 M 144 480 L 132 480 M 144 480 L 152 472 M 160 472 A 16 16 0 0 0 152 472 M 170 480 A 16 16 0 0 0 160 472 M 216 480 L 204 480 M 216 480 L 224 472 M 232 472 A 16 16 0 0 0 224 472 M 242 480 A 16 16 0 0 0 232 472 M 120 496 L 128 496 A 4 4 0 0 0 132 492 L 132 480 M 136 488 L 152 488 M 152 496 L 168 496 M 192 496 L 200 496 A 4 4 0 0 0 204 492 L 204 480 M 208 488 L 224 488 M 224 496 L 240 496" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="298" y="60">
+Hey bob!
+</text>
+<text x="98" y="188">
+(
+</text>
+<text x="154" y="188">
+(
+</text>
+<text x="170" y="188">
+)
+</text>
+<text x="114" y="204">
+.
+</text>
+<text x="130" y="204">
+)
+</text>
+<text x="210" y="204">
+(
+</text>
+<text x="226" y="204">
+)
+</text>
+<text x="74" y="220">
+)
+</text>
+<text x="186" y="220">
+.
+</text>
+<text x="42" y="236">
+(
+</text>
+<text x="82" y="252">
+0
+</text>
+<text x="162" y="252">
+(
+</text>
+<text x="178" y="252">
+O
+</text>
+<text x="202" y="252">
+O)
+</text>
+<text x="242" y="252">
+o
+</text>
+<text x="114" y="268">
+.
+</text>
+<text x="194" y="268">
+.
+</text>
+<text x="58" y="284">
+(
+</text>
+<text x="74" y="284">
+)
+</text>
+<text x="106" y="284">
+o
+</text>
+<text x="194" y="284">
+`
+</text>
+<text x="210" y="284">
+.
+</text>
+<text x="226" y="284">
+`
+</text>
+<text x="130" y="300">
+`
+</text>
+<text x="66" y="332">
+o
+</text>
+<text x="74" y="348">
+.
+</text>
+<text x="170" y="348">
+.
+</text>
+<text x="194" y="348">
+&apos;
+</text>
+<text x="226" y="348">
+O
+</text>
+<text x="146" y="364">
+`
+</text>
+<text x="162" y="364">
+.
+</text>
+<text x="298" y="364">
+&apos;
+</text>
+<text x="82" y="380">
+&apos;
+</text>
+<text x="90" y="380">
+.
+</text>
+<text x="106" y="380">
+=&apos;
+</text>
+<text x="122" y="380">
+=.=&apos;
+</text>
+<text x="154" y="380">
+=.=&apos;
+</text>
+<text x="186" y="380">
+=.=&apos;
+</text>
+<text x="218" y="380">
+=
+</text>
+<text x="234" y="380">
+.
+</text>
+<text x="290" y="380">
+&apos;
+</text>
+<text x="18" y="396">
+`
+</text>
+<text x="90" y="412">
+.
+</text>
+<text x="114" y="412">
+&apos;
+</text>
+<text x="122" y="412">
+=&apos;
+</text>
+<text x="146" y="412">
+&apos;
+</text>
+<text x="154" y="412">
+=&apos;
+</text>
+<text x="194" y="412">
+&apos;
+</text>
+<text x="202" y="412">
+=&apos;
+</text>
+<text x="114" y="492">
+(
+</text>
+<text x="170" y="492">
+)
+</text>
+<text x="186" y="492">
+(
+</text>
+<text x="242" y="492">
+)
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Ascii art
+
+Spongedown allows you to scribble ascii art and the program tries hard to connect the dots.
+
+```bob
+                      ______________________________________
+                    ,'                                      `.
+                   /                                          \
+                  |                  Hey bob!                  |
+                  |                                            |
+                   \                                          /
+                    `._______  _____________________________,'
+                            /,'
+                           /'
+
+       .--._.-----._.--._.----.
+      .' \  (`._   (_)     _   \
+    .'    |  '._)         (_)  |
+    \ _.')\      .----..---.   /
+    |(_.'  |    /    .-\-.  \  |
+    \     0|    |   ( O| O) | o|
+     |  _  |  .--.____.'._.-.  |
+     \ (_) | o         -` .-`  |
+      |    \   |`-._ _ _ _ _\ /
+      \    |   |  `. |_||_|   |
+      | o  |    \_      \     |     -.   .-.
+      |.-.  \     `--..-'   O |     `.`-' .'
+    _.'  .' |     `-.-'      /-.__   ' .-'
+  .' `-.' '.|='=.='=.='=.='=|._/_ `-'.'
+  `-._  `.  |________/\_____|    `-.'
+     .'   ).| '=' '='\/ '=' |
+     `._.'  '---------------'
+             //___\   //___\
+               ||       ||
+               ||_.-.   ||_.-.
+              (_.--__) (_.--__)
+```
+
+{{#playpen Ascii_art.md}}
+
+#}</code></pre></pre>
+<a class="header" href="print.html#graphs" id="graphs"><h2>Graphs</h2></a>
+<svg font-family="arial" font-size="14" height="672" width="416" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 128 64 L 130 60 M 136 56 A 8 8 0 0 0 130 60 M 144 56 A 16 16 0 0 0 136 56 M 152 64 L 150 60 A 8 8 0 0 0 144 56 M 36 64 L 36 128 M 120 80 L 128 64 M 152 64 L 176 112 M 64 80 L 80 112 M 88 96 L 90 92 M 96 88 A 8 8 0 0 0 90 92 M 96 88 L 112 88 M 118 84 L 128 64 M 112 88 A 8 8 0 0 0 118 84 M 184 96 L 192 96 L 200 88 M 208 88 A 16 16 0 0 0 200 88 M 208 88 L 216 96 A 16 16 0 0 0 224 96 L 232 88 M 240 88 A 16 16 0 0 0 232 88 M 240 88 L 248 96 A 16 16 0 0 0 256 96 L 264 88 L 272 88 M 80 112 L 88 96 M 176 112 L 184 96 M 40 128 L 64 80 M 36 136 L 36 128 M 36 208 L 36 272 M 36 280 L 36 272 M 48 336 L 96 432 M 0 432 L 48 336 M 8 424 L 88 424 M 44 432 L 44 512 M 248 440 A 16 16 0 0 0 238 448 M 248 440 L 264 440 M 274 448 A 16 16 0 0 0 264 440 M 152 456 A 16 16 0 0 0 142 464 M 152 456 L 168 456 M 178 464 A 16 16 0 0 0 168 456 M 238 448 A 16 16 0 0 0 238 464 M 274 464 A 16 16 0 0 0 274 448 M 72 472 A 16 16 0 0 0 62 480 M 72 472 L 104 472 M 114 480 A 16 16 0 0 0 104 472 M 142 464 A 16 16 0 0 0 142 480 M 178 480 A 16 16 0 0 0 178 464 M 238 464 A 16 16 0 0 0 248 472 L 264 472 A 16 16 0 0 0 274 464 M 62 480 A 16 16 0 0 0 62 496 M 114 496 A 16 16 0 0 0 114 480 M 142 480 A 16 16 0 0 0 152 488 L 168 488 A 16 16 0 0 0 178 480 M 256 488 A 16 16 0 0 0 246 496 M 264 488 A 16 16 0 0 0 256 488 M 274 496 A 16 16 0 0 0 264 488 M 300 488 L 300 512 M 300 488 L 360 488 M 304 488 L 360 488 M 360 480 L 376 512 M 62 496 A 16 16 0 0 0 72 504 L 104 504 A 16 16 0 0 0 114 496 M 246 496 A 16 16 0 0 0 246 512 M 274 512 A 16 16 0 0 0 274 496 M 300 496 L 300 512 M 44 520 L 44 512 M 44 520 L 248 520 M 48 520 L 248 520 M 246 512 A 16 16 0 0 0 256 520 A 16 16 0 0 0 264 520 A 16 16 0 0 0 274 512 M 272 520 L 296 520 M 300 512 L 300 544 M 300 520 L 296 520 M 376 512 L 378 516 M 376 528 L 378 524 A 8 8 0 0 0 378 516 M 300 528 L 300 544 M 300 552 L 300 544 M 300 552 L 360 552 M 304 552 L 360 552 M 360 560 L 376 528 M 44 592 L 44 624 M 44 632 L 44 624" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<line marker-end="url(#triangle)" x1="36" x2="36" y1="64" y2="48"/>
+<line marker-end="url(#triangle)" x1="36" x2="276" y1="136" y2="136"/>
+<line marker-end="url(#triangle)" x1="40" x2="276" y1="136" y2="136"/>
+<line marker-end="url(#triangle)" x1="36" x2="36" y1="208" y2="192"/>
+<line marker-end="url(#triangle)" x1="36" x2="276" y1="280" y2="280"/>
+<line marker-end="url(#triangle)" x1="40" x2="276" y1="280" y2="280"/>
+<line marker-end="url(#triangle)" x1="44" x2="44" y1="592" y2="576"/>
+<line marker-end="url(#triangle)" x1="44" x2="292" y1="632" y2="632"/>
+<line marker-end="url(#triangle)" x1="48" x2="292" y1="632" y2="632"/>
+<text x="2" y="28">
+Simple Linear graph
+</text>
+<text x="10" y="172">
+Safety
+</text>
+<text x="226" y="220">
+Rust
+</text>
+<text x="130" y="236">
+Java
+</text>
+<text x="50" y="252">
+Python
+</text>
+<text x="234" y="268">
+C++
+</text>
+<text x="290" y="284">
+Control
+</text>
+<text x="2" y="332">
+Decorated graph
+</text>
+<text x="26" y="412">
+Safety
+</text>
+<text x="242" y="460">
+Rust
+</text>
+<text x="146" y="476">
+Java
+</text>
+<text x="66" y="492">
+Python
+</text>
+<text x="250" y="508">
+C++
+</text>
+<text x="314" y="524">
+Control
+</text>
+<text x="90" y="588">
+⢠⣤⡀⢀⣴⣆⠀⢀⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+</text>
+<text x="2" y="604">
+⠀⠀
+</text>
+<text x="26" y="604">
+⠀⠀
+</text>
+<text x="50" y="604">
+⠀⠀⠀⣀⠀⠀⣿⣷⣤⣿⣿⣷⣾⣿⣿⣷⣿⣿⣧⣴⣾⣇⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+</text>
+<text x="2" y="620">
+⠀⠀
+</text>
+<text x="26" y="620">
+⠀⠀
+</text>
+<text x="50" y="620">
+⠀⠀⠀⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⠀⠀⠀⠀
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Graphs
+
+```bob
+
+Simple Linear graph
+
+    ^           .-.
+    |          /   \
+    |  /\  .--'     \  _.-._.-._.-
+    | /  \/          \/
+    |/        
+    +-----------------------------> 
+
+ Safety
+
+    ^
+    |                       Rust
+    |           Java
+    | Python
+    |                        C++
+    +-----------------------------> Control
+
+
+Decorated graph
+     /\
+    /  \
+   /    \
+  /      \
+ / Safety \
+/----------\
+     |                        .--.
+     |            .--.       (Rust)
+     |  .----.   (Java)       `--'
+     | (Python)   `--'         .-.   +-------\
+     |  `----'                (C++)  |        \
+     +-------------------------`-'---+ Control )
+                                     |        /
+                                     +-------/
+
+     ^     ⢠⣤⡀⢀⣴⣆⠀⢀⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀ ⠀⠀|⠀⠀⠀⣀⠀⠀⣿⣷⣤⣿⣿⣷⣾⣿⣿⣷⣿⣿⣧⣴⣾⣇⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀ ⠀⠀|⠀⠀⠀⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⠀⠀⠀⠀
+     +------------------------------> 
+```          
+
+{{#playpen Graphs.md}}
+
+#}</code></pre></pre>
+<a class="header" href="print.html#diagrams" id="diagrams"><h2>Diagrams</h2></a>
+<svg font-family="arial" font-size="14" height="1616" width="664" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 288 48 L 290 44 M 296 40 A 8 8 0 0 0 290 44 M 280 64 L 288 48 M 96 72 A 16 16 0 0 0 86 80 M 104 72 A 16 16 0 0 0 96 72 M 114 80 A 16 16 0 0 0 104 72 M 272 80 L 288 48 M 278 72 A 8 8 0 0 0 274 76 M 86 80 A 16 16 0 0 0 86 96 M 114 96 A 16 16 0 0 0 114 80 M 120 88 L 152 88 M 160 96 L 158 92 A 8 8 0 0 0 152 88 M 360 80 L 368 96 M 416 96 L 414 92 M 416 88 A 4 4 0 0 0 414 92 M 416 88 L 592 88 M 600 96 L 598 92 A 8 8 0 0 0 592 88 M 86 96 A 16 16 0 0 0 96 104 A 16 16 0 0 0 104 104 A 16 16 0 0 0 114 96 M 368 96 L 384 128 M 370 100 A 8 8 0 0 0 374 104 M 416 96 L 440 144 M 600 96 L 624 144 M 12 120 L 12 144 M 12 120 L 88 120 M 16 120 L 88 120 M 92 120 L 92 144 M 92 120 L 88 120 M 376 112 L 384 128 M 432 120 L 608 120 M 12 128 L 12 144 M 92 128 L 92 144 M 344 144 L 376 144 M 384 128 L 386 132 A 8 8 0 0 0 392 136 M 12 152 L 12 144 M 12 152 L 88 152 M 16 152 L 88 152 M 92 152 L 92 144 M 92 152 L 88 152 M 96 144 L 128 208 M 232 160 L 272 80 M 336 160 L 344 144 M 376 144 L 384 160 M 440 144 L 442 148 A 8 8 0 0 0 448 152 L 624 152 M 624 144 L 626 148 M 624 152 A 4 4 0 0 0 626 148 M 224 176 L 272 80 M 230 168 A 8 8 0 0 0 226 172 M 336 160 L 334 164 M 336 176 L 334 172 M 334 164 A 8 8 0 0 0 334 172 M 384 160 L 386 164 M 384 176 L 386 172 A 8 8 0 0 0 386 164 M 216 192 L 224 176 M 336 176 L 344 192 L 376 192 L 384 176 M 168 200 A 16 16 0 0 0 158 208 M 168 200 L 256 200 M 266 208 A 16 16 0 0 0 256 200 M 128 208 L 130 212 A 8 8 0 0 0 136 216 M 158 208 A 16 16 0 0 0 158 224 M 266 224 A 16 16 0 0 0 266 208 M 158 224 A 16 16 0 0 0 168 232 L 256 232 A 16 16 0 0 0 266 224 M 176 256 L 184 240 M 200 240 L 280 400 M 216 240 L 272 352 M 232 240 L 256 288 M 176 256 L 174 260 M 172 272 L 172 268 M 174 260 A 16 16 0 0 0 172 268 M 172 272 L 172 288 L 172 320 M 168 304 L 170 300 A 16 16 0 0 0 172 292 M 256 288 L 258 292 A 8 8 0 0 0 264 296 L 288 296 M 160 320 L 168 304 M 172 304 L 172 320 M 304 304 L 312 320 M 356 312 L 356 336 M 356 312 L 544 312 M 360 312 L 544 312 M 548 312 L 548 336 M 548 312 L 544 312 M 172 320 L 172 352 M 168 336 L 170 332 A 16 16 0 0 0 172 324 M 312 320 L 314 324 A 8 8 0 0 0 320 328 M 356 320 L 356 336 M 548 320 L 548 336 M 64 352 L 128 352 M 160 352 L 168 336 M 172 336 L 172 352 M 356 344 L 356 336 M 356 344 L 544 344 M 360 344 L 544 344 M 548 344 L 548 336 M 548 344 L 544 344 M 56 368 L 64 352 M 120 368 L 128 352 M 136 360 L 152 360 M 158 356 L 168 336 M 152 360 A 8 8 0 0 0 158 356 M 172 352 L 172 384 M 168 368 L 170 364 A 16 16 0 0 0 172 356 M 272 352 L 274 356 A 8 8 0 0 0 280 360 L 288 360 M 54 372 L 64 352 M 54 372 A 4 4 0 0 0 56 376 L 112 376 M 118 372 L 128 352 M 112 376 A 8 8 0 0 0 118 372 M 160 384 L 168 368 M 172 368 L 172 384 L 172 388 M 168 400 L 170 396 A 16 16 0 0 0 172 388 M 328 400 L 330 396 M 336 392 A 8 8 0 0 0 330 396 M 336 392 L 424 392 M 424 400 L 426 396 A 4 4 0 0 0 424 392 M 160 416 L 168 400 M 280 400 L 282 404 A 8 8 0 0 0 288 408 L 320 408 M 320 416 L 328 400 M 416 416 L 424 400 M 318 420 L 328 400 M 318 420 A 4 4 0 0 0 320 424 L 408 424 M 414 420 L 424 400 M 408 424 A 8 8 0 0 0 414 420 M 104 504 A 4 4 0 0 0 100 508 L 100 512 M 104 504 L 128 504 M 132 508 A 4 4 0 0 0 128 504 M 132 508 L 132 512 M 160 504 A 4 4 0 0 0 156 508 L 156 512 M 160 504 L 184 504 M 188 508 A 4 4 0 0 0 184 504 M 188 508 L 188 512 M 208 504 A 4 4 0 0 0 204 508 L 204 512 M 208 504 L 232 504 M 236 508 A 4 4 0 0 0 232 504 M 236 508 L 236 512 M 264 504 A 4 4 0 0 0 260 508 L 260 512 M 264 504 L 288 504 M 292 508 A 4 4 0 0 0 288 504 M 292 508 L 292 512 M 336 504 A 4 4 0 0 0 332 508 L 332 512 M 336 504 L 360 504 M 364 508 A 4 4 0 0 0 360 504 M 364 508 L 364 512 M 392 504 A 4 4 0 0 0 388 508 L 388 512 M 392 504 L 416 504 M 420 508 A 4 4 0 0 0 416 504 M 420 508 L 420 512 M 100 516 A 4 4 0 0 0 104 520 M 100 512 L 100 516 M 104 520 L 128 520 A 4 4 0 0 0 132 516 M 132 512 L 132 516 M 156 516 A 4 4 0 0 0 160 520 M 156 512 L 156 516 M 160 520 L 184 520 A 4 4 0 0 0 188 516 M 188 512 L 188 516 M 204 516 A 4 4 0 0 0 208 520 M 204 512 L 204 516 M 208 520 L 232 520 A 4 4 0 0 0 236 516 M 236 512 L 236 516 M 260 516 A 4 4 0 0 0 264 520 M 260 512 L 260 516 M 264 520 L 288 520 A 4 4 0 0 0 292 516 M 292 512 L 292 516 M 332 516 A 4 4 0 0 0 336 520 M 332 512 L 332 516 M 336 520 L 360 520 A 4 4 0 0 0 364 516 M 364 512 L 364 516 M 388 516 A 4 4 0 0 0 392 520 M 388 512 L 388 516 M 392 520 L 416 520 A 4 4 0 0 0 420 516 M 420 512 L 420 516 M 220 528 L 220 656 M 100 572 L 100 592 M 104 568 A 4 4 0 0 0 100 572 M 104 568 L 200 568 M 204 572 L 204 592 M 204 572 A 4 4 0 0 0 200 568 M 236 572 L 236 592 M 240 568 A 4 4 0 0 0 236 572 M 240 568 L 328 568 M 332 572 L 332 592 M 332 572 A 4 4 0 0 0 328 568 M 372 572 L 372 592 M 376 568 A 4 4 0 0 0 372 572 M 376 568 L 416 568 M 420 572 L 420 592 M 420 572 A 4 4 0 0 0 416 568 M 100 576 L 100 592 M 204 576 L 204 592 M 236 576 L 236 592 M 332 576 L 332 592 M 372 576 L 372 592 M 420 576 L 420 592 M 100 592 L 100 596 A 4 4 0 0 0 104 600 L 200 600 M 204 592 L 204 596 M 200 600 A 4 4 0 0 0 204 596 M 236 592 L 236 596 A 4 4 0 0 0 240 600 L 328 600 M 332 592 L 332 596 M 328 600 A 4 4 0 0 0 332 596 M 372 592 L 372 596 A 4 4 0 0 0 376 600 L 416 600 M 420 592 L 420 596 M 416 600 A 4 4 0 0 0 420 596 M 132 652 L 132 672 M 136 648 A 4 4 0 0 0 132 652 M 136 648 L 168 648 M 172 652 L 172 672 M 172 652 A 4 4 0 0 0 168 648 M 316 652 L 316 672 M 320 648 A 4 4 0 0 0 316 652 M 320 648 L 392 648 M 396 652 L 396 672 M 396 652 A 4 4 0 0 0 392 648 M 132 656 L 132 672 M 172 656 L 172 672 M 184 664 L 216 664 M 220 656 L 220 660 M 216 664 A 4 4 0 0 0 220 660 M 316 656 L 316 672 M 396 656 L 396 672 M 132 672 L 132 676 A 4 4 0 0 0 136 680 L 168 680 M 172 672 L 172 676 M 168 680 A 4 4 0 0 0 172 676 M 316 672 L 316 676 A 4 4 0 0 0 320 680 L 392 680 M 396 672 L 396 676 M 392 680 A 4 4 0 0 0 396 676 M 100 732 L 100 752 M 104 728 A 4 4 0 0 0 100 732 M 104 728 L 416 728 M 420 732 L 420 752 M 420 732 A 4 4 0 0 0 416 728 M 100 736 L 100 752 M 420 736 L 420 752 M 100 752 L 100 756 A 4 4 0 0 0 104 760 L 416 760 M 420 752 L 420 756 M 416 760 A 4 4 0 0 0 420 756 M 24 832 L 12 832 M 24 832 L 52 832 M 52 816 L 52 832 M 60 816 L 60 928 M 12 832 L 12 928 M 32 848 L 20 848 M 32 848 L 52 848 M 20 848 L 20 880 M 52 848 L 52 880 M 32 880 L 20 880 M 32 880 L 52 880 M 72 888 L 60 888 M 72 888 L 528 888 M 532 892 A 4 4 0 0 0 528 888 M 12 928 L 12 932 A 4 4 0 0 0 16 936 L 56 936 M 60 928 L 60 932 M 56 936 A 4 4 0 0 0 60 932 M 20 988 L 20 1008 M 24 984 A 4 4 0 0 0 20 988 M 24 984 L 176 984 M 180 988 L 180 1008 M 180 988 A 4 4 0 0 0 176 984 M 204 988 L 204 1040 M 208 984 A 4 4 0 0 0 204 988 M 208 984 L 424 984 M 428 988 L 428 1088 M 428 988 A 4 4 0 0 0 424 984 M 452 988 L 452 1024 M 456 984 A 4 4 0 0 0 452 988 M 456 984 L 608 984 M 612 988 L 612 1024 M 612 988 A 4 4 0 0 0 608 984 M 20 992 L 20 1008 M 180 992 L 180 1008 M 204 992 L 204 1040 M 428 992 L 428 1088 M 452 992 L 452 1024 M 612 992 L 612 1024 M 20 1008 L 20 1012 A 4 4 0 0 0 24 1016 L 176 1016 M 180 1008 L 180 1012 M 176 1016 A 4 4 0 0 0 180 1012 M 216 1016 L 204 1016 M 216 1016 L 428 1016 M 100 1024 L 100 1040 M 284 1036 L 284 1056 M 288 1032 A 4 4 0 0 0 284 1036 M 288 1032 L 328 1032 M 332 1036 L 332 1056 M 332 1036 A 4 4 0 0 0 328 1032 M 452 1024 L 452 1028 A 4 4 0 0 0 456 1032 L 608 1032 M 612 1024 L 612 1028 M 608 1032 A 4 4 0 0 0 612 1028 M 100 1040 L 100 1044 A 4 4 0 0 0 104 1048 L 200 1048 M 204 1040 L 204 1120 M 284 1040 L 284 1056 M 332 1040 L 332 1056 M 540 1040 L 540 1088 M 204 1056 L 204 1120 M 284 1056 L 284 1060 A 4 4 0 0 0 288 1064 L 328 1064 M 332 1056 L 332 1060 M 328 1064 A 4 4 0 0 0 332 1060 M 240 1088 L 242 1084 M 248 1080 A 8 8 0 0 0 242 1084 M 248 1080 L 392 1080 M 392 1088 L 394 1084 A 4 4 0 0 0 392 1080 M 232 1104 L 240 1088 M 384 1104 L 392 1088 M 400 1096 L 424 1096 M 428 1088 L 428 1120 M 424 1096 L 536 1096 M 432 1096 L 536 1096 M 540 1088 L 540 1092 M 536 1096 A 4 4 0 0 0 540 1092 M 230 1108 L 240 1088 M 230 1108 A 4 4 0 0 0 232 1112 L 376 1112 M 382 1108 L 392 1088 M 376 1112 A 8 8 0 0 0 382 1108 M 428 1104 L 428 1120 M 204 1120 L 204 1124 A 4 4 0 0 0 208 1128 L 424 1128 M 428 1120 L 428 1124 M 424 1128 A 4 4 0 0 0 428 1124 M 60 1176 L 60 1232 M 60 1176 L 136 1176 M 64 1176 L 136 1176 M 140 1176 L 140 1232 M 140 1176 L 136 1176 M 60 1184 L 60 1232 M 140 1184 L 140 1232 M 340 1192 L 340 1248 M 340 1192 L 456 1192 M 344 1192 L 456 1192 M 460 1192 L 460 1248 M 460 1192 L 456 1192 M 152 1208 L 140 1208 M 152 1208 L 160 1208 M 164 1208 L 164 1264 M 164 1208 L 160 1208 M 340 1200 L 340 1248 M 460 1200 L 460 1248 M 164 1216 L 164 1264 M 308 1224 L 308 1280 M 60 1240 L 60 1232 M 60 1240 L 136 1240 M 64 1240 L 136 1240 M 140 1240 L 140 1232 M 140 1240 L 136 1240 M 196 1240 L 196 1360 M 196 1240 L 280 1240 M 200 1240 L 280 1240 M 284 1240 L 284 1360 M 284 1240 L 280 1240 M 308 1232 L 308 1280 M 196 1248 L 196 1360 M 284 1248 L 284 1360 M 340 1256 L 340 1248 M 340 1256 L 456 1256 M 344 1256 L 456 1256 M 460 1256 L 460 1248 M 460 1256 L 456 1256 M 60 1272 L 60 1328 M 60 1272 L 136 1272 M 64 1272 L 136 1272 M 140 1272 L 140 1328 M 140 1272 L 136 1272 M 164 1272 L 164 1264 M 60 1280 L 60 1328 M 140 1280 L 140 1328 M 296 1288 L 284 1288 M 296 1288 L 304 1288 M 308 1288 L 308 1280 M 308 1288 L 304 1288 M 152 1304 L 140 1304 M 296 1320 L 284 1320 M 296 1320 L 304 1320 M 308 1320 L 308 1376 M 308 1320 L 304 1320 M 60 1336 L 60 1328 M 60 1336 L 136 1336 M 64 1336 L 136 1336 M 140 1336 L 140 1328 M 140 1336 L 136 1336 M 164 1336 L 164 1392 M 308 1328 L 308 1376 M 164 1344 L 164 1392 M 340 1352 L 340 1408 M 340 1352 L 456 1352 M 344 1352 L 456 1352 M 460 1352 L 460 1408 M 460 1352 L 456 1352 M 60 1368 L 60 1424 M 60 1368 L 136 1368 M 64 1368 L 136 1368 M 140 1368 L 140 1424 M 140 1368 L 136 1368 M 196 1368 L 196 1360 M 196 1368 L 280 1368 M 200 1368 L 280 1368 M 284 1368 L 284 1360 M 284 1368 L 280 1368 M 340 1360 L 340 1408 M 460 1360 L 460 1408 M 60 1376 L 60 1424 M 140 1376 L 140 1424 M 308 1384 L 308 1376 M 152 1400 L 140 1400 M 152 1400 L 160 1400 M 164 1400 L 164 1392 M 164 1400 L 160 1400 M 340 1416 L 340 1408 M 340 1416 L 456 1416 M 344 1416 L 456 1416 M 460 1416 L 460 1408 M 460 1416 L 456 1416 M 60 1432 L 60 1424 M 60 1432 L 136 1432 M 64 1432 L 136 1432 M 140 1432 L 140 1424 M 140 1432 L 136 1432 M 168 1480 A 16 16 0 0 0 158 1488 M 168 1480 L 176 1480 M 224 1480 L 232 1480 M 242 1488 A 16 16 0 0 0 232 1480 M 16 1504 L 40 1504 M 56 1504 L 68 1504 M 144 1496 A 16 16 0 0 0 134 1504 M 144 1496 L 152 1496 M 248 1496 L 256 1496 M 266 1504 A 16 16 0 0 0 256 1496 M 16 1520 L 40 1520 M 52 1504 L 52 1536 M 68 1504 L 68 1536 M 134 1504 A 16 16 0 0 0 134 1520 M 344 1520 L 424 1520 M 504 1520 L 492 1520 M 504 1520 L 532 1520 M 560 1520 L 548 1520 M 560 1520 L 572 1520 M 8 1536 L 16 1520 M 32 1536 L 40 1520 M 56 1536 L 68 1536 M 134 1520 A 16 16 0 0 0 144 1528 L 152 1528 M 256 1528 L 264 1528 M 344 1536 L 352 1536 M 376 1536 L 392 1536 M 492 1520 L 492 1552 M 532 1520 L 532 1552 M 548 1520 L 548 1568 M 572 1520 L 572 1568 M 158 1536 A 16 16 0 0 0 168 1544 L 176 1544 M 216 1544 L 224 1544 M 504 1552 L 492 1552 M 504 1552 L 532 1552 M 488 1568 L 496 1552 M 520 1568 L 528 1552 M 560 1568 L 548 1568 M 560 1568 L 572 1568" fill="none"/>
+<path d=" M 352 1536 L 376 1536 M 392 1536 L 416 1536" fill="none" stroke-dasharray="3 3"/>
+<line marker-end="url(#triangle)" x1="296" x2="316" y1="40" y2="40"/>
+<line marker-end="url(#triangle)" x1="278" x2="316" y1="72" y2="72"/>
+<line marker-end="url(#triangle)" x1="280" x2="316" y1="72" y2="72"/>
+<line marker-end="url(#triangle)" x1="160" x2="204" y1="96" y2="184"/>
+<line marker-end="url(#triangle)" x1="374" x2="412" y1="104" y2="104"/>
+<line marker-end="url(#triangle)" x1="376" x2="412" y1="104" y2="104"/>
+<line marker-end="url(#triangle)" x1="392" x2="428" y1="136" y2="136"/>
+<line marker-end="url(#triangle)" x1="230" x2="324" y1="168" y2="168"/>
+<line marker-end="url(#triangle)" x1="232" x2="324" y1="168" y2="168"/>
+<line marker-end="url(#triangle)" x1="136" x2="148" y1="216" y2="216"/>
+<line marker-end="url(#triangle)" x1="320" x2="348" y1="328" y2="328"/>
+<line marker-end="url(#triangle)" x1="136" x2="132" y1="360" y2="360"/>
+<line marker-end="url(#triangle)" x1="160" x2="156" y1="416" y2="424"/>
+<line marker-end="url(#triangle)" x1="116" x2="116" y1="528" y2="560"/>
+<line marker-end="url(#triangle)" x1="172" x2="172" y1="528" y2="560"/>
+<line marker-end="url(#triangle)" x1="276" x2="276" y1="528" y2="560"/>
+<line marker-end="url(#triangle)" x1="348" x2="348" y1="528" y2="640"/>
+<line marker-end="url(#triangle)" x1="404" x2="404" y1="528" y2="560"/>
+<line marker-end="url(#triangle)" x1="156" x2="156" y1="608" y2="640"/>
+<line marker-end="url(#triangle)" x1="276" x2="276" y1="608" y2="720"/>
+<line marker-end="url(#triangle)" x1="184" x2="180" y1="664" y2="664"/>
+<line marker-end="url(#triangle)" x1="156" x2="156" y1="688" y2="720"/>
+<line marker-end="url(#triangle)" x1="356" x2="356" y1="688" y2="720"/>
+<line marker-end="url(#triangle)" x1="532" x2="532" y1="892" y2="976"/>
+<line marker-end="url(#triangle)" x1="100" x2="100" y1="896" y2="976"/>
+<line marker-end="url(#triangle)" x1="316" x2="316" y1="896" y2="976"/>
+<line marker-end="url(#triangle)" x1="532" x2="532" y1="896" y2="976"/>
+<line marker-end="url(#triangle)" x1="200" x2="276" y1="1048" y2="1048"/>
+<line marker-end="url(#triangle)" x1="208" x2="276" y1="1048" y2="1048"/>
+<line marker-end="url(#triangle)" x1="400" x2="396" y1="1096" y2="1096"/>
+<line marker-end="url(#triangle)" x1="308" x2="332" y1="1224" y2="1224"/>
+<line marker-end="url(#triangle)" x1="312" x2="332" y1="1224" y2="1224"/>
+<line marker-end="url(#triangle)" x1="164" x2="188" y1="1272" y2="1272"/>
+<line marker-end="url(#triangle)" x1="168" x2="188" y1="1272" y2="1272"/>
+<line marker-end="url(#triangle)" x1="152" x2="188" y1="1304" y2="1304"/>
+<line marker-end="url(#triangle)" x1="164" x2="188" y1="1336" y2="1336"/>
+<line marker-end="url(#triangle)" x1="168" x2="188" y1="1336" y2="1336"/>
+<line marker-end="url(#triangle)" x1="308" x2="332" y1="1384" y2="1384"/>
+<line marker-end="url(#triangle)" x1="312" x2="332" y1="1384" y2="1384"/>
+<line marker-end="url(#triangle)" x1="88" x2="124" y1="1512" y2="1512"/>
+<line marker-end="url(#triangle)" x1="272" x2="332" y1="1512" y2="1512"/>
+<line marker-end="url(#triangle)" x1="432" x2="484" y1="1512" y2="1512"/>
+<text x="330" y="44">
+Base::Class::Derived_A
+</text>
+<text x="330" y="76">
+Base::Class::Derived_B
+</text>
+<text x="90" y="92">
+x1y
+</text>
+<text x="434" y="108">
+Base::Class::Derived
+</text>
+<text x="34" y="140">
+Alice
+</text>
+<text x="450" y="140">
+Base::Class::Derived
+</text>
+<text x="346" y="172">
+SVG
+</text>
+<text x="194" y="220">
+Bob
+</text>
+<text x="298" y="300">
+The::Latest
+</text>
+<text x="130" y="332">
+Foo
+</text>
+<text x="370" y="332">
+The::Latest::Greatest
+</text>
+<text x="82" y="364">
+Bar
+</text>
+<text x="298" y="364">
+I::Am::Running::Out::Of::Ideas
+</text>
+<text x="130" y="396">
+Baz
+</text>
+<text x="338" y="412">
+Last::One
+</text>
+<text x="114" y="428">
+Quux 
+</text>
+<text x="26" y="524">
+OS API
+</text>
+<text x="122" y="588">
+文件系统
+</text>
+<text x="266" y="588">
+调度器
+</text>
+<text x="386" y="588">
+MMU
+</text>
+<text x="146" y="668">
+IO
+</text>
+<text x="346" y="668">
+网络
+</text>
+<text x="218" y="748">
+硬件抽象层
+</text>
+<text x="82" y="860">
+device
+</text>
+<text x="82" y="876">
+loads
+</text>
+<text x="26" y="892">
+ooo
+</text>
+<text x="26" y="908">
+ooo
+</text>
+<text x="26" y="924">
+ooo
+</text>
+<text x="34" y="1004">
+Loadable module C
+</text>
+<text x="250" y="1004">
+Loadable module A
+</text>
+<text x="466" y="1004">
+Loadable module B
+</text>
+<text x="482" y="1020">
+(instrumented)
+</text>
+<text x="298" y="1052">
+A.o
+</text>
+<text x="130" y="1068">
+calls
+</text>
+<text x="250" y="1100">
+A.instrumented.o
+</text>
+<text x="466" y="1116">
+calls
+</text>
+<text x="90" y="1212">
+NFS
+</text>
+<text x="370" y="1228">
+CacheFS
+</text>
+<text x="362" y="1244">
+/dev/hda5/
+</text>
+<text x="90" y="1308">
+AFS
+</text>
+<text x="210" y="1308">
+FS-Cache
+</text>
+<text x="362" y="1388">
+CacheFiles
+</text>
+<text x="82" y="1404">
+ISOFS
+</text>
+<text x="362" y="1404">
+/var/cache
+</text>
+<text x="2" y="1484">
+vncviewer
+</text>
+<text x="178" y="1484">
+,(
+</text>
+<text x="210" y="1484">
+),
+</text>
+<text x="154" y="1500">
+(
+</text>
+<text x="242" y="1500">
+)
+</text>
+<text x="354" y="1500">
+gateway
+</text>
+<text x="498" y="1500">
+vncserver
+</text>
+<text x="10" y="1516">
+[
+</text>
+<text x="42" y="1516">
+]
+</text>
+<text x="58" y="1516">
+=
+</text>
+<text x="170" y="1516">
+internet
+</text>
+<text x="266" y="1516">
+)
+</text>
+<text x="18" y="1532">
+::
+</text>
+<text x="154" y="1532">
+(
+</text>
+<text x="242" y="1532">
+).
+</text>
+<text x="266" y="1532">
+&apos;
+</text>
+<text x="338" y="1532">
+[
+</text>
+<text x="418" y="1532">
+°]
+</text>
+<text x="554" y="1532">
+==
+</text>
+<text x="178" y="1548">
+.(
+</text>
+<text x="202" y="1548">
+).
+</text>
+<text x="226" y="1548">
+&apos;
+</text>
+<text x="498" y="1564">
+:::
+</text>
+</svg>
+<a class="header" href="print.html#ascii" id="ascii"><h3>ascii</h3></a>
+<pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+ ## Diagrams
+
+
+
+ ```bob
+
+
+                                     .--> Base::Class::Derived_A
+                                    /
+            .-.                    .----> Base::Class::Derived_B    
+           (x1y)----.             /           \     .----------------------.
+            '-'      \           /             .---->\ Base::Class::Derived \
+  +---------+         \         /               \     \----------------------\
+  |  Alice  |          \       /            ____ '---->\ Base::Class::Derived \
+  +---------+\          \     /            /    \       '----------------------'
+              \          \   .----------->( SVG  )                         
+               \          V /              \____/
+                \    .-----------.              
+                 '->(    Bob      )
+                     '-----------'
+                       /  \ \ \
+                      '    \ \ \  
+                      |     \ \ \
+                      .      \ \ '--- The::Latest
+                     /|       \ \      \     +-----------------------+
+                 Foo  '        \ \      '--->| The::Latest::Greatest |
+         ________    /|         \ \          +-----------------------+
+        /  Bar  /<--' '          \ '- I::Am::Running::Out::Of::Ideas
+       '-------'     /|           \
+                 Baz  '            \      .-----------.
+                     /              '----/ Last::One /
+               Quux V                   '-----------'
+
+
+
+
+             .---.  .---. .---.  .---.    .---.  .---.
+    OS API   '---'  '---' '---'  '---'    '---'  '---'
+               |      |     |      |        |      |   
+               v      v     |      v        |      v   
+             .------------. | .-----------. |  .-----.
+             |  文件系统  | | |   调度器  | |  | MMU |
+             '------------' | '-----------' |  '-----'
+                    |       |      |        |   
+                    v       |      |        v   
+                 .----.     |      |    .---------.   
+                 | IO |<----'      |    |   网络  |   
+                 '----'            |    '---------'
+                    |              |         |   
+                    v              v         v   
+             .---------------------------------------.
+             |              硬件抽象层               |
+             '---------------------------------------'
+
+
+
+   ____||
+  | ___ |
+  ||   ||  device
+  ||___||  loads
+  | ooo |----------------------------------------------------------.
+  | ooo |    |                          |                          |
+  | ooo |    |                          |                          |
+  '-----'    |                          |                          |
+             |                          |                          |
+             v                          v                          v
+   .-------------------.  .---------------------------.  .-------------------.
+   | Loadable module C |  |     Loadable module A     |  | Loadable module B |
+   '-------------------'  |---------------------------|  |   (instrumented)  |
+             |            |         .-----.           |  '-------------------'
+             '------------+-------->| A.o |           |             |
+                 calls    |         '-----'           |             |
+                          |    .------------------.   |             |
+                          |   / A.instrumented.o /<---+-------------'
+                          |  '------------------'     |    calls
+                          '---------------------------'   
+
+
+        +---------+
+        |         |                        +--------------+
+        |   NFS   |--+                     |              |
+        |         |  |                 +-->|   CacheFS    |
+        +---------+  |   +----------+  |   |  /dev/hda5/  |
+                     |   |          |  |   +--------------+
+        +---------+  +-->|          |  |
+        |         |      |          |--+
+        |   AFS   |----->| FS-Cache |
+        |         |      |          |--+
+        +---------+  +-->|          |  |
+                     |   |          |  |   +--------------+
+        +---------+  |   +----------+  |   |              |
+        |         |  |                 +-->|  CacheFiles  |
+        |  ISOFS  |--+                     |  /var/cache  |
+        |         |                        +--------------+
+        +---------+
+
+
+ vncviewer           .-,(  ),-.    
+   ___  _         .-(          )-.           gateway           vncserver 
+  [___]|=|  ---->(    internet    )-------> __________ ------> ____   __ 
+  /::/ |_|        '-(          ).-'        [_...__...°]       |    | |==|
+                     '-.( ).-'                                |____| |  |
+                                                              /:::/  |__|
+
+```
+### ascii
+
+
+{{#playpen Diagrams.md}}
+
+#}</code></pre></pre>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+
+                
+
+            </div>
+
+            
+
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

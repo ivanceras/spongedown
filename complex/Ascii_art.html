@@ -1,0 +1,357 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ascii art - Spongedown</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the features and capabilities of Spongedown">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="../">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'coal'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Spongedown.html"><strong></strong> Spongedown</a></li><li><ul class="section"><li><a href="Basic_shapes.html"><strong></strong> Basic Shapes</a></li><li><a href="Arrows.html"><strong></strong> Arrows</a></li><li><a href="Brackets.html"><strong></strong> Brackets</a></li><li><a href="Speech_baloon.html"><strong></strong> Speech Baloon</a></li><li><a href="Faces.html"><strong></strong> Faces</a></li><li><a href="Lines_and_Intersections.html"><strong></strong> Lines and Intersections</a></li></ul></li><li><a href="Complex_shapes.html"><strong></strong> Complex Shapes</a></li><li><ul class="section"><li><a href="complex/comics.html"><strong></strong> Comics</a></li><li><a href="complex/Ascii_art.html" class="active"><strong></strong> Ascii art</a></li><li><a href="complex/Graphs.html"><strong></strong> Graphs</a></li><li><a href="complex/Diagrams.html"><strong></strong> Diagrams</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Spongedown</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="complex/Ascii_art.html#ascii-art" id="ascii-art"><h2>Ascii art</h2></a>
+<p>Spongedown allows you to scribble ascii art and the program tries hard to connect the dots.</p>
+<svg font-family="arial" font-size="14" height="528" width="544" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 176 16 L 480 16 M 176 16 A 40 40 0 0 0 154 32 M 502 32 A 40 40 0 0 0 480 16 M 154 32 A 40 40 0 0 0 148 48 M 508 48 A 40 40 0 0 0 502 32 M 148 48 L 148 80 M 508 48 L 508 80 M 148 80 A 40 40 0 0 0 154 96 M 502 96 A 40 40 0 0 0 508 80 M 154 96 A 40 40 0 0 0 176 112 L 232 112 M 248 112 L 480 112 A 40 40 0 0 0 502 96 M 240 120 L 232 128 M 248 112 L 240 120 M 216 144 L 232 112 M 232 128 L 216 144 M 64 168 A 4 4 0 0 0 60 172 L 60 176 M 64 168 L 80 168 L 88 176 A 16 16 0 0 0 96 176 M 96 168 L 112 184 M 104 168 L 144 168 L 152 176 A 16 16 0 0 0 160 176 M 168 168 A 16 16 0 0 0 158 176 M 168 168 L 184 168 L 192 176 A 16 16 0 0 0 200 176 L 208 168 L 240 168 M 248 176 L 246 172 A 8 8 0 0 0 240 168 M 56 184 L 48 192 M 64 176 L 56 184 M 72 176 L 80 192 M 116 188 L 112 184 M 116 188 L 112 192 M 120 192 L 128 192 M 160 192 L 168 192 M 216 192 L 224 192 M 248 176 L 256 192 M 40 200 L 32 208 M 48 192 L 40 200 M 84 192 L 84 208 M 112 192 L 104 200 M 120 208 L 128 208 M 216 208 L 224 208 M 256 192 L 256 208 M 32 208 L 40 224 M 48 224 L 56 224 M 60 220 L 64 216 M 60 220 L 64 224 M 72 208 L 64 216 M 84 208 L 92 224 M 136 224 L 138 220 M 144 216 A 8 8 0 0 0 138 220 M 144 216 L 176 216 M 184 224 L 182 220 A 8 8 0 0 0 176 216 M 192 216 L 216 216 A 16 16 0 0 0 226 208 M 248 224 L 256 208 M 36 224 L 36 240 M 48 240 L 56 240 M 64 232 L 56 240 M 64 232 A 16 16 0 0 0 64 224 M 92 224 L 92 288 M 128 240 L 136 224 M 176 232 A 16 16 0 0 0 166 240 M 176 232 L 184 232 M 184 224 L 192 240 M 192 232 L 200 232 M 210 240 A 16 16 0 0 0 200 232 M 224 224 L 232 240 M 252 224 L 252 288 M 36 240 L 44 256 M 132 240 L 132 256 M 188 240 L 188 256 M 228 240 L 228 256 M 44 256 L 44 272 M 64 272 L 72 272 M 120 264 L 136 264 L 144 272 L 176 272 M 184 264 L 176 272 M 188 260 L 184 264 M 188 260 L 192 264 M 200 272 A 16 16 0 0 0 208 272 L 216 264 M 224 264 A 16 16 0 0 0 216 264 M 228 256 L 228 260 M 224 264 A 4 4 0 0 0 228 260 M 44 272 L 52 288 M 64 288 L 72 288 M 184 280 L 192 280 M 216 280 L 224 280 M 52 288 L 52 304 M 92 288 L 96 304 M 124 288 L 124 320 M 136 296 L 144 296 L 152 304 L 160 304 M 168 304 L 176 304 M 184 304 L 196 304 M 200 304 L 212 304 M 216 304 L 232 304 M 224 288 L 232 304 M 244 304 L 252 288 M 52 304 L 56 320 M 92 304 L 92 336 M 144 304 L 160 320 M 172 304 L 172 320 M 176 320 L 188 320 M 188 304 L 188 320 M 196 304 L 196 320 M 200 320 L 212 320 M 212 304 L 212 320 M 244 304 L 244 352 M 52 320 L 52 352 M 128 320 L 136 336 L 144 336 M 196 320 L 200 336 M 288 328 L 296 328 L 312 344 M 336 328 L 328 336 M 344 328 A 16 16 0 0 0 336 328 M 348 332 A 4 4 0 0 0 344 328 M 348 332 L 348 336 M 64 344 L 56 352 M 72 344 A 16 16 0 0 0 64 344 M 92 336 L 100 352 M 144 336 L 152 344 L 168 344 M 184 344 A 4 4 0 0 0 180 348 L 180 352 M 184 344 L 192 344 M 288 336 L 304 352 M 312 344 L 320 344 M 328 336 L 320 344 M 344 344 L 336 352 M 352 336 L 344 344 M 32 368 L 40 368 M 48 360 L 40 368 M 56 352 L 48 360 M 76 364 L 72 368 M 76 364 L 80 368 M 80 360 A 16 16 0 0 0 80 352 M 100 352 L 100 416 M 152 360 L 160 360 M 168 360 L 176 360 A 4 4 0 0 0 180 356 M 180 352 L 180 356 M 228 368 L 244 352 M 240 360 L 248 360 L 256 368 L 272 368 M 320 360 L 312 368 M 320 360 L 328 360 M 336 352 L 328 360 M 24 376 L 16 384 M 32 368 L 24 376 M 40 368 L 48 376 L 56 376 M 60 380 L 64 376 M 60 380 L 80 400 M 72 368 L 64 376 M 228 368 L 228 416 M 240 384 L 248 384 L 256 368 M 264 384 L 248 384 M 272 368 L 280 376 L 288 376 M 300 380 L 296 376 M 300 380 L 296 384 M 312 368 L 304 376 M 24 392 L 32 392 L 40 400 L 48 400 M 64 384 L 80 400 M 112 400 L 100 400 M 112 400 L 168 400 L 176 384 L 184 400 L 228 400 M 264 384 L 272 392 L 280 392 M 288 392 L 280 400 M 296 384 L 288 392 M 48 408 L 40 416 M 56 400 L 48 408 M 82 416 A 16 16 0 0 0 82 400 M 168 400 L 176 416 L 184 400 M 40 416 L 56 432 A 16 16 0 0 0 64 432 M 72 424 L 64 432 M 80 416 L 72 424 M 100 416 L 100 420 A 4 4 0 0 0 104 424 L 224 424 M 228 416 L 228 420 M 224 424 A 4 4 0 0 0 228 420 M 104 448 L 112 432 M 112 448 L 120 432 M 128 448 L 112 448 M 136 448 L 124 448 M 136 448 L 152 448 M 144 432 L 152 448 M 176 448 L 184 432 M 184 448 L 192 432 M 200 448 L 184 448 M 208 448 L 196 448 M 208 448 L 224 448 M 216 432 L 224 448 M 124 448 L 124 480 M 132 448 L 132 480 M 196 448 L 196 480 M 204 448 L 204 480 M 144 480 L 132 480 M 144 480 L 152 472 M 160 472 A 16 16 0 0 0 152 472 M 170 480 A 16 16 0 0 0 160 472 M 216 480 L 204 480 M 216 480 L 224 472 M 232 472 A 16 16 0 0 0 224 472 M 242 480 A 16 16 0 0 0 232 472 M 120 496 L 128 496 A 4 4 0 0 0 132 492 L 132 480 M 136 488 L 152 488 M 152 496 L 168 496 M 192 496 L 200 496 A 4 4 0 0 0 204 492 L 204 480 M 208 488 L 224 488 M 224 496 L 240 496" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="298" y="60">
+Hey bob!
+</text>
+<text x="98" y="188">
+(
+</text>
+<text x="154" y="188">
+(
+</text>
+<text x="170" y="188">
+)
+</text>
+<text x="114" y="204">
+.
+</text>
+<text x="130" y="204">
+)
+</text>
+<text x="210" y="204">
+(
+</text>
+<text x="226" y="204">
+)
+</text>
+<text x="74" y="220">
+)
+</text>
+<text x="186" y="220">
+.
+</text>
+<text x="42" y="236">
+(
+</text>
+<text x="82" y="252">
+0
+</text>
+<text x="162" y="252">
+(
+</text>
+<text x="178" y="252">
+O
+</text>
+<text x="202" y="252">
+O)
+</text>
+<text x="242" y="252">
+o
+</text>
+<text x="114" y="268">
+.
+</text>
+<text x="194" y="268">
+.
+</text>
+<text x="58" y="284">
+(
+</text>
+<text x="74" y="284">
+)
+</text>
+<text x="106" y="284">
+o
+</text>
+<text x="194" y="284">
+`
+</text>
+<text x="210" y="284">
+.
+</text>
+<text x="226" y="284">
+`
+</text>
+<text x="130" y="300">
+`
+</text>
+<text x="66" y="332">
+o
+</text>
+<text x="74" y="348">
+.
+</text>
+<text x="170" y="348">
+.
+</text>
+<text x="194" y="348">
+&apos;
+</text>
+<text x="226" y="348">
+O
+</text>
+<text x="146" y="364">
+`
+</text>
+<text x="162" y="364">
+.
+</text>
+<text x="298" y="364">
+&apos;
+</text>
+<text x="82" y="380">
+&apos;
+</text>
+<text x="90" y="380">
+.
+</text>
+<text x="106" y="380">
+=&apos;
+</text>
+<text x="122" y="380">
+=.=&apos;
+</text>
+<text x="154" y="380">
+=.=&apos;
+</text>
+<text x="186" y="380">
+=.=&apos;
+</text>
+<text x="218" y="380">
+=
+</text>
+<text x="234" y="380">
+.
+</text>
+<text x="290" y="380">
+&apos;
+</text>
+<text x="18" y="396">
+`
+</text>
+<text x="90" y="412">
+.
+</text>
+<text x="114" y="412">
+&apos;
+</text>
+<text x="122" y="412">
+=&apos;
+</text>
+<text x="146" y="412">
+&apos;
+</text>
+<text x="154" y="412">
+=&apos;
+</text>
+<text x="194" y="412">
+&apos;
+</text>
+<text x="202" y="412">
+=&apos;
+</text>
+<text x="114" y="492">
+(
+</text>
+<text x="170" y="492">
+)
+</text>
+<text x="186" y="492">
+(
+</text>
+<text x="242" y="492">
+)
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Ascii art
+
+Spongedown allows you to scribble ascii art and the program tries hard to connect the dots.
+
+```bob
+                      ______________________________________
+                    ,'                                      `.
+                   /                                          \
+                  |                  Hey bob!                  |
+                  |                                            |
+                   \                                          /
+                    `._______  _____________________________,'
+                            /,'
+                           /'
+
+       .--._.-----._.--._.----.
+      .' \  (`._   (_)     _   \
+    .'    |  '._)         (_)  |
+    \ _.')\      .----..---.   /
+    |(_.'  |    /    .-\-.  \  |
+    \     0|    |   ( O| O) | o|
+     |  _  |  .--.____.'._.-.  |
+     \ (_) | o         -` .-`  |
+      |    \   |`-._ _ _ _ _\ /
+      \    |   |  `. |_||_|   |
+      | o  |    \_      \     |     -.   .-.
+      |.-.  \     `--..-'   O |     `.`-' .'
+    _.'  .' |     `-.-'      /-.__   ' .-'
+  .' `-.' '.|='=.='=.='=.='=|._/_ `-'.'
+  `-._  `.  |________/\_____|    `-.'
+     .'   ).| '=' '='\/ '=' |
+     `._.'  '---------------'
+             //___\   //___\
+               ||       ||
+               ||_.-.   ||_.-.
+              (_.--__) (_.--__)
+```
+
+{{#playpen Ascii_art.md}}
+
+#}</code></pre></pre>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="complex/comics.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="complex/Graphs.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="complex/comics.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="complex/Graphs.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

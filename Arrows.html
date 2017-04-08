@@ -1,0 +1,282 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Arrows - Spongedown</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the features and capabilities of Spongedown">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'coal'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Spongedown.html"><strong></strong> Spongedown</a></li><li><ul class="section"><li><a href="Basic_shapes.html"><strong></strong> Basic Shapes</a></li><li><a href="Arrows.html" class="active"><strong></strong> Arrows</a></li><li><a href="Brackets.html"><strong></strong> Brackets</a></li><li><a href="Speech_baloon.html"><strong></strong> Speech Baloon</a></li><li><a href="Faces.html"><strong></strong> Faces</a></li><li><a href="Lines_and_Intersections.html"><strong></strong> Lines and Intersections</a></li></ul></li><li><a href="Complex_shapes.html"><strong></strong> Complex Shapes</a></li><li><ul class="section"><li><a href="complex/comics.html"><strong></strong> Comics</a></li><li><a href="complex/Ascii_art.html"><strong></strong> Ascii art</a></li><li><a href="complex/Graphs.html"><strong></strong> Graphs</a></li><li><a href="complex/Diagrams.html"><strong></strong> Diagrams</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Spongedown</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Arrows.html#arrows" id="arrows"><h2>Arrows</h2></a>
+<svg font-family="arial" font-size="14" height="928" width="272" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 36 32 L 36 48 M 24 88 L 56 88 M 24 256 L 40 288 M 24 352 L 40 320 M 32 608 L 34 604 M 40 600 A 8 8 0 0 0 34 604 M 40 600 L 56 600 A 8 8 0 0 0 62 596 M 24 624 L 32 608 M 84 656 L 84 688 M 32 696 L 80 696 M 48 800 L 64 832 M 68 800 L 68 832 M 32 840 L 64 840 M 48 880 L 64 848" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<line marker-end="url(#triangle)" x1="36" x2="36" y1="32" y2="16"/>
+<line marker-end="url(#triangle)" x1="24" x2="20" y1="88" y2="88"/>
+<line marker-end="url(#triangle)" x1="16" x2="60" y1="136" y2="136"/>
+<line marker-end="url(#triangle)" x1="36" x2="36" y1="176" y2="208"/>
+<line marker-end="url(#triangle)" x1="24" x2="20" y1="256" y2="248"/>
+<line marker-end="url(#triangle)" x1="24" x2="20" y1="352" y2="360"/>
+<line marker-end="url(#triangle)" x1="24" x2="44" y1="400" y2="440"/>
+<line marker-end="url(#triangle)" x1="32" x2="52" y1="528" y2="488"/>
+<line marker-end="url(#triangle)" x1="64" x2="76" y1="592" y2="568"/>
+<line marker-end="url(#triangle)" x1="62" x2="76" y1="596" y2="568"/>
+<line marker-end="url(#triangle)" x1="84" x2="84" y1="656" y2="640"/>
+<line marker-end="url(#triangle)" x1="32" x2="28" y1="696" y2="696"/>
+<line marker-end="url(#triangle)" x1="84" x2="84" y1="688" y2="752"/>
+<line marker-end="url(#triangle)" x1="80" x2="148" y1="696" y2="696"/>
+<line marker-end="url(#triangle)" x1="88" x2="148" y1="696" y2="696"/>
+<line marker-end="url(#triangle)" x1="84" x2="84" y1="704" y2="752"/>
+<line marker-end="url(#triangle)" x1="48" x2="44" y1="800" y2="792"/>
+<line marker-end="url(#triangle)" x1="68" x2="68" y1="800" y2="784"/>
+<line marker-end="url(#triangle)" x1="72" x2="92" y1="832" y2="792"/>
+<line marker-end="url(#triangle)" x1="32" x2="28" y1="840" y2="840"/>
+<line marker-end="url(#triangle)" x1="68" x2="68" y1="832" y2="896"/>
+<line marker-end="url(#triangle)" x1="64" x2="108" y1="840" y2="840"/>
+<line marker-end="url(#triangle)" x1="64" x2="92" y1="832" y2="888"/>
+<line marker-end="url(#triangle)" x1="64" x2="92" y1="848" y2="792"/>
+<line marker-end="url(#triangle)" x1="72" x2="108" y1="840" y2="840"/>
+<line marker-end="url(#triangle)" x1="68" x2="68" y1="848" y2="896"/>
+<line marker-end="url(#triangle)" x1="72" x2="92" y1="848" y2="888"/>
+<line marker-end="url(#triangle)" x1="48" x2="44" y1="880" y2="888"/>
+<text x="66" y="44">
+top
+</text>
+<text x="74" y="92">
+left
+</text>
+<text x="74" y="140">
+right
+</text>
+<text x="58" y="188">
+bottom
+</text>
+<text x="50" y="268">
+top left
+</text>
+<text x="50" y="348">
+bottom left
+</text>
+<text x="50" y="428">
+bottom right
+</text>
+<text x="58" y="508">
+top right
+</text>
+<text x="82" y="588">
+crocked arrow lines
+</text>
+<text x="98" y="684">
+crossed arrows
+</text>
+<text x="98" y="828">
+criss cross arrows
+</text>
+</svg>
+<a class="header" href="Arrows.html#ascii-code" id="ascii-code"><h2>Ascii code</h2></a>
+<pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Arrows
+
+```bob
+
+    ^
+    |   top
+
+
+  <----  left
+
+
+  -----> right
+
+
+    |  bottom
+    v 
+
+
+  ^
+   \  top left
+    \
+
+
+    /
+   /  bottom left
+  v
+
+
+   \
+    \ bottom right
+     v
+
+
+      ^ 
+     / top right
+    /
+
+
+         ^ 
+        / crocked arrow lines
+    .--'
+   /
+
+          ^
+          |
+          | crossed arrows
+   <------+------->
+          |
+          |
+          v
+
+
+     ^  ^  ^
+      \ | /
+       \|/  criss cross arrows
+   <----+---->
+       /|\
+      / | \
+     v  v  v
+```
+
+## Ascii code
+
+{{#playpen Arrows.md}}
+
+#}</code></pre></pre>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Basic_shapes.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Brackets.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Basic_shapes.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Brackets.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

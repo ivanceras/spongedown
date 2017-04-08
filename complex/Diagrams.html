@@ -1,0 +1,501 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Diagrams - Spongedown</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the features and capabilities of Spongedown">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="../">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'coal'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Spongedown.html"><strong></strong> Spongedown</a></li><li><ul class="section"><li><a href="Basic_shapes.html"><strong></strong> Basic Shapes</a></li><li><a href="Arrows.html"><strong></strong> Arrows</a></li><li><a href="Brackets.html"><strong></strong> Brackets</a></li><li><a href="Speech_baloon.html"><strong></strong> Speech Baloon</a></li><li><a href="Faces.html"><strong></strong> Faces</a></li><li><a href="Lines_and_Intersections.html"><strong></strong> Lines and Intersections</a></li></ul></li><li><a href="Complex_shapes.html"><strong></strong> Complex Shapes</a></li><li><ul class="section"><li><a href="complex/comics.html"><strong></strong> Comics</a></li><li><a href="complex/Ascii_art.html"><strong></strong> Ascii art</a></li><li><a href="complex/Graphs.html"><strong></strong> Graphs</a></li><li><a href="complex/Diagrams.html" class="active"><strong></strong> Diagrams</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Spongedown</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="complex/Diagrams.html#diagrams" id="diagrams"><h2>Diagrams</h2></a>
+<svg font-family="arial" font-size="14" height="1616" width="664" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 288 48 L 290 44 M 296 40 A 8 8 0 0 0 290 44 M 280 64 L 288 48 M 96 72 A 16 16 0 0 0 86 80 M 104 72 A 16 16 0 0 0 96 72 M 114 80 A 16 16 0 0 0 104 72 M 272 80 L 288 48 M 278 72 A 8 8 0 0 0 274 76 M 86 80 A 16 16 0 0 0 86 96 M 114 96 A 16 16 0 0 0 114 80 M 120 88 L 152 88 M 160 96 L 158 92 A 8 8 0 0 0 152 88 M 360 80 L 368 96 M 416 96 L 414 92 M 416 88 A 4 4 0 0 0 414 92 M 416 88 L 592 88 M 600 96 L 598 92 A 8 8 0 0 0 592 88 M 86 96 A 16 16 0 0 0 96 104 A 16 16 0 0 0 104 104 A 16 16 0 0 0 114 96 M 368 96 L 384 128 M 370 100 A 8 8 0 0 0 374 104 M 416 96 L 440 144 M 600 96 L 624 144 M 12 120 L 12 144 M 12 120 L 88 120 M 16 120 L 88 120 M 92 120 L 92 144 M 92 120 L 88 120 M 376 112 L 384 128 M 432 120 L 608 120 M 12 128 L 12 144 M 92 128 L 92 144 M 344 144 L 376 144 M 384 128 L 386 132 A 8 8 0 0 0 392 136 M 12 152 L 12 144 M 12 152 L 88 152 M 16 152 L 88 152 M 92 152 L 92 144 M 92 152 L 88 152 M 96 144 L 128 208 M 232 160 L 272 80 M 336 160 L 344 144 M 376 144 L 384 160 M 440 144 L 442 148 A 8 8 0 0 0 448 152 L 624 152 M 624 144 L 626 148 M 624 152 A 4 4 0 0 0 626 148 M 224 176 L 272 80 M 230 168 A 8 8 0 0 0 226 172 M 336 160 L 334 164 M 336 176 L 334 172 M 334 164 A 8 8 0 0 0 334 172 M 384 160 L 386 164 M 384 176 L 386 172 A 8 8 0 0 0 386 164 M 216 192 L 224 176 M 336 176 L 344 192 L 376 192 L 384 176 M 168 200 A 16 16 0 0 0 158 208 M 168 200 L 256 200 M 266 208 A 16 16 0 0 0 256 200 M 128 208 L 130 212 A 8 8 0 0 0 136 216 M 158 208 A 16 16 0 0 0 158 224 M 266 224 A 16 16 0 0 0 266 208 M 158 224 A 16 16 0 0 0 168 232 L 256 232 A 16 16 0 0 0 266 224 M 176 256 L 184 240 M 200 240 L 280 400 M 216 240 L 272 352 M 232 240 L 256 288 M 176 256 L 174 260 M 172 272 L 172 268 M 174 260 A 16 16 0 0 0 172 268 M 172 272 L 172 288 L 172 320 M 168 304 L 170 300 A 16 16 0 0 0 172 292 M 256 288 L 258 292 A 8 8 0 0 0 264 296 L 288 296 M 160 320 L 168 304 M 172 304 L 172 320 M 304 304 L 312 320 M 356 312 L 356 336 M 356 312 L 544 312 M 360 312 L 544 312 M 548 312 L 548 336 M 548 312 L 544 312 M 172 320 L 172 352 M 168 336 L 170 332 A 16 16 0 0 0 172 324 M 312 320 L 314 324 A 8 8 0 0 0 320 328 M 356 320 L 356 336 M 548 320 L 548 336 M 64 352 L 128 352 M 160 352 L 168 336 M 172 336 L 172 352 M 356 344 L 356 336 M 356 344 L 544 344 M 360 344 L 544 344 M 548 344 L 548 336 M 548 344 L 544 344 M 56 368 L 64 352 M 120 368 L 128 352 M 136 360 L 152 360 M 158 356 L 168 336 M 152 360 A 8 8 0 0 0 158 356 M 172 352 L 172 384 M 168 368 L 170 364 A 16 16 0 0 0 172 356 M 272 352 L 274 356 A 8 8 0 0 0 280 360 L 288 360 M 54 372 L 64 352 M 54 372 A 4 4 0 0 0 56 376 L 112 376 M 118 372 L 128 352 M 112 376 A 8 8 0 0 0 118 372 M 160 384 L 168 368 M 172 368 L 172 384 L 172 388 M 168 400 L 170 396 A 16 16 0 0 0 172 388 M 328 400 L 330 396 M 336 392 A 8 8 0 0 0 330 396 M 336 392 L 424 392 M 424 400 L 426 396 A 4 4 0 0 0 424 392 M 160 416 L 168 400 M 280 400 L 282 404 A 8 8 0 0 0 288 408 L 320 408 M 320 416 L 328 400 M 416 416 L 424 400 M 318 420 L 328 400 M 318 420 A 4 4 0 0 0 320 424 L 408 424 M 414 420 L 424 400 M 408 424 A 8 8 0 0 0 414 420 M 104 504 A 4 4 0 0 0 100 508 L 100 512 M 104 504 L 128 504 M 132 508 A 4 4 0 0 0 128 504 M 132 508 L 132 512 M 160 504 A 4 4 0 0 0 156 508 L 156 512 M 160 504 L 184 504 M 188 508 A 4 4 0 0 0 184 504 M 188 508 L 188 512 M 208 504 A 4 4 0 0 0 204 508 L 204 512 M 208 504 L 232 504 M 236 508 A 4 4 0 0 0 232 504 M 236 508 L 236 512 M 264 504 A 4 4 0 0 0 260 508 L 260 512 M 264 504 L 288 504 M 292 508 A 4 4 0 0 0 288 504 M 292 508 L 292 512 M 336 504 A 4 4 0 0 0 332 508 L 332 512 M 336 504 L 360 504 M 364 508 A 4 4 0 0 0 360 504 M 364 508 L 364 512 M 392 504 A 4 4 0 0 0 388 508 L 388 512 M 392 504 L 416 504 M 420 508 A 4 4 0 0 0 416 504 M 420 508 L 420 512 M 100 516 A 4 4 0 0 0 104 520 M 100 512 L 100 516 M 104 520 L 128 520 A 4 4 0 0 0 132 516 M 132 512 L 132 516 M 156 516 A 4 4 0 0 0 160 520 M 156 512 L 156 516 M 160 520 L 184 520 A 4 4 0 0 0 188 516 M 188 512 L 188 516 M 204 516 A 4 4 0 0 0 208 520 M 204 512 L 204 516 M 208 520 L 232 520 A 4 4 0 0 0 236 516 M 236 512 L 236 516 M 260 516 A 4 4 0 0 0 264 520 M 260 512 L 260 516 M 264 520 L 288 520 A 4 4 0 0 0 292 516 M 292 512 L 292 516 M 332 516 A 4 4 0 0 0 336 520 M 332 512 L 332 516 M 336 520 L 360 520 A 4 4 0 0 0 364 516 M 364 512 L 364 516 M 388 516 A 4 4 0 0 0 392 520 M 388 512 L 388 516 M 392 520 L 416 520 A 4 4 0 0 0 420 516 M 420 512 L 420 516 M 220 528 L 220 656 M 100 572 L 100 592 M 104 568 A 4 4 0 0 0 100 572 M 104 568 L 200 568 M 204 572 L 204 592 M 204 572 A 4 4 0 0 0 200 568 M 236 572 L 236 592 M 240 568 A 4 4 0 0 0 236 572 M 240 568 L 328 568 M 332 572 L 332 592 M 332 572 A 4 4 0 0 0 328 568 M 372 572 L 372 592 M 376 568 A 4 4 0 0 0 372 572 M 376 568 L 416 568 M 420 572 L 420 592 M 420 572 A 4 4 0 0 0 416 568 M 100 576 L 100 592 M 204 576 L 204 592 M 236 576 L 236 592 M 332 576 L 332 592 M 372 576 L 372 592 M 420 576 L 420 592 M 100 592 L 100 596 A 4 4 0 0 0 104 600 L 200 600 M 204 592 L 204 596 M 200 600 A 4 4 0 0 0 204 596 M 236 592 L 236 596 A 4 4 0 0 0 240 600 L 328 600 M 332 592 L 332 596 M 328 600 A 4 4 0 0 0 332 596 M 372 592 L 372 596 A 4 4 0 0 0 376 600 L 416 600 M 420 592 L 420 596 M 416 600 A 4 4 0 0 0 420 596 M 132 652 L 132 672 M 136 648 A 4 4 0 0 0 132 652 M 136 648 L 168 648 M 172 652 L 172 672 M 172 652 A 4 4 0 0 0 168 648 M 316 652 L 316 672 M 320 648 A 4 4 0 0 0 316 652 M 320 648 L 392 648 M 396 652 L 396 672 M 396 652 A 4 4 0 0 0 392 648 M 132 656 L 132 672 M 172 656 L 172 672 M 184 664 L 216 664 M 220 656 L 220 660 M 216 664 A 4 4 0 0 0 220 660 M 316 656 L 316 672 M 396 656 L 396 672 M 132 672 L 132 676 A 4 4 0 0 0 136 680 L 168 680 M 172 672 L 172 676 M 168 680 A 4 4 0 0 0 172 676 M 316 672 L 316 676 A 4 4 0 0 0 320 680 L 392 680 M 396 672 L 396 676 M 392 680 A 4 4 0 0 0 396 676 M 100 732 L 100 752 M 104 728 A 4 4 0 0 0 100 732 M 104 728 L 416 728 M 420 732 L 420 752 M 420 732 A 4 4 0 0 0 416 728 M 100 736 L 100 752 M 420 736 L 420 752 M 100 752 L 100 756 A 4 4 0 0 0 104 760 L 416 760 M 420 752 L 420 756 M 416 760 A 4 4 0 0 0 420 756 M 24 832 L 12 832 M 24 832 L 52 832 M 52 816 L 52 832 M 60 816 L 60 928 M 12 832 L 12 928 M 32 848 L 20 848 M 32 848 L 52 848 M 20 848 L 20 880 M 52 848 L 52 880 M 32 880 L 20 880 M 32 880 L 52 880 M 72 888 L 60 888 M 72 888 L 528 888 M 532 892 A 4 4 0 0 0 528 888 M 12 928 L 12 932 A 4 4 0 0 0 16 936 L 56 936 M 60 928 L 60 932 M 56 936 A 4 4 0 0 0 60 932 M 20 988 L 20 1008 M 24 984 A 4 4 0 0 0 20 988 M 24 984 L 176 984 M 180 988 L 180 1008 M 180 988 A 4 4 0 0 0 176 984 M 204 988 L 204 1040 M 208 984 A 4 4 0 0 0 204 988 M 208 984 L 424 984 M 428 988 L 428 1088 M 428 988 A 4 4 0 0 0 424 984 M 452 988 L 452 1024 M 456 984 A 4 4 0 0 0 452 988 M 456 984 L 608 984 M 612 988 L 612 1024 M 612 988 A 4 4 0 0 0 608 984 M 20 992 L 20 1008 M 180 992 L 180 1008 M 204 992 L 204 1040 M 428 992 L 428 1088 M 452 992 L 452 1024 M 612 992 L 612 1024 M 20 1008 L 20 1012 A 4 4 0 0 0 24 1016 L 176 1016 M 180 1008 L 180 1012 M 176 1016 A 4 4 0 0 0 180 1012 M 216 1016 L 204 1016 M 216 1016 L 428 1016 M 100 1024 L 100 1040 M 284 1036 L 284 1056 M 288 1032 A 4 4 0 0 0 284 1036 M 288 1032 L 328 1032 M 332 1036 L 332 1056 M 332 1036 A 4 4 0 0 0 328 1032 M 452 1024 L 452 1028 A 4 4 0 0 0 456 1032 L 608 1032 M 612 1024 L 612 1028 M 608 1032 A 4 4 0 0 0 612 1028 M 100 1040 L 100 1044 A 4 4 0 0 0 104 1048 L 200 1048 M 204 1040 L 204 1120 M 284 1040 L 284 1056 M 332 1040 L 332 1056 M 540 1040 L 540 1088 M 204 1056 L 204 1120 M 284 1056 L 284 1060 A 4 4 0 0 0 288 1064 L 328 1064 M 332 1056 L 332 1060 M 328 1064 A 4 4 0 0 0 332 1060 M 240 1088 L 242 1084 M 248 1080 A 8 8 0 0 0 242 1084 M 248 1080 L 392 1080 M 392 1088 L 394 1084 A 4 4 0 0 0 392 1080 M 232 1104 L 240 1088 M 384 1104 L 392 1088 M 400 1096 L 424 1096 M 428 1088 L 428 1120 M 424 1096 L 536 1096 M 432 1096 L 536 1096 M 540 1088 L 540 1092 M 536 1096 A 4 4 0 0 0 540 1092 M 230 1108 L 240 1088 M 230 1108 A 4 4 0 0 0 232 1112 L 376 1112 M 382 1108 L 392 1088 M 376 1112 A 8 8 0 0 0 382 1108 M 428 1104 L 428 1120 M 204 1120 L 204 1124 A 4 4 0 0 0 208 1128 L 424 1128 M 428 1120 L 428 1124 M 424 1128 A 4 4 0 0 0 428 1124 M 60 1176 L 60 1232 M 60 1176 L 136 1176 M 64 1176 L 136 1176 M 140 1176 L 140 1232 M 140 1176 L 136 1176 M 60 1184 L 60 1232 M 140 1184 L 140 1232 M 340 1192 L 340 1248 M 340 1192 L 456 1192 M 344 1192 L 456 1192 M 460 1192 L 460 1248 M 460 1192 L 456 1192 M 152 1208 L 140 1208 M 152 1208 L 160 1208 M 164 1208 L 164 1264 M 164 1208 L 160 1208 M 340 1200 L 340 1248 M 460 1200 L 460 1248 M 164 1216 L 164 1264 M 308 1224 L 308 1280 M 60 1240 L 60 1232 M 60 1240 L 136 1240 M 64 1240 L 136 1240 M 140 1240 L 140 1232 M 140 1240 L 136 1240 M 196 1240 L 196 1360 M 196 1240 L 280 1240 M 200 1240 L 280 1240 M 284 1240 L 284 1360 M 284 1240 L 280 1240 M 308 1232 L 308 1280 M 196 1248 L 196 1360 M 284 1248 L 284 1360 M 340 1256 L 340 1248 M 340 1256 L 456 1256 M 344 1256 L 456 1256 M 460 1256 L 460 1248 M 460 1256 L 456 1256 M 60 1272 L 60 1328 M 60 1272 L 136 1272 M 64 1272 L 136 1272 M 140 1272 L 140 1328 M 140 1272 L 136 1272 M 164 1272 L 164 1264 M 60 1280 L 60 1328 M 140 1280 L 140 1328 M 296 1288 L 284 1288 M 296 1288 L 304 1288 M 308 1288 L 308 1280 M 308 1288 L 304 1288 M 152 1304 L 140 1304 M 296 1320 L 284 1320 M 296 1320 L 304 1320 M 308 1320 L 308 1376 M 308 1320 L 304 1320 M 60 1336 L 60 1328 M 60 1336 L 136 1336 M 64 1336 L 136 1336 M 140 1336 L 140 1328 M 140 1336 L 136 1336 M 164 1336 L 164 1392 M 308 1328 L 308 1376 M 164 1344 L 164 1392 M 340 1352 L 340 1408 M 340 1352 L 456 1352 M 344 1352 L 456 1352 M 460 1352 L 460 1408 M 460 1352 L 456 1352 M 60 1368 L 60 1424 M 60 1368 L 136 1368 M 64 1368 L 136 1368 M 140 1368 L 140 1424 M 140 1368 L 136 1368 M 196 1368 L 196 1360 M 196 1368 L 280 1368 M 200 1368 L 280 1368 M 284 1368 L 284 1360 M 284 1368 L 280 1368 M 340 1360 L 340 1408 M 460 1360 L 460 1408 M 60 1376 L 60 1424 M 140 1376 L 140 1424 M 308 1384 L 308 1376 M 152 1400 L 140 1400 M 152 1400 L 160 1400 M 164 1400 L 164 1392 M 164 1400 L 160 1400 M 340 1416 L 340 1408 M 340 1416 L 456 1416 M 344 1416 L 456 1416 M 460 1416 L 460 1408 M 460 1416 L 456 1416 M 60 1432 L 60 1424 M 60 1432 L 136 1432 M 64 1432 L 136 1432 M 140 1432 L 140 1424 M 140 1432 L 136 1432 M 168 1480 A 16 16 0 0 0 158 1488 M 168 1480 L 176 1480 M 224 1480 L 232 1480 M 242 1488 A 16 16 0 0 0 232 1480 M 16 1504 L 40 1504 M 56 1504 L 68 1504 M 144 1496 A 16 16 0 0 0 134 1504 M 144 1496 L 152 1496 M 248 1496 L 256 1496 M 266 1504 A 16 16 0 0 0 256 1496 M 16 1520 L 40 1520 M 52 1504 L 52 1536 M 68 1504 L 68 1536 M 134 1504 A 16 16 0 0 0 134 1520 M 344 1520 L 424 1520 M 504 1520 L 492 1520 M 504 1520 L 532 1520 M 560 1520 L 548 1520 M 560 1520 L 572 1520 M 8 1536 L 16 1520 M 32 1536 L 40 1520 M 56 1536 L 68 1536 M 134 1520 A 16 16 0 0 0 144 1528 L 152 1528 M 256 1528 L 264 1528 M 344 1536 L 352 1536 M 376 1536 L 392 1536 M 492 1520 L 492 1552 M 532 1520 L 532 1552 M 548 1520 L 548 1568 M 572 1520 L 572 1568 M 158 1536 A 16 16 0 0 0 168 1544 L 176 1544 M 216 1544 L 224 1544 M 504 1552 L 492 1552 M 504 1552 L 532 1552 M 488 1568 L 496 1552 M 520 1568 L 528 1552 M 560 1568 L 548 1568 M 560 1568 L 572 1568" fill="none"/>
+<path d=" M 352 1536 L 376 1536 M 392 1536 L 416 1536" fill="none" stroke-dasharray="3 3"/>
+<line marker-end="url(#triangle)" x1="296" x2="316" y1="40" y2="40"/>
+<line marker-end="url(#triangle)" x1="278" x2="316" y1="72" y2="72"/>
+<line marker-end="url(#triangle)" x1="280" x2="316" y1="72" y2="72"/>
+<line marker-end="url(#triangle)" x1="160" x2="204" y1="96" y2="184"/>
+<line marker-end="url(#triangle)" x1="374" x2="412" y1="104" y2="104"/>
+<line marker-end="url(#triangle)" x1="376" x2="412" y1="104" y2="104"/>
+<line marker-end="url(#triangle)" x1="392" x2="428" y1="136" y2="136"/>
+<line marker-end="url(#triangle)" x1="230" x2="324" y1="168" y2="168"/>
+<line marker-end="url(#triangle)" x1="232" x2="324" y1="168" y2="168"/>
+<line marker-end="url(#triangle)" x1="136" x2="148" y1="216" y2="216"/>
+<line marker-end="url(#triangle)" x1="320" x2="348" y1="328" y2="328"/>
+<line marker-end="url(#triangle)" x1="136" x2="132" y1="360" y2="360"/>
+<line marker-end="url(#triangle)" x1="160" x2="156" y1="416" y2="424"/>
+<line marker-end="url(#triangle)" x1="116" x2="116" y1="528" y2="560"/>
+<line marker-end="url(#triangle)" x1="172" x2="172" y1="528" y2="560"/>
+<line marker-end="url(#triangle)" x1="276" x2="276" y1="528" y2="560"/>
+<line marker-end="url(#triangle)" x1="348" x2="348" y1="528" y2="640"/>
+<line marker-end="url(#triangle)" x1="404" x2="404" y1="528" y2="560"/>
+<line marker-end="url(#triangle)" x1="156" x2="156" y1="608" y2="640"/>
+<line marker-end="url(#triangle)" x1="276" x2="276" y1="608" y2="720"/>
+<line marker-end="url(#triangle)" x1="184" x2="180" y1="664" y2="664"/>
+<line marker-end="url(#triangle)" x1="156" x2="156" y1="688" y2="720"/>
+<line marker-end="url(#triangle)" x1="356" x2="356" y1="688" y2="720"/>
+<line marker-end="url(#triangle)" x1="532" x2="532" y1="892" y2="976"/>
+<line marker-end="url(#triangle)" x1="100" x2="100" y1="896" y2="976"/>
+<line marker-end="url(#triangle)" x1="316" x2="316" y1="896" y2="976"/>
+<line marker-end="url(#triangle)" x1="532" x2="532" y1="896" y2="976"/>
+<line marker-end="url(#triangle)" x1="200" x2="276" y1="1048" y2="1048"/>
+<line marker-end="url(#triangle)" x1="208" x2="276" y1="1048" y2="1048"/>
+<line marker-end="url(#triangle)" x1="400" x2="396" y1="1096" y2="1096"/>
+<line marker-end="url(#triangle)" x1="308" x2="332" y1="1224" y2="1224"/>
+<line marker-end="url(#triangle)" x1="312" x2="332" y1="1224" y2="1224"/>
+<line marker-end="url(#triangle)" x1="164" x2="188" y1="1272" y2="1272"/>
+<line marker-end="url(#triangle)" x1="168" x2="188" y1="1272" y2="1272"/>
+<line marker-end="url(#triangle)" x1="152" x2="188" y1="1304" y2="1304"/>
+<line marker-end="url(#triangle)" x1="164" x2="188" y1="1336" y2="1336"/>
+<line marker-end="url(#triangle)" x1="168" x2="188" y1="1336" y2="1336"/>
+<line marker-end="url(#triangle)" x1="308" x2="332" y1="1384" y2="1384"/>
+<line marker-end="url(#triangle)" x1="312" x2="332" y1="1384" y2="1384"/>
+<line marker-end="url(#triangle)" x1="88" x2="124" y1="1512" y2="1512"/>
+<line marker-end="url(#triangle)" x1="272" x2="332" y1="1512" y2="1512"/>
+<line marker-end="url(#triangle)" x1="432" x2="484" y1="1512" y2="1512"/>
+<text x="330" y="44">
+Base::Class::Derived_A
+</text>
+<text x="330" y="76">
+Base::Class::Derived_B
+</text>
+<text x="90" y="92">
+x1y
+</text>
+<text x="434" y="108">
+Base::Class::Derived
+</text>
+<text x="34" y="140">
+Alice
+</text>
+<text x="450" y="140">
+Base::Class::Derived
+</text>
+<text x="346" y="172">
+SVG
+</text>
+<text x="194" y="220">
+Bob
+</text>
+<text x="298" y="300">
+The::Latest
+</text>
+<text x="130" y="332">
+Foo
+</text>
+<text x="370" y="332">
+The::Latest::Greatest
+</text>
+<text x="82" y="364">
+Bar
+</text>
+<text x="298" y="364">
+I::Am::Running::Out::Of::Ideas
+</text>
+<text x="130" y="396">
+Baz
+</text>
+<text x="338" y="412">
+Last::One
+</text>
+<text x="114" y="428">
+Quux 
+</text>
+<text x="26" y="524">
+OS API
+</text>
+<text x="122" y="588">
+文件系统
+</text>
+<text x="266" y="588">
+调度器
+</text>
+<text x="386" y="588">
+MMU
+</text>
+<text x="146" y="668">
+IO
+</text>
+<text x="346" y="668">
+网络
+</text>
+<text x="218" y="748">
+硬件抽象层
+</text>
+<text x="82" y="860">
+device
+</text>
+<text x="82" y="876">
+loads
+</text>
+<text x="26" y="892">
+ooo
+</text>
+<text x="26" y="908">
+ooo
+</text>
+<text x="26" y="924">
+ooo
+</text>
+<text x="34" y="1004">
+Loadable module C
+</text>
+<text x="250" y="1004">
+Loadable module A
+</text>
+<text x="466" y="1004">
+Loadable module B
+</text>
+<text x="482" y="1020">
+(instrumented)
+</text>
+<text x="298" y="1052">
+A.o
+</text>
+<text x="130" y="1068">
+calls
+</text>
+<text x="250" y="1100">
+A.instrumented.o
+</text>
+<text x="466" y="1116">
+calls
+</text>
+<text x="90" y="1212">
+NFS
+</text>
+<text x="370" y="1228">
+CacheFS
+</text>
+<text x="362" y="1244">
+/dev/hda5/
+</text>
+<text x="90" y="1308">
+AFS
+</text>
+<text x="210" y="1308">
+FS-Cache
+</text>
+<text x="362" y="1388">
+CacheFiles
+</text>
+<text x="82" y="1404">
+ISOFS
+</text>
+<text x="362" y="1404">
+/var/cache
+</text>
+<text x="2" y="1484">
+vncviewer
+</text>
+<text x="178" y="1484">
+,(
+</text>
+<text x="210" y="1484">
+),
+</text>
+<text x="154" y="1500">
+(
+</text>
+<text x="242" y="1500">
+)
+</text>
+<text x="354" y="1500">
+gateway
+</text>
+<text x="498" y="1500">
+vncserver
+</text>
+<text x="10" y="1516">
+[
+</text>
+<text x="42" y="1516">
+]
+</text>
+<text x="58" y="1516">
+=
+</text>
+<text x="170" y="1516">
+internet
+</text>
+<text x="266" y="1516">
+)
+</text>
+<text x="18" y="1532">
+::
+</text>
+<text x="154" y="1532">
+(
+</text>
+<text x="242" y="1532">
+).
+</text>
+<text x="266" y="1532">
+&apos;
+</text>
+<text x="338" y="1532">
+[
+</text>
+<text x="418" y="1532">
+°]
+</text>
+<text x="554" y="1532">
+==
+</text>
+<text x="178" y="1548">
+.(
+</text>
+<text x="202" y="1548">
+).
+</text>
+<text x="226" y="1548">
+&apos;
+</text>
+<text x="498" y="1564">
+:::
+</text>
+</svg>
+<a class="header" href="complex/Diagrams.html#ascii" id="ascii"><h3>ascii</h3></a>
+<pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+ ## Diagrams
+
+
+
+ ```bob
+
+
+                                     .--> Base::Class::Derived_A
+                                    /
+            .-.                    .----> Base::Class::Derived_B    
+           (x1y)----.             /           \     .----------------------.
+            '-'      \           /             .---->\ Base::Class::Derived \
+  +---------+         \         /               \     \----------------------\
+  |  Alice  |          \       /            ____ '---->\ Base::Class::Derived \
+  +---------+\          \     /            /    \       '----------------------'
+              \          \   .----------->( SVG  )                         
+               \          V /              \____/
+                \    .-----------.              
+                 '->(    Bob      )
+                     '-----------'
+                       /  \ \ \
+                      '    \ \ \  
+                      |     \ \ \
+                      .      \ \ '--- The::Latest
+                     /|       \ \      \     +-----------------------+
+                 Foo  '        \ \      '--->| The::Latest::Greatest |
+         ________    /|         \ \          +-----------------------+
+        /  Bar  /<--' '          \ '- I::Am::Running::Out::Of::Ideas
+       '-------'     /|           \
+                 Baz  '            \      .-----------.
+                     /              '----/ Last::One /
+               Quux V                   '-----------'
+
+
+
+
+             .---.  .---. .---.  .---.    .---.  .---.
+    OS API   '---'  '---' '---'  '---'    '---'  '---'
+               |      |     |      |        |      |   
+               v      v     |      v        |      v   
+             .------------. | .-----------. |  .-----.
+             |  文件系统  | | |   调度器  | |  | MMU |
+             '------------' | '-----------' |  '-----'
+                    |       |      |        |   
+                    v       |      |        v   
+                 .----.     |      |    .---------.   
+                 | IO |<----'      |    |   网络  |   
+                 '----'            |    '---------'
+                    |              |         |   
+                    v              v         v   
+             .---------------------------------------.
+             |              硬件抽象层               |
+             '---------------------------------------'
+
+
+
+   ____||
+  | ___ |
+  ||   ||  device
+  ||___||  loads
+  | ooo |----------------------------------------------------------.
+  | ooo |    |                          |                          |
+  | ooo |    |                          |                          |
+  '-----'    |                          |                          |
+             |                          |                          |
+             v                          v                          v
+   .-------------------.  .---------------------------.  .-------------------.
+   | Loadable module C |  |     Loadable module A     |  | Loadable module B |
+   '-------------------'  |---------------------------|  |   (instrumented)  |
+             |            |         .-----.           |  '-------------------'
+             '------------+-------->| A.o |           |             |
+                 calls    |         '-----'           |             |
+                          |    .------------------.   |             |
+                          |   / A.instrumented.o /<---+-------------'
+                          |  '------------------'     |    calls
+                          '---------------------------'   
+
+
+        +---------+
+        |         |                        +--------------+
+        |   NFS   |--+                     |              |
+        |         |  |                 +-->|   CacheFS    |
+        +---------+  |   +----------+  |   |  /dev/hda5/  |
+                     |   |          |  |   +--------------+
+        +---------+  +-->|          |  |
+        |         |      |          |--+
+        |   AFS   |----->| FS-Cache |
+        |         |      |          |--+
+        +---------+  +-->|          |  |
+                     |   |          |  |   +--------------+
+        +---------+  |   +----------+  |   |              |
+        |         |  |                 +-->|  CacheFiles  |
+        |  ISOFS  |--+                     |  /var/cache  |
+        |         |                        +--------------+
+        +---------+
+
+
+ vncviewer           .-,(  ),-.    
+   ___  _         .-(          )-.           gateway           vncserver 
+  [___]|=|  ---->(    internet    )-------> __________ ------> ____   __ 
+  /::/ |_|        '-(          ).-'        [_...__...°]       |    | |==|
+                     '-.( ).-'                                |____| |  |
+                                                              /:::/  |__|
+
+```
+### ascii
+
+
+{{#playpen Diagrams.md}}
+
+#}</code></pre></pre>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="complex/Graphs.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+
+            </div>
+
+            
+                <a href="complex/Graphs.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

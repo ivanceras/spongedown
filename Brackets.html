@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Brackets - Spongedown</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the features and capabilities of Spongedown">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'coal'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Spongedown.html"><strong></strong> Spongedown</a></li><li><ul class="section"><li><a href="Basic_shapes.html"><strong></strong> Basic Shapes</a></li><li><a href="Arrows.html"><strong></strong> Arrows</a></li><li><a href="Brackets.html" class="active"><strong></strong> Brackets</a></li><li><a href="Speech_baloon.html"><strong></strong> Speech Baloon</a></li><li><a href="Faces.html"><strong></strong> Faces</a></li><li><a href="Lines_and_Intersections.html"><strong></strong> Lines and Intersections</a></li></ul></li><li><a href="Complex_shapes.html"><strong></strong> Complex Shapes</a></li><li><ul class="section"><li><a href="complex/comics.html"><strong></strong> Comics</a></li><li><a href="complex/Ascii_art.html"><strong></strong> Ascii art</a></li><li><a href="complex/Graphs.html"><strong></strong> Graphs</a></li><li><a href="complex/Diagrams.html"><strong></strong> Diagrams</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Spongedown</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Brackets.html#brackets" id="brackets"><h2>Brackets</h2></a>
+<p>Svgbob can create expandable brackets</p>
+<svg font-family="arial" font-size="14" height="576" width="272" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 36 28 L 36 64 M 40 24 A 4 4 0 0 0 36 28 M 40 24 L 48 24 M 216 24 L 224 24 M 228 28 L 228 64 M 228 28 A 4 4 0 0 0 224 24 M 36 32 L 36 64 M 228 32 L 228 64 M 32 80 A 32 32 0 0 0 36 64 M 228 64 A 32 32 0 0 0 232 80 M 24 88 L 32 80 M 24 88 L 32 96 M 232 80 L 240 88 M 232 96 L 240 88 M 36 112 A 32 32 0 0 0 32 96 M 232 96 A 32 32 0 0 0 228 112 M 36 112 L 36 144 M 228 112 L 228 144 M 36 144 L 36 148 A 4 4 0 0 0 40 152 L 48 152 M 216 152 L 224 152 M 228 144 L 228 148 M 224 152 A 4 4 0 0 0 228 148 M 48 232 A 8 8 0 0 0 44 240 M 48 232 L 56 232 M 152 232 L 160 232 M 164 240 A 8 8 0 0 0 160 232 M 40 256 A 32 32 0 0 0 44 240 M 164 240 A 32 32 0 0 0 168 256 M 32 264 L 40 256 M 32 264 L 40 272 M 168 256 L 176 264 M 168 272 L 176 264 M 44 288 A 32 32 0 0 0 40 272 M 168 272 A 32 32 0 0 0 164 288 M 44 288 A 8 8 0 0 0 48 296 L 56 296 M 152 296 L 160 296 A 8 8 0 0 0 164 288 M 36 332 L 36 448 M 40 328 A 4 4 0 0 0 36 332 M 40 328 L 48 328 M 216 328 L 224 328 M 228 332 L 228 448 M 228 332 A 4 4 0 0 0 224 328 M 36 336 L 36 448 M 228 336 L 228 448 M 36 448 L 36 452 A 4 4 0 0 0 40 456 L 48 456 M 216 456 L 224 456 M 228 448 L 228 452 M 224 456 A 4 4 0 0 0 228 452 M 36 488 L 36 528 M 36 488 L 48 488 M 40 488 L 48 488 M 216 488 L 224 488 M 228 488 L 228 528 M 228 488 L 224 488 M 36 496 L 36 528 M 228 496 L 228 528 M 36 536 L 36 528 M 36 536 L 48 536 M 40 536 L 48 536 M 216 536 L 224 536 M 228 536 L 228 528 M 228 536 L 224 536" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<text x="58" y="92">
+open
+</text>
+<text x="178" y="92">
+close
+</text>
+<text x="58" y="108">
+bracket
+</text>
+<text x="162" y="108">
+bracket
+</text>
+<text x="74" y="268">
+Medium
+</text>
+<text x="82" y="284">
+Brackets
+</text>
+<text x="58" y="396">
+open
+</text>
+<text x="178" y="396">
+close
+</text>
+<text x="58" y="412">
+braces
+</text>
+<text x="170" y="412">
+braces
+</text>
+<text x="90" y="508">
+sharp braces
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Brackets
+
+Svgbob can create expandable brackets
+
+```bob
+
+    .-                     -.
+    |                       |
+    |                       |
+    )                       (
+   <   open           close  >
+    )  bracket      bracket (
+    |                       |
+    |                       |
+    '-                     -'
+
+
+   
+
+     .-            -.
+     )              (
+    <    Medium      >
+     )    Brackets  (
+     '-            -'
+
+    .-                     -.
+    |                       |
+    |                       |
+    |                       |
+    |  open           close |
+    |  braces        braces |
+    |                       |
+    |                       |
+    '-                     -'
+
+    +-                     -+
+    |      sharp braces     |
+    |                       |
+    +-                     -+
+```
+
+{{#playpen Brackets.md}}
+
+#}</code></pre></pre>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Arrows.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Speech_baloon.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Arrows.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Speech_baloon.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

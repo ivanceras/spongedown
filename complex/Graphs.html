@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Graphs - Spongedown</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the features and capabilities of Spongedown">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="../">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'coal'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Spongedown.html"><strong></strong> Spongedown</a></li><li><ul class="section"><li><a href="Basic_shapes.html"><strong></strong> Basic Shapes</a></li><li><a href="Arrows.html"><strong></strong> Arrows</a></li><li><a href="Brackets.html"><strong></strong> Brackets</a></li><li><a href="Speech_baloon.html"><strong></strong> Speech Baloon</a></li><li><a href="Faces.html"><strong></strong> Faces</a></li><li><a href="Lines_and_Intersections.html"><strong></strong> Lines and Intersections</a></li></ul></li><li><a href="Complex_shapes.html"><strong></strong> Complex Shapes</a></li><li><ul class="section"><li><a href="complex/comics.html"><strong></strong> Comics</a></li><li><a href="complex/Ascii_art.html"><strong></strong> Ascii art</a></li><li><a href="complex/Graphs.html" class="active"><strong></strong> Graphs</a></li><li><a href="complex/Diagrams.html"><strong></strong> Diagrams</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Spongedown</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="complex/Graphs.html#graphs" id="graphs"><h2>Graphs</h2></a>
+<svg font-family="arial" font-size="14" height="672" width="416" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="triangle" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="15" refY="10" viewBox="0 0 50 20">
+<path d="M 0 0 L 30 10 L 0 20 z"/>
+</marker>
+</defs>
+<style>
+
+    line, path {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+    circle {
+      stroke: black;
+      stroke-width: 2;
+      stroke-opacity: 1;
+      fill-opacity: 1;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+      fill:white;
+    }
+    tspan.head{
+        fill: none;
+        stroke: none;
+    }
+    
+</style>
+<path d=" M 128 64 L 130 60 M 136 56 A 8 8 0 0 0 130 60 M 144 56 A 16 16 0 0 0 136 56 M 152 64 L 150 60 A 8 8 0 0 0 144 56 M 36 64 L 36 128 M 120 80 L 128 64 M 152 64 L 176 112 M 64 80 L 80 112 M 88 96 L 90 92 M 96 88 A 8 8 0 0 0 90 92 M 96 88 L 112 88 M 118 84 L 128 64 M 112 88 A 8 8 0 0 0 118 84 M 184 96 L 192 96 L 200 88 M 208 88 A 16 16 0 0 0 200 88 M 208 88 L 216 96 A 16 16 0 0 0 224 96 L 232 88 M 240 88 A 16 16 0 0 0 232 88 M 240 88 L 248 96 A 16 16 0 0 0 256 96 L 264 88 L 272 88 M 80 112 L 88 96 M 176 112 L 184 96 M 40 128 L 64 80 M 36 136 L 36 128 M 36 208 L 36 272 M 36 280 L 36 272 M 48 336 L 96 432 M 0 432 L 48 336 M 8 424 L 88 424 M 44 432 L 44 512 M 248 440 A 16 16 0 0 0 238 448 M 248 440 L 264 440 M 274 448 A 16 16 0 0 0 264 440 M 152 456 A 16 16 0 0 0 142 464 M 152 456 L 168 456 M 178 464 A 16 16 0 0 0 168 456 M 238 448 A 16 16 0 0 0 238 464 M 274 464 A 16 16 0 0 0 274 448 M 72 472 A 16 16 0 0 0 62 480 M 72 472 L 104 472 M 114 480 A 16 16 0 0 0 104 472 M 142 464 A 16 16 0 0 0 142 480 M 178 480 A 16 16 0 0 0 178 464 M 238 464 A 16 16 0 0 0 248 472 L 264 472 A 16 16 0 0 0 274 464 M 62 480 A 16 16 0 0 0 62 496 M 114 496 A 16 16 0 0 0 114 480 M 142 480 A 16 16 0 0 0 152 488 L 168 488 A 16 16 0 0 0 178 480 M 256 488 A 16 16 0 0 0 246 496 M 264 488 A 16 16 0 0 0 256 488 M 274 496 A 16 16 0 0 0 264 488 M 300 488 L 300 512 M 300 488 L 360 488 M 304 488 L 360 488 M 360 480 L 376 512 M 62 496 A 16 16 0 0 0 72 504 L 104 504 A 16 16 0 0 0 114 496 M 246 496 A 16 16 0 0 0 246 512 M 274 512 A 16 16 0 0 0 274 496 M 300 496 L 300 512 M 44 520 L 44 512 M 44 520 L 248 520 M 48 520 L 248 520 M 246 512 A 16 16 0 0 0 256 520 A 16 16 0 0 0 264 520 A 16 16 0 0 0 274 512 M 272 520 L 296 520 M 300 512 L 300 544 M 300 520 L 296 520 M 376 512 L 378 516 M 376 528 L 378 524 A 8 8 0 0 0 378 516 M 300 528 L 300 544 M 300 552 L 300 544 M 300 552 L 360 552 M 304 552 L 360 552 M 360 560 L 376 528 M 44 592 L 44 624 M 44 632 L 44 624" fill="none"/>
+<path d="" fill="none" stroke-dasharray="3 3"/>
+<line marker-end="url(#triangle)" x1="36" x2="36" y1="64" y2="48"/>
+<line marker-end="url(#triangle)" x1="36" x2="276" y1="136" y2="136"/>
+<line marker-end="url(#triangle)" x1="40" x2="276" y1="136" y2="136"/>
+<line marker-end="url(#triangle)" x1="36" x2="36" y1="208" y2="192"/>
+<line marker-end="url(#triangle)" x1="36" x2="276" y1="280" y2="280"/>
+<line marker-end="url(#triangle)" x1="40" x2="276" y1="280" y2="280"/>
+<line marker-end="url(#triangle)" x1="44" x2="44" y1="592" y2="576"/>
+<line marker-end="url(#triangle)" x1="44" x2="292" y1="632" y2="632"/>
+<line marker-end="url(#triangle)" x1="48" x2="292" y1="632" y2="632"/>
+<text x="2" y="28">
+Simple Linear graph
+</text>
+<text x="10" y="172">
+Safety
+</text>
+<text x="226" y="220">
+Rust
+</text>
+<text x="130" y="236">
+Java
+</text>
+<text x="50" y="252">
+Python
+</text>
+<text x="234" y="268">
+C++
+</text>
+<text x="290" y="284">
+Control
+</text>
+<text x="2" y="332">
+Decorated graph
+</text>
+<text x="26" y="412">
+Safety
+</text>
+<text x="242" y="460">
+Rust
+</text>
+<text x="146" y="476">
+Java
+</text>
+<text x="66" y="492">
+Python
+</text>
+<text x="250" y="508">
+C++
+</text>
+<text x="314" y="524">
+Control
+</text>
+<text x="90" y="588">
+⢠⣤⡀⢀⣴⣆⠀⢀⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+</text>
+<text x="2" y="604">
+⠀⠀
+</text>
+<text x="26" y="604">
+⠀⠀
+</text>
+<text x="50" y="604">
+⠀⠀⠀⣀⠀⠀⣿⣷⣤⣿⣿⣷⣾⣿⣿⣷⣿⣿⣧⣴⣾⣇⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+</text>
+<text x="2" y="620">
+⠀⠀
+</text>
+<text x="26" y="620">
+⠀⠀
+</text>
+<text x="50" y="620">
+⠀⠀⠀⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⠀⠀⠀⠀
+</text>
+</svg><pre class="playpen"><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+# 
+#fn main() {
+## Graphs
+
+```bob
+
+Simple Linear graph
+
+    ^           .-.
+    |          /   \
+    |  /\  .--'     \  _.-._.-._.-
+    | /  \/          \/
+    |/        
+    +-----------------------------> 
+
+ Safety
+
+    ^
+    |                       Rust
+    |           Java
+    | Python
+    |                        C++
+    +-----------------------------> Control
+
+
+Decorated graph
+     /\
+    /  \
+   /    \
+  /      \
+ / Safety \
+/----------\
+     |                        .--.
+     |            .--.       (Rust)
+     |  .----.   (Java)       `--'
+     | (Python)   `--'         .-.   +-------\
+     |  `----'                (C++)  |        \
+     +-------------------------`-'---+ Control )
+                                     |        /
+                                     +-------/
+
+     ^     ⢠⣤⡀⢀⣴⣆⠀⢀⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀ ⠀⠀|⠀⠀⠀⣀⠀⠀⣿⣷⣤⣿⣿⣷⣾⣿⣿⣷⣿⣿⣧⣴⣾⣇⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀ ⠀⠀|⠀⠀⠀⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⠀⠀⠀⠀
+     +------------------------------> 
+```          
+
+{{#playpen Graphs.md}}
+
+#}</code></pre></pre>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="complex/Ascii_art.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="complex/Diagrams.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="complex/Ascii_art.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="complex/Diagrams.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>
