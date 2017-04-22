@@ -1,4 +1,6 @@
-//#![deny(warnings)]
+#![deny(warnings)]
+#![feature(custom_derive)]
+
 extern crate pulldown_cmark;
 #[macro_use]
 extern crate error_chain;
