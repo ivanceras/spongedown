@@ -10,7 +10,6 @@ documentation = "https://ivanceras.github.io/spongedown/"
 keywords = ["markdown", "svg", "bob", "spongedown"]
 
 [dependencies]
-pulldown-cmark = "0.0"
 svgbob = "0.1"
 comic = "0.1"
 csv = "0.15"
