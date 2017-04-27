@@ -84,7 +84,7 @@ fn parse_via_comrak(arg: &str, plugins: &HashMap<String, Box<Fn(&str) -> Result<
         ext_table: true,
         ext_autolink: true,
         ext_tasklist: true,
-        ext_superscript: true,
+        ext_superscript: false,
     };
 
     let root = parse_document(
