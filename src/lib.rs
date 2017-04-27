@@ -71,7 +71,8 @@ pub fn parse(arg: &str) -> String{
     plugins.insert("bob".into(), Box::new(bob_handler));
     plugins.insert("comic".into(), Box::new(comic_handler));
     plugins.insert("csv".into(), Box::new(csv_handler));
-    parse_with_plugins(arg, plugins)
+    //parse_with_plugins(arg, plugins)
+    parse_via_comrak(arg, &plugins)
 }
 
 
@@ -146,5 +147,76 @@ pub fn parse_with_plugins(arg: &str, plugins: HashMap<String, Box<Fn(&str) -> Re
     });
     let mut html = String::new();
     pulldown_cmark::html::push_html(&mut html, parser);
+    html
+}
+
+extern crate comrak;
+extern crate typed_arena;
+
+fn parse_via_comrak(arg: &str, plugins: &HashMap<String, Box<Fn(&str) -> Result<String>>>)->String{
+
+use typed_arena::Arena;
+use comrak::{parse_document, format_html, ComrakOptions};
+use comrak::nodes::{AstNode, NodeValue, NodeHtmlBlock};
+
+    // The returned nodes are created in the supplied Arena, and are bound by its lifetime.
+    let arena = Arena::new();
+    let option = ComrakOptions {
+        hardbreaks: true,
+        github_pre_lang: true,
+        width: 0,
+        ext_strikethrough: true,
+        ext_tagfilter: true,
+        ext_table: true,
+        ext_autolink: true,
+        ext_tasklist: true,
+        ext_superscript: true,
+    };
+
+    let root = parse_document(
+        &arena,
+        arg,
+        &option);
+
+    fn iter_nodes<'a, F>(node: &'a AstNode<'a>, f: &F)
+        where F : Fn(&'a AstNode<'a>) {
+        f(node);
+        for c in node.children() {
+            iter_nodes(c, f);
+        }
+    }
+
+
+    iter_nodes(root, &|node| {
+        let ref mut value = node.data.borrow_mut().value;
+        let new_value = match value{
+            &mut NodeValue::CodeBlock(ref codeblock) => {
+                match plugins.get(&codeblock.info) {
+                    Some(handler) => {
+                        match handler(&codeblock.literal){
+                            Ok(out) => {
+                                NodeValue::HtmlBlock(
+                                    NodeHtmlBlock{
+                                        literal: out,
+                                        block_type: 0
+                                    }
+                                )
+                            },
+                            Err(_) => {
+                                NodeValue::CodeBlock(codeblock.clone())
+                            }
+                        }
+                    }
+                    None => {
+                        NodeValue::CodeBlock(codeblock.clone())
+                    }
+                }
+            }
+            _ => value.to_owned(),
+        };
+        *value = new_value;
+    });
+
+    let html: String = format_html(root, &ComrakOptions::default());
     html
 }

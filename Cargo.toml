@@ -15,7 +15,10 @@ svgbob = "0.1"
 comic = "0.1"
 csv = "0.15"
 error-chain = "0.10"
+comrak = "0.1"
+typed-arena = "1.2"
 
 
 [dev-dependencies]
 handlebars = "0.21"
+pretty_assertions = "0.1"

@@ -27,6 +27,15 @@ apple,banana,carrots
 rust,haskel,c
 ```
 
+### List
+- [x] item1
+- [ ] item2
+- [ ] item3 
+
+## subscript and superscript
+
+x<sub>3</sub> + y<sup>4</sup>
+
 
 The next `code block` fenced with `bob` will be rendered into an svg
 
@@ -111,6 +120,22 @@ fn main(){
 
 > Speech bubbles in ascii
 > and more..
+
+
+- Math formula  
+		\\[r^2 = \sqrt{\frac{x^2 + y^2 + z^2}{2}} \\]
+		\\[E = mc^2\\]
+- Strike ~~through~~
+- Italics and *italics*
+
+## TODO
+- [ ] Process the arg on startup, directory or files
+- [ ] Add status bar for vim mode
+- [ ] Create marketting page
+- [X] Download google fonts for codemirror fonts usage
+- [ ] Configuration of ports
+	- [ ] configure ports for client to talk to
+    - [ ] app ports should be different to the web ports, otherwise 2 apps will conflict when both installed on the same machine
 
 ```bob
 
