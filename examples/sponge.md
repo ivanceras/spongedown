@@ -43,9 +43,9 @@ The next `code block` fenced with `bob` will be rendered into an svg
 
                                      .--> Base::Class::Derived_A
                                     /
-            .-.                    .----> Base::Class::Derived_B    
+            .-.                    *----> Base::Class::Derived_B    
            (x1y)----.             /           \     .----------------------.
-            '-'      \           /             .---->\ Base::Class::Derived \
+            '-'      \           /             o---->\ Base::Class::Derived \
         Alice         \         /               \     \----------------------\
             \          \       /            ____ '---->\ Base::Class::Derived \
              \          \     /            /    \       '----------------------'
