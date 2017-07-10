@@ -67,6 +67,17 @@ pub fn parse(arg: &str) -> String{
 }
 
 
+/// Plugin info, format:
+/// [<selector>] <plugin_name>[@version][://<URI>]
+/// example:
+/// #table1 csv://data_file.csv
+#[allow(dead_code)]
+struct PluginInfo{
+    selector: Option<String>,
+    plugin_name: String,
+    version: Option<String>,
+    uri: Option<String>,
+}
 
 
 
@@ -105,6 +116,7 @@ fn parse_via_comrak(arg: &str, plugins: &HashMap<String, Box<Fn(&str) -> Result<
         let ref mut value = node.data.borrow_mut().value;
         let new_value = match value{
             &mut NodeValue::CodeBlock(ref codeblock) => {
+                println!("codeblock: {:?}", codeblock);
                 match plugins.get(&codeblock.info) {
                     Some(handler) => {
                         match handler(&codeblock.literal){

@@ -27,6 +27,12 @@ apple,banana,carrots
 rust,haskel,c
 ```
 
+```list#1 csv://data/file.csv
+Firstname, LastName
+ivan, ivanovski
+bob, soler
+```
+
 ### List
 - [x] item1
 - [ ] item2

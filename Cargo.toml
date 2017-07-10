@@ -10,7 +10,7 @@ documentation = "https://ivanceras.github.io/spongedown/"
 keywords = ["markdown", "svg", "bob", "spongedown"]
 
 [dependencies]
-svgbob = "0.1"
+svgbob = "0.2"
 comic = "0.1"
 csv = "0.15"
 error-chain = "0.10"
