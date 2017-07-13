@@ -61,15 +61,15 @@ The next `code block` fenced with `bob` will be rendered into an svg
                  '->(    Bob      )
                      '-----------'
                        /  \ \ \
-                      '    \ \ \  
+                      .    \ \ \  
                       |     \ \ \
                       .      \ \ '--- The::Latest
                      /|       \ \      \     +-----------------------+
-                 Foo  '        \ \      '--->| The::Latest::Greatest |
+                 Foo  .        \ \      '--->| The::Latest::Greatest |
          ________    /|         \ \          +-----------------------+
-        /  Bar  /<--' '          \ '- I::Am::Running::Out::Of::Ideas
+        /  Bar  /<--' .          \ '- I::Am::Running::Out::Of::Ideas
        '-------'     /|           \
-                 Baz  '            \      .-----------.
+                 Baz  .            \      .-----------.
                      /              '----/ Last::One /
                Quux V                   '-----------'
 
@@ -134,14 +134,6 @@ fn main(){
 - Strike ~~through~~
 - Italics and *italics*
 
-## TODO
-- [ ] Process the arg on startup, directory or files
-- [ ] Add status bar for vim mode
-- [ ] Create marketting page
-- [X] Download google fonts for codemirror fonts usage
-- [ ] Configuration of ports
-	- [ ] configure ports for client to talk to
-    - [ ] app ports should be different to the web ports, otherwise 2 apps will conflict when both installed on the same machine
 
 ```bob
 
