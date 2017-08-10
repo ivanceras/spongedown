@@ -22,16 +22,23 @@ mod errors {
 
 /// convert bob ascii diagrams to svg
 fn bob_handler(s: &str) -> Result<String> {
-    Ok(svgbob::to_svg(s).to_string())
+    let now = std::time::SystemTime::now();
+    let svg = svgbob::to_svg(s).to_string();
+    println!("took bob handler: {:?}", now.elapsed());
+    Ok(svg)
 }
 
 /// converts comic ascii code to svg
 fn comic_handler(s: &str) -> Result<String> {
-    Ok(comic::to_svg(s).to_string())
+    let now = std::time::SystemTime::now();
+    let comic = comic::to_svg(s).to_string();
+    println!("took comic handler: {:?}", now.elapsed());
+    Ok(comic)
 }
 
 /// convert csv content into html table
 fn csv_handler(s: &str) -> Result<String>{
+    let now = std::time::SystemTime::now();
     let mut buff = String::new();
     let mut rdr = csv::Reader::from_string(s);
     buff.push_str("<table>");
@@ -55,15 +62,31 @@ fn csv_handler(s: &str) -> Result<String>{
     }
     buff.push_str("</tbody>");
     buff.push_str("</table>");
+    println!("csv handler took: {:?}", now.elapsed()); 
     Ok(buff)
 }
 
 pub fn parse(arg: &str) -> String{
+    let now = std::time::SystemTime::now();
     let mut plugins:HashMap<String, Box<Fn(&str)-> Result<String>>>  = HashMap::new();
     plugins.insert("bob".into(), Box::new(bob_handler));
     plugins.insert("comic".into(), Box::new(comic_handler));
     plugins.insert("csv".into(), Box::new(csv_handler));
-    parse_via_comrak(arg, &plugins)
+    let html = parse_via_comrak(arg, &plugins);
+    println!("sponge down parse took: {:?}", now.elapsed());
+    html
+}
+
+pub fn parse_bob(arg: &str) -> String{
+    bob_handler(arg).unwrap()
+}
+
+pub fn parse_comic(arg: &str) -> String {
+    comic_handler(arg).unwrap()
+}
+
+pub fn parse_csv(arg: &str) -> Result<String> {
+    csv_handler(arg)
 }
 
 
@@ -116,7 +139,6 @@ fn parse_via_comrak(arg: &str, plugins: &HashMap<String, Box<Fn(&str) -> Result<
         let ref mut value = node.data.borrow_mut().value;
         let new_value = match value{
             &mut NodeValue::CodeBlock(ref codeblock) => {
-                println!("codeblock: {:?}", codeblock);
                 match plugins.get(&codeblock.info) {
                     Some(handler) => {
                         match handler(&codeblock.literal){
