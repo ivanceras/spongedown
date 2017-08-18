@@ -21,17 +21,16 @@ mod errors {
 }
 
 
+
 fn build_cells(text: &Vec<Vec<Option<&String>>>) -> String {
     let mut buff = String::new();
     for line in text{
-        buff.push_str("<tr>");
         for l in line{
             match *l{
-                Some(ref l) => buff.push_str(&format!("<td><div>{}</div></td>",l)),
-                None => buff.push_str("<td><div></div></td>"), 
+                Some(ref l) => buff.push_str(&format!("<div>{}</div>",l)),
+                None => buff.push_str("<div></div>"), 
             }
         }
-        buff.push_str("</tr>");
     }
     buff
 }
@@ -46,7 +45,7 @@ fn bob_handler(s: &str) -> Result<String> {
     let text = grid.get_all_text();
     let cells = build_cells(&text);
     println!("cells: {}", cells);
-    let content = format!("<table class='content' style='width:{}px;height:{}px;'>{}</table>",width, height, cells);
+    let content = format!("<div class='content' style='width:{}px;height:{}px;'>{}</div>",width, height, cells);
     let lens = format!("<div class='lens'>{}</div>",content);
     let bob_container = format!("<div class='bob_container' style='width:{}px;height:{}px;'>{}{}</div>",width, height, svg, lens);
     println!("took bob handler: {:?}", now.elapsed());
