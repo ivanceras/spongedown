@@ -1,4 +1,4 @@
-#![deny(warnings)]
+//#![deny(warnings)]
 #[macro_use]
 extern crate error_chain;
 
@@ -12,6 +12,8 @@ use comrak::{parse_document, format_html, ComrakOptions};
 use comrak::nodes::{AstNode, NodeValue, NodeHtmlBlock};
 use std::collections::HashMap;
 use errors::*;
+use svgbob::Grid;
+use svgbob::Settings;
 
 mod errors {
     error_chain!{
@@ -19,13 +21,36 @@ mod errors {
 }
 
 
+fn build_cells(text: &Vec<Vec<Option<&String>>>) -> String {
+    let mut buff = String::new();
+    for line in text{
+        buff.push_str("<tr>");
+        for l in line{
+            match *l{
+                Some(ref l) => buff.push_str(&format!("<td><div>{}</div></td>",l)),
+                None => buff.push_str("<td><div></div></td>"), 
+            }
+        }
+        buff.push_str("</tr>");
+    }
+    buff
+}
+
 
 /// convert bob ascii diagrams to svg
 fn bob_handler(s: &str) -> Result<String> {
     let now = std::time::SystemTime::now();
-    let svg = svgbob::to_svg(s).to_string();
+    let grid = Grid::from_str(s, &Settings::compact());
+    let (width, height) = grid.get_size();
+    let svg = grid.get_svg(); 
+    let text = grid.get_all_text();
+    let cells = build_cells(&text);
+    println!("cells: {}", cells);
+    let content = format!("<table class='content' style='width:{}px;height:{}px;'>{}</table>",width, height, cells);
+    let lens = format!("<div class='lens'>{}</div>",content);
+    let bob_container = format!("<div class='bob_container' style='width:{}px;height:{}px;'>{}{}</div>",width, height, svg, lens);
     println!("took bob handler: {:?}", now.elapsed());
-    Ok(svg)
+    Ok(bob_container)
 }
 
 /// converts comic ascii code to svg
