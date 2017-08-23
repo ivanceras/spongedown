@@ -44,7 +44,6 @@ fn bob_handler(s: &str) -> Result<String> {
     let svg = grid.get_svg(); 
     let text = grid.get_all_text();
     let cells = build_cells(&text);
-    println!("cells: {}", cells);
     let content = format!("<div class='content' style='width:{}px;height:{}px;'>{}</div>",width, height, cells);
     let lens = format!("<div class='lens'>{}</div>",content);
     let bob_container = format!("<div class='bob_container' style='width:{}px;height:{}px;'>{}{}</div>",width, height, svg, lens);
