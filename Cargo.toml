@@ -12,7 +12,7 @@ keywords = ["markdown", "svg", "bob", "spongedown"]
 [dependencies]
 #svgbob = "0.2"
 svgbob = {path = "../svgbobrus/svgbob"}
-comic = "0.1"
+comic = {path = "../comic"} 
 csv = "0.15"
 error-chain = "0.10"
 comrak = "0.1"
