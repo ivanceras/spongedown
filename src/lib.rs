@@ -3,7 +3,6 @@
 extern crate error_chain;
 
 extern crate svgbob;
-extern crate comic;
 extern crate csv;
 extern crate comrak;
 extern crate typed_arena;
@@ -36,8 +35,12 @@ fn build_cells(text: &Vec<Vec<Option<&String>>>) -> String {
 }
 
 
-/// convert bob ascii diagrams to svg
 fn bob_handler(s: &str) -> Result<String> {
+    bob_handler_with_option(s, false)
+}
+
+/// convert bob ascii diagrams to svg
+fn bob_handler_with_option(s: &str, include_lens: bool) -> Result<String> {
     let now = std::time::SystemTime::now();
     let grid = Grid::from_str(s, &Settings::compact());
     let (width, height) = grid.get_size();
@@ -45,19 +48,12 @@ fn bob_handler(s: &str) -> Result<String> {
     let text = grid.get_all_text();
     let cells = build_cells(&text);
     let content = format!("<div class='content' style='width:{}px;height:{}px;'>{}</div>",width, height, cells);
-    let lens = format!("<div class='lens'>{}</div>",content);
+    let lens = if include_lens{ format!("<div class='lens'>{}</div>",content) } else { "".to_string() };
     let bob_container = format!("<div class='bob_container' style='width:{}px;height:{}px;'>{}{}</div>",width, height, svg, lens);
     println!("took bob handler: {:?}", now.elapsed());
     Ok(bob_container)
 }
 
-/// converts comic ascii code to svg
-fn comic_handler(s: &str) -> Result<String> {
-    let now = std::time::SystemTime::now();
-    let comic = comic::to_svg(s).to_string();
-    println!("took comic handler: {:?}", now.elapsed());
-    Ok(comic)
-}
 
 /// convert csv content into html table
 fn csv_handler(s: &str) -> Result<String>{
@@ -93,7 +89,6 @@ pub fn parse(arg: &str) -> String{
     let now = std::time::SystemTime::now();
     let mut plugins:HashMap<String, Box<Fn(&str)-> Result<String>>>  = HashMap::new();
     plugins.insert("bob".into(), Box::new(bob_handler));
-    plugins.insert("comic".into(), Box::new(comic_handler));
     plugins.insert("csv".into(), Box::new(csv_handler));
     let html = parse_via_comrak(arg, &plugins);
     println!("sponge down parse took: {:?}", now.elapsed());
@@ -102,10 +97,6 @@ pub fn parse(arg: &str) -> String{
 
 pub fn parse_bob(arg: &str) -> String{
     bob_handler(arg).unwrap()
-}
-
-pub fn parse_comic(arg: &str) -> String {
-    comic_handler(arg).unwrap()
 }
 
 pub fn parse_csv(arg: &str) -> Result<String> {
