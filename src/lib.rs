@@ -12,7 +12,6 @@ use comrak::nodes::{AstNode, NodeValue, NodeHtmlBlock};
 use std::collections::HashMap;
 use errors::*;
 use svgbob::Grid;
-use svgbob::Settings;
 
 mod errors {
     error_chain!{
@@ -35,20 +34,16 @@ fn build_cells(text: &Vec<Vec<Option<&String>>>) -> String {
 }
 
 
-fn bob_handler(s: &str) -> Result<String> {
-    bob_handler_with_option(s, false)
-}
-
 /// convert bob ascii diagrams to svg
-fn bob_handler_with_option(s: &str, include_lens: bool) -> Result<String> {
+fn bob_handler(s: &str, settings: &Settings) -> Result<String> {
     let now = std::time::SystemTime::now();
-    let grid = Grid::from_str(s, &Settings::compact());
+    let grid = Grid::from_str(s, &svgbob::Settings::compact());
     let (width, height) = grid.get_size();
     let svg = grid.get_svg(); 
     let text = grid.get_all_text();
     let cells = build_cells(&text);
     let content = format!("<div class='content' style='width:{}px;height:{}px;'>{}</div>",width, height, cells);
-    let lens = if include_lens{ format!("<div class='lens'>{}</div>",content) } else { "".to_string() };
+    let lens = if settings.enable_lens{ format!("<div class='lens'>{}</div>",content) } else { "".to_string() };
     let bob_container = format!("<div class='bob_container' style='width:{}px;height:{}px;'>{}{}</div>",width, height, svg, lens);
     println!("took bob handler: {:?}", now.elapsed());
     Ok(bob_container)
@@ -56,7 +51,7 @@ fn bob_handler_with_option(s: &str, include_lens: bool) -> Result<String> {
 
 
 /// convert csv content into html table
-fn csv_handler(s: &str) -> Result<String>{
+fn csv_handler(s: &str, settings: &Settings) -> Result<String>{
     let now = std::time::SystemTime::now();
     let mut buff = String::new();
     let mut rdr = csv::Reader::from_string(s);
@@ -85,22 +80,44 @@ fn csv_handler(s: &str) -> Result<String>{
     Ok(buff)
 }
 
-pub fn parse(arg: &str) -> String{
+pub struct Settings{
+    enable_lens: bool,
+}
+
+impl Default for Settings{
+    
+    fn default() -> Self {
+        Settings{
+            enable_lens: false
+        }
+    }
+}
+
+
+pub fn parse(arg: &str) -> String {
+    parse_with_settings(arg, &Settings::default())
+}
+
+pub fn parse_include_lens(arg: &str) -> String {
+    parse_with_settings(arg, &Settings{enable_lens: true})
+}
+
+pub fn parse_with_settings(arg: &str, settings: &Settings) -> String{
     let now = std::time::SystemTime::now();
-    let mut plugins:HashMap<String, Box<Fn(&str)-> Result<String>>>  = HashMap::new();
+    let mut plugins:HashMap<String, Box<Fn(&str, &Settings)-> Result<String>>>  = HashMap::new();
     plugins.insert("bob".into(), Box::new(bob_handler));
     plugins.insert("csv".into(), Box::new(csv_handler));
-    let html = parse_via_comrak(arg, &plugins);
+    let html = parse_via_comrak(arg, &plugins, settings);
     println!("sponge down parse took: {:?}", now.elapsed());
     html
 }
 
 pub fn parse_bob(arg: &str) -> String{
-    bob_handler(arg).unwrap()
+    bob_handler(arg, &Settings::default()).unwrap()
 }
 
 pub fn parse_csv(arg: &str) -> Result<String> {
-    csv_handler(arg)
+    csv_handler(arg, &Settings::default())
 }
 
 
@@ -118,7 +135,7 @@ struct PluginInfo{
 
 
 
-fn parse_via_comrak(arg: &str, plugins: &HashMap<String, Box<Fn(&str) -> Result<String>>>)->String{
+fn parse_via_comrak(arg: &str, plugins: &HashMap<String, Box<Fn(&str, &Settings) -> Result<String>>>, settings: &Settings)->String{
 
 
     // The returned nodes are created in the supplied Arena, and are bound by its lifetime.
@@ -155,7 +172,7 @@ fn parse_via_comrak(arg: &str, plugins: &HashMap<String, Box<Fn(&str) -> Result<
             &mut NodeValue::CodeBlock(ref codeblock) => {
                 match plugins.get(&codeblock.info) {
                     Some(handler) => {
-                        match handler(&codeblock.literal){
+                        match handler(&codeblock.literal, settings){
                             Ok(out) => {
                                 NodeValue::HtmlBlock(
                                     NodeHtmlBlock{
