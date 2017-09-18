@@ -6,7 +6,7 @@ license = "MIT"
 description = "Converts markdown to html with svgbob support"
 readme = "README.md"
 repository = "https://github.com/ivanceras/spongedown"
-documentation = "https://ivanceras.github.io/spongedown/"
+documentation = "https://docs.rs/spongedown"
 keywords = ["markdown", "svg", "bob", "spongedown"]
 
 [dependencies]
