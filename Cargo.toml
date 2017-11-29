@@ -10,11 +10,11 @@ documentation = "https://docs.rs/spongedown"
 keywords = ["markdown", "svg", "bob", "spongedown"]
 
 [dependencies]
-svgbob = "0.2.2"
+svgbob = "0.2.3"
 #svgbob = {path = "../svgbobrus/svgbob"}
 csv = "0.15"
 error-chain = "0.10"
-comrak = "0.1"
+comrak = "0.2"
 typed-arena = "1.2"
 
 
