@@ -150,6 +150,8 @@ fn parse_via_comrak(arg: &str, plugins: &HashMap<String, Box<Fn(&str, &Settings)
         ext_autolink: true,
         ext_tasklist: true,
         ext_superscript: false,
+        ext_header_ids: None,
+        ext_footnotes: true,
     };
 
     let root = parse_document(
@@ -170,13 +172,15 @@ fn parse_via_comrak(arg: &str, plugins: &HashMap<String, Box<Fn(&str, &Settings)
         let ref mut value = node.data.borrow_mut().value;
         let new_value = match value{
             &mut NodeValue::CodeBlock(ref codeblock) => {
-                match plugins.get(&codeblock.info) {
+                let codeblock_info = String::from_utf8(codeblock.info.to_owned()).unwrap();
+                match plugins.get(&codeblock_info) {
                     Some(handler) => {
-                        match handler(&codeblock.literal, settings){
+                        let codeblock_literal = String::from_utf8(codeblock.literal.to_owned()).unwrap();
+                        match handler(&codeblock_literal, settings){
                             Ok(out) => {
                                 NodeValue::HtmlBlock(
                                     NodeHtmlBlock{
-                                        literal: out,
+                                        literal: out.as_bytes().to_vec(),
                                         block_type: 0
                                     }
                                 )
@@ -196,6 +200,8 @@ fn parse_via_comrak(arg: &str, plugins: &HashMap<String, Box<Fn(&str, &Settings)
         *value = new_value;
     });
 
-    let html: String = format_html(root, &ComrakOptions::default());
-    html
+    let mut html = vec![];
+
+    format_html(root, &ComrakOptions::default(), &mut html);
+    String::from_utf8(html).unwrap()
 }
