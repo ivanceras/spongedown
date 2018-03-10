@@ -4,8 +4,7 @@ use std::fs::File;
 use std::error::Error;
 use std::io::Write;
 
-
-fn main(){
+fn main() {
     let arg = r#"
 
 ## Spongedown
@@ -80,11 +79,11 @@ fn main(){
 ```
 
     "#;
-    let html = spongedown::parse(arg);
+    let html = spongedown::parse(arg).unwrap();
     save_to_file(&html);
 }
 
-fn save_to_file(html: &str)->Result<(),Box<Error>>{
+fn save_to_file(html: &str) -> Result<(), Box<Error>> {
     let mut f = try!(File::create("index.html"));
     try!(f.write_all(html.as_bytes()));
     Ok(())

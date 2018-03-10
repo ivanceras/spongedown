@@ -1,6 +1,6 @@
 [package]
 name = "spongedown"
-version = "0.2.3"
+version = "0.3.0"
 authors = [ "Jovansonlee Cesar <ivanceras@gmail.com>" ]
 license = "MIT"
 description = "Converts markdown to html with svgbob support"
@@ -10,8 +10,7 @@ documentation = "https://docs.rs/spongedown"
 keywords = ["markdown", "svg", "bob", "spongedown"]
 
 [dependencies]
-svgbob = "0.2.3"
-#svgbob = {path = "../svgbobrus/svgbob"}
+svgbob = "0.2"
 csv = "0.15"
 error-chain = "0.10"
 comrak = "0.2"
