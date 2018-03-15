@@ -3,6 +3,7 @@
 extern crate error_chain;
 
 extern crate svgbob;
+#[cfg(feature="csv")]
 extern crate csv;
 extern crate comrak;
 extern crate typed_arena;
@@ -51,6 +52,7 @@ fn bob_handler(s: &str, settings: &Settings) -> Result<String> {
 
 
 /// convert csv content into html table
+#[cfg(feature="csv")]
 fn csv_handler(s: &str, settings: &Settings) -> Result<String>{
     let now = std::time::SystemTime::now();
     let mut buff = String::new();
@@ -106,6 +108,7 @@ pub fn parse_with_settings(arg: &str, settings: &Settings) -> String{
     let now = std::time::SystemTime::now();
     let mut plugins:HashMap<String, Box<Fn(&str, &Settings)-> Result<String>>>  = HashMap::new();
     plugins.insert("bob".into(), Box::new(bob_handler));
+    #[cfg(feature="csv")]
     plugins.insert("csv".into(), Box::new(csv_handler));
     let html = parse_via_comrak(arg, &plugins, settings);
     println!("sponge down parse took: {:?}", now.elapsed());
@@ -116,6 +119,8 @@ pub fn parse_bob(arg: &str) -> String{
     bob_handler(arg, &Settings::default()).unwrap()
 }
 
+
+#[cfg(feature="csv")]
 pub fn parse_csv(arg: &str) -> Result<String> {
     csv_handler(arg, &Settings::default())
 }
@@ -143,6 +148,7 @@ fn parse_via_comrak(arg: &str, plugins: &HashMap<String, Box<Fn(&str, &Settings)
     let option = ComrakOptions {
         hardbreaks: true,
         github_pre_lang: true,
+        default_info_string: None,
         width: 0,
         ext_strikethrough: true,
         ext_tagfilter: true,
