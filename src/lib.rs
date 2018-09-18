@@ -27,38 +27,15 @@ mod errors {
     }
 }
 
-fn build_cells(text: &Vec<Vec<Option<&String>>>) -> String {
-    let mut buff = String::new();
-    for line in text {
-        for l in line {
-            match *l {
-                Some(ref l) => buff.push_str(&format!("<div>{}</div>", l)),
-                None => buff.push_str("<div></div>"),
-            }
-        }
-    }
-    buff
-}
 
 /// convert bob ascii diagrams to svg
-fn bob_handler(s: &str, settings: &Settings) -> Result<String, Error> {
+fn bob_handler(s: &str, _settings: &Settings) -> Result<String, Error> {
     let grid = Grid::from_str(s, &svgbob::Settings::compact());
     let (width, height) = grid.get_size();
     let svg = grid.get_svg();
-    let text = grid.get_all_text();
-    let cells = build_cells(&text);
-    let content = format!(
-        "<div class='content' style='width:{}px;height:{}px;'>{}</div>",
-        width, height, cells
-    );
-    let lens = if settings.enable_lens {
-        format!("<div class='lens'>{}</div>", content)
-    } else {
-        "".to_string()
-    };
     let bob_container = format!(
-        "<div class='bob_container' style='width:{}px;height:{}px;'>{}{}</div>",
-        width, height, svg, lens
+        "<div class='bob_container' style='width:{}px;height:{}px;'>{}</div>",
+        width, height, svg
     );
     Ok(bob_container)
 }
@@ -94,12 +71,11 @@ fn csv_handler(s: &str, settings: &Settings) -> Result<String>{
 }
 
 pub struct Settings {
-    enable_lens: bool,
 }
 
 impl Default for Settings {
     fn default() -> Self {
-        Settings { enable_lens: false }
+        Settings{}
     }
 }
 
@@ -107,9 +83,6 @@ pub fn parse(arg: &str) -> Result<String, Error> {
     parse_with_settings(arg, &Settings::default())
 }
 
-pub fn parse_include_lens(arg: &str) -> Result<String, Error> {
-    parse_with_settings(arg, &Settings { enable_lens: true })
-}
 
 pub fn parse_with_settings(arg: &str, settings: &Settings) -> Result<String, Error> {
     let mut plugins: HashMap<String, Box<Fn(&str, &Settings) -> Result<String, Error>>> =
@@ -163,6 +136,9 @@ fn parse_via_comrak(
         ext_superscript: false,
         ext_header_ids: None,
         ext_footnotes: true,
+        ext_description_lists: true,
+        smart: false,
+        safe: true,
     };
 
     let root = parse_document(&arena, arg, &option);
