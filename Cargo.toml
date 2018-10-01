@@ -17,9 +17,6 @@ comrak = {version = "0.3", default-features = false}
 typed-arena = "1.2"
 
 
-[dev-dependencies]
-handlebars = "0.21"
-pretty_assertions = "0.1"
 
 [features]
 with-csv = ["csv"]
