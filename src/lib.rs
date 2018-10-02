@@ -158,22 +158,31 @@ fn parse_via_comrak(
         let new_value = match value {
             &mut NodeValue::CodeBlock(ref codeblock) => {
                 let codeblock_info = String::from_utf8(codeblock.info.to_owned()).unwrap();
-                match plugins.get(&codeblock_info) {
-                    Some(handler) => {
-                        let codeblock_literal =
-                            String::from_utf8(codeblock.literal.to_owned()).unwrap();
-                        match handler(&codeblock_literal, settings) {
-                            Ok(out) => NodeValue::HtmlBlock(NodeHtmlBlock {
-                                literal: out.as_bytes().to_vec(),
-                                block_type: 0,
-                            }),
-                            Err(_) => NodeValue::CodeBlock(codeblock.clone()),
-                        }
+                if let Some(handler) =  plugins.get(&codeblock_info) {
+                    let codeblock_literal =
+                        String::from_utf8(codeblock.literal.to_owned()).unwrap();
+                    match handler(&codeblock_literal, settings) {
+                        Ok(out) => NodeValue::HtmlBlock(NodeHtmlBlock {
+                            literal: out.as_bytes().to_vec(),
+                            block_type: 0,
+                        }),
+                        Err(_) => NodeValue::CodeBlock(codeblock.clone()),
                     }
-                    None => NodeValue::CodeBlock(codeblock.clone()),
+                }else{
+                    value.clone()
                 }
             }
-            _ => value.to_owned(),
+            &mut NodeValue::Link(ref nodelink) => {
+                if let Ok(url) = String::from_utf8(nodelink.url.clone()){
+                    let new_url = format!("/#/md/{}",url);
+                    let mut new_nodelink = nodelink.clone();
+                    new_nodelink.url = new_url.into_bytes();
+                    NodeValue::Link(new_nodelink)
+                }else{
+                    value.clone()
+                }
+            }
+            _ => value.clone(),
         };
         *value = new_value;
     });
