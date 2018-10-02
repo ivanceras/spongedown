@@ -5,12 +5,14 @@ extern crate comrak;
 extern crate csv;
 extern crate svgbob;
 extern crate typed_arena;
+extern crate url;
 use typed_arena::Arena;
 use comrak::{format_html, parse_document, ComrakOptions};
 use comrak::nodes::{AstNode, NodeHtmlBlock, NodeValue};
 use std::collections::HashMap;
 use errors::Error;
 use svgbob::Grid;
+use url::Url;
 
 mod errors {
     use std::string::FromUtf8Error;
@@ -71,16 +73,24 @@ fn csv_handler(s: &str, settings: &Settings) -> Result<String>{
 }
 
 pub struct Settings {
+    base_dir: Option<String>,
 }
 
 impl Default for Settings {
     fn default() -> Self {
-        Settings{}
+        Settings{base_dir: None}
     }
 }
 
 pub fn parse(arg: &str) -> Result<String, Error> {
     parse_with_settings(arg, &Settings::default())
+}
+
+pub fn parse_with_base_dir(arg: &str, base_dir: &str) -> Result<String, Error> {
+    let settings = Settings {
+            base_dir: Some(base_dir.to_string())
+    };
+    parse_with_settings(arg, &settings)
 }
 
 
@@ -174,7 +184,23 @@ fn parse_via_comrak(
             }
             &mut NodeValue::Link(ref nodelink) => {
                 if let Ok(url) = String::from_utf8(nodelink.url.clone()){
-                    let new_url = format!("/#/md/{}",url);
+                    let (is_relative, has_scheme) = if let Ok(parsed_url) = Url::parse(&url){
+                        (!parsed_url.cannot_be_a_base(), !parsed_url.scheme().is_empty())
+                    }else{
+                        (true, false)
+                    };
+
+                    let new_url = if let Some(ref base_dir) = settings.base_dir{
+                        if is_relative && !has_scheme{
+                            let trim1 = url.trim_left_matches("./");
+                            let trim2 = trim1.trim_left_matches("/");
+                            format!("/#/{}/{}",base_dir, trim2)
+                        }else{
+                            url
+                        }
+                    }else{
+                        url
+                    };
                     let mut new_nodelink = nodelink.clone();
                     new_nodelink.url = new_url.into_bytes();
                     NodeValue::Link(new_nodelink)
