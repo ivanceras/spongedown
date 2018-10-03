@@ -19,6 +19,7 @@ use comrak::nodes::{AstNode, NodeHtmlBlock, NodeValue};
 use std::collections::HashMap;
 use errors::Error;
 use svgbob::Grid;
+use ammonia::Builder;
 use url_path::UrlPath;
 
 mod errors {
@@ -227,28 +228,7 @@ fn parse_via_comrak(
     if let Ok(()) = format_html(root, &ComrakOptions::default(), &mut html) {
         let render_html = String::from_utf8(html)?;
         if settings.clean_xss{
-            let map:HashMap<&str,Vec<&str>> = hashmap!{
-                "svg" => vec!["class","font-family","font-size","height","width","xmlns"],
-                "text" => vec!["class", "x","y"],
-                "rect" => vec!["class", "fill", "height", "width", "x", "y", "stroke", "stroke-width"],
-                "circle" => vec!["class","cx","cy","r", "fill", "stroke", "stroke-width"],
-                "path" => vec!["class","fill"],
-                "line" => vec!["class", "x1","x2", "y1", "y2", "marker-start", "marker-end"],
-                "path" => vec!["class","d","fill","stroke","stroke-dasharry"],
-                "polygon" => vec!["class","points","fill","stroke","stroke-dasharry"],
-                "g" => vec![],
-                "defs" => vec![],
-                "style" => vec!["type"],
-                "marker" => vec!["id","markerHeight","markerUnits","markerWidth","orient","refX", "refY", "viewBox"]
-            };
-            let mut builder = ammonia::Builder::default();
-            for (k,v) in map.iter(){
-                builder.add_tags(std::iter::once(*k));
-                for att in v.iter(){
-                    builder.add_tag_attributes(k, std::iter::once(*att));
-                }
-            }
-
+            let builder = ammonia_builder();
             let clean_html = builder
                 .clean(&render_html)
                 .to_string();
@@ -259,5 +239,31 @@ fn parse_via_comrak(
     } else {
         Err(Error::ParseError)
     }
+}
+
+/// Create an ammonia builder and whitelisting the svg tags and attributes
+fn ammonia_builder<'a>() -> Builder<'a> {
+    let map:HashMap<&str,Vec<&str>> = hashmap!{
+        "svg" => vec!["class","font-family","font-size","height","width","xmlns"],
+        "text" => vec!["class", "x","y"],
+        "rect" => vec!["class", "fill", "height", "width", "x", "y", "stroke", "stroke-width"],
+        "circle" => vec!["class","cx","cy","r", "fill", "stroke", "stroke-width"],
+        "path" => vec!["class","fill"],
+        "line" => vec!["class", "x1","x2", "y1", "y2", "marker-start", "marker-end"],
+        "path" => vec!["class","d","fill","stroke","stroke-dasharry"],
+        "polygon" => vec!["class","points","fill","stroke","stroke-dasharry"],
+        "g" => vec![],
+        "defs" => vec![],
+        "style" => vec!["type"],
+        "marker" => vec!["id","markerHeight","markerUnits","markerWidth","orient","refX", "refY", "viewBox"]
+    };
+    let mut builder = Builder::default();
+    for (k,v) in map.iter(){
+        builder.add_tags(std::iter::once(*k));
+        for att in v.iter(){
+            builder.add_tag_attributes(k, std::iter::once(*att));
+        }
+    }
+    builder
 }
 
