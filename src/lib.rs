@@ -68,7 +68,6 @@ fn csv_handler(s: &str, _settings: &Settings) -> Result<String, Error> {
     buff.push_str("<tbody>");
     for record in rdr.records() {
         buff.push_str("<tr>");
-        println!("row: {:?}", record);
         if let Ok(record) = record {
             for value in record.iter() {
                 buff.push_str(&format!("<td>{}</td>", value));

@@ -7,6 +7,15 @@ fn main() {
 
 [Linux notes](/home/lee/PersonalBooks/notes/src/LINUX_NOTES.md)
 
+
+![{display:hidden}](records.csv)
+
+![{id:records,display:hidden}](records.csv)
+
+or
+
+![{display:hidden}][records]
+
 ```csv
 col1,col2,col3
 1, 2, 3
@@ -76,6 +85,8 @@ fn main(){
 }
 
 ```
+
+[records]: ./data/records.csv
 
     "#;
     let html = spongedown::parse(arg).unwrap();
