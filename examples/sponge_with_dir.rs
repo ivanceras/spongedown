@@ -1,6 +1,5 @@
 extern crate spongedown;
 
-
 fn main() {
     let arg = r#"
 [Link to](./README.md)
@@ -77,6 +76,5 @@ fn main(){
 
     "#;
     let html = spongedown::parse_with_base_dir(arg, "md").unwrap();
-    println!("{}",html);
+    println!("{}", html);
 }
-

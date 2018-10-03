@@ -2,10 +2,17 @@ extern crate spongedown;
 
 fn main() {
     let arg = r#"
+
 [Link to](./README.md)
 
 [Linux notes](/home/lee/PersonalBooks/notes/src/LINUX_NOTES.md)
 
+```csv
+col1,col2,col3
+1, 2, 3
+4, 5, 6
+banana, batman, orange
+```
 ## Spongedown
 
 
@@ -72,6 +79,5 @@ fn main(){
 
     "#;
     let html = spongedown::parse(arg).unwrap();
-    println!("{}",html);
+    println!("{}", html);
 }
-

@@ -11,7 +11,7 @@ keywords = ["markdown", "svg", "bob", "spongedown"]
 
 [dependencies]
 svgbob = "0.3.2"
-csv = {version = "0.15", optional = true}
+csv = {version = "1", optional = true}
 error-chain = "0.10"
 comrak = {version = "0.3", default-features = false}
 typed-arena = "1.2"

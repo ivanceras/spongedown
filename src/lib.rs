@@ -1,7 +1,7 @@
 #![deny(warnings)]
 
 extern crate comrak;
-#[cfg(feature="csv")]
+#[cfg(feature = "csv")]
 extern crate csv;
 extern crate svgbob;
 extern crate typed_arena;
@@ -13,13 +13,13 @@ extern crate ammonia;
 #[macro_use]
 extern crate maplit;
 
-use typed_arena::Arena;
-use comrak::{format_html, parse_document, ComrakOptions};
-use comrak::nodes::{AstNode, NodeHtmlBlock, NodeValue};
-use std::collections::HashMap;
-use errors::Error;
-use svgbob::Grid;
 use ammonia::Builder;
+use comrak::nodes::{AstNode, NodeHtmlBlock, NodeValue};
+use comrak::{format_html, parse_document, ComrakOptions};
+use errors::Error;
+use std::collections::HashMap;
+use svgbob::Grid;
+use typed_arena::Arena;
 use url_path::UrlPath;
 
 mod errors {
@@ -37,7 +37,6 @@ mod errors {
     }
 }
 
-
 /// convert bob ascii diagrams to svg
 fn bob_handler(s: &str, _settings: &Settings) -> Result<String, Error> {
     let grid = Grid::from_str(s, &svgbob::Settings::compact());
@@ -51,27 +50,29 @@ fn bob_handler(s: &str, _settings: &Settings) -> Result<String, Error> {
 }
 
 /// convert csv content into html table
-#[cfg(feature="csv")]
-fn csv_handler(s: &str, settings: &Settings) -> Result<String>{
-    let now = std::time::SystemTime::now();
+#[cfg(feature = "csv")]
+fn csv_handler(s: &str, _settings: &Settings) -> Result<String, Error> {
     let mut buff = String::new();
-    let mut rdr = csv::Reader::from_string(s);
+    let mut rdr = csv::Reader::from_reader(s.as_bytes());
     buff.push_str("<table>");
     buff.push_str("<thead>");
-    for header in rdr.byte_headers() {
+    for header in rdr.headers() {
         buff.push_str("<tr>");
         for h in header {
-            buff.push_str(&format!("<th>{}</th>", String::from_utf8(h)?));
+            buff.push_str(&format!("<th>{}</th>", h));
         }
         buff.push_str("</tr>");
     }
     buff.push_str("</thead>");
     buff.push_str("</thead>");
     buff.push_str("<tbody>");
-    for record in rdr.byte_records().filter_map(|r| r.ok()) {
+    for record in rdr.records() {
         buff.push_str("<tr>");
-        for r in record {
-            buff.push_str(&format!("<td>{}</td>", String::from_utf8(r)?));
+        println!("row: {:?}", record);
+        if let Ok(record) = record {
+            for value in record.iter() {
+                buff.push_str(&format!("<td>{}</td>", value));
+            }
         }
         buff.push_str("</tr>");
     }
@@ -87,7 +88,10 @@ pub struct Settings {
 
 impl Default for Settings {
     fn default() -> Self {
-        Settings{base_dir: None, clean_xss: true}
+        Settings {
+            base_dir: None,
+            clean_xss: true,
+        }
     }
 }
 
@@ -97,18 +101,17 @@ pub fn parse(arg: &str) -> Result<String, Error> {
 
 pub fn parse_with_base_dir(arg: &str, base_dir: &str) -> Result<String, Error> {
     let settings = Settings {
-            base_dir: Some(base_dir.to_string()),
-            ..Default::default()
+        base_dir: Some(base_dir.to_string()),
+        ..Default::default()
     };
     parse_with_settings(arg, &settings)
 }
-
 
 pub fn parse_with_settings(arg: &str, settings: &Settings) -> Result<String, Error> {
     let mut plugins: HashMap<String, Box<Fn(&str, &Settings) -> Result<String, Error>>> =
         HashMap::new();
     plugins.insert("bob".into(), Box::new(bob_handler));
-    #[cfg(feature="csv")]
+    #[cfg(feature = "csv")]
     plugins.insert("csv".into(), Box::new(csv_handler));
     let html = parse_via_comrak(arg, &plugins, settings);
     html
@@ -118,9 +121,8 @@ pub fn parse_bob(arg: &str) -> Result<String, Error> {
     bob_handler(arg, &Settings::default())
 }
 
-
-#[cfg(feature="csv")]
-pub fn parse_csv(arg: &str) -> Result<String> {
+#[cfg(feature = "csv")]
+pub fn parse_csv(arg: &str) -> Result<String, Error> {
     csv_handler(arg, &Settings::default())
 }
 
@@ -178,7 +180,7 @@ fn parse_via_comrak(
         let new_value = match value {
             &mut NodeValue::CodeBlock(ref codeblock) => {
                 let codeblock_info = String::from_utf8(codeblock.info.to_owned()).unwrap();
-                if let Some(handler) =  plugins.get(&codeblock_info) {
+                if let Some(handler) = plugins.get(&codeblock_info) {
                     let codeblock_literal =
                         String::from_utf8(codeblock.literal.to_owned()).unwrap();
                     match handler(&codeblock_literal, settings) {
@@ -188,20 +190,20 @@ fn parse_via_comrak(
                         }),
                         Err(_) => NodeValue::CodeBlock(codeblock.clone()),
                     }
-                }else{
+                } else {
                     value.clone()
                 }
             }
             &mut NodeValue::Link(ref nodelink) => {
-                if let Ok(url) = String::from_utf8(nodelink.url.clone()){
+                if let Ok(url) = String::from_utf8(nodelink.url.clone()) {
                     if let Some(ref base_dir) = settings.base_dir {
                         let url1 = UrlPath::new(&url);
                         let url2 = url1.normalize();
-                        let url3 = if url1.is_external(){
+                        let url3 = if url1.is_external() {
                             url2
-                        }else if url1.is_absolute(){
+                        } else if url1.is_absolute() {
                             url2
-                        }else{
+                        } else {
                             format!("{}/{}", base_dir, url)
                         };
                         let url4 = UrlPath::new(&url3);
@@ -211,10 +213,10 @@ fn parse_via_comrak(
                         let mut new_nodelink = nodelink.clone();
                         new_nodelink.url = url6.into_bytes();
                         NodeValue::Link(new_nodelink)
-                    }else{
+                    } else {
                         value.clone()
                     }
-                }else{
+                } else {
                     value.clone()
                 }
             }
@@ -227,13 +229,11 @@ fn parse_via_comrak(
 
     if let Ok(()) = format_html(root, &ComrakOptions::default(), &mut html) {
         let render_html = String::from_utf8(html)?;
-        if settings.clean_xss{
+        if settings.clean_xss {
             let builder = ammonia_builder();
-            let clean_html = builder
-                .clean(&render_html)
-                .to_string();
+            let clean_html = builder.clean(&render_html).to_string();
             Ok(clean_html)
-        }else{
+        } else {
             Ok(render_html)
         }
     } else {
@@ -243,7 +243,7 @@ fn parse_via_comrak(
 
 /// Create an ammonia builder and whitelisting the svg tags and attributes
 fn ammonia_builder<'a>() -> Builder<'a> {
-    let map:HashMap<&str,Vec<&str>> = hashmap!{
+    let map: HashMap<&str, Vec<&str>> = hashmap!{
         "svg" => vec!["class","font-family","font-size","height","width","xmlns"],
         "text" => vec!["class", "x","y"],
         "rect" => vec!["class", "fill", "height", "width", "x", "y", "stroke", "stroke-width"],
@@ -258,12 +258,11 @@ fn ammonia_builder<'a>() -> Builder<'a> {
         "marker" => vec!["id","markerHeight","markerUnits","markerWidth","orient","refX", "refY", "viewBox"]
     };
     let mut builder = Builder::default();
-    for (k,v) in map.iter(){
+    for (k, v) in map.iter() {
         builder.add_tags(std::iter::once(*k));
-        for att in v.iter(){
+        for att in v.iter() {
             builder.add_tag_attributes(k, std::iter::once(*att));
         }
     }
     builder
 }
-
