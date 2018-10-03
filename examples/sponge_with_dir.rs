@@ -10,6 +10,8 @@ fn main() {
 
 [Linux notes](/home/lee/PersonalBooks/notes/src/LINUX_NOTES.md)
 
+[Link to parent readme](../README.md)
+
 ## Spongedown
 
 
@@ -75,7 +77,7 @@ fn main(){
 ```
 
     "#;
-    let html = spongedown::parse(arg).unwrap();
+    let html = spongedown::parse_with_base_dir(arg, "md").unwrap();
     println!("{}",html);
 }
 

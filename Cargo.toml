@@ -1,6 +1,6 @@
 [package]
 name = "spongedown"
-version = "0.3.1"
+version = "0.3.2"
 authors = [ "Jovansonlee Cesar <ivanceras@gmail.com>" ]
 license = "MIT"
 description = "Converts markdown to html with svgbob support"
@@ -16,6 +16,9 @@ error-chain = "0.10"
 comrak = {version = "0.3", default-features = false}
 typed-arena = "1.2"
 url = "1.7.1"
+url_path = {version = "0.1.1", path = "../url_path"}
+log = "0.4"
+ammonia = "1.2.0"
 
 
 
@@ -24,3 +27,4 @@ with-csv = ["csv"]
 
 [replace]
 "svgbob:0.3.2" = {path = "../svgbob/svgbob"}
+"url_path:0.1.1" = {path = "../url_path"}

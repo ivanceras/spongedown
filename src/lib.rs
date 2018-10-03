@@ -6,13 +6,18 @@ extern crate csv;
 extern crate svgbob;
 extern crate typed_arena;
 extern crate url;
+extern crate url_path;
+#[macro_use]
+extern crate log;
+extern crate ammonia;
+
 use typed_arena::Arena;
 use comrak::{format_html, parse_document, ComrakOptions};
 use comrak::nodes::{AstNode, NodeHtmlBlock, NodeValue};
 use std::collections::HashMap;
 use errors::Error;
 use svgbob::Grid;
-use url::Url;
+use url_path::UrlPath;
 
 mod errors {
     use std::string::FromUtf8Error;
@@ -184,26 +189,24 @@ fn parse_via_comrak(
             }
             &mut NodeValue::Link(ref nodelink) => {
                 if let Ok(url) = String::from_utf8(nodelink.url.clone()){
-                    let (is_relative, has_scheme) = if let Ok(parsed_url) = Url::parse(&url){
-                        (!parsed_url.cannot_be_a_base(), !parsed_url.scheme().is_empty())
-                    }else{
-                        (true, false)
-                    };
-
-                    let new_url = if let Some(ref base_dir) = settings.base_dir{
-                        if is_relative && !has_scheme{
-                            let trim1 = url.trim_left_matches("./");
-                            let trim2 = trim1.trim_left_matches("/");
-                            format!("/#/{}/{}",base_dir, trim2)
+                    if let Some(ref base_dir) = settings.base_dir {
+                        let url1 = UrlPath::new(&url);
+                        let url2 = url1.normalize();
+                        let url3 = if url1.is_absolute(){
+                            url2
                         }else{
-                            url
-                        }
+                            format!("{}/{}", base_dir, url)
+                        };
+                        let url4 = UrlPath::new(&url3);
+                        let url5 = url4.normalize();
+                        let url6 = format!("/#{}", url5);
+                        info!("url6: {}", url6);
+                        let mut new_nodelink = nodelink.clone();
+                        new_nodelink.url = url6.into_bytes();
+                        NodeValue::Link(new_nodelink)
                     }else{
-                        url
-                    };
-                    let mut new_nodelink = nodelink.clone();
-                    new_nodelink.url = new_url.into_bytes();
-                    NodeValue::Link(new_nodelink)
+                        value.clone()
+                    }
                 }else{
                     value.clone()
                 }
@@ -216,8 +219,11 @@ fn parse_via_comrak(
     let mut html = vec![];
 
     if let Ok(()) = format_html(root, &ComrakOptions::default(), &mut html) {
-        Ok(String::from_utf8(html)?)
+        let render_html = String::from_utf8(html)?;
+        let clean_html = ammonia::clean(&render_html);
+        Ok(clean_html)
     } else {
         Err(Error::ParseError)
     }
 }
+
