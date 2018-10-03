@@ -438,7 +438,7 @@ dependencies = [
  "svgbob 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "typed-arena 1.4.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "url 1.7.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "url_path 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "url_path 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -619,13 +619,13 @@ dependencies = [
 
 [[package]]
 name = "url_path"
-version = "0.1.1"
+version = "0.1.2"
 
 [[package]]
 name = "url_path"
-version = "0.1.1"
+version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-replace = "url_path 0.1.1"
+replace = "url_path 0.1.2"
 
 [[package]]
 name = "utf-8"
@@ -744,7 +744,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum unicode_categories 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "39ec24b3121d976906ece63c9daad25b85969647682eee313cb5779fdd69e14e"
 "checksum unreachable 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "382810877fe448991dfc7f0dd6e3ae5d58088fd0ea5e35189655f84e6814fa56"
 "checksum url 1.7.1 (registry+https://github.com/rust-lang/crates.io-index)" = "2a321979c09843d272956e73700d12c4e7d3d92b2ee112b31548aef0d4efc5a6"
-"checksum url_path 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "9f84fbab07d3e5ce1b198493691c33b73b1998eaf96b0e64f181c3623e56c8cd"
+"checksum url_path 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "59c9cf317c1a1a054534faa3f11c68c08d3422cd81d8deadb316396d8d12d182"
 "checksum utf-8 0.7.4 (registry+https://github.com/rust-lang/crates.io-index)" = "bab35f71693630bb1953dce0f2bcd780e7cde025027124a202ac08a45ba25141"
 "checksum utf8-ranges 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)" = "fd70f467df6810094968e2fce0ee1bd0e87157aceb026a8c083bcf5e25b9efe4"
 "checksum version_check 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "914b1a6776c4c929a602fafd8bc742e06365d4bcbe48c30f9cca5824f70dc9dd"
