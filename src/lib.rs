@@ -10,6 +10,8 @@ extern crate url_path;
 #[macro_use]
 extern crate log;
 extern crate ammonia;
+#[macro_use]
+extern crate maplit;
 
 use typed_arena::Arena;
 use comrak::{format_html, parse_document, ComrakOptions};
@@ -79,11 +81,12 @@ fn csv_handler(s: &str, settings: &Settings) -> Result<String>{
 
 pub struct Settings {
     base_dir: Option<String>,
+    clean_xss: bool,
 }
 
 impl Default for Settings {
     fn default() -> Self {
-        Settings{base_dir: None}
+        Settings{base_dir: None, clean_xss: true}
     }
 }
 
@@ -93,7 +96,8 @@ pub fn parse(arg: &str) -> Result<String, Error> {
 
 pub fn parse_with_base_dir(arg: &str, base_dir: &str) -> Result<String, Error> {
     let settings = Settings {
-            base_dir: Some(base_dir.to_string())
+            base_dir: Some(base_dir.to_string()),
+            ..Default::default()
     };
     parse_with_settings(arg, &settings)
 }
@@ -178,7 +182,7 @@ fn parse_via_comrak(
                         String::from_utf8(codeblock.literal.to_owned()).unwrap();
                     match handler(&codeblock_literal, settings) {
                         Ok(out) => NodeValue::HtmlBlock(NodeHtmlBlock {
-                            literal: out.as_bytes().to_vec(),
+                            literal: out.into_bytes(),
                             block_type: 0,
                         }),
                         Err(_) => NodeValue::CodeBlock(codeblock.clone()),
@@ -192,7 +196,9 @@ fn parse_via_comrak(
                     if let Some(ref base_dir) = settings.base_dir {
                         let url1 = UrlPath::new(&url);
                         let url2 = url1.normalize();
-                        let url3 = if url1.is_absolute(){
+                        let url3 = if url1.is_external(){
+                            url2
+                        }else if url1.is_absolute(){
                             url2
                         }else{
                             format!("{}/{}", base_dir, url)
@@ -220,8 +226,36 @@ fn parse_via_comrak(
 
     if let Ok(()) = format_html(root, &ComrakOptions::default(), &mut html) {
         let render_html = String::from_utf8(html)?;
-        let clean_html = ammonia::clean(&render_html);
-        Ok(clean_html)
+        if settings.clean_xss{
+            let map:HashMap<&str,Vec<&str>> = hashmap!{
+                "svg" => vec!["class","font-family","font-size","height","width","xmlns"],
+                "text" => vec!["class", "x","y"],
+                "rect" => vec!["class", "fill", "height", "width", "x", "y", "stroke", "stroke-width"],
+                "circle" => vec!["class","cx","cy","r", "fill", "stroke", "stroke-width"],
+                "path" => vec!["class","fill"],
+                "line" => vec!["class", "x1","x2", "y1", "y2", "marker-start", "marker-end"],
+                "path" => vec!["class","d","fill","stroke","stroke-dasharry"],
+                "polygon" => vec!["class","points","fill","stroke","stroke-dasharry"],
+                "g" => vec![],
+                "defs" => vec![],
+                "style" => vec!["type"],
+                "marker" => vec!["id","markerHeight","markerUnits","markerWidth","orient","refX", "refY", "viewBox"]
+            };
+            let mut builder = ammonia::Builder::default();
+            for (k,v) in map.iter(){
+                builder.add_tags(std::iter::once(*k));
+                for att in v.iter(){
+                    builder.add_tag_attributes(k, std::iter::once(*att));
+                }
+            }
+
+            let clean_html = builder
+                .clean(&render_html)
+                .to_string();
+            Ok(clean_html)
+        }else{
+            Ok(render_html)
+        }
     } else {
         Err(Error::ParseError)
     }

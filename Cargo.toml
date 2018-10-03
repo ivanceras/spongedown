@@ -16,9 +16,10 @@ error-chain = "0.10"
 comrak = {version = "0.3", default-features = false}
 typed-arena = "1.2"
 url = "1.7.1"
-url_path = {version = "0.1.1", path = "../url_path"}
+url_path = {version = "0.1.1"}
 log = "0.4"
 ammonia = "1.2.0"
+maplit = "1.0.1"
 
 
 

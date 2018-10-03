@@ -12,6 +12,8 @@ fn main() {
 
 [Link to parent readme](../README.md)
 
+[Link to github](https://raw.githubusercontent.com/ivanceras/svgbob/master/TODO.md)
+
 ## Spongedown
 
 
