@@ -1,8 +1,5 @@
 extern crate spongedown;
 
-use std::fs::File;
-use std::error::Error;
-use std::io::Write;
 
 fn main() {
     let arg = r#"
