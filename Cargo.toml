@@ -10,7 +10,7 @@ documentation = "https://docs.rs/spongedown"
 keywords = ["markdown", "svg", "bob", "spongedown"]
 
 [dependencies]
-svgbob = "0.3.2"
+svgbob = "0.4.1"
 csv = {version = "1", optional = true}
 error-chain = "0.10"
 comrak = {version = "0.3", default-features = false}
@@ -27,5 +27,5 @@ maplit = "1.0.1"
 with-csv = ["csv"]
 
 [replace]
-"svgbob:0.3.2" = {path = "../svgbob/svgbob"}
+"svgbob:0.4.1" = {path = "../svgbob/svgbob"}
 "url_path:0.1.2" = {path = "../url_path"}

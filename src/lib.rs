@@ -39,7 +39,7 @@ mod errors {
 
 /// convert bob ascii diagrams to svg
 fn bob_handler(s: &str, _settings: &Settings) -> Result<String, Error> {
-    let grid = Grid::from_str(s, &svgbob::Settings::compact());
+    let grid = Grid::from_str(s, &svgbob::Settings::default());
     let (width, height) = grid.get_size();
     let svg = grid.get_svg();
     let bob_container = format!(
