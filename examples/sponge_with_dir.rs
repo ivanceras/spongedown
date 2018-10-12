@@ -21,17 +21,17 @@ fn main() {
 
                                         .--> Base::Class::Derived_A
                                        /
-                                      .----> Base::Class::Derived_B    
+                                      .----> Base::Class::Derived_B
       Something -------.             /         \
                         \           /           .---> Base::Class::Derived
       Something::else    \         /             \
             \             \       /               '--> Base::Class::Derived
              \             \     /
-              \             \   .-----------> Base::Class::Derived_C 
+              \             \   .-----------> Base::Class::Derived_C
                \             \ /
                 '------ Base::Class
                        /  \ \ \
-                      '    \ \ \  
+                      '    \ \ \
                       |     \ \ \
                       .      \ \ '--- The::Latest
                      /|       \ \      \
@@ -41,7 +41,7 @@ fn main() {
                      /|           \
          More::Stuff  '            \
                      /              '--- Last::One
-       More::Stuff  V 
+       More::Stuff  V
 
              .---.  .---. .---.  .---.    .---.  .---.
     OS API   '---'  '---' '---'  '---'    '---'  '---'
@@ -76,5 +76,5 @@ fn main(){
 
     "#;
     let html = spongedown::parse_with_base_dir(arg, "md").unwrap();
-    println!("{}", html);
+    println!("{}", html.content);
 }

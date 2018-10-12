@@ -33,17 +33,17 @@ banana, batman, orange
 
                                         .--> Base::Class::Derived_A
                                        /
-                                      .----> Base::Class::Derived_B    
+                                      .----> Base::Class::Derived_B
       Something -------.             /         \
                         \           /           .---> Base::Class::Derived
       Something::else    \         /             \
             \             \       /               '--> Base::Class::Derived
              \             \     /
-              \             \   .-----------> Base::Class::Derived_C 
+              \             \   .-----------> Base::Class::Derived_C
                \             \ /
                 '------ Base::Class
                        /  \ \ \
-                      '    \ \ \  
+                      '    \ \ \
                       |     \ \ \
                       .      \ \ '--- The::Latest
                      /|       \ \      \
@@ -53,7 +53,7 @@ banana, batman, orange
                      /|           \
          More::Stuff  '            \
                      /              '--- Last::One
-       More::Stuff  V 
+       More::Stuff  V
 
              .---.  .---. .---.  .---.    .---.  .---.
     OS API   '---'  '---' '---'  '---'    '---'  '---'
@@ -90,5 +90,5 @@ fn main(){
 
     "#;
     let html = spongedown::parse(arg).unwrap();
-    println!("{}", html);
+    println!("{}", html.content);
 }

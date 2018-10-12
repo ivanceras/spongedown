@@ -21,6 +21,7 @@ use std::collections::HashMap;
 use svgbob::Grid;
 use typed_arena::Arena;
 use url_path::UrlPath;
+use std::sync::{Arc,Mutex};
 
 mod errors {
     use std::string::FromUtf8Error;
@@ -94,11 +95,11 @@ impl Default for Settings {
     }
 }
 
-pub fn parse(arg: &str) -> Result<String, Error> {
+pub fn parse(arg: &str) -> Result<Html, Error> {
     parse_with_settings(arg, &Settings::default())
 }
 
-pub fn parse_with_base_dir(arg: &str, base_dir: &str) -> Result<String, Error> {
+pub fn parse_with_base_dir(arg: &str, base_dir: &str) -> Result<Html, Error> {
     let settings = Settings {
         base_dir: Some(base_dir.to_string()),
         ..Default::default()
@@ -106,7 +107,7 @@ pub fn parse_with_base_dir(arg: &str, base_dir: &str) -> Result<String, Error> {
     parse_with_settings(arg, &settings)
 }
 
-pub fn parse_with_settings(arg: &str, settings: &Settings) -> Result<String, Error> {
+pub fn parse_with_settings(arg: &str, settings: &Settings) -> Result<Html, Error> {
     let mut plugins: HashMap<String, Box<Fn(&str, &Settings) -> Result<String, Error>>> =
         HashMap::new();
     plugins.insert("bob".into(), Box::new(bob_handler));
@@ -137,11 +138,17 @@ struct PluginInfo {
     uri: Option<String>,
 }
 
+#[derive(Debug)]
+pub struct Html{
+    pub title: Option<String>,
+    pub content: String,
+}
+
 fn parse_via_comrak(
     arg: &str,
     plugins: &HashMap<String, Box<Fn(&str, &Settings) -> Result<String, Error>>>,
     settings: &Settings,
-) -> Result<String, Error> {
+) -> Result<Html, Error> {
     // The returned nodes are created in the supplied Arena, and are bound by its lifetime.
     let arena = Arena::new();
     let option = ComrakOptions {
@@ -162,19 +169,22 @@ fn parse_via_comrak(
         safe: true,
     };
 
+    let title: Arc<Mutex<Option<String>>> = Arc::new(Mutex::new(None));
+    let is_heading: Arc<Mutex<bool>> = Arc::new(Mutex::new(false));
+
     let root = parse_document(&arena, arg, &option);
 
-    fn iter_nodes<'a, F>(node: &'a AstNode<'a>, f: &F)
+    fn iter_nodes<'a, F>(node: &'a AstNode<'a>, is_heading: Arc<Mutex<bool>>, title: Arc<Mutex<Option<String>>>, f: &F)
     where
         F: Fn(&'a AstNode<'a>),
     {
         f(node);
         for c in node.children() {
-            iter_nodes(c, f);
+            iter_nodes(c, is_heading.clone(), title.clone(), f);
         }
     }
 
-    iter_nodes(root, &|node| {
+    iter_nodes(root, is_heading.clone(), title.clone(), &|node| {
         let ref mut value = node.data.borrow_mut().value;
         let new_value = match value {
             &mut NodeValue::CodeBlock(ref codeblock) => {
@@ -219,6 +229,27 @@ fn parse_via_comrak(
                     value.clone()
                 }
             }
+            &mut NodeValue::Heading(ref heading) => {
+                if heading.level == 1{
+                    if let Ok(mut is_heading) = is_heading.lock(){
+                        *is_heading = true;
+                    }
+                }
+                value.clone()
+            }
+            &mut NodeValue::Text(ref text) => {
+                if let Ok(is_heading) = is_heading.lock() {
+                    if *is_heading{
+                        let txt = String::from_utf8(text.to_owned()).expect("Unable to convert to string");
+                        if let Ok(mut title) = title.lock(){
+                            if title.is_none(){ // only when unset
+                                *title = Some(txt.to_string());
+                            }
+                        }
+                    }
+                }
+                value.clone()
+            }
             _ => value.clone(),
         };
         *value = new_value;
@@ -228,12 +259,21 @@ fn parse_via_comrak(
 
     if let Ok(()) = format_html(root, &ComrakOptions::default(), &mut html) {
         let render_html = String::from_utf8(html)?;
+        let title = if let Ok(mut got) = title.lock(){
+            if let Some(ref got) = *got{
+                Some(got.to_string())
+            }else{
+                None
+            }
+        }else{
+            None
+        };
         if settings.clean_xss {
             let builder = ammonia_builder();
             let clean_html = builder.clean(&render_html).to_string();
-            Ok(clean_html)
+            Ok(Html{title, content: clean_html})
         } else {
-            Ok(render_html)
+            Ok(Html{title, content:render_html})
         }
     } else {
         Err(Error::ParseError)
@@ -264,4 +304,22 @@ fn ammonia_builder<'a>() -> Builder<'a> {
         }
     }
     builder
+}
+
+#[cfg(test)]
+mod test{
+
+    use super::*;
+
+    #[test]
+    fn title(){
+        let input = "# Hello\n
+        world";
+        let html = parse(input);
+        println!("html: {:?}", html);
+        assert!(html.is_ok());
+        let html = html.unwrap();
+        assert_eq!(Some("Hello".to_string()), html.title);
+
+    }
 }
