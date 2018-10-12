@@ -283,6 +283,7 @@ fn parse_via_comrak(
 /// Create an ammonia builder and whitelisting the svg tags and attributes
 fn ammonia_builder<'a>() -> Builder<'a> {
     let map: HashMap<&str, Vec<&str>> = hashmap!{
+        "div" => vec!["class","style"],
         "svg" => vec!["class","font-family","font-size","height","width","xmlns"],
         "text" => vec!["class", "x","y"],
         "rect" => vec!["class", "fill", "height", "width", "x", "y", "stroke", "stroke-width"],
