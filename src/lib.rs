@@ -82,8 +82,12 @@ fn csv_handler(s: &str, _settings: &Settings) -> Result<String, Error> {
 }
 
 pub struct Settings {
+    /// add a base directory for all links to other md files
     base_dir: Option<String>,
+    /// apply ammonia to remove xss from the generated html
     clean_xss: bool,
+    /// if true, external links that doesn't end with `.md` will be linked as is
+    link_non_md_external: bool,
 }
 
 impl Default for Settings {
@@ -91,6 +95,7 @@ impl Default for Settings {
         Settings {
             base_dir: None,
             clean_xss: true,
+            link_non_md_external: true,
         }
     }
 }
@@ -217,7 +222,14 @@ fn parse_via_comrak(
                         };
                         let url4 = UrlPath::new(&url3);
                         let url5 = url4.normalize();
-                        let url6 = format!("/#{}", url5);
+                        let url6 = if url4.is_external()
+                            && !url4.is_extension("md") 
+                            && settings.link_non_md_external {
+                            // leave as it
+                            url5
+                        }else{
+                            format!("/#{}", url5)
+                        };
                         info!("url6: {}", url6);
                         let mut new_nodelink = nodelink.clone();
                         new_nodelink.url = url6.into_bytes();
