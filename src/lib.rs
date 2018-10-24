@@ -18,10 +18,10 @@ use comrak::nodes::{AstNode, NodeHtmlBlock, NodeValue};
 use comrak::{format_html, parse_document, ComrakOptions};
 use errors::Error;
 use std::collections::HashMap;
+use std::sync::{Arc, Mutex};
 use svgbob::Grid;
 use typed_arena::Arena;
 use url_path::UrlPath;
-use std::sync::{Arc,Mutex};
 
 mod errors {
     use std::string::FromUtf8Error;
@@ -118,6 +118,8 @@ pub fn parse_with_settings(arg: &str, settings: &Settings) -> Result<Html, Error
     plugins.insert("bob".into(), Box::new(bob_handler));
     #[cfg(feature = "csv")]
     plugins.insert("csv".into(), Box::new(csv_handler));
+    let referred_files = pre_parse_get_embedded_files(arg);
+    println!("referred_files: {:#?}", referred_files);
     let html = parse_via_comrak(arg, &plugins, settings);
     html
 }
@@ -144,19 +146,13 @@ struct PluginInfo {
 }
 
 #[derive(Debug)]
-pub struct Html{
+pub struct Html {
     pub title: Option<String>,
     pub content: String,
 }
 
-fn parse_via_comrak(
-    arg: &str,
-    plugins: &HashMap<String, Box<Fn(&str, &Settings) -> Result<String, Error>>>,
-    settings: &Settings,
-) -> Result<Html, Error> {
-    // The returned nodes are created in the supplied Arena, and are bound by its lifetime.
-    let arena = Arena::new();
-    let option = ComrakOptions {
+fn get_comrak_options() -> ComrakOptions {
+    ComrakOptions {
         hardbreaks: true,
         github_pre_lang: true,
         default_info_string: None,
@@ -172,22 +168,84 @@ fn parse_via_comrak(
         ext_description_lists: true,
         smart: false,
         safe: true,
-    };
+    }
+}
 
+fn iter_nodes<'a, F>(
+    node: &'a AstNode<'a>,
+    is_heading: Arc<Mutex<bool>>,
+    title: Arc<Mutex<Option<String>>>,
+    f: &F,
+) where
+    F: Fn(&'a AstNode<'a>),
+{
+    f(node);
+    for c in node.children() {
+        iter_nodes(c, is_heading.clone(), title.clone(), f);
+    }
+}
+
+
+fn pre_iter_nodes<'a, F>(
+    node: &'a AstNode<'a>,
+    files: Arc<Mutex<Vec<String>>>,
+    f: &F,
+) where
+    F: Fn(&'a AstNode<'a>),
+{
+    f(node);
+    for c in node.children() {
+        pre_iter_nodes(c, files.clone(), f);
+    }
+}
+///
+/// Extract the embeded files in img image and make it as a lookup
+fn pre_parse_get_embedded_files(
+    arg: &str,
+) -> Result<Vec<String>, Error> {
+    // The returned nodes are created in the supplied Arena, and are bound by its lifetime.
+    let arena = Arena::new();
+    let option = get_comrak_options();
+    let root = parse_document(&arena, arg, &option);
+    let embed_files: Arc<Mutex<Vec<String>>> = Arc::new(Mutex::new(vec![]));
+
+    pre_iter_nodes(root, embed_files.clone(), &|node| {
+        let ref mut value = node.data.borrow_mut().value;
+        let new_value = match value {
+            &mut NodeValue::Image(ref link) => {
+                let link_url =
+                    String::from_utf8(link.url.clone()).expect("unable to convert to string");
+                if let Ok(mut embed_files) = embed_files.lock(){
+                    embed_files.push(link_url);
+                }
+                value.clone()
+            }
+            _ => value.clone(),
+        };
+        *value = new_value;
+    });
+    let embedded = match embed_files.lock(){
+        Ok(mut files) => {
+            Ok((*files).to_owned())
+        }
+        Err(_e) => {
+            Err(Error::ParseError)
+        }
+    };
+    embedded
+}
+
+fn parse_via_comrak(
+    arg: &str,
+    plugins: &HashMap<String, Box<Fn(&str, &Settings) -> Result<String, Error>>>,
+    settings: &Settings,
+) -> Result<Html, Error> {
+    // The returned nodes are created in the supplied Arena, and are bound by its lifetime.
+    let arena = Arena::new();
+    let option = get_comrak_options();
     let title: Arc<Mutex<Option<String>>> = Arc::new(Mutex::new(None));
     let is_heading: Arc<Mutex<bool>> = Arc::new(Mutex::new(false));
-
     let root = parse_document(&arena, arg, &option);
-
-    fn iter_nodes<'a, F>(node: &'a AstNode<'a>, is_heading: Arc<Mutex<bool>>, title: Arc<Mutex<Option<String>>>, f: &F)
-    where
-        F: Fn(&'a AstNode<'a>),
-    {
-        f(node);
-        for c in node.children() {
-            iter_nodes(c, is_heading.clone(), title.clone(), f);
-        }
-    }
 
     iter_nodes(root, is_heading.clone(), title.clone(), &|node| {
         let ref mut value = node.data.borrow_mut().value;
@@ -223,11 +281,12 @@ fn parse_via_comrak(
                         let url4 = UrlPath::new(&url3);
                         let url5 = url4.normalize();
                         let url6 = if url4.is_external()
-                            && !url4.is_extension("md") 
-                            && settings.link_non_md_external {
+                            && !url4.is_extension("md")
+                            && settings.link_non_md_external
+                        {
                             // leave as it
                             url5
-                        }else{
+                        } else {
                             format!("/#{}", url5)
                         };
                         info!("url6: {}", url6);
@@ -242,8 +301,8 @@ fn parse_via_comrak(
                 }
             }
             &mut NodeValue::Heading(ref heading) => {
-                if heading.level == 1{
-                    if let Ok(mut is_heading) = is_heading.lock(){
+                if heading.level == 1 {
+                    if let Ok(mut is_heading) = is_heading.lock() {
                         *is_heading = true;
                     }
                 }
@@ -251,15 +310,26 @@ fn parse_via_comrak(
             }
             &mut NodeValue::Text(ref text) => {
                 if let Ok(is_heading) = is_heading.lock() {
-                    if *is_heading{
-                        let txt = String::from_utf8(text.to_owned()).expect("Unable to convert to string");
-                        if let Ok(mut title) = title.lock(){
-                            if title.is_none(){ // only when unset
+                    if *is_heading {
+                        let txt = String::from_utf8(text.to_owned())
+                            .expect("Unable to convert to string");
+                        if let Ok(mut title) = title.lock() {
+                            if title.is_none() {
+                                // only when unset
                                 *title = Some(txt.to_string());
                             }
                         }
                     }
                 }
+                value.clone()
+            }
+            &mut NodeValue::Image(ref link) => {
+                let link_url =
+                    String::from_utf8(link.url.clone()).expect("unable to convert to string");
+                let url_path = UrlPath::new(&link_url);
+                let file = url_path.normalize();
+                println!("url path: {}", url_path.normalize());
+                println!("file: {}", file);
                 value.clone()
             }
             _ => value.clone(),
@@ -269,23 +339,29 @@ fn parse_via_comrak(
 
     let mut html = vec![];
 
-    if let Ok(()) = format_html(root, &ComrakOptions::default(), &mut html) {
+    if let Ok(()) = format_html(root, &option, &mut html) {
         let render_html = String::from_utf8(html)?;
-        let title = if let Ok(mut got) = title.lock(){
-            if let Some(ref got) = *got{
+        let title = if let Ok(mut got) = title.lock() {
+            if let Some(ref got) = *got {
                 Some(got.to_string())
-            }else{
+            } else {
                 None
             }
-        }else{
+        } else {
             None
         };
         if settings.clean_xss {
             let builder = ammonia_builder();
             let clean_html = builder.clean(&render_html).to_string();
-            Ok(Html{title, content: clean_html})
+            Ok(Html {
+                title,
+                content: clean_html,
+            })
         } else {
-            Ok(Html{title, content:render_html})
+            Ok(Html {
+                title,
+                content: render_html,
+            })
         }
     } else {
         Err(Error::ParseError)
@@ -320,12 +396,12 @@ fn ammonia_builder<'a>() -> Builder<'a> {
 }
 
 #[cfg(test)]
-mod test{
+mod test {
 
     use super::*;
 
     #[test]
-    fn title(){
+    fn title() {
         let input = "# Hello\n
         world";
         let html = parse(input);
@@ -333,6 +409,5 @@ mod test{
         assert!(html.is_ok());
         let html = html.unwrap();
         assert_eq!(Some("Hello".to_string()), html.title);
-
     }
 }
