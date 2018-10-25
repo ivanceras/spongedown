@@ -86,7 +86,7 @@ fn main(){
 
 ```
 
-[records]: ./data/records.csv
+[records]: ./records.csv
 
     "#;
     let html = spongedown::parse(arg).unwrap();

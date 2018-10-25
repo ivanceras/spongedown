@@ -12,16 +12,21 @@ extern crate log;
 extern crate ammonia;
 #[macro_use]
 extern crate maplit;
+#[cfg(feature = "file")]
+extern crate file;
 
 use ammonia::Builder;
 use comrak::nodes::{AstNode, NodeHtmlBlock, NodeValue};
 use comrak::{format_html, parse_document, ComrakOptions};
 use errors::Error;
+use std::collections::BTreeMap;
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use svgbob::Grid;
 use typed_arena::Arena;
 use url_path::UrlPath;
+
+mod plugins;
 
 mod errors {
     use std::string::FromUtf8Error;
@@ -36,49 +41,6 @@ mod errors {
             Error::Utf8Error(e)
         }
     }
-}
-
-/// convert bob ascii diagrams to svg
-fn bob_handler(s: &str, _settings: &Settings) -> Result<String, Error> {
-    let grid = Grid::from_str(s, &svgbob::Settings::default());
-    let (width, height) = grid.get_size();
-    let svg = grid.get_svg();
-    let bob_container = format!(
-        "<div class='bob_container' style='width:{}px;height:{}px;'>{}</div>",
-        width, height, svg
-    );
-    Ok(bob_container)
-}
-
-/// convert csv content into html table
-#[cfg(feature = "csv")]
-fn csv_handler(s: &str, _settings: &Settings) -> Result<String, Error> {
-    let mut buff = String::new();
-    let mut rdr = csv::Reader::from_reader(s.as_bytes());
-    buff.push_str("<table>");
-    buff.push_str("<thead>");
-    for header in rdr.headers() {
-        buff.push_str("<tr>");
-        for h in header {
-            buff.push_str(&format!("<th>{}</th>", h));
-        }
-        buff.push_str("</tr>");
-    }
-    buff.push_str("</thead>");
-    buff.push_str("</thead>");
-    buff.push_str("<tbody>");
-    for record in rdr.records() {
-        buff.push_str("<tr>");
-        if let Ok(record) = record {
-            for value in record.iter() {
-                buff.push_str(&format!("<td>{}</td>", value));
-            }
-        }
-        buff.push_str("</tr>");
-    }
-    buff.push_str("</tbody>");
-    buff.push_str("</table>");
-    Ok(buff)
 }
 
 pub struct Settings {
@@ -113,36 +75,15 @@ pub fn parse_with_base_dir(arg: &str, base_dir: &str) -> Result<Html, Error> {
 }
 
 pub fn parse_with_settings(arg: &str, settings: &Settings) -> Result<Html, Error> {
-    let mut plugins: HashMap<String, Box<Fn(&str, &Settings) -> Result<String, Error>>> =
-        HashMap::new();
-    plugins.insert("bob".into(), Box::new(bob_handler));
-    #[cfg(feature = "csv")]
-    plugins.insert("csv".into(), Box::new(csv_handler));
     let referred_files = pre_parse_get_embedded_files(arg);
-    println!("referred_files: {:#?}", referred_files);
-    let html = parse_via_comrak(arg, &plugins, settings);
+    let embed_files = if let Ok(referred_files) = referred_files {
+        let file_contents = plugins::fetch_file_contents(referred_files);
+        Some(file_contents)
+    } else {
+        None
+    };
+    let html = parse_via_comrak(arg, &embed_files, settings);
     html
-}
-
-pub fn parse_bob(arg: &str) -> Result<String, Error> {
-    bob_handler(arg, &Settings::default())
-}
-
-#[cfg(feature = "csv")]
-pub fn parse_csv(arg: &str) -> Result<String, Error> {
-    csv_handler(arg, &Settings::default())
-}
-
-/// Plugin info, format:
-/// [<selector>] <plugin_name>[@version][://<URI>]
-/// example:
-/// #table1 csv://data_file.csv
-#[allow(dead_code)]
-struct PluginInfo {
-    selector: Option<String>,
-    plugin_name: String,
-    version: Option<String>,
-    uri: Option<String>,
 }
 
 #[derive(Debug)]
@@ -158,7 +99,7 @@ fn get_comrak_options() -> ComrakOptions {
         default_info_string: None,
         width: 0,
         ext_strikethrough: true,
-        ext_tagfilter: true,
+        ext_tagfilter: false,
         ext_table: true,
         ext_autolink: true,
         ext_tasklist: true,
@@ -167,7 +108,7 @@ fn get_comrak_options() -> ComrakOptions {
         ext_footnotes: true,
         ext_description_lists: true,
         smart: false,
-        safe: true,
+        safe: false,
     }
 }
 
@@ -185,12 +126,8 @@ fn iter_nodes<'a, F>(
     }
 }
 
-
-fn pre_iter_nodes<'a, F>(
-    node: &'a AstNode<'a>,
-    files: Arc<Mutex<Vec<String>>>,
-    f: &F,
-) where
+fn pre_iter_nodes<'a, F>(node: &'a AstNode<'a>, files: Arc<Mutex<Vec<String>>>, f: &F)
+where
     F: Fn(&'a AstNode<'a>),
 {
     f(node);
@@ -200,9 +137,7 @@ fn pre_iter_nodes<'a, F>(
 }
 ///
 /// Extract the embeded files in img image and make it as a lookup
-fn pre_parse_get_embedded_files(
-    arg: &str,
-) -> Result<Vec<String>, Error> {
+fn pre_parse_get_embedded_files(arg: &str) -> Result<Vec<String>, Error> {
     // The returned nodes are created in the supplied Arena, and are bound by its lifetime.
     let arena = Arena::new();
     let option = get_comrak_options();
@@ -215,7 +150,7 @@ fn pre_parse_get_embedded_files(
             &mut NodeValue::Image(ref link) => {
                 let link_url =
                     String::from_utf8(link.url.clone()).expect("unable to convert to string");
-                if let Ok(mut embed_files) = embed_files.lock(){
+                if let Ok(mut embed_files) = embed_files.lock() {
                     embed_files.push(link_url);
                 }
                 value.clone()
@@ -224,20 +159,16 @@ fn pre_parse_get_embedded_files(
         };
         *value = new_value;
     });
-    let embedded = match embed_files.lock(){
-        Ok(mut files) => {
-            Ok((*files).to_owned())
-        }
-        Err(_e) => {
-            Err(Error::ParseError)
-        }
+    let embedded = match embed_files.lock() {
+        Ok(mut files) => Ok((*files).to_owned()),
+        Err(_e) => Err(Error::ParseError),
     };
     embedded
 }
 
 fn parse_via_comrak(
     arg: &str,
-    plugins: &HashMap<String, Box<Fn(&str, &Settings) -> Result<String, Error>>>,
+    embed_files: &Option<BTreeMap<String, Vec<u8>>>,
     settings: &Settings,
 ) -> Result<Html, Error> {
     // The returned nodes are created in the supplied Arena, and are bound by its lifetime.
@@ -251,17 +182,15 @@ fn parse_via_comrak(
         let ref mut value = node.data.borrow_mut().value;
         let new_value = match value {
             &mut NodeValue::CodeBlock(ref codeblock) => {
-                let codeblock_info = String::from_utf8(codeblock.info.to_owned()).unwrap();
-                if let Some(handler) = plugins.get(&codeblock_info) {
-                    let codeblock_literal =
-                        String::from_utf8(codeblock.literal.to_owned()).unwrap();
-                    match handler(&codeblock_literal, settings) {
-                        Ok(out) => NodeValue::HtmlBlock(NodeHtmlBlock {
-                            literal: out.into_bytes(),
-                            block_type: 0,
-                        }),
-                        Err(_) => NodeValue::CodeBlock(codeblock.clone()),
-                    }
+                let codeblock_info = String::from_utf8(codeblock.info.to_owned())
+                    .expect("error converting to string");
+                let codeblock_literal = String::from_utf8(codeblock.literal.to_owned())
+                    .expect("error converting to string");
+                if let Ok(out) = plugins::plugin_executor(&codeblock_info, &codeblock_literal) {
+                    NodeValue::HtmlBlock(NodeHtmlBlock {
+                        literal: out.into_bytes(),
+                        block_type: 0,
+                    })
                 } else {
                     value.clone()
                 }
@@ -326,11 +255,15 @@ fn parse_via_comrak(
             &mut NodeValue::Image(ref link) => {
                 let link_url =
                     String::from_utf8(link.url.clone()).expect("unable to convert to string");
-                let url_path = UrlPath::new(&link_url);
-                let file = url_path.normalize();
-                println!("url path: {}", url_path.normalize());
-                println!("file: {}", file);
-                value.clone()
+                let html = plugins::embed_handler(&link_url, embed_files);
+                if let Ok(html) = html {
+                    NodeValue::HtmlBlock(NodeHtmlBlock {
+                        literal: html.into_bytes(),
+                        block_type: 0,
+                    })
+                } else {
+                    value.clone()
+                }
             }
             _ => value.clone(),
         };

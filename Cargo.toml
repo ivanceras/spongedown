@@ -20,11 +20,13 @@ url_path = "0.1.2"
 log = "0.4"
 ammonia = "1.2.0"
 maplit = "1.0.1"
+file = {version = "1.1.2", optional = true}
 
 
 
 [features]
 with-csv = ["csv"]
+with-embed = ["file"]
 
 [replace]
 "svgbob:0.4.1" = {path = "../svgbob/svgbob"}
