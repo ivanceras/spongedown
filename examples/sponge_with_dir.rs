@@ -75,6 +75,6 @@ fn main(){
 ```
 
     "#;
-    let html = spongedown::parse_with_base_dir(arg, "md").unwrap();
+    let html = spongedown::parse_with_base_dir(arg, "md", &None).unwrap();
     println!("{}", html.content);
 }
