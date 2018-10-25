@@ -3,6 +3,8 @@ extern crate spongedown;
 fn main() {
     let arg = r#"
 
+![an image](image.jpg)
+
 [Link to](./README.md)
 
 [Linux notes](/home/lee/PersonalBooks/notes/src/LINUX_NOTES.md)
@@ -14,7 +16,7 @@ fn main() {
 
 or
 
-![{display:hidden}][records]
+![][records]
 
 ```csv
 col1,col2,col3

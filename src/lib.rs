@@ -29,11 +29,12 @@ use url_path::UrlPath;
 mod plugins;
 
 mod errors {
+    use plugins::PluginError;
     use std::string::FromUtf8Error;
     #[derive(Debug)]
     pub enum Error {
         ParseError,
-        PluginError,
+        PluginError(PluginError),
         Utf8Error(FromUtf8Error),
     }
     impl From<FromUtf8Error> for Error {
@@ -63,18 +64,6 @@ impl Default for Settings {
 }
 
 pub fn parse(arg: &str) -> Result<Html, Error> {
-    parse_with_settings(arg, &Settings::default())
-}
-
-pub fn parse_with_base_dir(arg: &str, base_dir: &str) -> Result<Html, Error> {
-    let settings = Settings {
-        base_dir: Some(base_dir.to_string()),
-        ..Default::default()
-    };
-    parse_with_settings(arg, &settings)
-}
-
-pub fn parse_with_settings(arg: &str, settings: &Settings) -> Result<Html, Error> {
     let referred_files = pre_parse_get_embedded_files(arg);
     let embed_files = if let Ok(referred_files) = referred_files {
         let file_contents = plugins::fetch_file_contents(referred_files);
@@ -82,6 +71,18 @@ pub fn parse_with_settings(arg: &str, settings: &Settings) -> Result<Html, Error
     } else {
         None
     };
+    parse_with_settings(arg, &embed_files, &Settings::default())
+}
+
+pub fn parse_with_base_dir(arg: &str, base_dir: &str, embed_files: &Option<BTreeMap<String, Vec<u8>>>) -> Result<Html, Error> {
+    let settings = Settings {
+        base_dir: Some(base_dir.to_string()),
+        ..Default::default()
+    };
+    parse_with_settings(arg, &embed_files, &settings )
+}
+
+pub fn parse_with_settings(arg: &str, embed_files: &Option<BTreeMap<String,Vec<u8>>>, settings: &Settings) -> Result<Html, Error> {
     let html = parse_via_comrak(arg, &embed_files, settings);
     html
 }
@@ -137,7 +138,7 @@ where
 }
 ///
 /// Extract the embeded files in img image and make it as a lookup
-fn pre_parse_get_embedded_files(arg: &str) -> Result<Vec<String>, Error> {
+pub fn pre_parse_get_embedded_files(arg: &str) -> Result<Vec<String>, Error> {
     // The returned nodes are created in the supplied Arena, and are bound by its lifetime.
     let arena = Arena::new();
     let option = get_comrak_options();
@@ -255,14 +256,15 @@ fn parse_via_comrak(
             &mut NodeValue::Image(ref link) => {
                 let link_url =
                     String::from_utf8(link.url.clone()).expect("unable to convert to string");
-                let html = plugins::embed_handler(&link_url, embed_files);
-                if let Ok(html) = html {
-                    NodeValue::HtmlBlock(NodeHtmlBlock {
+                match plugins::embed_handler(&link_url, embed_files) {
+                    Ok(html) => NodeValue::HtmlBlock(NodeHtmlBlock {
                         literal: html.into_bytes(),
                         block_type: 0,
-                    })
-                } else {
-                    value.clone()
+                    }),
+                    Err(e) => {
+                        error!("error: {:#?}", e);
+                        value.clone()
+                    }
                 }
             }
             _ => value.clone(),

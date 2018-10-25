@@ -1,3 +1,4 @@
+use self::PluginError::*;
 use super::Grid;
 use errors::Error;
 use std::collections::{BTreeMap, HashMap};
@@ -13,6 +14,15 @@ pub struct PluginInfo {
     plugin_name: String,
     version: Option<String>,
     uri: Option<String>,
+}
+
+#[derive(Debug)]
+pub enum PluginError {
+    EmbededFilesNotSupplied,
+    EmbedFileNotFound(String),
+    EmbedFileNoExtension,
+    ExecError,
+    PluginNotExist(String),
 }
 
 pub fn get_plugins() -> HashMap<String, Box<Fn(&str) -> Result<String, Error>>> {
@@ -71,9 +81,19 @@ pub fn plugin_executor(plugin_name: &str, input: &str) -> Result<String, Error> 
     if let Some(handler) = plugins.get(plugin_name) {
         handler(input)
     } else {
-        Err(Error::PluginError)
+        Err(Error::PluginError(PluginNotExist(plugin_name.to_string())))
     }
 }
+
+pub fn is_in_plugins(plugin_name: &str) -> bool {
+    let plugins = get_plugins();
+    if let Some(_handler) = plugins.get(plugin_name) {
+        true
+    } else {
+        false
+    }
+}
+
 
 /// handle the embed of the file with the supplied content
 #[cfg(feature = "file")]
@@ -82,23 +102,30 @@ pub fn embed_handler(
     embed_files: &Option<BTreeMap<String, Vec<u8>>>,
 ) -> Result<String, Error> {
     if let Some(embed_files) = embed_files {
-        if let Some(content) = embed_files.get(url) {
-            if let Ok(content) = String::from_utf8(content.to_owned()) {
-                let url_path = UrlPath::new(&url);
-                if let Some(ext) = url_path.extension() {
-                    let out = plugin_executor(&ext, &content);
-                    out
+        let url_path = UrlPath::new(&url);
+        if let Some(ext) = url_path.extension() {
+            if is_in_plugins(&ext){
+                if let Some(content) = embed_files.get(url) {
+                    match String::from_utf8(content.to_owned()) {
+                        Ok(content) => {
+                            let out = plugin_executor(&ext, &content);
+                            out
+                        }
+                        Err(e) => {
+                            Err(Error::Utf8Error(e)) // unable to convert content to string
+                        }
+                    }
                 } else {
-                    Err(Error::PluginError) // no extension on the embeded file
+                    Err(Error::PluginError(EmbedFileNotFound(url.to_string()))) // file is not in the embeded files
                 }
-            } else {
-                Err(Error::PluginError) // unable to convert content to string
+            }else{
+                Err(Error::PluginError(PluginNotExist(ext.to_string())))
             }
-        } else {
-            Err(Error::PluginError) // file is not in the embeded files
+        }else{
+             Err(Error::PluginError(EmbedFileNoExtension)) // no extension on the embeded file
         }
     } else {
-        Err(Error::PluginError) // no embedded file supplied
+        Err(Error::PluginError(EmbededFilesNotSupplied)) // no embedded file supplied
     }
 }
 
@@ -106,8 +133,9 @@ pub fn embed_handler(
 pub fn fetch_file_contents(files: Vec<String>) -> BTreeMap<String, Vec<u8>> {
     let mut embed_files = BTreeMap::new();
     for fname in files {
-        if let Ok(content) = file::get(&fname) {
-            embed_files.insert(fname, content);
+        match file::get(&fname) {
+            Ok(content) => {embed_files.insert(fname, content);}
+            Err(e) => {error!("fetching file error: {:?}", e);}
         }
     }
     embed_files
