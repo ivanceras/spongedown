@@ -22,7 +22,6 @@ use errors::Error;
 use std::collections::BTreeMap;
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
-use svgbob::Grid;
 use typed_arena::Arena;
 use url_path::UrlPath;
 
@@ -74,15 +73,23 @@ pub fn parse(arg: &str) -> Result<Html, Error> {
     parse_with_settings(arg, &embed_files, &Settings::default())
 }
 
-pub fn parse_with_base_dir(arg: &str, base_dir: &str, embed_files: &Option<BTreeMap<String, Vec<u8>>>) -> Result<Html, Error> {
+pub fn parse_with_base_dir(
+    arg: &str,
+    base_dir: &str,
+    embed_files: &Option<BTreeMap<String, Vec<u8>>>,
+) -> Result<Html, Error> {
     let settings = Settings {
         base_dir: Some(base_dir.to_string()),
         ..Default::default()
     };
-    parse_with_settings(arg, &embed_files, &settings )
+    parse_with_settings(arg, &embed_files, &settings)
 }
 
-pub fn parse_with_settings(arg: &str, embed_files: &Option<BTreeMap<String,Vec<u8>>>, settings: &Settings) -> Result<Html, Error> {
+pub fn parse_with_settings(
+    arg: &str,
+    embed_files: &Option<BTreeMap<String, Vec<u8>>>,
+    settings: &Settings,
+) -> Result<Html, Error> {
     let html = parse_via_comrak(arg, &embed_files, settings);
     html
 }
@@ -161,7 +168,7 @@ pub fn pre_parse_get_embedded_files(arg: &str) -> Result<Vec<String>, Error> {
         *value = new_value;
     });
     let embedded = match embed_files.lock() {
-        Ok(mut files) => Ok((*files).to_owned()),
+        Ok(files) => Ok((*files).to_owned()),
         Err(_e) => Err(Error::ParseError),
     };
     embedded
@@ -276,7 +283,7 @@ fn parse_via_comrak(
 
     if let Ok(()) = format_html(root, &option, &mut html) {
         let render_html = String::from_utf8(html)?;
-        let title = if let Ok(mut got) = title.lock() {
+        let title = if let Ok(got) = title.lock() {
             if let Some(ref got) = *got {
                 Some(got.to_string())
             } else {
@@ -305,7 +312,7 @@ fn parse_via_comrak(
 
 /// Create an ammonia builder and whitelisting the svg tags and attributes
 fn ammonia_builder<'a>() -> Builder<'a> {
-    let map: HashMap<&str, Vec<&str>> = hashmap!{
+    let map: HashMap<&str, Vec<&str>> = hashmap! {
         "div" => vec!["class","style"],
         "svg" => vec!["class","font-family","font-size","height","width","xmlns"],
         "text" => vec!["class", "x","y"],

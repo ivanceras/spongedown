@@ -1,5 +1,4 @@
 use self::PluginError::*;
-use super::Grid;
 use errors::Error;
 use std::collections::{BTreeMap, HashMap};
 use url_path::UrlPath;
@@ -25,8 +24,8 @@ pub enum PluginError {
     PluginNotExist(String),
 }
 
-pub fn get_plugins() -> HashMap<String, Box<Fn(&str) -> Result<String, Error>>> {
-    let mut plugins: HashMap<String, Box<Fn(&str) -> Result<String, Error>>> = HashMap::new();
+pub fn get_plugins() -> HashMap<String, Box<dyn Fn(&str) -> Result<String, Error>>> {
+    let mut plugins: HashMap<String, Box<dyn Fn(&str) -> Result<String, Error>>> = HashMap::new();
     plugins.insert("bob".into(), Box::new(bob_handler));
     #[cfg(feature = "csv")]
     plugins.insert("csv".into(), Box::new(csv_handler));
@@ -34,10 +33,10 @@ pub fn get_plugins() -> HashMap<String, Box<Fn(&str) -> Result<String, Error>>> 
 }
 
 /// convert bob ascii diagrams to svg
-fn bob_handler(s: &str) -> Result<String, Error> {
-    let grid = Grid::from_str(s, &svgbob::Settings::default());
-    let (width, height) = grid.get_size();
-    let svg = grid.get_svg();
+fn bob_handler(input: &str) -> Result<String, Error> {
+    let cb = svgbob::CellBuffer::from(input);
+    let (node, width, height) = cb.get_node_with_size(&svgbob::Settings::default());
+    let svg = node.to_string();
     let bob_container = format!(
         "<div class='bob_container' style='width:{}px;height:{}px;'>{}</div>",
         width, height, svg
@@ -94,7 +93,6 @@ pub fn is_in_plugins(plugin_name: &str) -> bool {
     }
 }
 
-
 /// handle the embed of the file with the supplied content
 #[cfg(feature = "file")]
 pub fn embed_handler(
@@ -104,7 +102,7 @@ pub fn embed_handler(
     if let Some(embed_files) = embed_files {
         let url_path = UrlPath::new(&url);
         if let Some(ext) = url_path.extension() {
-            if is_in_plugins(&ext){
+            if is_in_plugins(&ext) {
                 if let Some(content) = embed_files.get(url) {
                     match String::from_utf8(content.to_owned()) {
                         Ok(content) => {
@@ -118,11 +116,11 @@ pub fn embed_handler(
                 } else {
                     Err(Error::PluginError(EmbedFileNotFound(url.to_string()))) // file is not in the embeded files
                 }
-            }else{
+            } else {
                 Err(Error::PluginError(PluginNotExist(ext.to_string())))
             }
-        }else{
-             Err(Error::PluginError(EmbedFileNoExtension)) // no extension on the embeded file
+        } else {
+            Err(Error::PluginError(EmbedFileNoExtension)) // no extension on the embeded file
         }
     } else {
         Err(Error::PluginError(EmbededFilesNotSupplied)) // no embedded file supplied
@@ -134,8 +132,12 @@ pub fn fetch_file_contents(files: Vec<String>) -> BTreeMap<String, Vec<u8>> {
     let mut embed_files = BTreeMap::new();
     for fname in files {
         match file::get(&fname) {
-            Ok(content) => {embed_files.insert(fname, content);}
-            Err(e) => {error!("fetching file error: {:?}", e);}
+            Ok(content) => {
+                embed_files.insert(fname, content);
+            }
+            Err(e) => {
+                error!("fetching file error: {:?}", e);
+            }
         }
     }
     embed_files

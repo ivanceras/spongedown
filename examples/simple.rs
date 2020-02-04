@@ -1,4 +1,5 @@
 extern crate spongedown;
+use std::fs;
 
 fn main() {
     let arg = r#"
@@ -93,4 +94,6 @@ fn main(){
     "#;
     let html = spongedown::parse(arg).unwrap();
     println!("{}", html.content);
+    fs::create_dir_all("out");
+    fs::write("out/simple.html", &html.content);
 }

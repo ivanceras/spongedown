@@ -1,4 +1,5 @@
 extern crate spongedown;
+use std::fs;
 
 fn main() {
     let arg = r#"
@@ -58,9 +59,11 @@ fn main() {
                     |              |         |
                     v              v         v
              .---------------------------------------.
-             |                    Output             |
+             |              {out} Output             |
              '---------------------------------------'
 
+# Legend:
+out = {fill: papayawhip }
 ```
 
 
@@ -74,7 +77,9 @@ fn main(){
 
 ```
 
-    "#;
+"#;
     let html = spongedown::parse_with_base_dir(arg, "md", &None).unwrap();
     println!("{}", html.content);
+    fs::create_dir_all("out");
+    fs::write("out/sponge.html", &html.content);
 }
