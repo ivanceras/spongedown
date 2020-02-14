@@ -9,26 +9,24 @@ extern crate url;
 extern crate url_path;
 #[macro_use]
 extern crate log;
-extern crate ammonia;
-#[macro_use]
-extern crate maplit;
 #[cfg(feature = "file")]
 extern crate file;
 
-use ammonia::Builder;
 use comrak::nodes::{AstNode, NodeHtmlBlock, NodeValue};
 use comrak::{format_html, parse_document, ComrakOptions};
 use errors::Error;
 use std::collections::BTreeMap;
-use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
+use syntect::highlighting::{Color, ThemeSet};
+use syntect::html::highlighted_html_for_string;
+use syntect::parsing::SyntaxSet;
 use typed_arena::Arena;
 use url_path::UrlPath;
 
 mod plugins;
 
 mod errors {
-    use plugins::PluginError;
+    use crate::plugins::PluginError;
     use std::string::FromUtf8Error;
     #[derive(Debug)]
     pub enum Error {
@@ -199,7 +197,15 @@ fn parse_via_comrak(
                         literal: out.into_bytes(),
                         block_type: 0,
                     })
+                } else if let Some(code_block_html) =
+                    format_source_code(&codeblock_info, &codeblock_literal)
+                {
+                    code_block_html
                 } else {
+                    /*
+                    println!("codeblock_info: {}", codeblock_info);
+                    println!("codeblock_literal: {}", codeblock_literal);
+                    */
                     value.clone()
                 }
             }
@@ -293,11 +299,9 @@ fn parse_via_comrak(
             None
         };
         if settings.clean_xss {
-            let builder = ammonia_builder();
-            let clean_html = builder.clean(&render_html).to_string();
             Ok(Html {
                 title,
-                content: clean_html,
+                content: render_html,
             })
         } else {
             Ok(Html {
@@ -310,31 +314,26 @@ fn parse_via_comrak(
     }
 }
 
-/// Create an ammonia builder and whitelisting the svg tags and attributes
-fn ammonia_builder<'a>() -> Builder<'a> {
-    let map: HashMap<&str, Vec<&str>> = hashmap! {
-        "div" => vec!["class","style"],
-        "svg" => vec!["class","font-family","font-size","height","width","xmlns"],
-        "text" => vec!["class", "x","y"],
-        "rect" => vec!["class", "fill", "height", "width", "x", "y", "stroke", "stroke-width"],
-        "circle" => vec!["class","cx","cy","r", "fill", "stroke", "stroke-width"],
-        "path" => vec!["class","fill"],
-        "line" => vec!["class", "x1","x2", "y1", "y2", "marker-start", "marker-end"],
-        "path" => vec!["class","d","fill","stroke","stroke-dasharry"],
-        "polygon" => vec!["class","points","fill","stroke","stroke-dasharry"],
-        "g" => vec![],
-        "defs" => vec![],
-        "style" => vec!["type"],
-        "marker" => vec!["id","markerHeight","markerUnits","markerWidth","orient","refX", "refY", "viewBox"]
+fn format_source_code(lang: &str, literal: &str) -> Option<NodeValue> {
+    let lang_name = match lang {
+        "rust" => "Rust",
+        _ => "text",
     };
-    let mut builder = Builder::default();
-    for (k, v) in map.iter() {
-        builder.add_tags(std::iter::once(*k));
-        for att in v.iter() {
-            builder.add_tag_attributes(k, std::iter::once(*att));
-        }
+
+    let ss = SyntaxSet::load_defaults_newlines();
+    let ts = ThemeSet::load_defaults();
+    let theme = &ts.themes["base16-ocean.light"];
+    let _c = theme.settings.background.unwrap_or(Color::WHITE);
+
+    if let Some(syntax) = ss.find_syntax_by_name(lang_name) {
+        let html = highlighted_html_for_string(literal, &ss, &syntax, theme);
+        Some(NodeValue::HtmlBlock(NodeHtmlBlock {
+            literal: html.into_bytes(),
+            block_type: 0,
+        }))
+    } else {
+        None
     }
-    builder
 }
 
 #[cfg(test)]

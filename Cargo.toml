@@ -1,6 +1,6 @@
 [package]
 name = "spongedown"
-version = "0.3.2"
+version = "0.4.0"
 authors = [ "Jovansonlee Cesar <ivanceras@gmail.com>" ]
 license = "MIT"
 description = "Converts markdown to html with svgbob support"
@@ -8,10 +8,11 @@ readme = "README.md"
 repository = "https://github.com/ivanceras/spongedown"
 documentation = "https://docs.rs/spongedown"
 keywords = ["markdown", "svg", "bob", "spongedown"]
+edition = "2018"
 
 [dependencies]
 #svgbob = "0.4.1"
-svgbob = { path = "../svgbob/svgbob" }
+svgbob = { path = "../svgbob/svgbob"}
 csv = {version = "1", optional = true}
 #error-chain = "0.10"
 comrak = {version = "0.3", default-features = false}
@@ -19,9 +20,8 @@ typed-arena = "1.2"
 url = "1.7.1"
 url_path = "0.1.2"
 log = "0.4"
-ammonia = "1.2.0"
-maplit = "1.0.1"
 file = {version = "1.1.2", optional = true}
+syntect = "3.3.0"
 
 
 
@@ -33,3 +33,9 @@ with-embed = ["file"]
 [replace]
 #"svgbob:0.4.1" = {path = "../svgbob/svgbob"}
 "url_path:0.1.2" = {path = "../url_path"}
+
+[profile.release]
+debug = false
+lto = true
+opt-level = 'z'
+panic = "abort"

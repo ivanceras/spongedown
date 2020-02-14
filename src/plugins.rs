@@ -1,5 +1,5 @@
 use self::PluginError::*;
-use errors::Error;
+use crate::errors::Error;
 use std::collections::{BTreeMap, HashMap};
 use url_path::UrlPath;
 
