@@ -1,6 +1,9 @@
 use self::PluginError::*;
 use crate::errors::Error;
-use std::collections::{BTreeMap, HashMap};
+use std::collections::{
+    BTreeMap,
+    HashMap,
+};
 use url_path::UrlPath;
 
 /// Plugin info, format:
@@ -24,8 +27,12 @@ pub enum PluginError {
     PluginNotExist(String),
 }
 
-pub fn get_plugins() -> HashMap<String, Box<dyn Fn(&str) -> Result<String, Error>>> {
-    let mut plugins: HashMap<String, Box<dyn Fn(&str) -> Result<String, Error>>> = HashMap::new();
+pub fn get_plugins()
+-> HashMap<String, Box<dyn Fn(&str) -> Result<String, Error>>> {
+    let mut plugins: HashMap<
+        String,
+        Box<dyn Fn(&str) -> Result<String, Error>>,
+    > = HashMap::new();
     plugins.insert("bob".into(), Box::new(bob_handler));
     #[cfg(feature = "csv")]
     plugins.insert("csv".into(), Box::new(csv_handler));
@@ -35,7 +42,8 @@ pub fn get_plugins() -> HashMap<String, Box<dyn Fn(&str) -> Result<String, Error
 /// convert bob ascii diagrams to svg
 fn bob_handler(input: &str) -> Result<String, Error> {
     let cb = svgbob::CellBuffer::from(input);
-    let (node, width, height) = cb.get_node_with_size(&svgbob::Settings::default());
+    let (node, width, height) =
+        cb.get_node_with_size(&svgbob::Settings::default());
     let svg = node.to_string();
     let bob_container = format!(
         "<div class='bob_container' style='width:{}px;height:{}px;'>{}</div>",
@@ -75,7 +83,10 @@ fn csv_handler(s: &str) -> Result<String, Error> {
     Ok(buff)
 }
 
-pub fn plugin_executor(plugin_name: &str, input: &str) -> Result<String, Error> {
+pub fn plugin_executor(
+    plugin_name: &str,
+    input: &str,
+) -> Result<String, Error> {
     let plugins = get_plugins();
     if let Some(handler) = plugins.get(plugin_name) {
         handler(input)

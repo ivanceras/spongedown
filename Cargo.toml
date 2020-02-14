@@ -21,7 +21,7 @@ url = "1.7.1"
 url_path = "0.1.2"
 log = "0.4"
 file = {version = "1.1.2", optional = true}
-syntect = "3.3.0"
+syntect = { version = "3.3.0", optional = true}
 
 
 

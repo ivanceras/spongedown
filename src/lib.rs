@@ -1,4 +1,33 @@
 #![deny(warnings)]
+use comrak::{
+    format_html,
+    nodes::{
+        AstNode,
+        NodeHtmlBlock,
+        NodeValue,
+    },
+    parse_document,
+    ComrakOptions,
+};
+use errors::Error;
+use std::{
+    collections::BTreeMap,
+    sync::{
+        Arc,
+        Mutex,
+    },
+};
+#[cfg(feature = "syntect")]
+use syntect::{
+    highlighting::{
+        Color,
+        ThemeSet,
+    },
+    html::highlighted_html_for_string,
+    parsing::SyntaxSet,
+};
+use typed_arena::Arena;
+use url_path::UrlPath;
 
 extern crate comrak;
 #[cfg(feature = "csv")]
@@ -11,17 +40,6 @@ extern crate url_path;
 extern crate log;
 #[cfg(feature = "file")]
 extern crate file;
-
-use comrak::nodes::{AstNode, NodeHtmlBlock, NodeValue};
-use comrak::{format_html, parse_document, ComrakOptions};
-use errors::Error;
-use std::collections::BTreeMap;
-use std::sync::{Arc, Mutex};
-use syntect::highlighting::{Color, ThemeSet};
-use syntect::html::highlighted_html_for_string;
-use syntect::parsing::SyntaxSet;
-use typed_arena::Arena;
-use url_path::UrlPath;
 
 mod plugins;
 
@@ -132,8 +150,11 @@ fn iter_nodes<'a, F>(
     }
 }
 
-fn pre_iter_nodes<'a, F>(node: &'a AstNode<'a>, files: Arc<Mutex<Vec<String>>>, f: &F)
-where
+fn pre_iter_nodes<'a, F>(
+    node: &'a AstNode<'a>,
+    files: Arc<Mutex<Vec<String>>>,
+    f: &F,
+) where
     F: Fn(&'a AstNode<'a>),
 {
     f(node);
@@ -154,8 +175,8 @@ pub fn pre_parse_get_embedded_files(arg: &str) -> Result<Vec<String>, Error> {
         let ref mut value = node.data.borrow_mut().value;
         let new_value = match value {
             &mut NodeValue::Image(ref link) => {
-                let link_url =
-                    String::from_utf8(link.url.clone()).expect("unable to convert to string");
+                let link_url = String::from_utf8(link.url.clone())
+                    .expect("unable to convert to string");
                 if let Ok(mut embed_files) = embed_files.lock() {
                     embed_files.push(link_url);
                 }
@@ -188,11 +209,16 @@ fn parse_via_comrak(
         let ref mut value = node.data.borrow_mut().value;
         let new_value = match value {
             &mut NodeValue::CodeBlock(ref codeblock) => {
-                let codeblock_info = String::from_utf8(codeblock.info.to_owned())
-                    .expect("error converting to string");
-                let codeblock_literal = String::from_utf8(codeblock.literal.to_owned())
-                    .expect("error converting to string");
-                if let Ok(out) = plugins::plugin_executor(&codeblock_info, &codeblock_literal) {
+                let codeblock_info =
+                    String::from_utf8(codeblock.info.to_owned())
+                        .expect("error converting to string");
+                let codeblock_literal =
+                    String::from_utf8(codeblock.literal.to_owned())
+                        .expect("error converting to string");
+                if let Ok(out) = plugins::plugin_executor(
+                    &codeblock_info,
+                    &codeblock_literal,
+                ) {
                     NodeValue::HtmlBlock(NodeHtmlBlock {
                         literal: out.into_bytes(),
                         block_type: 0,
@@ -202,10 +228,6 @@ fn parse_via_comrak(
                 {
                     code_block_html
                 } else {
-                    /*
-                    println!("codeblock_info: {}", codeblock_info);
-                    println!("codeblock_literal: {}", codeblock_literal);
-                    */
                     value.clone()
                 }
             }
@@ -267,13 +289,15 @@ fn parse_via_comrak(
                 value.clone()
             }
             &mut NodeValue::Image(ref link) => {
-                let link_url =
-                    String::from_utf8(link.url.clone()).expect("unable to convert to string");
+                let link_url = String::from_utf8(link.url.clone())
+                    .expect("unable to convert to string");
                 match plugins::embed_handler(&link_url, embed_files) {
-                    Ok(html) => NodeValue::HtmlBlock(NodeHtmlBlock {
-                        literal: html.into_bytes(),
-                        block_type: 0,
-                    }),
+                    Ok(html) => {
+                        NodeValue::HtmlBlock(NodeHtmlBlock {
+                            literal: html.into_bytes(),
+                            block_type: 0,
+                        })
+                    }
                     Err(e) => {
                         error!("error: {:#?}", e);
                         value.clone()
@@ -314,6 +338,12 @@ fn parse_via_comrak(
     }
 }
 
+/// syntect can not be compiled in wasm.
+#[cfg(not(feature = "syntect"))]
+fn format_source_code(_lang: &str, _literal: &str) -> Option<NodeValue> {
+    None
+}
+#[cfg(feature = "syntect")]
 fn format_source_code(lang: &str, literal: &str) -> Option<NodeValue> {
     let lang_name = match lang {
         "rust" => "Rust",
