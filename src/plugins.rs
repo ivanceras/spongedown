@@ -42,7 +42,7 @@ pub fn get_plugins()
 /// convert bob ascii diagrams to svg
 fn bob_handler(input: &str) -> Result<String, Error> {
     let cb = svgbob::CellBuffer::from(input);
-    let (node, width, height) =
+    let (node, width, height): (svgbob::Node<()>, f32, f32) =
         cb.get_node_with_size(&svgbob::Settings::default());
     let svg = node.to_string();
     let bob_container = format!(

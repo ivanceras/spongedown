@@ -17,7 +17,6 @@ use std::{
         Mutex,
     },
 };
-#[cfg(feature = "syntect")]
 use syntect::{
     highlighting::{
         Color,
@@ -338,12 +337,6 @@ fn parse_via_comrak(
     }
 }
 
-/// syntect can not be compiled in wasm.
-#[cfg(not(feature = "syntect"))]
-fn format_source_code(_lang: &str, _literal: &str) -> Option<NodeValue> {
-    None
-}
-#[cfg(feature = "syntect")]
 fn format_source_code(lang: &str, literal: &str) -> Option<NodeValue> {
     let lang_name = match lang {
         "rust" => "Rust",
