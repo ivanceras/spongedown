@@ -1,5 +1,7 @@
 target
 *.sw*
 *.bk
+out
+Cargo.lock
 
 .DS_Store
