@@ -58,6 +58,12 @@ mod errors {
     }
 }
 
+#[derive(Debug)]
+pub struct Html {
+    pub title: Option<String>,
+    pub content: String,
+}
+
 pub struct Settings {
     /// add a base directory for all links to other md files
     base_dir: Option<String>,
@@ -109,11 +115,6 @@ pub fn parse_with_settings(
     html
 }
 
-#[derive(Debug)]
-pub struct Html {
-    pub title: Option<String>,
-    pub content: String,
-}
 
 fn get_comrak_options() -> ComrakOptions {
     ComrakOptions {
