@@ -132,7 +132,7 @@ fn get_comrak_options() -> ComrakOptions {
         ext_footnotes: true,
         ext_description_lists: true,
         smart: false,
-        safe: false,
+        unsafe_: true,
     }
 }
 

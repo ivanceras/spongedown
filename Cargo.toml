@@ -13,7 +13,7 @@ edition = "2018"
 [dependencies]
 svgbob = { path = "../svgbob/svgbob"}
 csv = {version = "1", optional = true}
-comrak = {version = "0.3", default-features = false}
+comrak = {version = "0.7", default-features = false}
 typed-arena = "1.2"
 url = "1.7.1"
 url_path = { path = "../url_path"}
