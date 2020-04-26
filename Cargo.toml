@@ -1,6 +1,6 @@
 [package]
 name = "spongedown"
-version = "0.4.0"
+version = "0.4.1"
 authors = [ "Jovansonlee Cesar <ivanceras@gmail.com>" ]
 license = "MIT"
 description = "Converts markdown to html with svgbob support"
@@ -11,7 +11,7 @@ keywords = ["markdown", "svg", "bob", "spongedown"]
 edition = "2018"
 
 [dependencies]
-svgbob = "0.5.0-alpha.3"
+svgbob = "0.5.0-alpha.4"
 csv = {version = "1", optional = true}
 comrak = {version = "0.7", default-features = false}
 typed-arena = "1.2"
