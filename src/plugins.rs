@@ -1,9 +1,7 @@
 use self::PluginError::*;
 use crate::errors::Error;
-use std::collections::{
-    BTreeMap,
-    HashMap,
-};
+use crate::svgbob::Render;
+use std::collections::{BTreeMap, HashMap};
 use url_path::UrlPath;
 
 /// Plugin info, format:
@@ -27,8 +25,8 @@ pub enum PluginError {
     PluginNotExist(String),
 }
 
-pub fn get_plugins()
--> HashMap<String, Box<dyn Fn(&str) -> Result<String, Error>>> {
+pub fn get_plugins(
+) -> HashMap<String, Box<dyn Fn(&str) -> Result<String, Error>>> {
     let mut plugins: HashMap<
         String,
         Box<dyn Fn(&str) -> Result<String, Error>>,
@@ -44,7 +42,7 @@ fn bob_handler(input: &str) -> Result<String, Error> {
     let cb = svgbob::CellBuffer::from(input);
     let (node, width, height): (svgbob::Node<()>, f32, f32) =
         cb.get_node_with_size(&svgbob::Settings::default());
-    let svg = node.to_string();
+    let svg = node.render_to_string();
     let bob_container = format!(
         "<div class='bob_container' style='width:{}px;height:{}px;'>{}</div>",
         width, height, svg
