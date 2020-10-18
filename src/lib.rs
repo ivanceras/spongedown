@@ -1,27 +1,17 @@
 #![deny(warnings)]
 use comrak::{
     format_html,
-    nodes::{
-        AstNode,
-        NodeHtmlBlock,
-        NodeValue,
-    },
-    parse_document,
-    ComrakOptions,
+    nodes::{AstNode, NodeHtmlBlock, NodeValue},
+    parse_document, ComrakExtensionOptions, ComrakOptions, ComrakParseOptions,
+    ComrakRenderOptions,
 };
 use errors::Error;
 use std::{
     collections::BTreeMap,
-    sync::{
-        Arc,
-        Mutex,
-    },
+    sync::{Arc, Mutex},
 };
 use syntect::{
-    highlighting::{
-        Color,
-        ThemeSet,
-    },
+    highlighting::{Color, ThemeSet},
     html::highlighted_html_for_string,
     parsing::SyntaxSet,
 };
@@ -115,24 +105,30 @@ pub fn parse_with_settings(
     html
 }
 
-
 fn get_comrak_options() -> ComrakOptions {
     ComrakOptions {
-        hardbreaks: true,
-        github_pre_lang: true,
-        default_info_string: None,
-        width: 0,
-        ext_strikethrough: true,
-        ext_tagfilter: false,
-        ext_table: true,
-        ext_autolink: true,
-        ext_tasklist: true,
-        ext_superscript: false,
-        ext_header_ids: None,
-        ext_footnotes: true,
-        ext_description_lists: true,
-        smart: false,
-        unsafe_: true,
+        extension: ComrakExtensionOptions {
+            strikethrough: true,
+            tagfilter: false,
+            table: true,
+            autolink: true,
+            tasklist: true,
+            superscript: false,
+            header_ids: None,
+            footnotes: true,
+            description_lists: true,
+        },
+        parse: ComrakParseOptions {
+            smart: false,
+            default_info_string: None,
+        },
+        render: ComrakRenderOptions {
+            hardbreaks: true,
+            github_pre_lang: true,
+            width: 0,
+            unsafe_: true,
+            escape: false,
+        },
     }
 }
 
@@ -292,12 +288,10 @@ fn parse_via_comrak(
                 let link_url = String::from_utf8(link.url.clone())
                     .expect("unable to convert to string");
                 match plugins::embed_handler(&link_url, embed_files) {
-                    Ok(html) => {
-                        NodeValue::HtmlBlock(NodeHtmlBlock {
-                            literal: html.into_bytes(),
-                            block_type: 0,
-                        })
-                    }
+                    Ok(html) => NodeValue::HtmlBlock(NodeHtmlBlock {
+                        literal: html.into_bytes(),
+                        block_type: 0,
+                    }),
                     Err(e) => {
                         error!("error: {:#?}", e);
                         value.clone()
