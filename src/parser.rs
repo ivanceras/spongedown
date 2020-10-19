@@ -38,8 +38,6 @@ pub struct Html {
 pub struct Settings {
     /// add a base directory for all links to other md files
     base_dir: Option<String>,
-    /// apply ammonia to remove xss from the generated html
-    clean_xss: bool,
     /// if true, external links that doesn't end with `.md` will be linked as is
     link_non_md_external: bool,
 }
@@ -48,7 +46,6 @@ impl Default for Settings {
     fn default() -> Self {
         Settings {
             base_dir: None,
-            clean_xss: true,
             link_non_md_external: true,
         }
     }
@@ -118,26 +115,30 @@ fn iter_nodes<'a, F>(
     is_heading: Arc<Mutex<bool>>,
     title: Arc<Mutex<Option<String>>>,
     f: &F,
-) where
-    F: Fn(&'a AstNode<'a>),
+) -> Result<(), ParseError>
+where
+    F: Fn(&'a AstNode<'a>) -> Result<(), ParseError>,
 {
-    f(node);
+    f(node)?;
     for c in node.children() {
-        iter_nodes(c, is_heading.clone(), title.clone(), f);
+        iter_nodes(c, is_heading.clone(), title.clone(), f)?;
     }
+    Ok(())
 }
 
 fn pre_iter_nodes<'a, F>(
     node: &'a AstNode<'a>,
     files: Arc<Mutex<Vec<String>>>,
     f: &F,
-) where
-    F: Fn(&'a AstNode<'a>),
+) -> Result<(), ParseError>
+where
+    F: Fn(&'a AstNode<'a>) -> Result<(), ParseError>,
 {
-    f(node);
+    f(node)?;
     for c in node.children() {
-        pre_iter_nodes(c, files.clone(), f);
+        pre_iter_nodes(c, files.clone(), f)?;
     }
+    Ok(())
 }
 ///
 /// Extract the embeded files in img image and make it as a lookup
@@ -154,8 +155,7 @@ pub fn pre_parse_get_embedded_files(
         let ref mut value = node.data.borrow_mut().value;
         let new_value = match value {
             &mut NodeValue::Image(ref link) => {
-                let link_url = String::from_utf8(link.url.clone())
-                    .expect("unable to convert to string");
+                let link_url = String::from_utf8(link.url.clone())?;
                 if let Ok(mut embed_files) = embed_files.lock() {
                     embed_files.push(link_url);
                 }
@@ -164,7 +164,8 @@ pub fn pre_parse_get_embedded_files(
             _ => value.clone(),
         };
         *value = new_value;
-    });
+        Ok(())
+    })?;
     let embedded = match embed_files.lock() {
         Ok(files) => Ok((*files).to_owned()),
         Err(_e) => Err(ParseError::EmbedFileLockError),
@@ -284,7 +285,8 @@ fn parse_via_comrak(
             _ => value.clone(),
         };
         *value = new_value;
-    });
+        Ok(())
+    })?;
 
     let mut html = vec![];
 
@@ -299,17 +301,10 @@ fn parse_via_comrak(
         } else {
             None
         };
-        if settings.clean_xss {
-            Ok(Html {
-                title,
-                content: render_html,
-            })
-        } else {
-            Ok(Html {
-                title,
-                content: render_html,
-            })
-        }
+        Ok(Html {
+            title,
+            content: render_html,
+        })
     } else {
         Err(ParseError::MdParseError)
     }
